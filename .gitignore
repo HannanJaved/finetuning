@@ -1,0 +1,6 @@
+.*
+!.gitignore
+!.scripts/
+axolotl/
+trl/
+alignment-handbook/
