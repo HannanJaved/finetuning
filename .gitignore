@@ -1,7 +1,9 @@
-.*
-!.gitignore
-!.scripts/
+.axolotl_venv/
+.cache/
 axolotl/
 trl/
 alignment-handbook/
 slurm-*
+.logs/
+.scripts/outdated/
+.trl_venv/
