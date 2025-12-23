@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=dpo_tulu3_bs128_lr5e6
-#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/TRL/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/TRL/%x_%j.err
+#SBATCH --job-name=sft_tulu3_on_llama
+#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/optimal-split/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/optimal-split/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
@@ -13,7 +13,7 @@
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load CUDA/12.4.0
+module load CUDA
 source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-RL/.cache"
@@ -67,14 +67,14 @@ export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-RL/alignment-handbook/
 ACCELERATE_CONFIG_FILE=recipes/accelerate_configs/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_bs128_lr5e6.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_sft.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
 #LAUNCHERS
-export CMD="scripts/dpo.py --config $CONFIG_FILE"
+export CMD="scripts/sft.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
