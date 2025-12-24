@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=dpo_tulu3_bs128_lr1e5
-#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/TRL/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/TRL/%x_%j.err
+#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/Tulu3_SFT/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/Tulu3_SFT/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4

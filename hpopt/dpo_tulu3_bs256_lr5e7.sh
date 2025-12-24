@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=dpo_tulu3_bs128_lr5e6
+#SBATCH --job-name=dpo_tulu3_bs256_lr5e7
 #SBATCH --output=/data/cat/ws/hama901h-RL/.logs/Tulu3_SFT/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-RL/.logs/Tulu3_SFT/%x_%j.err
 #SBATCH --nodes=2
@@ -66,8 +66,8 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-RL/alignment-handbook/
-ACCELERATE_CONFIG_FILE=recipes/accelerate_configs/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_bs128_lr5e6.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-RL/alignment-handbook/recipes/accelerate_configs/zero3.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_bs256_lr5e7.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
