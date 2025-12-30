@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=sft_tulu3_on_llama
-#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/optimal-split/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/optimal-split/%x_%j.err
+#SBATCH --job-name=dpo_tulu3_on_oellm_full
+#SBATCH --output=/data/cat/ws/hama901h-RL/.logs/oellm/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-RL/.logs/oellm/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
@@ -66,15 +66,15 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-RL/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_sft.yaml
+ACCELERATE_CONFIG_FILE=recipes/accelerate_configs/zero3.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/config_tulu3_dpo_oellm.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
 #LAUNCHERS
-export CMD="scripts/sft.py --config $CONFIG_FILE"
+export CMD="scripts/dpo.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
