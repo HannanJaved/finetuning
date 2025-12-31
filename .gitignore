@@ -2,7 +2,7 @@
 .cache/
 axolotl/
 trl/
-alignment-handbook/
+
 slurm-*
 .logs/
 .scripts/outdated/
