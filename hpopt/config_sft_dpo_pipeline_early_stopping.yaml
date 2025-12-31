@@ -1,0 +1,133 @@
+# =============================================================================
+# SFT + DPO Pipeline Configuration with Early Stopping
+# =============================================================================
+# This config file controls a two-phase training pipeline with early stopping:
+#   Phase 1: Supervised Fine-Tuning (SFT)
+#   Phase 2: Direct Preference Optimization (DPO)
+#
+# Both phases support:
+#   - Automatic train/validation split (if no test split exists)
+#   - Early stopping based on validation loss
+#   - Best model selection
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Pipeline Settings
+# -----------------------------------------------------------------------------
+pipeline:
+  total_steps: 1000          # Total training steps (N) - used as max_steps
+  sft_steps: 600             # Max steps for SFT phase (x) - may stop early
+  # DPO steps will be automatically calculated as (total_steps - sft_steps)
+  # Note: With early stopping, training may finish before reaching max_steps
+
+# -----------------------------------------------------------------------------
+# Model Settings (shared)
+# -----------------------------------------------------------------------------
+model:
+  base_model_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/datamix-9b-60-40
+  torch_dtype: bfloat16
+
+# -----------------------------------------------------------------------------
+# Output Settings
+# -----------------------------------------------------------------------------
+output:
+  base_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/datamix-9b-60-40/test
+  sft_subdir: tulu3-sft-pipeline-es
+  dpo_subdir: tulu3-dpo-pipeline-es
+
+# -----------------------------------------------------------------------------
+# Early Stopping Settings (shared)
+# -----------------------------------------------------------------------------
+early_stopping:
+  # Validation split settings (used when dataset has no test split)
+  val_split_ratio: 0.05      # 5% of training data for validation
+  val_split_seed: 42         # Seed for reproducible splitting
+  
+  # Early stopping parameters
+  sft_patience: 3            # Stop SFT after N evals without improvement
+  sft_threshold: 0.0         # Minimum change to qualify as improvement
+  dpo_patience: 3            # Stop DPO after N evals without improvement  
+  dpo_threshold: 0.0         # Minimum change to qualify as improvement
+
+# -----------------------------------------------------------------------------
+# SFT Phase Configuration
+# -----------------------------------------------------------------------------
+sft:
+  # Dataset
+  dataset_name: ezosa/tulu-3-sft-mixture-commercial
+  chat_template: "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|> ' + message['content'] + '   ' }}{% elif message['role'] == 'user' %}{{ '<|user|> ' + message['content'] + '   ' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|> '  + message['content'] + eos_token + '   ' }}{% else %}{{ '<|assistant|> '  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|> ' }}{% endif %}{% endfor %}"
+  
+  # Training hyperparameters
+  learning_rate: 5.0e-6
+  lr_scheduler_type: linear
+  warmup_ratio: 0.03
+  max_length: 4096
+  
+  # Batch settings
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  
+  # Evaluation settings (required for early stopping)
+  eval_strategy: "steps"
+  eval_steps: 100              # Evaluate every N steps
+  
+  # Best model selection
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false     # Lower loss is better
+  
+  # Other settings
+  bf16: true
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_strategy: "steps"
+  save_steps: 100              # Should match or be multiple of eval_steps
+  save_total_limit: 10         # Keep fewer checkpoints when using best model
+  seed: 42
+
+# -----------------------------------------------------------------------------
+# DPO Phase Configuration
+# -----------------------------------------------------------------------------
+dpo:
+  # Dataset
+  dataset_name: allenai/llama-3.1-tulu-3-8b-preference-mixture
+  
+  # Training hyperparameters
+  beta: 0.1
+  learning_rate: 5.0e-7
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  max_length: 2048
+  max_prompt_length: 512
+  
+  # Batch settings
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  
+  # Evaluation settings (required for early stopping)
+  eval_strategy: "steps"
+  eval_steps: 100              # Evaluate every N steps
+  
+  # Best model selection
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false     # Lower loss is better
+  
+  # Other settings
+  bf16: true
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_strategy: "steps"
+  save_steps: 100              # Should match or be multiple of eval_steps
+  save_total_limit: 10
+  optim: adamw_torch
+  seed: 8
+
+# -----------------------------------------------------------------------------
+# Weights & Biases Settings
+# -----------------------------------------------------------------------------
+wandb:
+  project: instruction-tuning
+  entity: openeurollm-project
