@@ -2,7 +2,6 @@
 .cache/
 axolotl/
 trl/
-
 slurm-*
 .logs/
 .scripts/outdated/
