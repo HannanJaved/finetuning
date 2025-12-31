@@ -1,0 +1,94 @@
+# =============================================================================
+# SFT + DPO Pipeline Configuration
+# =============================================================================
+# This config file controls a two-phase training pipeline:
+#   Phase 1: Supervised Fine-Tuning (SFT)
+#   Phase 2: Direct Preference Optimization (DPO)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Pipeline Settings
+# -----------------------------------------------------------------------------
+pipeline:
+  total_steps: 16516          # Total training steps (N)
+  sft_steps: 15450            # Steps for SFT phase (x)
+  # DPO steps will be automatically calculated as (total_steps - sft_steps)
+
+# -----------------------------------------------------------------------------
+# Model Settings (shared)
+# -----------------------------------------------------------------------------
+model:
+  base_model_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N
+  torch_dtype: bfloat16
+
+# -----------------------------------------------------------------------------
+# Output Settings
+# -----------------------------------------------------------------------------
+output:
+  base_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_15450_1066 # x_sft_dpo
+  sft_subdir: tulu3-sft-pipeline
+  dpo_subdir: tulu3-dpo-pipeline
+
+# -----------------------------------------------------------------------------
+# SFT Phase Configuration
+# -----------------------------------------------------------------------------
+sft:
+  # Dataset
+  dataset_name: allenai/llama-3.1-tulu-3-8b-preference-mixture
+  
+  # Training hyperparameters
+  learning_rate: 5.0e-6
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.03
+  max_length: 4096
+  
+  # Batch settings
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  
+  # Other settings
+  bf16: true
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_steps: 500
+  save_total_limit: 100
+  eval_strategy: "no"
+  seed: 42
+
+# -----------------------------------------------------------------------------
+# DPO Phase Configuration
+# -----------------------------------------------------------------------------
+dpo:
+  # Dataset
+  dataset_name: allenai/llama-3.1-tulu-3-8b-preference-mixture
+  
+  # Training hyperparameters
+  beta: 0.1
+  learning_rate: 5.0e-7
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  max_length: 2048
+  max_prompt_length: 512
+  
+  # Batch settings
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  
+  # Other settings
+  bf16: true
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_steps: 500
+  save_total_limit: 20
+  do_eval: false
+  optim: adamw_torch
+  seed: 8
+
+# -----------------------------------------------------------------------------
+# Weights & Biases Settings
+# -----------------------------------------------------------------------------
+wandb:
+  project: instruction-tuning
+  entity: openeurollm-project
