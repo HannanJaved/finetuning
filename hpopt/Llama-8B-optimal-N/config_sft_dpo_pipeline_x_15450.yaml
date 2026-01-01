@@ -34,7 +34,7 @@ output:
 # -----------------------------------------------------------------------------
 sft:
   # Dataset
-  dataset_name: allenai/llama-3.1-tulu-3-8b-preference-mixture
+  dataset_name: allenai/tulu-3-sft-mixture
   
   # Training hyperparameters
   learning_rate: 5.0e-6

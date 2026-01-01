@@ -65,7 +65,6 @@ print(f"DPO_SUBDIR={config['output']['dpo_subdir']}")
 # SFT settings
 sft = config['sft']
 print(f"SFT_DATASET={sft['dataset_name']}")
-print(f"SFT_CHAT_TEMPLATE=\"{sft['chat_template']}\"")
 print(f"SFT_LR={sft['learning_rate']}")
 print(f"SFT_LR_SCHEDULER={sft['lr_scheduler_type']}")
 print(f"SFT_WARMUP_RATIO={sft['warmup_ratio']}")
@@ -195,8 +194,6 @@ cat > "$SFT_CONFIG_FILE" << SFTEOF
 # Auto-generated SFT config for pipeline job $SLURM_JOB_ID
 model_name_or_path: $BASE_MODEL_PATH
 torch_dtype: $TORCH_DTYPE
-
-chat_template: "$SFT_CHAT_TEMPLATE"
 
 dataset_name:
   $SFT_DATASET

@@ -29,7 +29,7 @@ output_dir:  /data/horse/ws/hama901h-BFTranslation/checkpoints/meta-llama/Llama-
 overwrite_output_dir: false
 per_device_train_batch_size: 1
 per_device_eval_batch_size: 1
-gradient_accumulation_steps: 16
+gradient_accumulation_steps: 32
 gradient_checkpointing: true
 save_strategy: "steps"
 save_steps: 500
