@@ -25,7 +25,7 @@ model:
 # Output Settings
 # -----------------------------------------------------------------------------
 output:
-  base_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/full
+  base_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/tulu3-setting
   sft_subdir: tulu3-sft-pipeline
   dpo_subdir: tulu3-dpo-pipeline
 
