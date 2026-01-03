@@ -255,6 +255,7 @@ log_level: info
 logging_steps: $DPO_LOG_STEPS
 optim: $DPO_OPTIM
 output_dir: $DPO_OUTPUT_DIR
+resume_from_checkpoint: true
 overwrite_output_dir: false
 per_device_train_batch_size: $DPO_BATCH_SIZE
 per_device_eval_batch_size: $DPO_EVAL_BATCH_SIZE
@@ -293,23 +294,34 @@ ACC_LAUNCHER="accelerate launch \
 # =============================================================================
 echo ""
 echo "=============================================="
-echo "PHASE 1: SFT Training"
-echo "Steps: $SFT_STEPS"
-echo "Start Time: $(date)"
+echo "PHASE 1: SFT Training Check"
 echo "=============================================="
 
-SFT_CMD="scripts/sft.py --config $SFT_CONFIG_FILE"
+# Check if SFT is already completed (check for config.json and any model files)
+if [ -f "$SFT_OUTPUT_DIR/config.json" ] && [ -n "$(ls -A $SFT_OUTPUT_DIR/model*.safetensors 2>/dev/null)" ]; then
+    echo "✓ SFT model already exists at: $SFT_OUTPUT_DIR"
+    echo "  Found model files: $(ls $SFT_OUTPUT_DIR/model*.safetensors 2>/dev/null | wc -l) shards"
+    echo "  Skipping SFT training phase."
+    SFT_EXIT_CODE=0
+else
+    echo "SFT model not found. Starting SFT training..."
+    echo "Steps: $SFT_STEPS"
+    echo "Start Time: $(date)"
+    echo "=============================================="
 
-srun $SRUN_ARGS --jobid $SLURM_JOB_ID bash -c "$ACC_LAUNCHER --role \$SLURMD_NODENAME: $SFT_CMD"
+    SFT_CMD="scripts/sft.py --config $SFT_CONFIG_FILE"
 
-SFT_EXIT_CODE=$?
-echo ""
-echo "SFT Phase completed with exit code: $SFT_EXIT_CODE"
-echo "SFT End Time: $(date)"
+    srun $SRUN_ARGS --jobid $SLURM_JOB_ID bash -c "$ACC_LAUNCHER --role \$SLURMD_NODENAME: $SFT_CMD"
 
-if [ $SFT_EXIT_CODE -ne 0 ]; then
-    echo "ERROR: SFT training failed! Aborting pipeline."
-    exit $SFT_EXIT_CODE
+    SFT_EXIT_CODE=$?
+    echo ""
+    echo "SFT Phase completed with exit code: $SFT_EXIT_CODE"
+    echo "SFT End Time: $(date)"
+
+    if [ $SFT_EXIT_CODE -ne 0 ]; then
+        echo "ERROR: SFT training failed! Aborting pipeline."
+        exit $SFT_EXIT_CODE
+    fi
 fi
 
 # =============================================================================
