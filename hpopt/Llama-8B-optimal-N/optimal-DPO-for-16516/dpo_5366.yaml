@@ -1,0 +1,32 @@
+# Auto-generated DPO config for pipeline job 2168892
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_16516_0/tulu3-sft-pipeline
+torch_dtype: bfloat16
+
+dataset_name:
+  allenai/llama-3.1-tulu-3-8b-preference-mixture
+
+bf16: true
+beta: 0.01
+do_eval: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 5e-07
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+max_length: 2048
+max_prompt_length: 512
+max_steps: 5366
+num_train_epochs: -1
+log_level: info
+logging_steps: 10
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_16516_0/tulu3-dpo-pipeline/5366_steps/
+overwrite_output_dir: false
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+save_strategy: "steps"
+save_steps: 500
+save_total_limit: 20
+seed: 8
