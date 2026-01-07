@@ -7,3 +7,4 @@ slurm-*
 .scripts/outdated/
 .trl_venv/
 .tmp_configs/
+instruction-tuning-scripts/
