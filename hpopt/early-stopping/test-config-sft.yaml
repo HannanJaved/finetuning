@@ -1,0 +1,38 @@
+# Model arguments
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/meta-llama/Llama-3.1-8B
+# model_revision: main
+torch_dtype: bfloat16
+
+# Data training arguments
+chat_template: "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|> ' + message['content'] + '   ' }}{% elif message['role'] == 'user' %}{{ '<|user|> ' + message['content'] + '   ' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|> '  + message['content'] + eos_token + '   ' }}{% else %}{{ '<|assistant|> '  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|> ' }}{% endif %}{% endfor %}"
+
+dataset_name:
+  allenai/tulu-3-sft-mixture
+
+# SFT trainer config
+bf16: true
+learning_rate: 5e-6
+log_level: info
+logging_steps: 10
+logging_strategy: steps
+lr_scheduler_type: linear
+max_length: 4096
+max_steps: -1
+num_train_epochs: 5
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/alignment-handbook/early_stopping_SFT/
+overwrite_output_dir: false
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+remove_unused_columns: true
+save_strategy: "steps"
+save_steps: 500
+save_total_limit: 100
+seed: 42
+warmup_ratio: 0.03
+eval_strategy: "steps"
+eval_steps: 10
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+early_stopping_patience: 10
