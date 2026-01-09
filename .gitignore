@@ -8,3 +8,4 @@ slurm-*
 .trl_venv/
 .tmp_configs/
 instruction-tuning-scripts/
+test.sh
