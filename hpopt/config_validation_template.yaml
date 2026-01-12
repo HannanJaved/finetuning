@@ -1,0 +1,65 @@
+# =============================================================================
+# Validation Configuration Template
+# =============================================================================
+# Use this config with scripts/validate_checkpoint.py to compute validation
+# loss on SFT or DPO checkpoints.
+#
+# Usage:
+#   accelerate launch scripts/validate_checkpoint.py --config validation_config.yaml
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Validation Mode: 'sft' or 'dpo'
+# -----------------------------------------------------------------------------
+mode: dpo  # Change to 'sft' for SFT validation
+
+# -----------------------------------------------------------------------------
+# Model Settings
+# -----------------------------------------------------------------------------
+model_name_or_path: /path/to/your/checkpoint
+torch_dtype: bfloat16
+
+# -----------------------------------------------------------------------------
+# Dataset Settings
+# -----------------------------------------------------------------------------
+# For SFT validation:
+# dataset_name: allenai/tulu-3-sft-mixture
+
+# For DPO validation:
+dataset_name:
+  allenai/llama-3.1-tulu-3-8b-preference-mixture
+
+# -----------------------------------------------------------------------------
+# Validation Split Settings
+# -----------------------------------------------------------------------------
+# If the dataset doesn't have a test split, one will be created from the
+# training data using these settings:
+val_split_ratio: 0.05    # Use 5% of training data for validation
+val_split_seed: 42       # Seed for reproducible splitting
+
+# -----------------------------------------------------------------------------
+# Training/Evaluation Settings
+# -----------------------------------------------------------------------------
+bf16: true
+gradient_checkpointing: true
+per_device_eval_batch_size: 1
+
+# For SFT:
+max_length: 4096
+
+# For DPO:
+# max_length: 2048
+# max_prompt_length: 512
+# beta: 0.1
+
+# -----------------------------------------------------------------------------
+# Output Settings
+# -----------------------------------------------------------------------------
+output_dir: /path/to/output
+results_file: /path/to/output/validation_results.json
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+log_level: info
+seed: 42
