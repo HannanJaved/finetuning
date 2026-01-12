@@ -206,6 +206,7 @@ cat > "$DPO_VAL_CONFIG" << DPOVALEOF
 # Auto-generated DPO validation config for job $SLURM_JOB_ID
 mode: dpo
 model_name_or_path: $DPO_CHECKPOINT
+ref_model_name_or_path: $SFT_CHECKPOINT
 torch_dtype: $TORCH_DTYPE
 
 dataset_name:

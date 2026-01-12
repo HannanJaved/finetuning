@@ -97,6 +97,9 @@ do_eval: true
 eval_strategy: "no"
 log_level: info
 seed: $SFT_SEED
+wandb:
+  project: instruction-tuning
+  entity: openeurollm-project
 SFTEOF
         
         echo "  Submitting SFT validation job..."
@@ -116,10 +119,14 @@ SFTEOF
     # Submit DPO Validation Job
     # -------------------------------------------------------------------------
     if [ -d "$DPO_CHECKPOINT" ] && [ -f "$DPO_CHECKPOINT/config.json" ]; then
-        DPO_VAL_CONFIG="${TMP_CONFIG_DIR}/dpo_val_${CONFIG_NAME}.yaml"
-        cat > "$DPO_VAL_CONFIG" << DPOEOF
+        if [ ! -d "$SFT_CHECKPOINT" ] || [ ! -f "$SFT_CHECKPOINT/config.json" ]; then
+            echo "  WARNING: Reference SFT checkpoint not found at $SFT_CHECKPOINT. Skipping DPO validation."
+        else
+            DPO_VAL_CONFIG="${TMP_CONFIG_DIR}/dpo_val_${CONFIG_NAME}.yaml"
+            cat > "$DPO_VAL_CONFIG" << DPOEOF
 # Auto-generated DPO validation config
 model_name_or_path: $DPO_CHECKPOINT
+ref_model_name_or_path: $SFT_CHECKPOINT
 torch_dtype: $TORCH_DTYPE
 
 dataset_name:
@@ -136,17 +143,21 @@ do_eval: true
 eval_strategy: "no"
 log_level: info
 seed: $DPO_SEED
+wandb:
+  project: instruction-tuning
+  entity: openeurollm-project
 DPOEOF
-        
-        echo "  Submitting DPO validation job..."
-        DPO_JOB_ID=$(sbatch \
-            --job-name="val_dpo_${CONFIG_NAME}" \
-            --output="${LOG_DIR}/val_dpo_${CONFIG_NAME}_%j.out" \
-            --error="${LOG_DIR}/val_dpo_${CONFIG_NAME}_%j.err" \
-            --parsable \
-            /data/cat/ws/hama901h-RL/hpopt/slurm_validate_dpo.sh "$DPO_VAL_CONFIG")
-        echo "  DPO Job ID: $DPO_JOB_ID"
-        SUBMITTED_JOBS+=("$DPO_JOB_ID:dpo:$CONFIG_NAME")
+            
+            echo "  Submitting DPO validation job..."
+            DPO_JOB_ID=$(sbatch \
+                --job-name="val_dpo_${CONFIG_NAME}" \
+                --output="${LOG_DIR}/val_dpo_${CONFIG_NAME}_%j.out" \
+                --error="${LOG_DIR}/val_dpo_${CONFIG_NAME}_%j.err" \
+                --parsable \
+                /data/cat/ws/hama901h-RL/hpopt/slurm_validate_dpo.sh "$DPO_VAL_CONFIG")
+            echo "  DPO Job ID: $DPO_JOB_ID"
+            SUBMITTED_JOBS+=("$DPO_JOB_ID:dpo:$CONFIG_NAME")
+        fi
     else
         echo "  WARNING: DPO checkpoint not found at $DPO_CHECKPOINT"
     fi
