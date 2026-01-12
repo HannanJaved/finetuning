@@ -1,0 +1,389 @@
+{
+  "experiments": [
+    {
+      "name": "config_sft_dpo_pipeline",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/tulu3-setting/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.63701993227005,
+          "eval_model_preparation_time": 0.4487,
+          "eval_runtime": 1400.4214,
+          "eval_samples_per_second": 33.538,
+          "eval_steps_per_second": 8.385,
+          "eval_entropy": 0.752776241935999,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8240576419167778,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/tulu3-setting/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4727,
+          "eval_runtime": 1003.9123,
+          "eval_samples_per_second": 13.592,
+          "eval_steps_per_second": 3.399,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -416.471435546875,
+          "eval_logps/rejected": -606.8905029296875,
+          "eval_logits/chosen": -0.8826726675033569,
+          "eval_logits/rejected": -0.7984825372695923,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_10300",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_10300_6182/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6785725355148315,
+          "eval_model_preparation_time": 0.4578,
+          "eval_runtime": 1402.998,
+          "eval_samples_per_second": 33.477,
+          "eval_steps_per_second": 8.369,
+          "eval_entropy": 0.7815454138988247,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8140812612482442,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_10300_6182/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4853,
+          "eval_runtime": 991.5791,
+          "eval_samples_per_second": 13.761,
+          "eval_steps_per_second": 3.441,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -434.2784423828125,
+          "eval_logps/rejected": -657.9927978515625,
+          "eval_logits/chosen": -0.8862528204917908,
+          "eval_logits/rejected": -0.7302396893501282,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_11150",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_11150_5366/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6693392992019653,
+          "eval_model_preparation_time": 0.4657,
+          "eval_runtime": 1413.0761,
+          "eval_samples_per_second": 33.238,
+          "eval_steps_per_second": 8.31,
+          "eval_entropy": 0.7742127119794328,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8162592822837171,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_11150_5366/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4897,
+          "eval_runtime": 991.9184,
+          "eval_samples_per_second": 13.756,
+          "eval_steps_per_second": 3.44,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -428.760986328125,
+          "eval_logps/rejected": -645.2630615234375,
+          "eval_logits/chosen": -0.8961332440376282,
+          "eval_logits/rejected": -0.753714919090271,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_12250",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_12250_4266/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6582289338111877,
+          "eval_model_preparation_time": 0.4862,
+          "eval_runtime": 1401.898,
+          "eval_samples_per_second": 33.503,
+          "eval_steps_per_second": 8.376,
+          "eval_entropy": 0.7662423584940811,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8189001535078956,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_12250_4266/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4973,
+          "eval_runtime": 990.6377,
+          "eval_samples_per_second": 13.774,
+          "eval_steps_per_second": 3.444,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -421.8453369140625,
+          "eval_logps/rejected": -627.5839233398438,
+          "eval_logits/chosen": -0.890049397945404,
+          "eval_logits/rejected": -0.7733453512191772,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_13300",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_13300_3216/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6477748155593872,
+          "eval_model_preparation_time": 0.447,
+          "eval_runtime": 1403.0306,
+          "eval_samples_per_second": 33.476,
+          "eval_steps_per_second": 8.369,
+          "eval_entropy": 0.7595066388285642,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8214111121041753,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_13300_3216/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4856,
+          "eval_runtime": 991.8968,
+          "eval_samples_per_second": 13.756,
+          "eval_steps_per_second": 3.44,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -418.6423034667969,
+          "eval_logps/rejected": -618.9111328125,
+          "eval_logits/chosen": -0.8743210434913635,
+          "eval_logits/rejected": -0.7715765237808228,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_15450",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_15450_1066/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6258718967437744,
+          "eval_model_preparation_time": 0.4444,
+          "eval_runtime": 1401.2117,
+          "eval_samples_per_second": 33.52,
+          "eval_steps_per_second": 8.38,
+          "eval_entropy": 0.7240448283938,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8266269244625466,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_15450_1066/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4926,
+          "eval_runtime": 992.6581,
+          "eval_samples_per_second": 13.746,
+          "eval_steps_per_second": 3.437,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -422.58258056640625,
+          "eval_logps/rejected": -608.8870239257812,
+          "eval_logits/chosen": -0.9285021424293518,
+          "eval_logits/rejected": -0.8505064845085144,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_16516",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_16516_0/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6146495938301086,
+          "eval_model_preparation_time": 0.471,
+          "eval_runtime": 1404.285,
+          "eval_samples_per_second": 33.446,
+          "eval_steps_per_second": 8.362,
+          "eval_entropy": 0.7109853217882388,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8293016701099151,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": null
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_6600",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_6600_9916/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.7267947196960449,
+          "eval_model_preparation_time": 0.4631,
+          "eval_runtime": 1406.3432,
+          "eval_samples_per_second": 33.397,
+          "eval_steps_per_second": 8.349,
+          "eval_entropy": 0.8622586954149634,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8035736776275421,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_6600_9916/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4913,
+          "eval_runtime": 993.146,
+          "eval_samples_per_second": 13.739,
+          "eval_steps_per_second": 3.436,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -462.85784912109375,
+          "eval_logps/rejected": -722.302490234375,
+          "eval_logits/chosen": -0.7869275808334351,
+          "eval_logits/rejected": -0.5792292356491089,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_8258",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_8258_8258/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.702803909778595,
+          "eval_model_preparation_time": 0.4594,
+          "eval_runtime": 1407.1311,
+          "eval_samples_per_second": 33.379,
+          "eval_steps_per_second": 8.345,
+          "eval_entropy": 0.8049742643927781,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8086557502342314,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_8258_8258/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.4886,
+          "eval_runtime": 990.0921,
+          "eval_samples_per_second": 13.782,
+          "eval_steps_per_second": 3.446,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -452.2542419433594,
+          "eval_logps/rejected": -697.4661254882812,
+          "eval_logits/chosen": -0.8422402143478394,
+          "eval_logits/rejected": -0.6516391038894653,
+          "eval_samples": 13645
+        }
+      }
+    },
+    {
+      "name": "config_sft_dpo_pipeline_x_9100",
+      "sft": {
+        "mode": "sft",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_9100_7416/tulu3-sft-pipeline",
+        "dataset_name": "allenai/tulu-3-sft-mixture",
+        "metrics": {
+          "eval_loss": 0.6919782161712646,
+          "eval_model_preparation_time": 0.4579,
+          "eval_runtime": 1411.1617,
+          "eval_samples_per_second": 33.283,
+          "eval_steps_per_second": 8.321,
+          "eval_entropy": 0.7937177639563107,
+          "eval_num_tokens": 0.0,
+          "eval_mean_token_accuracy": 0.8110347932337537,
+          "eval_samples": 46968
+        }
+      },
+      "dpo": {
+        "mode": "dpo",
+        "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_9100_7416/tulu3-dpo-pipeline",
+        "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+        "metrics": {
+          "eval_loss": 0.69140625,
+          "eval_model_preparation_time": 0.472,
+          "eval_runtime": 991.8192,
+          "eval_samples_per_second": 13.758,
+          "eval_steps_per_second": 3.44,
+          "eval_rewards/chosen": 0.0,
+          "eval_rewards/rejected": 0.0,
+          "eval_rewards/accuracies": 0.0,
+          "eval_rewards/margins": 0.0,
+          "eval_logps/chosen": -444.16015625,
+          "eval_logps/rejected": -681.7879638671875,
+          "eval_logits/chosen": -0.8729870319366455,
+          "eval_logits/rejected": -0.6967194676399231,
+          "eval_samples": 13645
+        }
+      }
+    }
+  ],
+  "summary": {
+    "total_experiments": 10,
+    "sft_completed": 10,
+    "dpo_completed": 9
+  }
+}
