@@ -1,0 +1,16 @@
+{
+  "mode": "sft",
+  "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_16516_0/tulu3-sft-pipeline",
+  "dataset_name": "allenai/tulu-3-sft-mixture",
+  "metrics": {
+    "eval_loss": 0.6146495938301086,
+    "eval_model_preparation_time": 0.471,
+    "eval_runtime": 1404.285,
+    "eval_samples_per_second": 33.446,
+    "eval_steps_per_second": 8.362,
+    "eval_entropy": 0.7109853217882388,
+    "eval_num_tokens": 0.0,
+    "eval_mean_token_accuracy": 0.8293016701099151,
+    "eval_samples": 46968
+  }
+}
