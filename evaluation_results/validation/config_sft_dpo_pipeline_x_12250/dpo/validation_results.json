@@ -1,0 +1,21 @@
+{
+  "mode": "dpo",
+  "model_path": "/data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/x_12250_4266/tulu3-dpo-pipeline",
+  "dataset_name": "allenai/llama-3.1-tulu-3-8b-preference-mixture",
+  "metrics": {
+    "eval_loss": 0.12944896519184113,
+    "eval_model_preparation_time": 0.0415,
+    "eval_runtime": 994.8312,
+    "eval_samples_per_second": 13.716,
+    "eval_steps_per_second": 3.43,
+    "eval_rewards/chosen": 0.767837405204773,
+    "eval_rewards/rejected": -3.457195520401001,
+    "eval_rewards/accuracies": 0.9551582932472229,
+    "eval_rewards/margins": 4.225025177001953,
+    "eval_logps/chosen": -421.8453369140625,
+    "eval_logps/rejected": -627.5839233398438,
+    "eval_logits/chosen": -0.890049397945404,
+    "eval_logits/rejected": -0.7733453512191772,
+    "eval_samples": 13645
+  }
+}
