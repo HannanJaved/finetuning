@@ -97,9 +97,6 @@ do_eval: true
 eval_strategy: "no"
 log_level: info
 seed: $SFT_SEED
-wandb:
-  project: instruction-tuning
-  entity: openeurollm-project
 SFTEOF
         
         echo "  Submitting SFT validation job..."
@@ -143,9 +140,6 @@ do_eval: true
 eval_strategy: "no"
 log_level: info
 seed: $DPO_SEED
-wandb:
-  project: instruction-tuning
-  entity: openeurollm-project
 DPOEOF
             
             echo "  Submitting DPO validation job..."
