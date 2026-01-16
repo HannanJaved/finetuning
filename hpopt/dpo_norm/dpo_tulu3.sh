@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=dpo_norm_tulu3_paper
+#SBATCH --job-name=dpo_norm_tulu3_paper_actual
 #SBATCH --output=/data/cat/ws/hama901h-RL/.logs/Tulu3_DPO_NORM/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-RL/.logs/Tulu3_DPO_NORM/%x_%j.err
 #SBATCH --nodes=2
@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14
 #SBATCH --mem=0
-#SBATCH --time=16:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 
