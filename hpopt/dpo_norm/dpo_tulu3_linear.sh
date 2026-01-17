@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=dpo_norm_tulu3_paper_actual_linear
+#SBATCH --job-name=dpo_norm_tulu3_paper_actual
 #SBATCH --output=/data/cat/ws/hama901h-RL/.logs/Tulu3_DPO_NORM/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-RL/.logs/Tulu3_DPO_NORM/%x_%j.err
 #SBATCH --nodes=2
@@ -68,7 +68,7 @@ export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-RL/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/dpo_norm/config_tulu3_dpo_linear.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-RL/hpopt/dpo_norm/config_tulu3_dpo.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
