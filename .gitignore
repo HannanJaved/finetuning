@@ -11,3 +11,4 @@ instruction-tuning-scripts/
 test.sh
 lm-eval*/
 evaluation_results/
+dtcp_*/
