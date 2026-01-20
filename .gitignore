@@ -9,3 +9,5 @@ slurm-*
 .tmp_configs/
 instruction-tuning-scripts/
 test.sh
+lm-eval*/
+evaluation_results/
