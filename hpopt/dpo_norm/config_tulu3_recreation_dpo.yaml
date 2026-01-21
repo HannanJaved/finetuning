@@ -1,5 +1,5 @@
 # Model arguments
-model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/optimal-N/tulu3-setting/tulu3-sft-pipeline
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/1.7b-MixtureVitae-300BT-v1
 torch_dtype: bfloat16
 
 # Data training arguments
