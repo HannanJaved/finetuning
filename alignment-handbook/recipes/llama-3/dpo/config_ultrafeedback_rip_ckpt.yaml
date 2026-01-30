@@ -1,0 +1,37 @@
+# Model arguments
+model_name_or_path: /scratch/project_462000444/zosaelai2/models/sft_8b_llama70b_best
+torch_dtype: bfloat16
+
+# Data training arguments
+# For definitions, see: src/h4/training/config.py
+dataset_mixer:
+  HuggingFaceH4/ultrafeedback_binarized: 1.0
+dataset_splits:
+- train_prefs
+- test_prefs
+preprocessing_num_workers: 1
+
+# DPOTrainer arguments
+bf16: true
+beta: 0.01
+do_eval: false
+eval_strategy: epoch
+gradient_accumulation_steps: 2
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+learning_rate: 5.0e-7
+log_level: info
+logging_steps: 10
+lr_scheduler_type: cosine
+max_length: 1024
+max_prompt_length: 512
+num_train_epochs: 1
+optim: adamw_torch
+output_dir: data/dpo-ultrafeedback-sft-ckpt-rip
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 8
+save_strategy: "epoch"
+save_total_limit: 1
+seed: 42
+warmup_ratio: 0.1

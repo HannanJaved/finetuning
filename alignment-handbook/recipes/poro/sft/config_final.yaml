@@ -1,0 +1,46 @@
+# Model arguments
+model_name_or_path: /scratch/project_462000444/zosaelai2/models/Poro-34b-Chat
+torch_dtype: bfloat16
+
+# Data training arguments
+chat_template: "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
+dataset_mixer:
+  /scratch/project_462000444/finetuning_data/SFTTrainer_format/english/instruction-collection-eng: 1.0
+  /scratch/project_462000444/finetuning_data/SFTTrainer_format/finnish/instruction-collection-fin: 1.0
+dataset_splits:
+- train
+- test
+preprocessing_num_workers: 1
+
+# SFT trainer config
+bf16: true
+do_eval: true
+evaluation_strategy: epoch
+# eval_steps: 200
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+# hub_model_id: zephyr-7b-sft-full
+# hub_strategy: every_save
+learning_rate: 2.0e-05
+log_level: info
+logging_steps: 5  
+logging_strategy: steps
+lr_scheduler_type: cosine
+max_seq_length: 2048
+max_steps: -1
+num_train_epochs: 3
+output_dir: data/poro-mixed-poro-full-extended-cleaned-batch48
+# overwrite_output_dir: true
+per_device_eval_batch_size: 4
+per_device_train_batch_size: 2
+# push_to_hub: true
+remove_unused_columns: true
+# report_to:
+# - tensorboard
+save_strategy: "epoch"
+# save_steps: 100
+save_total_limit: 1
+seed: 42
+warmup_ratio: 0.1

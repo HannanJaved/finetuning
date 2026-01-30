@@ -1,0 +1,39 @@
+# Model arguments
+model_name_or_path: /scratch/project_462000353/zosaelai2/models/finnish-llama-3-8b-eng-fin-synthetic-rated-magpie-oasst2-avoin-avustaja-epochs-2-batch-64-packed
+torch_dtype: bfloat16
+
+# Data training arguments
+# For definitions, see: src/h4/training/config.py
+dataset_mixer:
+  /scratch/project_462000353/posttraining_data/DPOTrainer_format/eng/nvidia/HelpSteer2-filtered: 1.0
+  /scratch/project_462000353/posttraining_data/DPOTrainer_format/fin/nvidia/HelpSteer2-translated-poro: 1.0
+dataset_splits:
+- train
+- test
+preprocessing_num_workers: 1
+
+# DPOTrainer arguments
+bf16: true
+beta: 0.01
+do_eval: false
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+learning_rate: 5.0e-7
+log_level: info
+logging_steps: 10
+lr_scheduler_type: cosine
+max_length: 4096
+max_prompt_length: 512
+num_train_epochs: 5
+optim: adamw_torch
+output_dir: data/finnish-llama-3-8b-rated-dpo-helpsteer2-eng-fin-epochs-5-batch-64
+overwrite_output_dir: false
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 4
+save_strategy: "steps"
+save_steps: 500
+save_total_limit: 20
+seed: 42
+warmup_ratio: 0.1
