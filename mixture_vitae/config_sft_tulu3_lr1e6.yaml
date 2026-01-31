@@ -9,6 +9,8 @@ chat_template: "{% for message in messages %}{% if message['role'] == 'system' %
 
 dataset_name:
   allenai/tulu-3-sft-mixture
+dataset_test_split_size: 0.02
+dataset_test_split_seed: 42
 
 # SFT trainer config
 bf16: true
