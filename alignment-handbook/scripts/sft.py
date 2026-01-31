@@ -114,11 +114,22 @@ def main(script_args, training_args, model_args):
     ############################
     # Initialize the SFT Trainer
     ############################
+    eval_dataset = None
+    if training_args.eval_strategy != "no":
+        if script_args.dataset_test_split in dataset:
+            eval_dataset = dataset[script_args.dataset_test_split]
+        else:
+            logger.warning(
+                "Eval requested but dataset split '%s' is missing. "
+                "Set dataset_test_split_size to create one or disable eval.",
+                script_args.dataset_test_split,
+            )
+
     trainer = SFTTrainer(
         model=model,
         args=training_args,
         train_dataset=dataset[script_args.dataset_train_split],
-        eval_dataset=(dataset[script_args.dataset_test_split] if training_args.eval_strategy != "no" else None),
+        eval_dataset=eval_dataset,
         processing_class=tokenizer,
         peft_config=get_peft_config(model_args),
     )
@@ -134,7 +145,8 @@ def main(script_args, training_args, model_args):
         checkpoint = last_checkpoint
     train_result = trainer.train(resume_from_checkpoint=checkpoint)
     metrics = train_result.metrics
-    metrics["train_samples"] = len(dataset[script_args.dataset_train_split])
+    if script_args.dataset_train_split in dataset:
+        metrics["train_samples"] = len(dataset[script_args.dataset_train_split])
     trainer.log_metrics("train", metrics)
     trainer.save_metrics("train", metrics)
     trainer.save_state()
@@ -168,7 +180,8 @@ def main(script_args, training_args, model_args):
     if training_args.do_eval:
         logger.info("*** Evaluate ***")
         metrics = trainer.evaluate()
-        metrics["eval_samples"] = len(dataset[script_args.dataset_test_split])
+        if script_args.dataset_test_split in dataset:
+            metrics["eval_samples"] = len(dataset[script_args.dataset_test_split])
         trainer.log_metrics("eval", metrics)
         trainer.save_metrics("eval", metrics)
 

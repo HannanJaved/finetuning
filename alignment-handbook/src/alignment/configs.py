@@ -84,6 +84,18 @@ class ScriptArguments(trl.ScriptArguments):
         default=None,
         metadata={"help": "Configuration for creating dataset mixtures with advanced options like shuffling."},
     )
+    dataset_test_split_size: Optional[float] = field(
+        default=None,
+        metadata={
+            "help": (
+                "If provided and the dataset has no test split, create one from the train split with this fraction."
+            )
+        },
+    )
+    dataset_test_split_seed: int = field(
+        default=42,
+        metadata={"help": "Random seed for creating the test split from the train split."},
+    )
     ref_model_name_or_path: Optional[str] = field(
         default=None,
         metadata={"help": "Optional path or identifier for the frozen reference model used during evaluation."},

@@ -15,12 +15,49 @@
 import logging
 
 import datasets
-from datasets import DatasetDict, concatenate_datasets
+from datasets import Dataset, DatasetDict, concatenate_datasets
 
 from .configs import ScriptArguments
 
 
 logger = logging.getLogger(__name__)
+
+
+def _maybe_create_test_split(dataset: Dataset | DatasetDict, args: ScriptArguments) -> DatasetDict:
+    """Ensure a test split exists when requested via configuration."""
+    if args.dataset_test_split_size is None:
+        return dataset
+
+    test_split = args.dataset_test_split
+    train_split = args.dataset_train_split
+    seed = args.dataset_test_split_seed
+
+    if isinstance(dataset, Dataset):
+        split = dataset.train_test_split(test_size=args.dataset_test_split_size, seed=seed)
+        logger.info(
+            "Created test split '%s' from dataset with test_size=%s", test_split, args.dataset_test_split_size
+        )
+        return DatasetDict({train_split: split["train"], test_split: split["test"]})
+
+    if test_split in dataset:
+        return dataset
+    if train_split not in dataset:
+        logger.warning(
+            "Requested test split '%s' but train split '%s' not found. Available splits: %s",
+            test_split,
+            train_split,
+            list(dataset.keys()),
+        )
+        return dataset
+
+    split = dataset[train_split].train_test_split(test_size=args.dataset_test_split_size, seed=seed)
+    logger.info(
+        "Created test split '%s' from '%s' with test_size=%s",
+        test_split,
+        train_split,
+        args.dataset_test_split_size,
+    )
+    return DatasetDict({**dataset, train_split: split["train"], test_split: split["test"]})
 
 
 def get_dataset(args: ScriptArguments) -> DatasetDict:
@@ -34,7 +71,8 @@ def get_dataset(args: ScriptArguments) -> DatasetDict:
     """
     if args.dataset_name and not args.dataset_mixture:
         logger.info(f"Loading dataset: {args.dataset_name}")
-        return datasets.load_dataset(args.dataset_name, args.dataset_config)
+        dataset = datasets.load_dataset(args.dataset_name, args.dataset_config)
+        return _maybe_create_test_split(dataset, args)
     elif args.dataset_mixture:
         logger.info(f"Creating dataset mixture with {len(args.dataset_mixture.datasets)} datasets")
         seed = args.dataset_mixture.seed
@@ -69,9 +107,11 @@ def get_dataset(args: ScriptArguments) -> DatasetDict:
                 logger.info(
                     f"Split dataset into train and test sets with test size: {args.dataset_mixture.test_split_size}"
                 )
-                return combined_dataset
+                dataset = combined_dataset
             else:
-                return DatasetDict({"train": combined_dataset})
+                dataset = DatasetDict({"train": combined_dataset})
+
+            return _maybe_create_test_split(dataset, args)
         else:
             raise ValueError("No datasets were loaded from the mixture configuration")
 
