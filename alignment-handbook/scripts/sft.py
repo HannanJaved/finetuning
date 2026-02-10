@@ -97,6 +97,23 @@ def main(script_args, training_args, model_args):
     # Load datasets
     ################
     dataset = get_dataset(script_args)
+    # Filter out samples with invalid chat messages (e.g., content is None).
+    def has_valid_messages(example):
+        messages = example.get("messages")
+        if messages is None or not isinstance(messages, list):
+            return False
+        for message in messages:
+            if message is None or not isinstance(message, dict):
+                return False
+            if message.get("content") is None:
+                return False
+        return True
+
+    if isinstance(dataset, datasets.DatasetDict):
+        for split_name in dataset.keys():
+            dataset[split_name] = dataset[split_name].filter(has_valid_messages)
+    else:
+        dataset = dataset.filter(has_valid_messages)
     ################
     # Load tokenizer
     ################
