@@ -2,13 +2,14 @@
 #SBATCH --job-name=Qwen3-4B_Olmo_SFT
 #SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Whittle/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Whittle/%x_%j.err
-#SBATCH --nodes=2
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=12
-#SBATCH --mem=128G
+#SBATCH --mem=0
 #SBATCH --time=2-00:00:00
 #SBATCH --partition=capella
+#SBATCH --exclusive
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
@@ -65,7 +66,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/hpopt/zero3.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/whittle/zero3.yaml
 CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/whittle/config_olmo3_sft_4B.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
