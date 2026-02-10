@@ -5,7 +5,7 @@ torch_dtype: bfloat16
 trust_remote_code: true
 
 # Data training arguments
-chat_template: "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|> ' + message['content'] + '   ' }}{% elif message['role'] == 'user' %}{{ '<|user|> ' + message['content'] + '   ' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|> '  + message['content'] + eos_token + '   ' }}{% else %}{{ '<|assistant|> '  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|> ' }}{% endif %}{% endfor %}"
+chat_template: "{% for m in messages %}<|{{ m.role }}|>\n{{ m.content }}{% if m.role == 'assistant' and not loop.last %}{{ eos_token }}{% endif %}{% endfor %}{% if add_generation_prompt %}<|assistant|>\n{% endif %}"
 
 dataset_name:
   allenai/tulu-3-sft-mixture
