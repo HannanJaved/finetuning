@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=SFT_LR5e6_Tulu3
+#SBATCH --job-name=no_val_SFT_LR5e6_Tulu3
 #SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/MixtureVitae/SFT_Grid_Search/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/MixtureVitae/SFT_Grid_Search/%x_%j.err
 #SBATCH --nodes=2

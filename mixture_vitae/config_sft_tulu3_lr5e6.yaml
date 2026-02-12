@@ -5,17 +5,17 @@ torch_dtype: bfloat16
 trust_remote_code: true
 
 # Data training arguments
-chat_template": "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'user' %}{{ '<|user|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|>\n'  + message['content'] + eos_token + '\n' }}{% else %}{{ '<|assistant|>\n'  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|>\n' }}{% endif %}{% endfor %}"
+chat_template: "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'user' %}{{ '<|user|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|>\n'  + message['content'] + eos_token + '\n' }}{% else %}{{ '<|assistant|>\n'  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|>\n' }}{% endif %}{% endfor %}"
 
 dataset_name:
   allenai/tulu-3-sft-mixture
-dataset_test_split_size: 0.02
-dataset_test_split_seed: 42
+# dataset_test_split_size: 0.02
+# dataset_test_split_seed: 42
 
 # SFT trainer config
 bf16: true
-eval_strategy: "steps"
-eval_steps: 50
+eval_strategy: "no"
+# eval_steps: 50
 learning_rate: 5e-6
 log_level: info
 logging_steps: 10
@@ -24,7 +24,7 @@ lr_scheduler_type: linear
 max_length: 4096
 max_steps: -1
 num_train_epochs: 2
-output_dir: /data/cat/ws/hama901h-Posttraining/checkpoints/1.7b-MixtureVitae-300BT-v1/tulu3-sft/LR5e6/
+output_dir: /data/cat/ws/hama901h-Posttraining/checkpoints/1.7b-MixtureVitae-300BT-v1/tulu3-sft/LR5e6_novalidation/
 overwrite_output_dir: false
 per_device_eval_batch_size: 1
 per_device_train_batch_size: 1
