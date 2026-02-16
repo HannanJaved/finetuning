@@ -67,7 +67,7 @@ export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/whittle/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/mixture_vitae/olmo3/config_sft_lr5e6.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/mixture_vitae/olmo3/4nodes_config_sft_lr5e6.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
