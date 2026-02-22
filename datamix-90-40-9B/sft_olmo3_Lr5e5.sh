@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=TEST_olmo3-Lr5e5-datamix90-40-9B
+#SBATCH --job-name=olmo3-Lr5e5-datamix90-40-9B
 #SBATCH --output=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/SFT_HP_GRID/%x_%j.out
 #SBATCH --error=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/SFT_HP_GRID/%x_%j.err
-#SBATCH --nodes=1
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=0
-#SBATCH --time=01:00:00
-#SBATCH --partition dev_accelerated-h100
+#SBATCH --time=2-00:00:00
+#SBATCH --partition accelerated-h100
 #SBATCH -A hk-project-p0024043
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -46,7 +46,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/datamix-90-40-9B/test_zero3.yaml
+ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/datamix-90-40-9B/zero3.yaml
 CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/datamix-90-40-9B/config_olmo3_sft_Lr5e5.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
