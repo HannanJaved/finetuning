@@ -2,7 +2,7 @@
 #SBATCH --job-name=Olmo3-Think-SFT-7B
 #SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Olmo3-Think/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Olmo3-Think/%x_%j.err
-#SBATCH --nodes=4
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=12
