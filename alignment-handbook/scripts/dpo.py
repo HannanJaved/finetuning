@@ -116,6 +116,13 @@ def main(script_args, training_args, model_args):
     for split in dataset:
         if "messages" in dataset[split].column_names:
             dataset[split] = dataset[split].remove_columns("messages")
+        # Filter out rows with nulls in required preference fields to avoid Arrow cast errors.
+        required_cols = ["chosen", "rejected", "prompt"]
+        existing_cols = [col for col in required_cols if col in dataset[split].column_names]
+        if existing_cols:
+            dataset[split] = dataset[split].filter(
+                lambda example: all(example.get(col) is not None for col in existing_cols)
+            )
 
     ##########
     # Training
