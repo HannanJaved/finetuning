@@ -14,11 +14,11 @@
 echo "JOB NAME" $SLURM_JOB_NAME
 
 module load CUDA
-source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
+source /data/cat/ws/hama901h-Posttraining/.trl_venv/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/.trl_venv/lib/python3.11/site-packages"
 #pip show transformers
 
 # Get master node hostname for distributed training
