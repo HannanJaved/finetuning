@@ -114,8 +114,36 @@ def main(script_args, training_args, model_args):
     #########
     dataset = get_dataset(script_args)
     for split in dataset:
+        cols_to_remove = []
         if "messages" in dataset[split].column_names:
-            dataset[split] = dataset[split].remove_columns("messages")
+            cols_to_remove.append("messages")
+        # Remove the "prompt" column so TRL's maybe_extract_prompt recreates it
+        # from chosen/rejected with the correct Arrow string type.
+        # The original column may have null type (all values None), which causes
+        # Arrow to raise: "Couldn't cast array of type string to null"
+        if "prompt" in dataset[split].column_names:
+            cols_to_remove.append("prompt")
+        if cols_to_remove:
+            dataset[split] = dataset[split].remove_columns(cols_to_remove)
+
+        # Strip conversation turns down to only "role" and "content" to avoid
+        # Arrow schema issues with null-typed metadata fields (e.g., annotations,
+        # tool_calls, reasoning_content, etc.) that cause:
+        # "Couldn't cast array of type string to null"
+        def _strip_conversation(example):
+            for key in ["chosen", "rejected"]:
+                if key in example and isinstance(example[key], list):
+                    example[key] = [
+                        {"role": turn["role"], "content": turn["content"]}
+                        for turn in example[key]
+                        if isinstance(turn, dict) and "role" in turn and "content" in turn
+                    ]
+            return example
+
+        dataset[split] = dataset[split].map(
+            _strip_conversation,
+            desc=f"Stripping metadata from {split} conversations",
+        )
 
     ##########
     # Training
