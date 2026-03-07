@@ -128,6 +128,41 @@ class NormDPOTrainer(DPOTrainer):
             denom = denom.pow(exponent)
         return denom
 
+    def _compute_lndpo_weights(
+        self,
+        chosen_logps: torch.FloatTensor,
+        rejected_logps: torch.FloatTensor,
+        ref_chosen_logps: torch.FloatTensor,
+        ref_rejected_logps: torch.FloatTensor,
+    ) -> tuple[torch.FloatTensor, torch.FloatTensor]:
+        """Estimate per-example pair reliability from the fixed observed preference.
+
+        We interpret the reference model's chosen-vs-rejected preference margin as a proxy
+        for how likely the observed label is to be clean under symmetric label noise.
+        High positive reference margin => more reliable pair. Ambiguous or contradictory
+        reference margin => lower weight.
+        """
+        ref_margin = (ref_chosen_logps - ref_rejected_logps).to(chosen_logps.device, dtype=chosen_logps.dtype)
+        scale = float(getattr(self.args, "lndpo_beta_scale", 1.0))
+        scaled_ref_margin = ref_margin * scale
+
+        noise_eps = float(getattr(self.args, "lndpo_noise_eps", 0.1))
+        noise_eps = min(max(noise_eps, 0.0), 0.499)
+
+        posterior_clean = (1.0 - noise_eps) * torch.sigmoid(scaled_ref_margin) + noise_eps * torch.sigmoid(
+            -scaled_ref_margin
+        )
+        posterior_clean = torch.clamp(posterior_clean, min=1e-6, max=1.0)
+
+        min_weight = float(getattr(self.args, "lndpo_min_weight", 0.2))
+        max_weight = float(getattr(self.args, "lndpo_max_weight", 1.0))
+        reliability_weight = torch.clamp(posterior_clean, min=min_weight, max=max_weight)
+
+        if getattr(self.args, "lndpo_detach_weights", True):
+            reliability_weight = reliability_weight.detach()
+
+        return reliability_weight, scaled_ref_margin.detach()
+
     def get_batch_loss_metrics(
         self,
         model: PreTrainedModel | nn.Module,
@@ -159,6 +194,18 @@ class NormDPOTrainer(DPOTrainer):
         losses = 0
         chosen_rewards = 0
         rejected_rewards = 0
+        lndpo_weights = None
+        lndpo_ref_margin = None
+
+        lndpo_enabled = bool(getattr(self.args, "lndpo_enabled", False))
+        lndpo_warmup_steps = int(getattr(self.args, "lndpo_warmup_steps", 0))
+        if lndpo_enabled and self.state.global_step >= lndpo_warmup_steps:
+            lndpo_weights, lndpo_ref_margin = self._compute_lndpo_weights(
+                model_output["chosen_logps"],
+                model_output["rejected_logps"],
+                ref_chosen_logps,
+                ref_rejected_logps,
+            )
 
         for idx, loss_type in enumerate(self.loss_type):
             _losses, _chosen_rewards, _rejected_rewards = self.dpo_loss(
@@ -169,6 +216,9 @@ class NormDPOTrainer(DPOTrainer):
                 loss_type,
                 model_output,
             )
+
+            if lndpo_weights is not None:
+                _losses = _losses * lndpo_weights
 
             weight = self.loss_weights[idx] if self.loss_weights else 1.0
             losses = losses + _losses * weight
@@ -212,6 +262,19 @@ class NormDPOTrainer(DPOTrainer):
         if self.aux_loss_enabled:
             metrics[f"{prefix}aux_loss"] = (
                 self.accelerator.gather_for_metrics(model_output["aux_loss"]).detach().mean().item()
+            )
+        if lndpo_weights is not None:
+            metrics[f"{prefix}lndpo/weight_mean"] = (
+                self.accelerator.gather_for_metrics(lndpo_weights).detach().mean().item()
+            )
+            metrics[f"{prefix}lndpo/weight_min"] = (
+                self.accelerator.gather_for_metrics(lndpo_weights).detach().min().item()
+            )
+            metrics[f"{prefix}lndpo/weight_max"] = (
+                self.accelerator.gather_for_metrics(lndpo_weights).detach().max().item()
+            )
+            metrics[f"{prefix}lndpo/ref_margin_mean"] = (
+                self.accelerator.gather_for_metrics(lndpo_ref_margin).detach().mean().item()
             )
 
         return losses.mean(), metrics

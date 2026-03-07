@@ -33,6 +33,7 @@ Here `{task}` refers to the type of training you wish to run. Currently, the fol
 * supervised finetuning `sft`
 * direct preference optimisation `dpo`
 * odds ratio preference optimisation `orpo`
+* dense DPO self-play (see `scripts/dpo_dense_selfplay.py`)
 
 `{model_name}` refers to the choice of a recipe in the `recipes` directory. For example, to replicate Zephyr-7B-β you can run:
 
@@ -42,6 +43,9 @@ ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_con
 
 # Step 2 - align with DPO
 ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/zero3.yaml scripts/dpo.py --config recipes/zephyr-7b-beta/dpo/config_full.yaml
+
+# Step 2b - align with dense DPO self-play (generates pairs from prompts)
+ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/zero3.yaml scripts/dpo_dense_selfplay.py --config recipes/zephyr-7b-beta/dpo/config_full.yaml --dataset_train_split train_sft --dataset_test_split test_sft --teacher_model_name_or_path Qwen/Qwen2-1.5B-Instruct
 ```
 
 **💡 Tip:** If you scale up/down the number of GPUs, we recommend also scaling up the per-device batch size or number of gradient accumulation steps to keep the global batch size constant (and thus replicate our results).

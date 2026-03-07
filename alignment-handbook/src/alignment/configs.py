@@ -178,6 +178,36 @@ class DPOConfig(trl.DPOConfig):
             "help": "Exponent applied to completion length (len**exponent) when normalizing log-probs.",
         },
     )
+    lndpo_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable Latent Noise-Aware DPO (LN-DPO) reliability weighting on fixed preference pairs."},
+    )
+    lndpo_noise_eps: float = field(
+        default=0.1,
+        metadata={
+            "help": "Symmetric preference-label noise rate used to shrink high-confidence updates in LN-DPO.",
+        },
+    )
+    lndpo_beta_scale: float = field(
+        default=1.0,
+        metadata={"help": "Multiplier applied to the reference margin inside the LN-DPO reliability estimator."},
+    )
+    lndpo_min_weight: float = field(
+        default=0.2,
+        metadata={"help": "Lower bound on per-example LN-DPO weights to avoid dropping all gradient signal."},
+    )
+    lndpo_max_weight: float = field(
+        default=1.0,
+        metadata={"help": "Upper bound on per-example LN-DPO weights."},
+    )
+    lndpo_detach_weights: bool = field(
+        default=True,
+        metadata={"help": "Detach LN-DPO reliability weights from autograd for stable optimization."},
+    )
+    lndpo_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling LN-DPO weighting; 0 enables it immediately."},
+    )
 
 
 @dataclass
