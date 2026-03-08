@@ -5,7 +5,8 @@ ROOT=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/DPO
 SBATCH_SCRIPT="$ROOT/lndpo_LR5e7_Beta1.sh"
 
 CONFIGS=(
-  # "$ROOT/config_lndpo_LR5e7_Beta1_eps0.25.yaml"
+  "$ROOT/config_lndpo_LR5e7_Beta1_eps0.10.yaml"
+  "$ROOT/config_lndpo_LR5e7_Beta1_eps0.25.yaml"
   # "$ROOT/config_lndpo_LR5e7_Beta1_eps0.35.yaml"
   # "$ROOT/config_lndpo_LR5e7_Beta1_eps0.40.yaml"
   "$ROOT/config_lndpo_LR5e7_Beta1_eps0.45.yaml"
