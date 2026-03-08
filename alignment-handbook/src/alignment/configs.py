@@ -208,6 +208,22 @@ class DPOConfig(trl.DPOConfig):
         default=0,
         metadata={"help": "Number of optimizer steps before enabling LN-DPO weighting; 0 enables it immediately."},
     )
+    lndpo_v2_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable LN-DPO v2 with bounded, length-normalized reliability weighting."},
+    )
+    lndpo_v2_margin_scale: float = field(
+        default=2.0,
+        metadata={"help": "Scale applied to the bounded normalized reference margin in LN-DPO v2."},
+    )
+    lndpo_v2_margin_clip: float = field(
+        default=5.0,
+        metadata={"help": "Absolute clip value for the bounded normalized reference margin in LN-DPO v2."},
+    )
+    lndpo_v2r_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable LN-DPO v2 with chosen-response retention (implemented via rpo_alpha)."},
+    )
 
 
 @dataclass
