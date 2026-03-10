@@ -1,0 +1,45 @@
+# EM-DPO on the original fixed DPO data
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT/LR5e5/
+torch_dtype: bfloat16
+
+dataset_name: allenai/Dolci-Instruct-DPO
+dataset_train_split: train
+
+bf16: true
+beta: 1
+do_eval: false
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+learning_rate: 5e-7
+log_level: info
+logging_steps: 10
+lr_scheduler_type: linear
+max_length: 16384
+max_prompt_length: 512
+num_train_epochs: 1
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT/Lr5e5/EMDPO/Beta1_LR5e-7_ref2.0_pol1.0_ag0.75_len0.25_eps0.10/
+overwrite_output_dir: true
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+save_strategy: "steps"
+save_steps: 1000
+save_total_limit: 20
+seed: 8
+warmup_ratio: 0.1
+resume_from_checkpoint: false
+length_normalize_logps: true
+
+emdpo_enabled: true
+emdpo_noise_eps: 0.10
+emdpo_min_weight: 0.2
+emdpo_max_weight: 1.0
+emdpo_warmup_steps: 100
+emdpo_detach_weights: true
+emdpo_ref_scale: 2.0
+emdpo_policy_scale: 1.0
+emdpo_agreement_scale: 0.75
+emdpo_length_scale: 0.25
+emdpo_margin_clip: 5.0
