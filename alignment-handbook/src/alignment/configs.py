@@ -224,6 +224,126 @@ class DPOConfig(trl.DPOConfig):
         default=False,
         metadata={"help": "Enable LN-DPO v2 with chosen-response retention (implemented via rpo_alpha)."},
     )
+    emdpo_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable EM-style latent reliability DPO."},
+    )
+    emdpo_noise_eps: float = field(
+        default=0.1,
+        metadata={"help": "Symmetric noise prior for the EM-DPO latent reliability posterior."},
+    )
+    emdpo_min_weight: float = field(
+        default=0.2,
+        metadata={"help": "Lower bound on EM-DPO latent reliability weights."},
+    )
+    emdpo_max_weight: float = field(
+        default=1.0,
+        metadata={"help": "Upper bound on EM-DPO latent reliability weights."},
+    )
+    emdpo_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling EM-DPO weighting."},
+    )
+    emdpo_detach_weights: bool = field(
+        default=True,
+        metadata={"help": "Detach EM-DPO latent reliability weights from autograd."},
+    )
+    emdpo_ref_scale: float = field(
+        default=2.0,
+        metadata={"help": "Coefficient for the normalized reference margin in the EM-DPO posterior."},
+    )
+    emdpo_policy_scale: float = field(
+        default=1.0,
+        metadata={"help": "Coefficient for the normalized policy margin in the EM-DPO posterior."},
+    )
+    emdpo_agreement_scale: float = field(
+        default=0.75,
+        metadata={"help": "Coefficient for policy/reference sign agreement in the EM-DPO posterior."},
+    )
+    emdpo_length_scale: float = field(
+        default=0.25,
+        metadata={"help": "Coefficient for the length-balance feature in the EM-DPO posterior."},
+    )
+    emdpo_margin_clip: float = field(
+        default=5.0,
+        metadata={"help": "Absolute clip value for normalized margins used in the EM-DPO posterior."},
+    )
+    sgdpo_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable Self-Guided DPO (SG-DPO)."},
+    )
+    sgdpo_beta: float = field(
+        default=1.0,
+        metadata={"help": "Sharpness of the SG-DPO weighting sigmoid applied to the implicit reward margin."},
+    )
+    sgdpo_ema_alpha: float = field(
+        default=1.0,
+        metadata={"help": "EMA coefficient for the SG-DPO implicit reward margin; 1.0 disables smoothing."},
+    )
+    sgdpo_min_weight: float = field(
+        default=0.2,
+        metadata={"help": "Lower bound on SG-DPO per-example weights."},
+    )
+    sgdpo_max_weight: float = field(
+        default=0.9,
+        metadata={"help": "Upper bound on SG-DPO per-example weights."},
+    )
+    sgdpo_detach_weights: bool = field(
+        default=True,
+        metadata={"help": "Detach SG-DPO per-example weights from autograd."},
+    )
+    sgdpo_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling SG-DPO weighting."},
+    )
+    apdo_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable Adaptive Proximity DPO (APDO)."},
+    )
+    apdo_beta0: float = field(
+        default=0.1,
+        metadata={"help": "Base per-example APDO scaling coefficient."},
+    )
+    apdo_alpha: float = field(
+        default=0.5,
+        metadata={"help": "Positive offset applied to the chosen APDO reward target."},
+    )
+    apdo_lambda_w: float = field(
+        default=0.6,
+        metadata={"help": "Weight on the chosen-response APDO term."},
+    )
+    apdo_lambda_r: float = field(
+        default=0.4,
+        metadata={"help": "Weight on the rejected-response APDO term."},
+    )
+    apdo_gamma: float = field(
+        default=0.5,
+        metadata={"help": "Exponent for the APDO proximity-to-scale mapping."},
+    )
+    apdo_similarity_mix: float = field(
+        default=0.5,
+        metadata={"help": "Blend between lexical overlap and length balance in APDO pair similarity."},
+    )
+    apdo_min_beta: float = field(
+        default=0.0,
+        metadata={"help": "Lower clamp for APDO per-example scaling."},
+    )
+    apdo_max_beta: float = field(
+        default=0.1,
+        metadata={"help": "Upper clamp for APDO per-example scaling."},
+    )
+    apdo_ref_ema_enabled: bool = field(
+        default=True,
+        metadata={"help": "If True, update the frozen APDO reference model via EMA of policy weights."},
+    )
+    apdo_ref_ema_tau: float = field(
+        default=0.99,
+        metadata={"help": "EMA coefficient for APDO reference updates."},
+    )
+    apdo_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling APDO loss shaping."},
+    )
 
 
 @dataclass
