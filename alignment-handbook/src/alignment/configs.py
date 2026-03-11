@@ -178,52 +178,6 @@ class DPOConfig(trl.DPOConfig):
             "help": "Exponent applied to completion length (len**exponent) when normalizing log-probs.",
         },
     )
-    lndpo_enabled: bool = field(
-        default=False,
-        metadata={"help": "Enable Latent Noise-Aware DPO (LN-DPO) reliability weighting on fixed preference pairs."},
-    )
-    lndpo_noise_eps: float = field(
-        default=0.1,
-        metadata={
-            "help": "Symmetric preference-label noise rate used to shrink high-confidence updates in LN-DPO.",
-        },
-    )
-    lndpo_beta_scale: float = field(
-        default=1.0,
-        metadata={"help": "Multiplier applied to the reference margin inside the LN-DPO reliability estimator."},
-    )
-    lndpo_min_weight: float = field(
-        default=0.2,
-        metadata={"help": "Lower bound on per-example LN-DPO weights to avoid dropping all gradient signal."},
-    )
-    lndpo_max_weight: float = field(
-        default=1.0,
-        metadata={"help": "Upper bound on per-example LN-DPO weights."},
-    )
-    lndpo_detach_weights: bool = field(
-        default=True,
-        metadata={"help": "Detach LN-DPO reliability weights from autograd for stable optimization."},
-    )
-    lndpo_warmup_steps: int = field(
-        default=0,
-        metadata={"help": "Number of optimizer steps before enabling LN-DPO weighting; 0 enables it immediately."},
-    )
-    lndpo_v2_enabled: bool = field(
-        default=False,
-        metadata={"help": "Enable LN-DPO v2 with bounded, length-normalized reliability weighting."},
-    )
-    lndpo_v2_margin_scale: float = field(
-        default=2.0,
-        metadata={"help": "Scale applied to the bounded normalized reference margin in LN-DPO v2."},
-    )
-    lndpo_v2_margin_clip: float = field(
-        default=5.0,
-        metadata={"help": "Absolute clip value for the bounded normalized reference margin in LN-DPO v2."},
-    )
-    lndpo_v2r_enabled: bool = field(
-        default=False,
-        metadata={"help": "Enable LN-DPO v2 with chosen-response retention (implemented via rpo_alpha)."},
-    )
     emdpo_enabled: bool = field(
         default=False,
         metadata={"help": "Enable EM-style latent reliability DPO."},
@@ -267,34 +221,6 @@ class DPOConfig(trl.DPOConfig):
     emdpo_margin_clip: float = field(
         default=5.0,
         metadata={"help": "Absolute clip value for normalized margins used in the EM-DPO posterior."},
-    )
-    sgdpo_enabled: bool = field(
-        default=False,
-        metadata={"help": "Enable Self-Guided DPO (SG-DPO)."},
-    )
-    sgdpo_beta: float = field(
-        default=1.0,
-        metadata={"help": "Sharpness of the SG-DPO weighting sigmoid applied to the implicit reward margin."},
-    )
-    sgdpo_ema_alpha: float = field(
-        default=1.0,
-        metadata={"help": "EMA coefficient for the SG-DPO implicit reward margin; 1.0 disables smoothing."},
-    )
-    sgdpo_min_weight: float = field(
-        default=0.2,
-        metadata={"help": "Lower bound on SG-DPO per-example weights."},
-    )
-    sgdpo_max_weight: float = field(
-        default=0.9,
-        metadata={"help": "Upper bound on SG-DPO per-example weights."},
-    )
-    sgdpo_detach_weights: bool = field(
-        default=True,
-        metadata={"help": "Detach SG-DPO per-example weights from autograd."},
-    )
-    sgdpo_warmup_steps: int = field(
-        default=0,
-        metadata={"help": "Number of optimizer steps before enabling SG-DPO weighting."},
     )
     apdo_enabled: bool = field(
         default=False,
@@ -343,6 +269,38 @@ class DPOConfig(trl.DPOConfig):
     apdo_warmup_steps: int = field(
         default=0,
         metadata={"help": "Number of optimizer steps before enabling APDO loss shaping."},
+    )
+    sdpo_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable Signal-Adaptive DPO (SDPO)."},
+    )
+    sdpo_kappa: float = field(
+        default=1.0,
+        metadata={"help": "Sharpness of the SDPO regime signal sigmoid applied to the chosen reward."},
+    )
+    sdpo_lambda_w: float = field(
+        default=0.6,
+        metadata={"help": "Weight on the SDPO chosen-response term."},
+    )
+    sdpo_lambda_r: float = field(
+        default=0.4,
+        metadata={"help": "Weight on the SDPO rejected-response term."},
+    )
+    sdpo_detach_phi: bool = field(
+        default=True,
+        metadata={"help": "Detach the SDPO regime signal phi from autograd for stability."},
+    )
+    sdpo_ref_ema_enabled: bool = field(
+        default=True,
+        metadata={"help": "If True, update the frozen SDPO reference model via EMA of policy weights."},
+    )
+    sdpo_ref_ema_tau: float = field(
+        default=0.99,
+        metadata={"help": "EMA coefficient for SDPO reference updates."},
+    )
+    sdpo_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling SDPO loss shaping."},
     )
 
 

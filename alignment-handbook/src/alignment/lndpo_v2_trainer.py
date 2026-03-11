@@ -20,6 +20,17 @@ class LNDPOV2Trainer(NormDPOTrainer):
 
     _name = "LNDPOV2"
 
+    @staticmethod
+    def _safe_metric_reduce(tensor: torch.Tensor) -> tuple[float, float, float] | None:
+        if tensor is None:
+            return None
+        if not isinstance(tensor, torch.Tensor):
+            tensor = torch.as_tensor(tensor)
+        if tensor.numel() == 0:
+            return None
+        tensor = tensor.detach()
+        return tensor.mean().item(), tensor.min().item(), tensor.max().item()
+
     def _compute_lndpo_weights(
         self,
         chosen_logps: torch.FloatTensor,
@@ -160,18 +171,16 @@ class LNDPOV2Trainer(NormDPOTrainer):
                     self.accelerator.gather_for_metrics(model_output["aux_loss"]).detach().mean().item()
                 )
             if lndpo_weights is not None:
-                metrics[f"{prefix}lndpo_v2/weight_mean"] = (
-                    self.accelerator.gather_for_metrics(lndpo_weights).detach().mean().item()
-                )
-                metrics[f"{prefix}lndpo_v2/weight_min"] = (
-                    self.accelerator.gather_for_metrics(lndpo_weights).detach().min().item()
-                )
-                metrics[f"{prefix}lndpo_v2/weight_max"] = (
-                    self.accelerator.gather_for_metrics(lndpo_weights).detach().max().item()
-                )
-                metrics[f"{prefix}lndpo_v2/ref_margin_mean"] = (
-                    self.accelerator.gather_for_metrics(lndpo_ref_margin).detach().mean().item()
-                )
+                reduced_weights = self._safe_metric_reduce(self.accelerator.gather_for_metrics(lndpo_weights))
+                if reduced_weights is not None:
+                    weight_mean, weight_min, weight_max = reduced_weights
+                    metrics[f"{prefix}lndpo_v2/weight_mean"] = weight_mean
+                    metrics[f"{prefix}lndpo_v2/weight_min"] = weight_min
+                    metrics[f"{prefix}lndpo_v2/weight_max"] = weight_max
+
+                reduced_margin = self._safe_metric_reduce(self.accelerator.gather_for_metrics(lndpo_ref_margin))
+                if reduced_margin is not None:
+                    metrics[f"{prefix}lndpo_v2/ref_margin_mean"] = reduced_margin[0]
 
             return losses.mean(), metrics
         finally:
