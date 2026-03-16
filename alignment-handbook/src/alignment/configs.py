@@ -153,6 +153,30 @@ class SFTConfig(trl.SFTConfig):
     """
 
     chat_template: Optional[str] = field(default=None, metadata={"help": "The chat template to use."})
+    rasft_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable Reference-Anchored SFT (RA-SFT)."},
+    )
+    rasft_base_model_name_or_path: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional explicit base/reference model path for RA-SFT token novelty weights."},
+    )
+    rasft_entropy_normalize: bool = field(
+        default=True,
+        metadata={"help": "Normalize token entropy by log(vocab_size) when computing RA-SFT weights."},
+    )
+    rasft_weight_min: float = field(
+        default=0.0,
+        metadata={"help": "Lower clamp for RA-SFT per-token weights."},
+    )
+    rasft_weight_max: float = field(
+        default=1.0,
+        metadata={"help": "Upper clamp for RA-SFT per-token weights."},
+    )
+    rasft_max_chars_per_sample: int = field(
+        default=200000,
+        metadata={"help": "Drop RA-SFT examples whose combined message content exceeds this many characters."},
+    )
 
 
 @dataclass
@@ -301,6 +325,38 @@ class DPOConfig(trl.DPOConfig):
     sdpo_warmup_steps: int = field(
         default=0,
         metadata={"help": "Number of optimizer steps before enabling SDPO loss shaping."},
+    )
+    sdpo_lite_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable simplified Signal-Adaptive DPO (SDPO-Lite)."},
+    )
+    sdpo_lite_beta: float = field(
+        default=1.0,
+        metadata={"help": "Margin sharpness coefficient for SDPO-Lite."},
+    )
+    sdpo_lite_retention_alpha: float = field(
+        default=0.2,
+        metadata={"help": "Chosen-response retention coefficient for SDPO-Lite."},
+    )
+    sdpo_lite_decay_retention_alpha: bool = field(
+        default=False,
+        metadata={"help": "If True, linearly decay the SDPO-Lite retention coefficient during training."},
+    )
+    sdpo_lite_retention_alpha_final: float = field(
+        default=0.05,
+        metadata={"help": "Final SDPO-Lite retention coefficient when decay is enabled."},
+    )
+    sdpo_lite_ref_ema_enabled: bool = field(
+        default=True,
+        metadata={"help": "If True, update the frozen SDPO-Lite reference model via EMA of policy weights."},
+    )
+    sdpo_lite_ref_ema_tau: float = field(
+        default=0.99,
+        metadata={"help": "EMA coefficient for SDPO-Lite reference updates."},
+    )
+    sdpo_lite_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling SDPO-Lite."},
     )
 
 
