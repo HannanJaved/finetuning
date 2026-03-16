@@ -5,10 +5,10 @@ from .data import get_dataset
 from .apdo_trainer import APDOTrainer
 from .emdpo_trainer import EMDPOTrainer
 from .model_utils import get_model, get_tokenizer
-from .lndpo_v2_trainer import LNDPOV2Trainer
 from .norm_dpo_trainer import NormDPOTrainer
+from .rasft_trainer import RASFTTrainer
+from .sdpo_lite_trainer import SDPOLiteTrainer
 from .sdpo_trainer import SDPOTrainer
-from .sgdpo_trainer import SGDPOTrainer
 
 
 __all__ = [
@@ -21,8 +21,8 @@ __all__ = [
     "get_model",
     "APDOTrainer",
     "NormDPOTrainer",
-    "LNDPOV2Trainer",
+    "RASFTTrainer",
     "EMDPOTrainer",
+    "SDPOLiteTrainer",
     "SDPOTrainer",
-    "SGDPOTrainer",
 ]
