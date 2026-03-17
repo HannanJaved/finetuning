@@ -8,11 +8,11 @@ dataset_name:
 
 # DPOTrainer arguments
 bf16: true
-beta: 3.05299
+beta: 2.98915
 do_eval: false
 gradient_checkpointing_kwargs:
   use_reentrant: False
-learning_rate: 8.83843e-07
+learning_rate: 3.81321e-06
 log_level: info
 logging_steps: 10
 lr_scheduler_type: linear
@@ -20,7 +20,7 @@ max_length: 16384
 max_prompt_length: 512
 num_train_epochs: 1
 optim: adamw_torch
-output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT/Lr5e5/DPO_NORM/RandomSearch/Beta3.05299_LR8.83843e-07/
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT/Lr5e5/DPO_NORM/RandomSearch/Beta2.98915_LR3.81321e-06/
 overwrite_output_dir: true
 per_device_train_batch_size: 1
 per_device_eval_batch_size: 1
