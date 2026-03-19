@@ -16,10 +16,18 @@ LOG_DIR="/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/DPO_N/RandomSearch"
 
 mkdir -p "$CONFIG_DIR" "$SCRIPT_DIR" "$LOG_DIR"
 
-# Function to generate a random float between two values
+# Function to generate a random float between two values (uniform in linear space)
 random_float() {
-  awk -v min="$1" -v max="$2" -v seed="$(date +%s%N | cut -b1-13)" 'BEGIN { srand(seed); print min + (max-min) * rand() }'
+  python - "$1" "$2" <<'PY'
+import random
+import sys
+
+min_val = float(sys.argv[1])
+max_val = float(sys.argv[2])
+print(min_val + (max_val - min_val) * random.random())
+PY
 }
+
 
 # Generate random configurations and scripts
 for i in $(seq 1 $NUM_SAMPLES); do
