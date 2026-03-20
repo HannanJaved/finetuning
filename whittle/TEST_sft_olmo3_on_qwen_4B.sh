@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=SFT-LR8e-5
+#SBATCH --job-name=TEST_SFT-LR8e-5
 #SBATCH --output=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/Whittle-Qwen3/4B/%x_%j.out
 #SBATCH --error=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/Whittle-Qwen3/4B/%x_%j.err
-#SBATCH --nodes=4
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=0
-#SBATCH --time=2-00:00:00
-#SBATCH --partition accelerated-h100
+#SBATCH --time=00:30:00
+#SBATCH --partition dev_accelerated-h100
 #SBATCH -A hk-project-p0024043
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -46,7 +46,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/zero3.yaml
+ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/test_zero3.yaml
 CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/config_sft_4B.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
