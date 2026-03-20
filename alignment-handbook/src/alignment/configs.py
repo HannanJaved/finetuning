@@ -246,6 +246,51 @@ class DPOConfig(trl.DPOConfig):
         default=5.0,
         metadata={"help": "Absolute clip value for normalized margins used in the EM-DPO posterior."},
     )
+    emdpo_v2_policy_warmup_steps: int = field(
+        default=0,
+        metadata={
+            "help": (
+                "Number of optimizer steps to fully gate off the policy contribution in EM-DPO v2. "
+                "During warmup, the policy margin is zeroed before computing the reliability score."
+            )
+        },
+    )
+    emdpo_v2_policy_ramp_steps: int = field(
+        default=0,
+        metadata={
+            "help": (
+                "Number of steps to linearly ramp the EM-DPO v2 policy contribution from 0 to 1 "
+                "after warmup. Set to 0 for an immediate jump to full policy weight."
+            )
+        },
+    )
+    emdpo_v2_policy_warmup_ratio: float = field(
+        default=0.05,
+        metadata={
+            "help": (
+                "Fraction of total training steps to fully gate off the policy contribution in EM-DPO v2 "
+                "when emdpo_v2_policy_warmup_steps is 0. For example, 0.05 on a 2000-step run yields ~100 steps."
+            )
+        },
+    )
+    emdpo_v2_policy_ramp_ratio: float = field(
+        default=0.10,
+        metadata={
+            "help": (
+                "Fraction of total training steps to linearly ramp the policy contribution in EM-DPO v2 "
+                "when emdpo_v2_policy_ramp_steps is 0. For example, 0.10 on a 2000-step run yields ~200 steps."
+            )
+        },
+    )
+    emdpo_v2_norm_eps: float = field(
+        default=1e-6,
+        metadata={
+            "help": (
+                "Epsilon added to the batch standard deviation when z-scoring each feature in "
+                "EM-DPO v2. Prevents division-by-zero for constant-valued features."
+            )
+        },
+    )
     apdo_enabled: bool = field(
         default=False,
         metadata={"help": "Enable Adaptive Proximity DPO (APDO)."},
