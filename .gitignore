@@ -12,3 +12,5 @@ test.sh
 lm-eval*/
 evaluation_results/
 dtcp_*/
+qwen3/DPO/chat.json
+qwen3/SFT/
