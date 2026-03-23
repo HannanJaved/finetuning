@@ -291,6 +291,33 @@ class DPOConfig(trl.DPOConfig):
             )
         },
     )
+    emdpo_decay_eps_max: float = field(
+        default=0.30,
+        metadata={"help": "Starting noise floor (epsilon) for the EM-DPO decay schedule."},
+    )
+    emdpo_decay_eps_min: float = field(
+        default=0.10,
+        metadata={"help": "Final noise floor (epsilon) for the EM-DPO decay schedule."},
+    )
+    emdpo_decay_total_steps: int = field(
+        default=0,
+        metadata={
+            "help": (
+                "Total steps for the epsilon decay schedule. "
+                "0 means infer from state.max_steps / args.max_steps."
+            )
+        },
+    )
+    emdpo_decay_disable_length_norm: bool = field(
+        default=True,
+        metadata={
+            "help": (
+                "When True, length normalization is disabled inside _compute_emdpo_weights "
+                "regardless of the global length_normalize_logps setting. "
+                "The global flag still applies to the DPO loss itself."
+            )
+        },
+    )
     apdo_enabled: bool = field(
         default=False,
         metadata={"help": "Enable Adaptive Proximity DPO (APDO)."},

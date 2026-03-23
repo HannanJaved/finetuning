@@ -5,6 +5,7 @@ from .data import get_dataset
 from .apdo_trainer import APDOTrainer
 from .emdpo_trainer import EMDPOTrainer
 from .emdpo_v2_trainer import EMDPOv2Trainer
+from .emdpo_with_decay_trainer import EMDPOWithDecayTrainer
 from .model_utils import get_model, get_tokenizer
 from .norm_dpo_trainer import NormDPOTrainer
 from .rasft_trainer import RASFTTrainer
@@ -25,6 +26,7 @@ __all__ = [
     "RASFTTrainer",
     "EMDPOTrainer",
     "EMDPOv2Trainer",
+    "EMDPOWithDecayTrainer",
     "SDPOLiteTrainer",
     "SDPOTrainer",
 ]
