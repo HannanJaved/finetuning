@@ -13,7 +13,7 @@
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load CUDA/12.4.0
+module load CUDA
 source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
