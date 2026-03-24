@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """EM-DPO with epsilon decay (noise-floor annealing) on the original fixed preference dataset."""
 
 import logging

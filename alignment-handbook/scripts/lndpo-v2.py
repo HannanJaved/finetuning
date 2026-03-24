@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """Latent Noise-Aware DPO v2 on the original fixed preference dataset.
 
 LN-DPO v2 keeps the same training data and base DPO objective as LN-DPO, but

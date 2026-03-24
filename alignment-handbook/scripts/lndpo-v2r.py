@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """Latent Noise-Aware DPO v2 with chosen-response retention.
 
 This script keeps the bounded, length-normalized reliability weighting from

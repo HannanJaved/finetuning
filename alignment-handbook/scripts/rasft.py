@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """Reference-Anchored SFT training script."""
 
 import logging

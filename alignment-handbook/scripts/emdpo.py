@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """EM-style latent reliability DPO on the original fixed preference dataset."""
 
 import logging

@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-
 """Latent Noise-Aware DPO training on the original fixed preference dataset.
 
 This script is intentionally close to `scripts/dpo.py` so the comparison against
