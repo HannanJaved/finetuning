@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=emdpo_LR5e7_Beta1
+#SBATCH --job-name=Tulu3_emdpo_LR5e7_Beta1
 #SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/DPO_N/Tulu3/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/DPO_N/Tulu3/%x_%j.err
 #SBATCH --nodes=2
