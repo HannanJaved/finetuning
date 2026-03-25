@@ -64,6 +64,20 @@ By default, all training metrics are logged with TensorBoard. If you have a [Wei
 ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/zero3.yaml scripts/run_{task}.py --config recipes/{model_name}/{task}/config_full.yaml --report_to=wandb
 ```
 
+## Post-hoc EM-DPO weight sampling
+
+If you trained an EM-DPO model and want to inspect which preference pairs received low/medium/high reliability weights,
+use `scripts/emdpo_weight_samples.py`. It recomputes weights from the trained checkpoint and writes three CSVs.
+
+```shell
+ACCELERATE_LOG_LEVEL=info accelerate launch scripts/emdpo_weight_samples.py --config recipes/{model_name}/dpo/config_full.yaml \
+  --model_name_or_path /path/to/trained/checkpoint \
+  --sample_output_dir /path/to/save/csvs \
+  --sample_size 10
+```
+
+See `scripts/emdpo_weight_samples_README.md` for details.
+
 ## Launching jobs on a Slurm cluster
 
 If you have access to a Slurm cluster, we provide a `recipes/launch.slurm` script that will automatically queue training jobs for you. Here's how you can use it:
