@@ -28,16 +28,29 @@ cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/plain_1gpu.yaml
 CONFIG_FILE=${CONFIG_FILE:-/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/DPO/config_emdpo_LR5e7_Beta1_ref2.0_pol1.0_ag0.75_len0.25_eps0.20.yaml}
 OUTPUT_DIR=${OUTPUT_DIR:-/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/scripts/emdpo_weight_samples_out}
+DATASET_FRACTION=${DATASET_FRACTION:-0.1}
+SAMPLE_SIZE=${SAMPLE_SIZE:-10}
+
+# Parse --config, --sample_size, --dataset_fraction from command-line args
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --config) CONFIG_FILE="$2"; shift 2 ;;
+        --sample_size) SAMPLE_SIZE="$2"; shift 2 ;;
+        --dataset_fraction) DATASET_FRACTION="$2"; shift 2 ;;
+        *) shift ;;
+    esac
+done
 
 mkdir -p "$OUTPUT_DIR"
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 echo "OUTPUT" $OUTPUT_DIR
+echo "SAMPLE_SIZE" $SAMPLE_SIZE
+echo "DATASET_FRACTION" $DATASET_FRACTION
 pwd -P
 
-DATASET_FRACTION=${DATASET_FRACTION:-0.1}
-export CMD="scripts/emdpo_weight_samples.py --config $CONFIG_FILE --sample_output_dir $OUTPUT_DIR --sample_size 10 --dataset_fraction $DATASET_FRACTION"
+export CMD="scripts/emdpo_weight_samples.py --config $CONFIG_FILE --sample_output_dir $OUTPUT_DIR --sample_size $SAMPLE_SIZE --dataset_fraction $DATASET_FRACTION"
 
 SRUN_ARGS=" \
     --wait=60 \
