@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=4B_Tulu3_emdpo_LR5e7_Beta1
-#SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/DPO_N/Tulu3/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/DPO_N/Tulu3/%x_%j.err
+#SBATCH --job-name=olmo3_emdpo_LR5e7_Beta1
+#SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/4B/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/4B/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=6
+#SBATCH --cpus-per-task=14
 #SBATCH --mem=0
-#SBATCH --time=15:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -59,7 +59,7 @@ export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/DPO/4B_tulu_config_emdpo_LR5e7_Beta1_ref2.0_pol1.0_ag0.75_len0.25_eps0.20.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/DPO/4B_olmo_config_emdpo_LR5e7_Beta1_ref2.0_pol1.0_ag0.75_len0.25_eps0.20.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
