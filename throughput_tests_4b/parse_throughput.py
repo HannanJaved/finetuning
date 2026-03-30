@@ -143,29 +143,35 @@ def make_plot(rows: list[dict[str, Any]], plot_path: Path) -> None:
 
     valid.sort(key=lambda r: r["gpus"])
     gpus = [r["gpus"] for r in valid]
+    nodes = [r["nodes"] for r in valid]
     sps = [r["samples_per_s"] for r in valid]
 
     baseline_sps = sps[0] / gpus[0]  # samples/s per GPU at smallest config
+
+    xlabels = [
+        f"{g} GPU{'s' if g > 1 else ''}\n({n} node{'s' if n > 1 else ''})"
+        for g, n in zip(gpus, nodes)
+    ]
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
 
     # --- Left: throughput vs GPUs ---
     ax = axes[0]
-    ax.plot(gpus, sps, "o-", color="#2563eb", linewidth=2, markersize=7)
-    ax.set_xlabel("Number of GPUs")
+    ax.plot(range(len(gpus)), sps, "o-", color="#2563eb", linewidth=2, markersize=7)
     ax.set_ylabel("Samples / second")
     ax.set_title("SFT-Capella Throughput Scaling\n(Qwen3-4B, SFT fine-tuning with TRL)")
-    ax.set_xticks(gpus)
+    ax.set_xticks(range(len(gpus)))
+    ax.set_xticklabels(xlabels)
     ax.grid(True, alpha=0.3)
 
     # --- Right: scaling efficiency ---
     ax = axes[1]
     eff = [s / (baseline_sps * g) * 100 for s, g in zip(sps, gpus)]
-    bars = ax.bar(gpus, eff, color="#2563eb", alpha=0.8, width=[g * 0.4 for g in gpus])
-    ax.set_xlabel("Number of GPUs")
+    bars = ax.bar(range(len(gpus)), eff, color="#2563eb", alpha=0.8)
     ax.set_ylabel("Scaling Efficiency (%)")
     ax.set_title("Parallel Scaling Efficiency on Capella for SFT on Qwen3-4B")
-    ax.set_xticks(gpus)
+    ax.set_xticks(range(len(gpus)))
+    ax.set_xticklabels(xlabels)
     ax.set_ylim(0, 115)
     for bar, e in zip(bars, eff):
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1.5,
@@ -187,7 +193,7 @@ def main() -> None:
     parser.add_argument(
         "--logs-dir",
         type=Path,
-        default=Path("/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/throughput/4B"),
+        default=Path("/data/cat/ws/hama901h-Posttraining/.logs/Qwen3-4B/throughput/4B"),
         help="Directory containing SLURM .out/.err log files.",
     )
     parser.add_argument(
@@ -198,13 +204,13 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=None,
+        default=Path("./throughput_4B.csv"),
         help="Optional CSV output path.",
     )
     parser.add_argument(
         "--plot",
         type=Path,
-        default=None,
+        default=Path("./throughput_4B.png"),
         metavar="FILE.png",
         help="Save throughput + scaling efficiency plot to this path.",
     )
