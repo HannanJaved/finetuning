@@ -17,13 +17,13 @@ log_level: info
 logging_steps: 10
 logging_strategy: steps
 lr_scheduler_type: linear
-max_length: 4096
-max_steps: 100
+max_length: 2048
+max_steps: 10
 output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/test_throughput/1gpu_1node/
 overwrite_output_dir: true
 per_device_eval_batch_size: 1
 per_device_train_batch_size: 1
-gradient_accumulation_steps: 16
+gradient_accumulation_steps: 256
 gradient_checkpointing: true
 remove_unused_columns: true
 save_strategy: "no"
