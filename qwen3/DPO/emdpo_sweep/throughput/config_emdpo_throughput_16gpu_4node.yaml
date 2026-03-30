@@ -22,7 +22,7 @@ output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Ba
 overwrite_output_dir: true
 per_device_train_batch_size: 1
 per_device_eval_batch_size: 1
-gradient_accumulation_steps: 16
+gradient_accumulation_steps: 32
 gradient_checkpointing: true
 save_strategy: "no"
 seed: 8

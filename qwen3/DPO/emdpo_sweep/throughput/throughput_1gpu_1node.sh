@@ -9,7 +9,6 @@
 #SBATCH --mem=16G
 #SBATCH --time=01:00:00
 #SBATCH --partition=capella
-#SBATCH --exclusive
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
@@ -20,43 +19,13 @@ export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
 export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
-export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
-export NCCL_IB_PKEY=0x2
-export NCCL_NSOCKS_PERTHREAD=4
-export NCCL_SOCKET_NTHREADS=2
-export NCCL_MIN_CHANNELS=32
-export NCCL_DEBUG=INFO
-export NCCL_IB_RETRY_CNT=10
-export NCCL_MIN_NCHANNELS=11
-export NCCL_TREE_THRESHOLD=4294967296
-export TORCH_DISTRIBUTED_DEBUG=INFO
-export TORCH_DISTRIBUTED_TIMEOUT=300
-export TORCHELASTIC_MAX_FAILED_CONNECTIONS=60
-export TORCH_DISTRIBUTED_HEARTBEAT_TIMEOUT=300
-export TORCH_DISTRIBUTED_COODINATOR_TIMEOUT=300
-export OMP_NUM_THREADS=18
-
 export MASTER_PORT=$(shuf -i 20000-29999 -n 1)
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
 export LOCAL_RANK=$SLURM_LOCALID
 export RANK=$SLURM_PROCID
-export WORLD_SIZE=$((SLURM_GPUS_ON_NODE*SLURM_NNODES))
-
-nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
-nodes_array=($nodes)
-head_node=${nodes_array[0]}
-
-export RDZV_HOST=$head_node
-export RDZV_PORT=29400
-
-echo "head_node=$head_node"
-
-NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
-echo NPROC_PER_NODE=$NPROC_PER_NODE
-
-export WANDB_PROJECT=instruction-tuning
-export WANDB_ENTITY=openeurollm-project
+GPUS_PER_NODE=1
+export WORLD_SIZE=$((GPUS_PER_NODE*SLURM_NNODES))
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3_1gpu.yaml

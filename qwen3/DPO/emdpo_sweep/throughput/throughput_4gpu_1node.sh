@@ -41,7 +41,8 @@ master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
 export LOCAL_RANK=$SLURM_LOCALID
 export RANK=$SLURM_PROCID
-export WORLD_SIZE=$((SLURM_GPUS_ON_NODE*SLURM_NNODES))
+GPUS_PER_NODE=4
+export WORLD_SIZE=$((GPUS_PER_NODE*SLURM_NNODES))
 
 nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
 nodes_array=($nodes)
@@ -54,9 +55,6 @@ echo "head_node=$head_node"
 
 NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
 echo NPROC_PER_NODE=$NPROC_PER_NODE
-
-export WANDB_PROJECT=instruction-tuning
-export WANDB_ENTITY=openeurollm-project
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
