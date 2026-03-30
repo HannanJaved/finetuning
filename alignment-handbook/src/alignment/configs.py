@@ -234,10 +234,6 @@ class DPOConfig(trl.DPOConfig):
         default=1.0,
         metadata={"help": "Coefficient for the normalized policy margin in the EM-DPO posterior."},
     )
-    emdpo_agreement_scale: float = field(
-        default=0.75,
-        metadata={"help": "Coefficient for policy/reference sign agreement in the EM-DPO posterior."},
-    )
     emdpo_length_scale: float = field(
         default=0.25,
         metadata={"help": "Coefficient for the length-balance feature in the EM-DPO posterior."},
@@ -245,6 +241,54 @@ class DPOConfig(trl.DPOConfig):
     emdpo_margin_clip: float = field(
         default=5.0,
         metadata={"help": "Absolute clip value for normalized margins used in the EM-DPO posterior."},
+    )
+    emdpo_lite_enabled: bool = field(
+        default=False,
+        metadata={"help": "Enable EM-DPO-Lite weighting (reference margin with optional policy margin)."},
+    )
+    emdpo_lite_ref_scale: float = field(
+        default=1.0,
+        metadata={"help": "Coefficient for the reference margin in EM-DPO-Lite reliability scoring."},
+    )
+    emdpo_lite_policy_scale: float = field(
+        default=0.0,
+        metadata={"help": "Coefficient for the policy margin in EM-DPO-Lite reliability scoring."},
+    )
+    emdpo_lite_warmup_steps: int = field(
+        default=0,
+        metadata={"help": "Number of optimizer steps before enabling EM-DPO-Lite weighting."},
+    )
+    emdpo_lite_noise_eps: float = field(
+        default=0.1,
+        metadata={"help": "Symmetric noise prior for the EM-DPO-Lite latent reliability posterior."},
+    )
+    emdpo_lite_min_weight: float = field(
+        default=0.2,
+        metadata={"help": "Lower bound on EM-DPO-Lite latent reliability weights."},
+    )
+    emdpo_lite_max_weight: float = field(
+        default=1.0,
+        metadata={"help": "Upper bound on EM-DPO-Lite latent reliability weights."},
+    )
+    emdpo_lite_detach_weights: bool = field(
+        default=True,
+        metadata={"help": "Detach EM-DPO-Lite latent reliability weights from autograd."},
+    )
+    emdpo_lite_margin_clip: float = field(
+        default=5.0,
+        metadata={"help": "Absolute clip value for margins used in the EM-DPO-Lite posterior."},
+    )
+    emdpo_lite_length_lr_enabled: bool = field(
+        default=True,
+        metadata={"help": "Fit a logistic-regression length bias term for EM-DPO-Lite (alpaca-eval-LC style)."},
+    )
+    emdpo_lite_length_lr_interval: int = field(
+        default=50,
+        metadata={
+            "help": (
+                "Update frequency (in steps) for the EM-DPO-Lite length LR fit; set to 0 to update every step."
+            )
+        },
     )
     emdpo_v2_policy_warmup_steps: int = field(
         default=0,

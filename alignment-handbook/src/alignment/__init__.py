@@ -4,6 +4,7 @@ from .configs import DPOConfig, ORPOConfig, ScriptArguments, SFTConfig
 from .data import get_dataset
 from .apdo_trainer import APDOTrainer
 from .emdpo_trainer import EMDPOTrainer
+from .emdpo_lite_trainer import EMDPOLiteTrainer
 from .emdpo_v2_trainer import EMDPOv2Trainer
 from .emdpo_with_decay_trainer import EMDPOWithDecayTrainer
 from .model_utils import get_model, get_tokenizer
@@ -25,6 +26,7 @@ __all__ = [
     "NormDPOTrainer",
     "RASFTTrainer",
     "EMDPOTrainer",
+    "EMDPOLiteTrainer",
     "EMDPOv2Trainer",
     "EMDPOWithDecayTrainer",
     "SDPOLiteTrainer",
