@@ -5,9 +5,9 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=6
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=16G
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -17,7 +17,7 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 export MASTER_PORT=$(shuf -i 20000-29999 -n 1)
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
@@ -28,7 +28,7 @@ GPUS_PER_NODE=1
 export WORLD_SIZE=$((GPUS_PER_NODE*SLURM_NNODES))
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3_1gpu.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/throughput_tests/ddp.yaml
 CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/throughput_tests/config_throughput_1gpu_1node.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME

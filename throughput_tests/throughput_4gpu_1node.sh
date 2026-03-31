@@ -5,9 +5,9 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=6
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=16G
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 
@@ -18,7 +18,7 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
 export NCCL_IB_PKEY=0x2
@@ -57,7 +57,7 @@ NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
 echo NPROC_PER_NODE=$NPROC_PER_NODE
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/throughput_tests/ddp.yaml
 CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/throughput_tests/config_throughput_4gpu_1node.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
