@@ -17,7 +17,13 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+# disable Weights & Biases and other auto-logging for pure throughput measurement
+export WANDB_DISABLED=true
+export WANDB_MODE=disabled
+export HF_DISABLE_TELEMETRY=1
+export HF_HUB_DISABLE_TELEMETRY=1
+export TRANSFORMERS_OFFLINE=1
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 export MASTER_PORT=$(shuf -i 20000-29999 -n 1)
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)

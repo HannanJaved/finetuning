@@ -111,17 +111,25 @@ def print_table(rows: list[dict[str, Any]]) -> None:
             f"{_fmt(row['train_loss']):>7}"
         )
 
-    # Print scaling efficiency table if we have a 1-GPU baseline
-    baseline = next((r for r in rows if r["gpus"] == 1 and r["samples_per_s"] is not None), None)
-    if baseline and any(r["gpus"] != 1 and r["samples_per_s"] is not None for r in rows):
+    # Print scaling efficiency table. Prefer a 4-GPU, 1-node baseline if available;
+    # otherwise fall back to a 1-GPU baseline or the first valid run.
+    baseline = next(
+        (r for r in rows if r["gpus"] == 4 and r.get("nodes") == 1 and r["samples_per_s"] is not None),
+        None,
+    )
+    if baseline is None:
+        baseline = next((r for r in rows if r["gpus"] == 1 and r["samples_per_s"] is not None), None)
+    # If we have any other valid rows to compare against, print the table.
+    if baseline and any(r["gpus"] is not None and r["samples_per_s"] is not None and r is not baseline for r in rows):
         print()
         print(f"{'log_file':42} | {'GPUs':>4} | {'scaling eff':>11}")
         print("-" * 62)
-        base_sps = baseline["samples_per_s"]
+        # Use per-GPU samples/sec of the baseline so efficiency is normalized per device.
+        base_per_gpu = baseline["samples_per_s"] / baseline["gpus"]
         for row in rows:
             if row["samples_per_s"] is None or row["gpus"] is None:
                 continue
-            eff = row["samples_per_s"] / (base_sps * row["gpus"])
+            eff = (row["samples_per_s"] / row["gpus"]) / base_per_gpu
             print(
                 f"{row['log_file'][:42]:42} | "
                 f"{row['gpus']:>4} | "
@@ -141,12 +149,16 @@ def make_plot(rows: list[dict[str, Any]], plot_path: Path) -> None:
         print("No valid data points for plotting.")
         return
 
-    valid.sort(key=lambda r: r["gpus"])
+    valid.sort(key=lambda r: r["gpus"])  # sort by GPU count
     gpus = [r["gpus"] for r in valid]
     nodes = [r["nodes"] for r in valid]
     sps = [r["samples_per_s"] for r in valid]
 
-    baseline_sps = sps[0] / gpus[0]  # samples/s per GPU at smallest config
+    # Prefer a 4-GPU, 1-node baseline; otherwise fall back to the first valid run.
+    baseline_row = next((r for r in valid if r["gpus"] == 4 and r.get("nodes") == 1), None)
+    if baseline_row is None:
+        baseline_row = valid[0]
+    base_per_gpu = baseline_row["samples_per_s"] / baseline_row["gpus"]
 
     xlabels = [
         f"{g} GPU{'s' if g > 1 else ''}\n({n} node{'s' if n > 1 else ''})"
@@ -155,7 +167,7 @@ def make_plot(rows: list[dict[str, Any]], plot_path: Path) -> None:
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
 
-    # --- Left: throughput vs GPUs ---
+    # --- Left: throughput vs GPUs (keep 1-GPU if present) ---
     ax = axes[0]
     ax.plot(range(len(gpus)), sps, "o-", color="#2563eb", linewidth=2, markersize=7)
     ax.set_ylabel("Samples / second")
@@ -164,19 +176,33 @@ def make_plot(rows: list[dict[str, Any]], plot_path: Path) -> None:
     ax.set_xticklabels(xlabels)
     ax.grid(True, alpha=0.3)
 
-    # --- Right: scaling efficiency ---
+    # --- Right: scaling efficiency (exclude 1-GPU from the bars) ---
     ax = axes[1]
-    eff = [s / (baseline_sps * g) * 100 for s, g in zip(sps, gpus)]
-    bars = ax.bar(range(len(gpus)), eff, color="#2563eb", alpha=0.8)
-    ax.set_ylabel("Scaling Efficiency (%)")
-    ax.set_title("Parallel Scaling Efficiency on Capella for SFT on Qwen3-1.7B")
-    ax.set_xticks(range(len(gpus)))
-    ax.set_xticklabels(xlabels)
-    ax.set_ylim(0, 115)
-    for bar, e in zip(bars, eff):
-        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1.5,
-                f"{e:.0f}%", ha="center", va="bottom", fontsize=9)
-    ax.grid(True, alpha=0.3, axis="y")
+    filtered = [r for r in valid if r["gpus"] != 1]
+    if not filtered:
+        # If there's nothing other than 1-GPU runs, show a message instead of bars.
+        ax.text(0.5, 0.5, "No multi-GPU points to plot (1-GPU only)", ha="center", va="center")
+        ax.set_title("Parallel Scaling Efficiency")
+        ax.set_axis_off()
+    else:
+        g2 = [r["gpus"] for r in filtered]
+        n2 = [r["nodes"] for r in filtered]
+        sps2 = [r["samples_per_s"] for r in filtered]
+        eff = [((s / g) / base_per_gpu) * 100 for s, g in zip(sps2, g2)]
+        xlabels2 = [
+            f"{g} GPU{'s' if g > 1 else ''}\n({n} node{'s' if n > 1 else ''})"
+            for g, n in zip(g2, n2)
+        ]
+        bars = ax.bar(range(len(g2)), eff, color="#2563eb", alpha=0.8)
+        ax.set_ylabel("Scaling Efficiency (%)")
+        ax.set_title("Parallel Scaling Efficiency on Capella for SFT on Qwen3-1.7B")
+        ax.set_xticks(range(len(g2)))
+        ax.set_xticklabels(xlabels2)
+        ax.set_ylim(0, 115)
+        for bar, e in zip(bars, eff):
+            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1.5,
+                    f"{e:.0f}%", ha="center", va="bottom", fontsize=9)
+        ax.grid(True, alpha=0.3, axis="y")
 
     fig.suptitle(
         "SFT-Capella Throughput Sweep",

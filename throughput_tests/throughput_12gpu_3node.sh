@@ -18,7 +18,13 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+# disable Weights & Biases and other auto-logging for pure throughput measurement
+export WANDB_DISABLED=true
+export WANDB_MODE=disabled
+export HF_DISABLE_TELEMETRY=1
+export HF_HUB_DISABLE_TELEMETRY=1
+export TRANSFORMERS_OFFLINE=1
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
 export NCCL_IB_PKEY=0x2
