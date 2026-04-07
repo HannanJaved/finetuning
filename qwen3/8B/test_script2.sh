@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=Qwen3-8B-SFT-LR3e-5
+#SBATCH --job-name=test_script_flash_attn2
 #SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/8B/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/8B/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=0
-#SBATCH --time=5-00:00:00
+#SBATCH --mem=64G
+#SBATCH --time=01:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 
@@ -65,11 +65,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-8B-SFT-LR3e-5
+export WANDB_NAME=Qwen3-8B-SFT-LR1e-6
 
 cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/8B/config_olmo3_sft_3e-5.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/zero3_multinode.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/qwen3/8B/test_config2.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE

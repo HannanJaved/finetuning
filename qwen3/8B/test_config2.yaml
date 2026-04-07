@@ -13,7 +13,7 @@ dataset_name:
 # SFT trainer config
 bf16: true
 eval_strategy: "no"
-learning_rate: 1e-5
+learning_rate: 5e-5
 log_level: info
 logging_steps: 10
 logging_strategy: steps
@@ -21,15 +21,16 @@ lr_scheduler_type: linear
 max_length: 8192
 max_steps: -1
 num_train_epochs: 2
-output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-8B-Base/SFT-sweep/LR1e-5/
-overwrite_output_dir: true
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-8B-Base/SFT-sweep/Test_config_Qwen3-8B-SFT-LR5e-5/
+overwrite_output_dir: false
 per_device_eval_batch_size: 1
-per_device_train_batch_size: 1
-gradient_accumulation_steps: 16
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 8
 gradient_checkpointing: true
 remove_unused_columns: true
+use_liger_kernel: true
 save_strategy: "steps"
-save_steps: 3000
+save_steps: 500
 save_total_limit: 100
 seed: 42
 warmup_ratio: 0.03

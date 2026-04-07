@@ -6,14 +6,15 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
-#SBATCH --time=2-00:00:00
+#SBATCH --mem=0
+#SBATCH --time=5-00:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load CUDA
+module load release/24.10
+module load CUDA/12.4.0
 source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
