@@ -1,0 +1,31 @@
+# Model arguments
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/meta-llama/Llama-3.1-8B
+# model_revision: main
+torch_dtype: bfloat16
+
+# Data training arguments
+chat_template: "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|> ' + message['content'] + '   ' }}{% elif message['role'] == 'user' %}{{ '<|user|> ' + message['content'] + '   ' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|> '  + message['content'] + eos_token + '   ' }}{% else %}{{ '<|assistant|> '  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|> ' }}{% endif %}{% endfor %}"
+
+dataset_name:
+  allenai/tulu-3-sft-mixture
+
+# SFT trainer config
+bf16: true
+eval_strategy: 'no'
+learning_rate: 5e-6
+log_level: info
+logging_steps: 10
+logging_strategy: steps
+lr_scheduler_type: linear
+max_length: 2048
+max_steps: 10
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/meta-llama/Llama-3.1-8B/test_throughput/12gpu_3node/
+overwrite_output_dir: true
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 128
+gradient_checkpointing: true
+remove_unused_columns: true
+save_strategy: "no"
+seed: 42
+warmup_ratio: 0.03
