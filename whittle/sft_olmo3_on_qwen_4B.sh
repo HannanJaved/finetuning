@@ -46,7 +46,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/zero3.yaml
+ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
 CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/config_sft_4B.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME

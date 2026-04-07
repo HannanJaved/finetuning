@@ -5,10 +5,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=0
-#SBATCH --time=00:30:00
-#SBATCH --partition dev_accelerated-h100
+#SBATCH --time=01:00:00
+#SBATCH --partition dev_accelerated
 #SBATCH -A hk-project-p0024043
 
 echo "JOB NAME" $SLURM_JOB_NAME
