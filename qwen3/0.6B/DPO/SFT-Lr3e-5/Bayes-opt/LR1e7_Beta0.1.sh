@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14
 #SBATCH --mem=0
-#SBATCH --time=10:00:00
+#SBATCH --time=08:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
