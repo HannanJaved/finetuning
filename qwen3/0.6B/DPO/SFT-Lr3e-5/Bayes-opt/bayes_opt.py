@@ -15,6 +15,8 @@ CONFIG_TEMPLATE = SCRIPT_DIR / "dpo_beta0.1_LR.yaml"
 
 N_TRIALS = 25
 POLL_SECONDS = 30
+TRAINER_STATE_TIMEOUT_SECONDS = 60 * 30
+TRAINER_STATE_POLL_SECONDS = 20
 
 # IMPORTANT: choose what to optimize
 METRIC_KEY = "eval_loss"   # fallback to "loss" if eval not available
@@ -87,19 +89,34 @@ def wait_for_job(job_id: str):
         time.sleep(POLL_SECONDS)
 
 
+def wait_for_trainer_state(output_dir: Path) -> Path:
+    deadline = time.time() + TRAINER_STATE_TIMEOUT_SECONDS
+    while time.time() < deadline:
+        candidates = list(output_dir.rglob("trainer_state.json"))
+        if candidates:
+            return max(candidates, key=lambda p: p.stat().st_mtime)
+        time.sleep(TRAINER_STATE_POLL_SECONDS)
+    raise RuntimeError(f"No trainer_state.json found under {output_dir} within timeout")
+
+
 def extract_metric_from_trainer_state(output_dir: Path, metric_key: str) -> float:
-    # Finds most recent trainer_state.json under output_dir
-    candidates = list(output_dir.rglob("trainer_state.json"))
-    if not candidates:
-        raise RuntimeError(f"No trainer_state.json found under {output_dir}")
-    latest = max(candidates, key=lambda p: p.stat().st_mtime)
+    latest = wait_for_trainer_state(output_dir)
 
     data = json.loads(latest.read_text())
     hist = data.get("log_history", [])
-    vals = [x[metric_key] for x in hist if metric_key in x]
-    if not vals:
-        raise RuntimeError(f"Metric '{metric_key}' not found in {latest}")
-    return float(vals[-1])
+
+    keys_to_try = [metric_key]
+    if metric_key != "eval_loss":
+        keys_to_try.append("eval_loss")
+    if metric_key != "loss":
+        keys_to_try.append("loss")
+
+    for key in keys_to_try:
+        vals = [x[key] for x in hist if key in x]
+        if vals:
+            return float(vals[-1])
+
+    raise RuntimeError(f"Metric '{metric_key}' not found in {latest}")
 
 
 def objective(trial: optuna.Trial) -> float:
@@ -120,12 +137,17 @@ def objective(trial: optuna.Trial) -> float:
 
     state = wait_for_job(job_id)
     if state != "COMPLETED":
-        raise RuntimeError(f"Trial job {job_id} ended with state {state}")
+        trial.set_user_attr("terminal_state", state)
+        return float("inf") if DIRECTION == "minimize" else float("-inf")
 
     # output_dir from config
     cfg = yaml.safe_load(config_path.read_text())
-    metric = extract_metric_from_trainer_state(Path(cfg["output_dir"]), METRIC_KEY)
-    return metric
+    try:
+        metric = extract_metric_from_trainer_state(Path(cfg["output_dir"]), METRIC_KEY)
+        return metric
+    except Exception as exc:
+        trial.set_user_attr("metric_error", str(exc))
+        return float("inf") if DIRECTION == "minimize" else float("-inf")
 
 
 def main():
