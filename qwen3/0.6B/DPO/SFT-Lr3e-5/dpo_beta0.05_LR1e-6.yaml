@@ -35,4 +35,3 @@ save_total_limit: 20
 seed: 8
 warmup_ratio: 0.1
 length_normalize_logps: false
-resume_from_checkpoint: true
