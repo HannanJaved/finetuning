@@ -1,23 +1,24 @@
 #!/bin/bash
-#SBATCH --job-name=TEST_SFT-LR8e-5
+#SBATCH --job-name=SFT-LR8e-5
 #SBATCH --output=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/Whittle-Qwen3/4B/%x_%j.out
 #SBATCH --error=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.logs/Whittle-Qwen3/4B/%x_%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=0
-#SBATCH --time=01:00:00
-#SBATCH --partition dev_accelerated
+#SBATCH --mem=16G
+#SBATCH --time=00:30:00
+#SBATCH --partition dev_accelerated-h100
 #SBATCH -A hk-project-p0024043
 
 echo "JOB NAME" $SLURM_JOB_NAME
+module load devel/cuda/12.4
 
 source /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/bin/activate
 
 export HF_HOME="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.cache/huggingface"
 export HF_DATASETS_CACHE="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.cache/huggingface/datasets"
-export PYTHONPATH="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/lib/python3.11/site-packages"
+export PYTHONPATH="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook:/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/lib/python3.11/site-packages:$PYTHONPATH"
 #pip show transformers
 
 #Distributed variables
@@ -46,7 +47,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
 cd /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/test_zero3.yaml
+ACCELERATE_CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
 CONFIG_FILE=/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/whittle/config_sft_4B.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME

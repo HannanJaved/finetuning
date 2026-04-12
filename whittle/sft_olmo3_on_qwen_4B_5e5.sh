@@ -5,19 +5,20 @@
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=0
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
 #SBATCH --time=2-00:00:00
 #SBATCH --partition accelerated-h100
 #SBATCH -A hk-project-p0024043
 
 echo "JOB NAME" $SLURM_JOB_NAME
+module load devel/cuda/12.4
 
 source /home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/bin/activate
 
 export HF_HOME="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.cache/huggingface"
 export HF_DATASETS_CACHE="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/.cache/huggingface/datasets"
-export PYTHONPATH="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/lib/python3.11/site-packages"
+export PYTHONPATH="/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/finetuning/alignment-handbook:/home/hk-project-p0024043/hgf_ivw0083/ws/hkfswork/hgf_ivw0083-Post-training/venv-finetuning/lib/python3.11/site-packages:$PYTHONPATH"
 #pip show transformers
 
 #Distributed variables
