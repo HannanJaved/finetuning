@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=0.6B_olmo_LR1e7_Beta0.1
-#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/%x_%j.err
-#SBATCH --nodes=2
+#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.err
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14

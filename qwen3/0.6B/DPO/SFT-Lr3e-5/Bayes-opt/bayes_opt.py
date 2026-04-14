@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import json
+import math
+import os
 import re
 import subprocess
 import time
@@ -34,14 +36,28 @@ def write_config(trial_dir: Path, lr: float, beta: float) -> Path:
     cfg["beta"] = float(beta)
     cfg["output_dir"] = out_dir
 
+    # Keep global batch size 128 with per_device_train_batch_size=1.
+    # global_batch = per_device_train_batch_size * gradient_accumulation_steps * world_size
+    gpus_per_node = int(os.environ.get("SLURM_GPUS_ON_NODE", "1"))
+    nodes = int(os.environ.get("SLURM_NNODES", "1"))
+    world_size = max(1, gpus_per_node * nodes)
+    per_device = int(cfg.get("per_device_train_batch_size", 1))
+    target_global_batch = 128
+    cfg["gradient_accumulation_steps"] = max(1, math.ceil(target_global_batch / (per_device * world_size)))
+
     # Use 1% of the dataset as validation by creating a test split.
     # The remaining 99% stays in train.
-    cfg["dataset_test_split_size"] = 0.01
+    cfg["dataset_test_split_size"] = 0.005
     cfg["dataset_test_split_seed"] = 42
 
-    # Enable evaluation so BO can read eval metrics.
+    # Ensure we train and evaluate so BO can read eval metrics.
+    cfg["do_train"] = True
     cfg["do_eval"] = True
     cfg["eval_strategy"] = "steps"
+    cfg.setdefault("eval_steps", 100)
+    cfg["save_strategy"] = "steps"
+    cfg.setdefault("save_steps", cfg["eval_steps"])
+    cfg.setdefault("save_total_limit", 3)
 
     config_path = trial_dir / "config.yaml"
     with config_path.open("w") as f:
@@ -62,48 +78,35 @@ def write_job_script(trial_dir: Path, config_path: Path, run_name: str) -> Path:
     return job_path
 
 
-def submit_job(job_script: Path) -> str:
-    out = subprocess.check_output(["sbatch", str(job_script)], text=True).strip()
-    # e.g. "Submitted batch job 123456"
-    job_id = out.split()[-1]
-    return job_id
+def run_job_in_allocation(job_script: Path, trial_dir: Path) -> str:
+    """
+    Run the trial job directly inside the current Slurm allocation.
+    This avoids sbatch queue latency and keeps the 4-GPU allocation busy.
+    """
+    stdout_path = trial_dir / "run.out"
+    stderr_path = trial_dir / "run.err"
+    with stdout_path.open("w") as stdout, stderr_path.open("w") as stderr:
+        result = subprocess.run(["bash", str(job_script)], stdout=stdout, stderr=stderr)
+    return "COMPLETED" if result.returncode == 0 else "FAILED"
 
 
-def wait_for_job(job_id: str):
-    # Wait until sacct reports terminal state
-    terminal = {"COMPLETED", "FAILED", "CANCELLED", "TIMEOUT", "OUT_OF_MEMORY", "NODE_FAIL", "PREEMPTED"}
-    while True:
-        try:
-            out = subprocess.check_output(
-                ["sacct", "-j", job_id, "--format=State", "--noheader"],
-                text=True
-            )
-            states = [s.strip().split()[0] for s in out.splitlines() if s.strip()]
-            if states and any(s in terminal for s in states):
-                # choose first terminal state encountered
-                for s in states:
-                    if s in terminal:
-                        return s
-        except subprocess.CalledProcessError:
-            pass
-        time.sleep(POLL_SECONDS)
-
-
-def wait_for_trainer_state(output_dir: Path) -> Path:
+def wait_for_trainer_state(output_dir: Path) -> Path | None:
     deadline = time.time() + TRAINER_STATE_TIMEOUT_SECONDS
     while time.time() < deadline:
         candidates = list(output_dir.rglob("trainer_state.json"))
         if candidates:
             return max(candidates, key=lambda p: p.stat().st_mtime)
         time.sleep(TRAINER_STATE_POLL_SECONDS)
-    raise RuntimeError(f"No trainer_state.json found under {output_dir} within timeout")
+    return None
 
 
 def extract_metric_from_trainer_state(output_dir: Path, metric_key: str) -> float:
     latest = wait_for_trainer_state(output_dir)
 
-    data = json.loads(latest.read_text())
-    hist = data.get("log_history", [])
+    hist = []
+    if latest is not None:
+        data = json.loads(latest.read_text())
+        hist = data.get("log_history", [])
 
     keys_to_try = [metric_key]
     if metric_key != "eval_loss":
@@ -116,11 +119,23 @@ def extract_metric_from_trainer_state(output_dir: Path, metric_key: str) -> floa
         if vals:
             return float(vals[-1])
 
-    raise RuntimeError(f"Metric '{metric_key}' not found in {latest}")
+    # Fallback: check eval results files if trainer_state.json wasn't written.
+    result_files = ["all_results.json", "eval_results.json", "metrics.json"]
+    for name in result_files:
+        for path in output_dir.rglob(name):
+            try:
+                data = json.loads(path.read_text())
+            except json.JSONDecodeError:
+                continue
+            for key in keys_to_try + [f"eval_{k}" for k in keys_to_try]:
+                if key in data:
+                    return float(data[key])
+
+    raise RuntimeError(f"Metric '{metric_key}' not found under {output_dir}")
 
 
 def objective(trial: optuna.Trial) -> float:
-    lr = trial.suggest_float("learning_rate", 1e-7, 5e-5, log=True)
+    lr = trial.suggest_float("learning_rate", 1e-6, 5e-4, log=True)
     beta = trial.suggest_float("beta", 0.05, 1.0)
 
     trial_dir = SCRIPT_DIR / "bo_trials" / f"{trial.number:03d}"
@@ -129,13 +144,15 @@ def objective(trial: optuna.Trial) -> float:
 
     config_path = write_config(trial_dir, lr, beta)
     job_script = write_job_script(trial_dir, config_path, run_name)
-    job_id = submit_job(job_script)
-
+    job_id = str(trial.number)
     trial.set_user_attr("job_id", job_id)
     trial.set_user_attr("config_path", str(config_path))
     trial.set_user_attr("job_script", str(job_script))
 
-    state = wait_for_job(job_id)
+    trial.set_user_attr("stdout_path", str(trial_dir / "run.out"))
+    trial.set_user_attr("stderr_path", str(trial_dir / "run.err"))
+
+    state = run_job_in_allocation(job_script, trial_dir)
     if state != "COMPLETED":
         trial.set_user_attr("terminal_state", state)
         return float("inf") if DIRECTION == "minimize" else float("-inf")
