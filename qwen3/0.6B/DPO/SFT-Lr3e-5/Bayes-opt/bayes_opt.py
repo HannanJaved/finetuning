@@ -15,7 +15,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 JOB_TEMPLATE = SCRIPT_DIR / "LR1e7_Beta0.1.sh"
 CONFIG_TEMPLATE = SCRIPT_DIR / "dpo_beta0.1_LR.yaml"
 
-N_TRIALS = 25
+N_TRIALS = 20
 POLL_SECONDS = 30
 TRAINER_STATE_TIMEOUT_SECONDS = 60 * 30
 TRAINER_STATE_POLL_SECONDS = 20
@@ -135,7 +135,7 @@ def extract_metric_from_trainer_state(output_dir: Path, metric_key: str) -> floa
 
 
 def objective(trial: optuna.Trial) -> float:
-    lr = trial.suggest_float("learning_rate", 1e-6, 5e-4, log=True)
+    lr = trial.suggest_float("learning_rate", 1e-6, 5e-5, log=True)
     beta = trial.suggest_float("beta", 0.05, 1.0)
 
     trial_dir = SCRIPT_DIR / "bo_trials" / f"{trial.number:03d}"
