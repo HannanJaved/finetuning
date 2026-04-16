@@ -62,7 +62,7 @@ for lr in "${LRS[@]}"; do
   for beta in "${BETAS[@]}"; do
     # Name each job/config uniquely
     # replace dots in beta for safer filenames if needed (0.05 -> 0.05)
-    job_name="Qwen3-0.6B-DPO-Beta${beta}_LR${lr}"
+    job_name="Qwen3-0.6B-DPO-SFT_5e-4-Beta${beta}_LR${lr}"
     config_path="${SCRIPT_DIR}/dpo_beta${beta}_LR${lr}.yaml"
     job_path="${SCRIPT_DIR}/${job_name}.sh"
 

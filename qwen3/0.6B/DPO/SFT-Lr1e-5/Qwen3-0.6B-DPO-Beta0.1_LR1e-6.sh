@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=0.6B_olmo_LR1e7_Beta0.1
-#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.err
-#SBATCH --nodes=1
+#SBATCH --job-name=Qwen3-0.6B-DPO-Beta0.1_LR1e-6
+#SBATCH --output=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR1e-5/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR1e-5/%x_%j.err
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=14
-#SBATCH --mem=0
-#SBATCH --time=08:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=05:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -16,10 +16,10 @@ module load release/24.10
 module load CUDA/12.4.0
 source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
-export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
+export HF_HOME="/data/cat/ws/hama901h-Posttraining/.cache"
+export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Posttraining/.cache"
 export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
-export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
@@ -64,11 +64,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-0.6B-SFT-LR1e-6-DPO-Beta0.1-LR1e-7
+export WANDB_NAME=Qwen3-0.6B-DPO-Beta0.1_LR1e-6
 
-cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/0.6B/DPO/SFT-Lr3e-5/dpo_beta0.1_LR.yaml
+cd /data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/0.6B/DPO/SFT-Lr1e-5/dpo_beta0.1_LR1e-6.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
