@@ -18,3 +18,4 @@ qwen3/DPO/adpo*
 throughput*.csv
 throughput*.png
 */__pycache__/
+pruning_analysis/output*
