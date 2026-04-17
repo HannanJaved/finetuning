@@ -64,7 +64,7 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-0.6B-SFT-LR1e-6-DPO-Beta0.1-LR1e-7
+export WANDB_NAME=Qwen3-0.6B-SFT-LR5e-4-DPO-Beta0.1-LR1e-7
 
 cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
