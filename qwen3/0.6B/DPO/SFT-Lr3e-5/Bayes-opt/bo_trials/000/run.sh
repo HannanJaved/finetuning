@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=0.6B_olmo_LR1e7_Beta0.1
+#SBATCH --job-name=Qwen3-0.6B-DPO-BO-t000
 #SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.err
 #SBATCH --nodes=1
@@ -63,11 +63,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-0.6B-SFT-LR1e-6-DPO-Beta0.1-LR1e-7
+export WANDB_NAME=Qwen3-0.6B-DPO-BO-t000
 
 cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/0.6B/DPO/SFT-Lr3e-5/dpo_beta0.1_LR.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/0.6B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/000/config.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
