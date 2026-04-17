@@ -19,3 +19,4 @@ throughput*.csv
 throughput*.png
 */__pycache__/
 pruning_analysis/output*
+*.db
