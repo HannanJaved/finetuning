@@ -79,7 +79,11 @@ def main(script_args, training_args, model_args):
     if script_args.dataset_test_split not in dataset:
         logger.info(f"No test split '{script_args.dataset_test_split}' found. Creating validation split from training data.")
         train_data = dataset[script_args.dataset_train_split]
-        split_dataset = train_data.train_test_split(test_size=0.05, seed=42)
+        train_len = len(train_data)
+        max_validation_samples = 10000
+        validation_fraction = 0.0005
+        validation_size = min(max_validation_samples, max(1, int(train_len * validation_fraction)))
+        split_dataset = train_data.train_test_split(test_size=validation_size, seed=42)
         dataset = datasets.DatasetDict({
             script_args.dataset_train_split: split_dataset["train"],
             script_args.dataset_test_split: split_dataset["test"]

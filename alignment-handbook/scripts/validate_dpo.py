@@ -31,6 +31,7 @@ import transformers
 from transformers import set_seed
 
 from alignment import DPOConfig, ScriptArguments, get_dataset, get_model, get_tokenizer
+from alignment.norm_dpo_trainer import NormDPOTrainer
 from trl import DPOTrainer, ModelConfig, TrlParser, get_peft_config
 
 
@@ -100,17 +101,42 @@ def main(script_args, training_args, model_args):
     #########
     dataset = get_dataset(script_args)
     for split in dataset:
+        cols_to_remove = []
         if "messages" in dataset[split].column_names:
-            dataset[split] = dataset[split].remove_columns("messages")
-    
+            cols_to_remove.append("messages")
+        if "prompt" in dataset[split].column_names:
+            cols_to_remove.append("prompt")
+        if cols_to_remove:
+            dataset[split] = dataset[split].remove_columns(cols_to_remove)
+
+        def _strip_conversation(example):
+            for key in ["chosen", "rejected"]:
+                if key in example and isinstance(example[key], list):
+                    example[key] = [
+                        {"role": turn["role"], "content": turn["content"]}
+                        for turn in example[key]
+                        if isinstance(turn, dict) and "role" in turn and "content" in turn
+                    ]
+            return example
+
+        dataset[split] = dataset[split].map(
+            _strip_conversation,
+            desc=f"Stripping metadata from {split} conversations",
+        )
+
     # Create validation split if no test split exists
     if script_args.dataset_test_split not in dataset:
-        logger.info(f"No test split '{script_args.dataset_test_split}' found. Creating validation split from training data.")
+        logger.info(
+            f"No test split '{script_args.dataset_test_split}' found. Creating validation split from training data."
+        )
         train_data = dataset[script_args.dataset_train_split]
-        split_dataset = train_data.train_test_split(test_size=0.05, seed=42)
+        test_split_size = script_args.dataset_test_split_size or 0.0005
+        split_dataset = train_data.train_test_split(
+            test_size=test_split_size, seed=script_args.dataset_test_split_seed
+        )
         dataset = datasets.DatasetDict({
             script_args.dataset_train_split: split_dataset["train"],
-            script_args.dataset_test_split: split_dataset["test"]
+            script_args.dataset_test_split: split_dataset["test"],
         })
         logger.info(f"Created validation split with {len(dataset[script_args.dataset_test_split])} samples")
 
@@ -119,7 +145,8 @@ def main(script_args, training_args, model_args):
     ##########
     eval_dataset = dataset[script_args.dataset_test_split]
     
-    trainer = DPOTrainer(
+    trainer_cls = NormDPOTrainer if training_args.length_normalize_logps else DPOTrainer
+    trainer = trainer_cls(
         model,
         ref_model,
         args=training_args,
@@ -139,8 +166,9 @@ def main(script_args, training_args, model_args):
     results = {
         "mode": "dpo",
         "model_path": model_args.model_name_or_path,
+        "ref_model_path": ref_model_path,
         "dataset_name": script_args.dataset_name,
-        "metrics": metrics
+        "metrics": metrics,
     }
     
     results_file = os.path.join(training_args.output_dir, "validation_results.json")
