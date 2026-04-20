@@ -1,0 +1,1204 @@
+JOB NAME qwen3_06b_dpo_bayesopt
+head_node=c55
+NPROC_PER_NODE=4
+JOBNAME qwen3_06b_dpo_bayesopt
+CONFIG /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/0.6B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/014/config.yaml
+/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook
+[c55:0]:2026-04-18 07:40:07 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c56:0]:2026-04-18 07:40:07 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c56:0]:2026-04-18 07:40:07 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c56:0]:2026-04-18 07:40:07 - INFO - __main__ - Training parameters DPOConfig(
+[c56:0]:_n_gpu=1,
+[c56:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c56:0]:adafactor=False,
+[c56:0]:adam_beta1=0.9,
+[c56:0]:adam_beta2=0.999,
+[c56:0]:adam_epsilon=1e-08,
+[c56:0]:apdo_alpha=0.5,
+[c56:0]:apdo_beta0=0.1,
+[c56:0]:apdo_enabled=False,
+[c56:0]:apdo_gamma=0.5,
+[c56:0]:apdo_lambda_r=0.4,
+[c56:0]:apdo_lambda_w=0.6,
+[c56:0]:apdo_max_beta=0.1,
+[c56:0]:apdo_min_beta=0.0,
+[c56:0]:apdo_ref_ema_enabled=True,
+[c56:0]:apdo_ref_ema_tau=0.99,
+[c56:0]:apdo_similarity_mix=0.5,
+[c56:0]:apdo_warmup_steps=0,
+[c56:0]:auto_find_batch_size=False,
+[c56:0]:average_tokens_across_devices=True,
+[c56:0]:base_model_attribute_name=model,
+[c56:0]:batch_eval_metrics=False,
+[c56:0]:beta=0.2568408770514718,
+[c56:0]:bf16=True,
+[c56:0]:bf16_full_eval=False,
+[c56:0]:chat_template=None,
+[c56:0]:data_seed=None,
+[c56:0]:dataloader_drop_last=False,
+[c56:0]:dataloader_num_workers=0,
+[c56:0]:dataloader_persistent_workers=False,
+[c56:0]:dataloader_pin_memory=True,
+[c56:0]:dataloader_prefetch_factor=None,
+[c56:0]:dataset_num_proc=None,
+[c56:0]:ddp_backend=None,
+[c56:0]:ddp_broadcast_buffers=None,
+[c56:0]:ddp_bucket_cap_mb=None,
+[c56:0]:ddp_find_unused_parameters=None,
+[c56:0]:ddp_timeout=1800,
+[c56:0]:debug=[],
+[c56:0]:deepspeed=None,
+[c56:0]:disable_dropout=True,
+[c56:0]:disable_tqdm=False,
+[c56:0]:discopop_tau=0.05,
+[c56:0]:do_eval=True,
+[c56:0]:do_predict=False,
+[c56:0]:do_train=True,
+[c56:0]:emdpo_decay_disable_length_norm=True,
+[c56:0]:emdpo_decay_eps_max=0.3,
+[c56:0]:emdpo_decay_eps_min=0.1,
+[c56:0]:emdpo_decay_total_steps=0,
+[c56:0]:emdpo_detach_weights=True,
+[c56:0]:emdpo_enabled=False,
+[c56:0]:emdpo_length_scale=0.25,
+[c56:0]:emdpo_lite_detach_weights=True,
+[c56:0]:emdpo_lite_enabled=False,
+[c56:0]:emdpo_lite_length_lr_enabled=True,
+[c56:0]:emdpo_lite_length_lr_interval=50,
+[c56:0]:emdpo_lite_margin_clip=5.0,
+[c56:0]:emdpo_lite_max_weight=1.0,
+[c56:0]:emdpo_lite_min_weight=0.2,
+[c56:0]:emdpo_lite_noise_eps=0.1,
+[c56:0]:emdpo_lite_policy_scale=0.0,
+[c56:0]:emdpo_lite_ref_scale=1.0,
+[c56:0]:emdpo_lite_warmup_steps=0,
+[c56:0]:emdpo_margin_clip=5.0,
+[c56:0]:emdpo_max_weight=1.0,
+[c56:0]:emdpo_min_weight=0.2,
+[c56:0]:emdpo_noise_eps=0.1,
+[c56:0]:emdpo_policy_scale=1.0,
+[c56:0]:emdpo_ref_scale=2.0,
+[c56:0]:emdpo_v2_norm_eps=1e-06,
+[c56:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c56:0]:emdpo_v2_policy_ramp_steps=0,
+[c56:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c56:0]:emdpo_v2_policy_warmup_steps=0,
+[c56:0]:emdpo_warmup_steps=0,
+[c56:0]:eval_accumulation_steps=None,
+[c56:0]:eval_delay=0,
+[c56:0]:eval_do_concat_batches=True,
+[c56:0]:eval_on_start=False,
+[c56:0]:eval_steps=100,
+[c56:0]:eval_strategy=IntervalStrategy.STEPS,
+[c56:0]:eval_use_gather_object=False,
+[c56:0]:f_alpha_divergence_coef=1.0,
+[c56:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c56:0]:force_use_ref_model=False,
+[c56:0]:fp16=False,
+[c56:0]:fp16_backend=auto,
+[c56:0]:fp16_full_eval=False,
+[c56:0]:fp16_opt_level=O1,
+[c56:0]:fsdp=[],
+[c56:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c56:0]:fsdp_min_num_params=0,
+[c56:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c56:0]:full_determinism=False,
+[c56:0]:generate_during_eval=False,
+[c56:0]:gradient_accumulation_steps=16,
+[c56:0]:gradient_checkpointing=True,
+[c56:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c56:0]:greater_is_better=None,
+[c56:0]:group_by_length=False,
+[c56:0]:half_precision_backend=auto,
+[c56:0]:hub_always_push=False,
+[c56:0]:hub_model_id=None,
+[c56:0]:hub_private_repo=None,
+[c56:0]:hub_revision=None,
+[c56:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c56:0]:hub_token=<HUB_TOKEN>,
+[c56:0]:ignore_data_skip=False,
+[c56:0]:include_for_metrics=[],
+[c56:0]:include_inputs_for_metrics=False,
+[c56:0]:include_num_input_tokens_seen=no,
+[c56:0]:include_tokens_per_second=False,
+[c56:0]:jit_mode_eval=False,
+[c56:0]:label_names=None,
+[c56:0]:label_pad_token_id=-100,
+[c56:0]:label_smoothing=0.0,
+[c56:0]:label_smoothing_factor=0.0,
+[c56:0]:ld_alpha=None,
+[c56:0]:learning_rate=2.204279982529483e-05,
+[c56:0]:length_column_name=length,
+[c56:0]:length_norm_exponent=1.0,
+[c56:0]:length_norm_min_tokens=1.0,
+[c56:0]:length_normalize_logps=False,
+[c56:0]:liger_kernel_config=None,
+[c56:0]:load_best_model_at_end=False,
+[c56:0]:local_rank=0,
+[c56:0]:log_level=info,
+[c56:0]:log_level_replica=warning,
+[c56:0]:log_on_each_node=True,
+[c56:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-DPO-BO-trial014-b0.2568-lr2.20e-05/runs/Apr18_07-40-06_c56,
+[c56:0]:logging_first_step=False,
+[c56:0]:logging_nan_inf_filter=True,
+[c56:0]:logging_steps=10,
+[c56:0]:logging_strategy=IntervalStrategy.STEPS,
+[c56:0]:loss_type=sigmoid,
+[c56:0]:loss_weights=None,
+[c56:0]:lr_scheduler_kwargs={},
+[c56:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c56:0]:max_completion_length=None,
+[c56:0]:max_grad_norm=1.0,
+[c56:0]:max_length=4096,
+[c56:0]:max_prompt_length=512,
+[c56:0]:max_steps=-1,
+[c56:0]:metric_for_best_model=None,
+[c56:0]:model_adapter_name=None,
+[c56:0]:model_init_kwargs=None,
+[c56:0]:mp_parameters=,
+[c56:0]:neftune_noise_alpha=None,
+[c56:0]:no_cuda=False,
+[c56:0]:num_train_epochs=1,
+[c56:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c56:0]:optim_args=None,
+[c56:0]:optim_target_modules=None,
+[c56:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-DPO-BO-trial014-b0.2568-lr2.20e-05/,
+[c56:0]:overwrite_output_dir=True,
+[c56:0]:pad_token=<PAD_TOKEN>,
+[c56:0]:padding_free=False,
+[c56:0]:padding_value=None,
+[c56:0]:parallelism_config=None,
+[c56:0]:past_index=-1,
+[c56:0]:per_device_eval_batch_size=1,
+[c56:0]:per_device_train_batch_size=1,
+[c56:0]:precompute_ref_batch_size=None,
+[c56:0]:precompute_ref_log_probs=False,
+[c56:0]:prediction_loss_only=False,
+[c56:0]:project=huggingface,
+[c56:0]:push_to_hub=False,
+[c56:0]:push_to_hub_model_id=None,
+[c56:0]:push_to_hub_organization=None,
+[c56:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c56:0]:ray_scope=last,
+[c56:0]:ref_adapter_name=None,
+[c56:0]:ref_model_init_kwargs=None,
+[c56:0]:ref_model_mixup_alpha=0.6,
+[c56:0]:ref_model_sync_steps=512,
+[c56:0]:reference_free=False,
+[c56:0]:remove_unused_columns=True,
+[c56:0]:report_to=['tensorboard', 'wandb'],
+[c56:0]:restore_callback_states_from_checkpoint=False,
+[c56:0]:resume_from_checkpoint=None,
+[c56:0]:rpo_alpha=None,
+[c56:0]:run_name=None,
+[c56:0]:save_on_each_node=False,
+[c56:0]:save_only_model=False,
+[c56:0]:save_safetensors=True,
+[c56:0]:save_steps=400,
+[c56:0]:save_strategy=SaveStrategy.STEPS,
+[c56:0]:save_total_limit=20,
+[c56:0]:sdpo_detach_phi=True,
+[c56:0]:sdpo_enabled=False,
+[c56:0]:sdpo_kappa=1.0,
+[c56:0]:sdpo_lambda_r=0.4,
+[c56:0]:sdpo_lambda_w=0.6,
+[c56:0]:sdpo_lite_beta=1.0,
+[c56:0]:sdpo_lite_decay_retention_alpha=False,
+[c56:0]:sdpo_lite_enabled=False,
+[c56:0]:sdpo_lite_ref_ema_enabled=True,
+[c56:0]:sdpo_lite_ref_ema_tau=0.99,
+[c56:0]:sdpo_lite_retention_alpha=0.2,
+[c55:0]:2026-04-18 07:40:07 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c55:0]:2026-04-18 07:40:07 - INFO - __main__ - Training parameters DPOConfig(
+[c55:0]:_n_gpu=1,
+[c55:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c55:0]:adafactor=False,
+[c55:0]:adam_beta1=0.9,
+[c55:0]:adam_beta2=0.999,
+[c55:0]:adam_epsilon=1e-08,
+[c55:0]:apdo_alpha=0.5,
+[c55:0]:apdo_beta0=0.1,
+[c55:0]:apdo_enabled=False,
+[c55:0]:apdo_gamma=0.5,
+[c55:0]:apdo_lambda_r=0.4,
+[c55:0]:apdo_lambda_w=0.6,
+[c55:0]:apdo_max_beta=0.1,
+[c55:0]:apdo_min_beta=0.0,
+[c55:0]:apdo_ref_ema_enabled=True,
+[c55:0]:apdo_ref_ema_tau=0.99,
+[c55:0]:apdo_similarity_mix=0.5,
+[c55:0]:apdo_warmup_steps=0,
+[c55:0]:auto_find_batch_size=False,
+[c55:0]:average_tokens_across_devices=True,
+[c55:0]:base_model_attribute_name=model,
+[c55:0]:batch_eval_metrics=False,
+[c55:0]:beta=0.2568408770514718,
+[c55:0]:bf16=True,
+[c55:0]:bf16_full_eval=False,
+[c55:0]:chat_template=None,
+[c55:0]:data_seed=None,
+[c55:0]:dataloader_drop_last=False,
+[c55:0]:dataloader_num_workers=0,
+[c55:0]:dataloader_persistent_workers=False,
+[c55:0]:dataloader_pin_memory=True,
+[c55:0]:dataloader_prefetch_factor=None,
+[c55:0]:dataset_num_proc=None,
+[c55:0]:ddp_backend=None,
+[c55:0]:ddp_broadcast_buffers=None,
+[c55:0]:ddp_bucket_cap_mb=None,
+[c55:0]:ddp_find_unused_parameters=None,
+[c55:0]:ddp_timeout=1800,
+[c55:0]:debug=[],
+[c55:0]:deepspeed=None,
+[c55:0]:disable_dropout=True,
+[c55:0]:disable_tqdm=False,
+[c55:0]:discopop_tau=0.05,
+[c55:0]:do_eval=True,
+[c55:0]:do_predict=False,
+[c55:0]:do_train=True,
+[c55:0]:emdpo_decay_disable_length_norm=True,
+[c55:0]:emdpo_decay_eps_max=0.3,
+[c55:0]:emdpo_decay_eps_min=0.1,
+[c55:0]:emdpo_decay_total_steps=0,
+[c55:0]:emdpo_detach_weights=True,
+[c55:0]:emdpo_enabled=False,
+[c55:0]:emdpo_length_scale=0.25,
+[c55:0]:emdpo_lite_detach_weights=True,
+[c55:0]:emdpo_lite_enabled=False,
+[c55:0]:emdpo_lite_length_lr_enabled=True,
+[c55:0]:emdpo_lite_length_lr_interval=50,
+[c55:0]:emdpo_lite_margin_clip=5.0,
+[c55:0]:emdpo_lite_max_weight=1.0,
+[c55:0]:emdpo_lite_min_weight=0.2,
+[c55:0]:emdpo_lite_noise_eps=0.1,
+[c55:0]:emdpo_lite_policy_scale=0.0,
+[c55:0]:emdpo_lite_ref_scale=1.0,
+[c55:0]:emdpo_lite_warmup_steps=0,
+[c55:0]:emdpo_margin_clip=5.0,
+[c55:0]:emdpo_max_weight=1.0,
+[c55:0]:emdpo_min_weight=0.2,
+[c55:0]:emdpo_noise_eps=0.1,
+[c55:0]:emdpo_policy_scale=1.0,
+[c55:0]:emdpo_ref_scale=2.0,
+[c55:0]:emdpo_v2_norm_eps=1e-06,
+[c55:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c55:0]:emdpo_v2_policy_ramp_steps=0,
+[c55:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c55:0]:emdpo_v2_policy_warmup_steps=0,
+[c55:0]:emdpo_warmup_steps=0,
+[c55:0]:eval_accumulation_steps=None,
+[c55:0]:eval_delay=0,
+[c55:0]:eval_do_concat_batches=True,
+[c55:0]:eval_on_start=False,
+[c55:0]:eval_steps=100,
+[c55:0]:eval_strategy=IntervalStrategy.STEPS,
+[c55:0]:eval_use_gather_object=False,
+[c55:0]:f_alpha_divergence_coef=1.0,
+[c55:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c55:0]:force_use_ref_model=False,
+[c55:0]:fp16=False,
+[c55:0]:fp16_backend=auto,
+[c55:0]:fp16_full_eval=False,
+[c55:0]:fp16_opt_level=O1,
+[c55:0]:fsdp=[],
+[c55:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c55:0]:fsdp_min_num_params=0,
+[c55:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c55:0]:full_determinism=False,
+[c55:0]:generate_during_eval=False,
+[c55:0]:gradient_accumulation_steps=16,
+[c55:0]:gradient_checkpointing=True,
+[c55:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c55:0]:greater_is_better=None,
+[c55:0]:group_by_length=False,
+[c55:0]:half_precision_backend=auto,
+[c55:0]:hub_always_push=False,
+[c55:0]:hub_model_id=None,
+[c55:0]:hub_private_repo=None,
+[c55:0]:hub_revision=None,
+[c55:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c55:0]:hub_token=<HUB_TOKEN>,
+[c55:0]:ignore_data_skip=False,
+[c55:0]:include_for_metrics=[],
+[c55:0]:include_inputs_for_metrics=False,
+[c55:0]:include_num_input_tokens_seen=no,
+[c55:0]:include_tokens_per_second=False,
+[c55:0]:jit_mode_eval=False,
+[c55:0]:label_names=None,
+[c55:0]:label_pad_token_id=-100,
+[c55:0]:label_smoothing=0.0,
+[c55:0]:label_smoothing_factor=0.0,
+[c55:0]:ld_alpha=None,
+[c55:0]:learning_rate=2.204279982529483e-05,
+[c55:0]:length_column_name=length,
+[c55:0]:length_norm_exponent=1.0,
+[c55:0]:length_norm_min_tokens=1.0,
+[c55:0]:length_normalize_logps=False,
+[c55:0]:liger_kernel_config=None,
+[c55:0]:load_best_model_at_end=False,
+[c55:0]:local_rank=0,
+[c55:0]:log_level=info,
+[c55:0]:log_level_replica=warning,
+[c55:0]:log_on_each_node=True,
+[c55:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-DPO-BO-trial014-b0.2568-lr2.20e-05/runs/Apr18_07-40-06_c55,
+[c55:0]:logging_first_step=False,
+[c55:0]:logging_nan_inf_filter=True,
+[c55:0]:logging_steps=10,
+[c55:0]:logging_strategy=IntervalStrategy.STEPS,
+[c55:0]:loss_type=sigmoid,
+[c55:0]:loss_weights=None,
+[c55:0]:lr_scheduler_kwargs={},
+[c55:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c55:0]:max_completion_length=None,
+[c55:0]:max_grad_norm=1.0,
+[c55:0]:max_length=4096,
+[c55:0]:max_prompt_length=512,
+[c55:0]:max_steps=-1,
+[c55:0]:metric_for_best_model=None,
+[c55:0]:model_adapter_name=None,
+[c55:0]:model_init_kwargs=None,
+[c55:0]:mp_parameters=,
+[c55:0]:neftune_noise_alpha=None,
+[c55:0]:no_cuda=False,
+[c55:0]:num_train_epochs=1,
+[c55:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c55:0]:optim_args=None,
+[c55:0]:optim_target_modules=None,
+[c55:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/Qwen3-0.6B-DPO-BO-trial014-b0.2568-lr2.20e-05/,
+[c55:0]:overwrite_output_dir=True,
+[c55:0]:pad_token=<PAD_TOKEN>,
+[c55:0]:padding_free=False,
+[c55:0]:padding_value=None,
+[c55:0]:parallelism_config=None,
+[c55:0]:past_index=-1,
+[c55:0]:per_device_eval_batch_size=1,
+[c55:0]:per_device_train_batch_size=1,
+[c55:0]:precompute_ref_batch_size=None,
+[c55:0]:precompute_ref_log_probs=False,
+[c55:0]:prediction_loss_only=False,
+[c55:0]:project=huggingface,
+[c55:0]:push_to_hub=False,
+[c55:0]:push_to_hub_model_id=None,
+[c55:0]:push_to_hub_organization=None,
+[c55:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c55:0]:ray_scope=last,
+[c55:0]:ref_adapter_name=None,
+[c55:0]:ref_model_init_kwargs=None,
+[c55:0]:ref_model_mixup_alpha=0.6,
+[c55:0]:ref_model_sync_steps=512,
+[c55:0]:reference_free=False,
+[c55:0]:remove_unused_columns=True,
+[c55:0]:report_to=['tensorboard', 'wandb'],
+[c55:0]:restore_callback_states_from_checkpoint=False,
+[c55:0]:resume_from_checkpoint=None,
+[c55:0]:rpo_alpha=None,
+[c55:0]:run_name=None,
+[c55:0]:save_on_each_node=False,
+[c55:0]:save_only_model=False,
+[c55:0]:save_safetensors=True,
+[c55:0]:save_steps=400,
+[c55:0]:save_strategy=SaveStrategy.STEPS,
+[c55:0]:save_total_limit=20,
+[c55:0]:sdpo_detach_phi=True,
+[c55:0]:sdpo_enabled=False,
+[c55:0]:sdpo_kappa=1.0,
+[c55:0]:sdpo_lambda_r=0.4,
+[c55:0]:sdpo_lambda_w=0.6,
+[c55:0]:sdpo_lite_beta=1.0,
+[c55:0]:sdpo_lite_decay_retention_alpha=False,
+[c55:0]:sdpo_lite_enabled=False,
+[c55:0]:sdpo_lite_ref_ema_enabled=True,
+[c55:0]:sdpo_lite_ref_ema_tau=0.99,
+[c55:0]:sdpo_lite_retention_alpha=0.2,
+[c55:0]:sdpo_lite_retention_alpha_final=0.05,
+[c55:0]:sdpo_lite_warmup_steps=0,
+[c55:0]:sdpo_ref_ema_enabled=True,
+[c55:0]:sdpo_ref_ema_tau=0.99,
+[c55:0]:sdpo_warmup_steps=0,
+[c55:0]:seed=8,
+[c55:0]:skip_memory_metrics=True,
+[c55:0]:sync_ref_model=False,
+[c55:0]:tf32=None,
+[c55:0]:tools=None,
+[c55:0]:torch_compile=False,
+[c55:0]:torch_compile_backend=None,
+[c55:0]:torch_compile_mode=None,
+[c55:0]:torch_empty_cache_steps=None,
+[c55:0]:torchdynamo=None,
+[c55:0]:tpu_metrics_debug=False,
+[c55:0]:tpu_num_cores=None,
+[c55:0]:trackio_space_id=trackio,
+[c55:0]:truncation_mode=keep_end,
+[c55:0]:use_cpu=False,
+[c55:0]:use_legacy_prediction_loop=False,
+[c55:0]:use_liger_kernel=True,
+[c55:0]:use_liger_loss=False,
+[c55:0]:use_logits_to_keep=False,
+[c55:0]:use_mps_device=False,
+[c55:0]:use_weighting=False,
+[c55:0]:warmup_ratio=0.1,
+[c55:0]:warmup_steps=0,
+[c55:0]:weight_decay=0.0,
+[c55:0]:)
+[c55:0]:2026-04-18 07:40:12 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c55:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c55:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c55:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c55:0]:2026-04-18 07:40:21 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c55:0]:2026-04-18 07:40:28 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-136e98bf1619ee74_*_of_00001.arrow
+[c55:0]:2026-04-18 07:40:29 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1db858b8916e9d5f_*_of_00001.arrow
+[c55:2]:c55:121081:121081 [2] NCCL INFO cudaDriverVersion 13000
+[c55:2]:c55:121081:121081 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:2]:c55:121081:121081 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.218<0>
+[c55:2]:c55:121081:121081 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c55:2]:c55:121081:121081 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c55:2]:c55:121081:121081 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c55:0]:c55:121079:121079 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:0]:c55:121079:121079 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.218<0>
+[c55:0]:c55:121079:121079 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c55:0]:c55:121079:121079 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c55:0]:c55:121079:121079 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c55:0]:c55:121079:121079 [0] NCCL INFO cudaDriverVersion 13000
+[c55:0]:NCCL version 2.21.5+cuda12.4
+[c55:3]:c55:121082:121082 [3] NCCL INFO cudaDriverVersion 13000
+[c55:3]:c55:121082:121082 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:3]:c55:121082:121082 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.218<0>
+[c55:3]:c55:121082:121082 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c55:3]:c55:121082:121082 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c55:3]:c55:121082:121082 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c55:1]:c55:121080:121080 [1] NCCL INFO cudaDriverVersion 13000
+[c55:1]:c55:121080:121080 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:1]:c55:121080:121080 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.218<0>
+[c55:1]:c55:121080:121080 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c55:1]:c55:121080:121080 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c55:1]:c55:121080:121080 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c55:0]:c55:121079:121510 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:2]:c55:121081:121512 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:3]:c55:121082:121513 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:3]:c55:121082:121513 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.218<0>
+[c55:3]:c55:121082:121513 [3] NCCL INFO Using non-device net plugin version 0
+[c55:3]:c55:121082:121513 [3] NCCL INFO Using network IB
+[c55:1]:c55:121080:121511 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c55:1]:c55:121080:121511 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.218<0>
+[c55:1]:c55:121080:121511 [1] NCCL INFO Using non-device net plugin version 0
+[c55:1]:c55:121080:121511 [1] NCCL INFO Using network IB
+[c55:0]:c55:121079:121510 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.218<0>
+[c55:0]:c55:121079:121510 [0] NCCL INFO Using non-device net plugin version 0
+[c55:0]:c55:121079:121510 [0] NCCL INFO Using network IB
+[c55:2]:c55:121081:121512 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.218<0>
+[c55:2]:c55:121081:121512 [2] NCCL INFO Using non-device net plugin version 0
+[c55:2]:c55:121081:121512 [2] NCCL INFO Using network IB
+[c55:2]:c55:121081:121512 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c55:0]:c55:121079:121510 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c55:3]:c55:121082:121513 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c55:1]:c55:121080:121511 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c55:2]:c55:121081:121512 [2] NCCL INFO ncclCommInitRank comm 0xcd74370 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId a6000 commId 0x1cf7061501670daf - Init START
+[c55:0]:c55:121079:121510 [0] NCCL INFO ncclCommInitRank comm 0x24a2b800 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 6000 commId 0x1cf7061501670daf - Init START
+[c55:3]:c55:121082:121513 [3] NCCL INFO ncclCommInitRank comm 0x1159a250 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId c6000 commId 0x1cf7061501670daf - Init START
+[c55:1]:c55:121080:121511 [1] NCCL INFO ncclCommInitRank comm 0x11178230 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 26000 commId 0x1cf7061501670daf - Init START
+[c56:0]:sdpo_lite_retention_alpha_final=0.05,
+[c56:0]:sdpo_lite_warmup_steps=0,
+[c56:0]:sdpo_ref_ema_enabled=True,
+[c56:0]:sdpo_ref_ema_tau=0.99,
+[c56:0]:sdpo_warmup_steps=0,
+[c56:0]:seed=8,
+[c56:0]:skip_memory_metrics=True,
+[c56:0]:sync_ref_model=False,
+[c56:0]:tf32=None,
+[c56:0]:tools=None,
+[c56:0]:torch_compile=False,
+[c56:0]:torch_compile_backend=None,
+[c56:0]:torch_compile_mode=None,
+[c56:0]:torch_empty_cache_steps=None,
+[c56:0]:torchdynamo=None,
+[c56:0]:tpu_metrics_debug=False,
+[c56:0]:tpu_num_cores=None,
+[c56:0]:trackio_space_id=trackio,
+[c56:0]:truncation_mode=keep_end,
+[c56:0]:use_cpu=False,
+[c56:0]:use_legacy_prediction_loop=False,
+[c56:0]:use_liger_kernel=True,
+[c56:0]:use_liger_loss=False,
+[c56:0]:use_logits_to_keep=False,
+[c56:0]:use_mps_device=False,
+[c56:0]:use_weighting=False,
+[c56:0]:warmup_ratio=0.1,
+[c56:0]:warmup_steps=0,
+[c56:0]:weight_decay=0.0,
+[c56:0]:)
+[c56:0]:2026-04-18 07:40:12 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c56:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c56:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:13 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO cudaDriverVersion 13000
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.222<0>
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c56:0]:c56:3920558:3920558 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO cudaDriverVersion 13000
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.222<0>
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c56:2]:c56:3920560:3920560 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO cudaDriverVersion 13000
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.222<0>
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c56:1]:c56:3920559:3920559 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO cudaDriverVersion 13000
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.222<0>
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c56:3]:c56:3920561:3920561 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.222<0>
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Using non-device net plugin version 0
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Using network IB
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.222<0>
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Using non-device net plugin version 0
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Using network IB
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.222<0>
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Using non-device net plugin version 0
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Using network IB
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.222<0>
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Using non-device net plugin version 0
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Using network IB
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO ncclCommInitRank comm 0x103d9f90 rank 4 nranks 8 cudaDev 0 nvmlDev 0 busId 6000 commId 0x1cf7061501670daf - Init START
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO ncclCommInitRank comm 0x1163ea10 rank 6 nranks 8 cudaDev 2 nvmlDev 2 busId a6000 commId 0x1cf7061501670daf - Init START
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO ncclCommInitRank comm 0x11f6c4a0 rank 5 nranks 8 cudaDev 1 nvmlDev 1 busId 26000 commId 0x1cf7061501670daf - Init START
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO ncclCommInitRank comm 0x10d02610 rank 7 nranks 8 cudaDev 3 nvmlDev 3 busId c6000 commId 0x1cf7061501670daf - Init START
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO comm 0x1163ea10 rank 6 nRanks 8 nNodes 2 localRanks 4 localRank 2 MNNVL 0
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 4/-1/-1->6->2 [3] 5/-1/-1->6->4 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 4/2/-1->6->-1 [7] 5/-1/-1->6->4 [8] 7/-1/-1->6->5 [9] 7/-1/-1->6->5 [10] 4/-1/-1->6->2
+[c55:0]:c55:121079:121510 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c55:2]:c55:121081:121512 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c55:3]:c55:121082:121513 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c55:3]:c55:121082:121513 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c55:1]:c55:121080:121511 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c55:0]:c55:121079:121510 [0] NCCL INFO comm 0x24a2b800 rank 0 nRanks 8 nNodes 2 localRanks 4 localRank 0 MNNVL 0
+[c55:0]:c55:121079:121510 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 00/11 :    0   1   2   3   4   5   6   7
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 01/11 :    0   3   2   5   4   7   6   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 02/11 :    0   3   6   5   4   7   2   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 03/11 :    0   7   6   5   4   3   2   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 04/11 :    0   1   2   3   4   5   6   7
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 05/11 :    0   3   2   5   4   7   6   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 06/11 :    0   3   6   5   4   7   2   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 07/11 :    0   7   6   5   4   3   2   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 08/11 :    0   1   2   3   4   5   6   7
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 09/11 :    0   3   2   5   4   7   6   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 10/11 :    0   3   6   5   4   7   2   1
+[c55:0]:c55:121079:121510 [0] NCCL INFO Trees [0] 1/4/-1->0->-1 [1] -1/-1/-1->0->3 [2] 1/-1/-1->0->2 [3] 2/-1/-1->0->3 [4] 1/-1/-1->0->4 [5] -1/-1/-1->0->3 [6] 1/-1/-1->0->2 [7] 2/-1/-1->0->3 [8] 1/4/-1->0->-1 [9] -1/-1/-1->0->3 [10] 1/-1/-1->0->2
+[c55:0]:c55:121079:121510 [0] NCCL INFO P2P Chunksize set to 131072
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 00/0 : 7[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 04/0 : 7[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 08/0 : 7[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 02/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 06/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 09/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 10/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [send] via NET/IB/2(3)/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [send] via NET/IB/2(3)/GDRDMA
+[c55:0]:c55:121079:121540 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c55:2]:c55:121081:121512 [2] NCCL INFO comm 0xcd74370 rank 2 nRanks 8 nNodes 2 localRanks 4 localRank 2 MNNVL 0
+[c55:2]:c55:121081:121512 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c55:2]:c55:121081:121512 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 0/6/-1->2->-1 [3] 1/-1/-1->2->0 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 0/-1/-1->2->6 [7] 1/-1/-1->2->0 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] 0/6/-1->2->-1
+[c55:2]:c55:121081:121512 [2] NCCL INFO P2P Chunksize set to 131072
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 02/0 : 7[3] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 06/0 : 7[3] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 10/0 : 7[3] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 09/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 10/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO comm 0x1159a250 rank 3 nRanks 8 nNodes 2 localRanks 4 localRank 3 MNNVL 0
+[c55:3]:c55:121082:121513 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c55:3]:c55:121082:121513 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] 0/-1/-1->3->2 [2] -1/-1/-1->3->1 [3] 0/7/-1->3->-1 [4] -1/-1/-1->3->2 [5] 0/-1/-1->3->2 [6] -1/-1/-1->3->1 [7] 0/-1/-1->3->7 [8] -1/-1/-1->3->2 [9] 0/-1/-1->3->2 [10] -1/-1/-1->3->1
+[c55:3]:c55:121082:121513 [3] NCCL INFO P2P Chunksize set to 131072
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 08/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [send] via NET/IB/3(2)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [send] via NET/IB/3(2)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 10/0 : 3[3] -> 6[2] [send] via NET/IB/3(2)/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 03/0 : 4[0] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 07/0 : 4[0] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO comm 0x11178230 rank 1 nRanks 8 nNodes 2 localRanks 4 localRank 1 MNNVL 0
+[c55:1]:c55:121080:121511 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c55:1]:c55:121080:121511 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/5/-1->1->-1 [2] 3/-1/-1->1->0 [3] -1/-1/-1->1->2 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->5 [6] 3/-1/-1->1->0 [7] -1/-1/-1->1->2 [8] 2/-1/-1->1->0 [9] 2/5/-1->1->-1 [10] 3/-1/-1->1->0
+[c55:1]:c55:121080:121511 [1] NCCL INFO P2P Chunksize set to 131072
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 08/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 01/0 : 6[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 05/0 : 6[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 09/0 : 6[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO P2P Chunksize set to 131072
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 00/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 04/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 08/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 10/0 : 3[3] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 01/0 : 6[2] -> 1[1] [send] via NET/IB/0(5)/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 05/0 : 6[2] -> 1[1] [send] via NET/IB/0(5)/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 09/0 : 6[2] -> 1[1] [send] via NET/IB/0(5)/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 02/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 03/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 06/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 07/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 10/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO comm 0x103d9f90 rank 4 nRanks 8 nNodes 2 localRanks 4 localRank 0 MNNVL 0
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Trees [0] 5/-1/-1->4->0 [1] -1/-1/-1->4->7 [2] 5/-1/-1->4->6 [3] 6/-1/-1->4->7 [4] 5/0/-1->4->-1 [5] -1/-1/-1->4->7 [6] 5/-1/-1->4->6 [7] 6/-1/-1->4->7 [8] 5/-1/-1->4->0 [9] -1/-1/-1->4->7 [10] 5/-1/-1->4->6
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO P2P Chunksize set to 131072
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 08/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 00/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 04/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 08/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 01/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 02/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 05/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 06/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 09/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 10/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 03/0 : 4[0] -> 3[3] [send] via NET/IB/2(7)/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 07/0 : 4[0] -> 3[3] [send] via NET/IB/2(7)/GDRDMA
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO comm 0x11f6c4a0 rank 5 nRanks 8 nNodes 2 localRanks 4 localRank 1 MNNVL 0
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->1 [2] 7/-1/-1->5->4 [3] -1/-1/-1->5->6 [4] 6/-1/-1->5->4 [5] 6/1/-1->5->-1 [6] 7/-1/-1->5->4 [7] -1/-1/-1->5->6 [8] 6/-1/-1->5->4 [9] 6/-1/-1->5->1 [10] 7/-1/-1->5->4
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO P2P Chunksize set to 131072
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 00/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 04/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 08/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 09/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 01/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 02/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 03/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 05/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 06/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 07/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 09/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 10/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO comm 0x10d02610 rank 7 nRanks 8 nNodes 2 localRanks 4 localRank 3 MNNVL 0
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] 4/-1/-1->7->6 [2] -1/-1/-1->7->5 [3] 4/-1/-1->7->3 [4] -1/-1/-1->7->6 [5] 4/-1/-1->7->6 [6] -1/-1/-1->7->5 [7] 4/3/-1->7->-1 [8] -1/-1/-1->7->6 [9] 4/-1/-1->7->6 [10] -1/-1/-1->7->5
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO P2P Chunksize set to 131072
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 00/0 : 7[3] -> 0[0] [send] via NET/IB/1(4)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 04/0 : 7[3] -> 0[0] [send] via NET/IB/1(4)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 08/0 : 7[3] -> 0[0] [send] via NET/IB/1(4)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 02/0 : 7[3] -> 2[2] [send] via NET/IB/3(6)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 06/0 : 7[3] -> 2[2] [send] via NET/IB/3(6)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 10/0 : 7[3] -> 2[2] [send] via NET/IB/3(6)/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 01/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 03/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 05/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 07/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 09/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Connected all rings
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 01/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 05/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 09/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 02/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 10/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 02/0 : 6[2] -> 2[2] [send] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [send] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 10/0 : 6[2] -> 2[2] [send] via NET/IB/3/GDRDMA
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 02/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:0]:c55:121079:121540 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c55:2]:c55:121081:121542 [2] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c55:2]:c55:121081:121542 [2] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c55:3]:c55:121082:121544 [3] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c55:3]:c55:121082:121544 [3] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c55:1]:c55:121080:121538 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c55:1]:c55:121080:121538 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c55:0]:c55:121079:121510 [0] NCCL INFO Connected all rings
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 03/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 07/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 10/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 03/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 07/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 00/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 08/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 00/0 : 0[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c55:0]:c55:121079:121510 [0] NCCL INFO Channel 08/0 : 0[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Connected all rings
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 02/0 : 6[2] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 10/0 : 6[2] -> 2[2] [receive] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 02/0 : 2[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 10/0 : 2[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 02/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 03/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 06/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 07/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 10/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 08/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:2]:c55:121081:121512 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Connected all rings
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 03/0 : 7[3] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 03/0 : 3[3] -> 7[3] [send] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [send] via NET/IB/2/GDRDMA
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 05/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 07/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 09/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 02/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 06/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 10/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:3]:c55:121082:121513 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Connected all rings
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 09/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 02/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 06/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 10/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 01/0 : 5[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 05/0 : 5[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 09/0 : 5[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 01/0 : 1[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 05/0 : 1[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 09/0 : 1[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:1]:c55:121080:121511 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c55:0]:c55:121079:121510 [0] NCCL INFO Connected all trees
+[c55:0]:c55:121079:121510 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c55:0]:c55:121079:121510 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c55:0]:c55:121079:121510 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c55:0]:c55:121079:121510 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c55:0]:c55:121079:121510 [0] NCCL INFO ncclCommInitRank comm 0x24a2b800 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c55:0]:2026-04-18 07:40:33 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c55:2]:c55:121081:121512 [2] NCCL INFO Connected all trees
+[c55:2]:c55:121081:121512 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c55:2]:c55:121081:121512 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c55:2]:c55:121081:121512 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 03/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 06/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 07/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 10/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 00/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 01/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 04/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 05/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 08/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Channel 09/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Connected all rings
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 02/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 06/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 10/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 02/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 03/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 06/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 07/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 10/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 03/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 07/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 00/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 08/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 00/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Channel 08/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Connected all rings
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 01/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 03/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 05/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 07/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 09/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 02/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 06/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 10/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 01/0 : 1[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 05/0 : 1[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 09/0 : 1[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 01/0 : 5[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 05/0 : 5[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 09/0 : 5[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 00/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 04/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Channel 08/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Connected all rings
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 03/0 : 3[3] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 03/0 : 7[3] -> 3[3] [send] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [send] via NET/IB/2/GDRDMA
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 01/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 03/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 05/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 07/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 09/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 02/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 06/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 10/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 04/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Channel 08/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO Connected all trees
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO Connected all trees
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c56:2]:c56:3920560:3920985 [2] NCCL INFO ncclCommInitRank comm 0x1163ea10 rank 6 nranks 8 cudaDev 2 nvmlDev 2 busId a6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO Connected all trees
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c56:0]:c56:3920558:3920984 [0] NCCL INFO ncclCommInitRank comm 0x103d9f90 rank 4 nranks 8 cudaDev 0 nvmlDev 0 busId 6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO Connected all trees
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c56:1]:c56:3920559:3920983 [1] NCCL INFO ncclCommInitRank comm 0x11f6c4a0 rank 5 nranks 8 cudaDev 1 nvmlDev 1 busId 26000 commId 0x1cf7061501670daf - Init COMPLETE
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c56:3]:c56:3920561:3920982 [3] NCCL INFO ncclCommInitRank comm 0x10d02610 rank 7 nranks 8 cudaDev 3 nvmlDev 3 busId c6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c55:3]:c55:121082:121513 [3] NCCL INFO Connected all trees
+[c55:3]:c55:121082:121513 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c55:3]:c55:121082:121513 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c55:3]:c55:121082:121513 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c55:3]:c55:121082:121513 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c55:3]:c55:121082:121513 [3] NCCL INFO ncclCommInitRank comm 0x1159a250 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId c6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c55:2]:c55:121081:121512 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c55:2]:c55:121081:121512 [2] NCCL INFO ncclCommInitRank comm 0xcd74370 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId a6000 commId 0x1cf7061501670daf - Init COMPLETE
+[c55:1]:c55:121080:121511 [1] NCCL INFO Connected all trees
+[c55:1]:c55:121080:121511 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+[c55:1]:c55:121080:121511 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c55:1]:c55:121080:121511 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c55:1]:c55:121080:121511 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c55:1]:c55:121080:121511 [1] NCCL INFO ncclCommInitRank comm 0x11178230 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 26000 commId 0x1cf7061501670daf - Init COMPLETE
+[c55:0]:2026-04-18 07:40:33 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-adbac820a794ccde_*_of_00001.arrow
+[c55:0]:2026-04-18 07:40:33 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-79938929457a7e89_*_of_00001.arrow
+[c55:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c55:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c55:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c55:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c55:0]:2026-04-18 07:41:23 - INFO - __main__ - *** Train ***
+[c55:0]:{'loss': 0.6996, 'grad_norm': 154.0, 'learning_rate': 9.772669873283423e-07, 'rewards/chosen': -0.008394976146519184, 'rewards/rejected': -0.02199157141149044, 'rewards/accuracies': 0.5101562738418579, 'rewards/margins': 0.013596594333648682, 'logps/chosen': -584.2593994140625, 'logps/rejected': -331.16815185546875, 'logits/chosen': -0.7511423230171204, 'logits/rejected': -0.7849936485290527, 'epoch': 0.0}
+[c55:0]:{'loss': 0.6605, 'grad_norm': 121.5, 'learning_rate': 2.063119195470945e-06, 'rewards/chosen': 0.05102276802062988, 'rewards/rejected': -0.16407661139965057, 'rewards/accuracies': 0.5921875238418579, 'rewards/margins': 0.21509937942028046, 'logps/chosen': -601.7015380859375, 'logps/rejected': -338.72796630859375, 'logits/chosen': -0.6952723860740662, 'logits/rejected': -0.8053340911865234, 'epoch': 0.01}
+[c55:0]:{'loss': 0.5694, 'grad_norm': 89.0, 'learning_rate': 3.148971403613547e-06, 'rewards/chosen': 0.32492595911026, 'rewards/rejected': -0.34296461939811707, 'rewards/accuracies': 0.721875011920929, 'rewards/margins': 0.6678905487060547, 'logps/chosen': -595.3192138671875, 'logps/rejected': -323.38043212890625, 'logits/chosen': -0.8021848797798157, 'logits/rejected': -0.8937278985977173, 'epoch': 0.01}
+[c55:0]:{'loss': 0.4891, 'grad_norm': 82.5, 'learning_rate': 4.2348236117561496e-06, 'rewards/chosen': 0.5903798341751099, 'rewards/rejected': -0.2297588288784027, 'rewards/accuracies': 0.7679687738418579, 'rewards/margins': 0.8201386332511902, 'logps/chosen': -576.5558471679688, 'logps/rejected': -307.7823181152344, 'logits/chosen': -0.644871175289154, 'logits/rejected': -0.7126988768577576, 'epoch': 0.02}
+[c55:0]:{'loss': 0.4268, 'grad_norm': 73.0, 'learning_rate': 5.320675819898753e-06, 'rewards/chosen': 0.8326905369758606, 'rewards/rejected': -0.43899670243263245, 'rewards/accuracies': 0.811718761920929, 'rewards/margins': 1.2716872692108154, 'logps/chosen': -578.4078979492188, 'logps/rejected': -330.27996826171875, 'logits/chosen': -0.7122198343276978, 'logits/rejected': -0.8120205998420715, 'epoch': 0.02}
+[c55:0]:{'loss': 0.4049, 'grad_norm': 63.75, 'learning_rate': 6.406528028041355e-06, 'rewards/chosen': 0.980725109577179, 'rewards/rejected': -0.9447110891342163, 'rewards/accuracies': 0.817187488079071, 'rewards/margins': 1.92543625831604, 'logps/chosen': -568.334228515625, 'logps/rejected': -349.631103515625, 'logits/chosen': -0.7033194303512573, 'logits/rejected': -0.7690048217773438, 'epoch': 0.03}
+[c55:0]:{'loss': 0.3938, 'grad_norm': 72.0, 'learning_rate': 7.492380236183957e-06, 'rewards/chosen': 1.0289504528045654, 'rewards/rejected': -0.9732085466384888, 'rewards/accuracies': 0.81640625, 'rewards/margins': 2.0021588802337646, 'logps/chosen': -575.4180297851562, 'logps/rejected': -314.25732421875, 'logits/chosen': -0.691127359867096, 'logits/rejected': -0.7665076851844788, 'epoch': 0.03}
+[c55:0]:{'loss': 0.3657, 'grad_norm': 78.5, 'learning_rate': 8.57823244432656e-06, 'rewards/chosen': 1.0827040672302246, 'rewards/rejected': -0.8281959295272827, 'rewards/accuracies': 0.8453124761581421, 'rewards/margins': 1.9108998775482178, 'logps/chosen': -582.9992065429688, 'logps/rejected': -321.26055908203125, 'logits/chosen': -0.7306748032569885, 'logits/rejected': -0.7892962694168091, 'epoch': 0.04}
+[c55:0]:{'loss': 0.3411, 'grad_norm': 52.25, 'learning_rate': 9.664084652469163e-06, 'rewards/chosen': 1.0598180294036865, 'rewards/rejected': -1.8625425100326538, 'rewards/accuracies': 0.8421875238418579, 'rewards/margins': 2.922360897064209, 'logps/chosen': -593.358154296875, 'logps/rejected': -356.6741027832031, 'logits/chosen': -0.7327055335044861, 'logits/rejected': -0.8202877044677734, 'epoch': 0.04}
+[c55:0]:{'loss': 0.3406, 'grad_norm': 52.5, 'learning_rate': 1.0749936860611765e-05, 'rewards/chosen': 1.0352035760879517, 'rewards/rejected': -1.0902326107025146, 'rewards/accuracies': 0.850781261920929, 'rewards/margins': 2.1254360675811768, 'logps/chosen': -555.5061645507812, 'logps/rejected': -313.4676818847656, 'logits/chosen': -0.802923858165741, 'logits/rejected': -0.838055431842804, 'epoch': 0.05}
+[c55:0]:{'eval_loss': 0.3521723449230194, 'eval_runtime': 18.3276, 'eval_samples_per_second': 70.931, 'eval_steps_per_second': 8.894, 'eval_rewards/chosen': 1.0443695783615112, 'eval_rewards/rejected': -1.223107933998108, 'eval_rewards/accuracies': 0.8565950989723206, 'eval_rewards/margins': 2.267477512359619, 'eval_logps/chosen': -563.0773315429688, 'eval_logps/rejected': -323.5433349609375, 'eval_logits/chosen': -0.7585238814353943, 'eval_logits/rejected': -0.8119040727615356, 'epoch': 0.05}
+[c55:0]:{'loss': 0.3396, 'grad_norm': 49.75, 'learning_rate': 1.1835789068754368e-05, 'rewards/chosen': 0.8907669186592102, 'rewards/rejected': -1.3731681108474731, 'rewards/accuracies': 0.8578125238418579, 'rewards/margins': 2.263934850692749, 'logps/chosen': -550.7952880859375, 'logps/rejected': -309.75030517578125, 'logits/chosen': -0.8178005218505859, 'logits/rejected': -0.8773170709609985, 'epoch': 0.05}
+[c55:0]:{'loss': 0.3272, 'grad_norm': 69.5, 'learning_rate': 1.2921641276896968e-05, 'rewards/chosen': 0.4571438431739807, 'rewards/rejected': -2.4503426551818848, 'rewards/accuracies': 0.858593761920929, 'rewards/margins': 2.9074866771698, 'logps/chosen': -545.722900390625, 'logps/rejected': -352.0548400878906, 'logits/chosen': -0.7997699975967407, 'logits/rejected': -0.826600193977356, 'epoch': 0.06}
+[c55:0]:{'loss': 0.3084, 'grad_norm': 54.25, 'learning_rate': 1.4007493485039573e-05, 'rewards/chosen': 1.2967326641082764, 'rewards/rejected': -2.7237956523895264, 'rewards/accuracies': 0.856249988079071, 'rewards/margins': 4.020528316497803, 'logps/chosen': -564.9581298828125, 'logps/rejected': -343.7528381347656, 'logits/chosen': -0.754876971244812, 'logits/rejected': -0.7972182035446167, 'epoch': 0.06}
+[c55:0]:{'loss': 0.3097, 'grad_norm': 37.75, 'learning_rate': 1.5093345693182177e-05, 'rewards/chosen': 1.4046849012374878, 'rewards/rejected': -1.3941819667816162, 'rewards/accuracies': 0.87109375, 'rewards/margins': 2.7988667488098145, 'logps/chosen': -556.7965698242188, 'logps/rejected': -307.66876220703125, 'logits/chosen': -0.6958219408988953, 'logits/rejected': -0.7413297295570374, 'epoch': 0.07}
+[c55:0]:{'loss': 0.4221, 'grad_norm': 65.0, 'learning_rate': 1.617919790132478e-05, 'rewards/chosen': 0.8636119961738586, 'rewards/rejected': -2.3011200428009033, 'rewards/accuracies': 0.8656250238418579, 'rewards/margins': 3.1647324562072754, 'logps/chosen': -614.3179931640625, 'logps/rejected': -314.8460388183594, 'logits/chosen': -0.6993536353111267, 'logits/rejected': -0.7488939762115479, 'epoch': 0.07}
+[c55:0]:{'loss': 1.4549, 'grad_norm': 66.5, 'learning_rate': 1.7265050109467382e-05, 'rewards/chosen': -0.20152707397937775, 'rewards/rejected': -3.983759641647339, 'rewards/accuracies': 0.8578125238418579, 'rewards/margins': 3.7822327613830566, 'logps/chosen': -604.4825439453125, 'logps/rejected': -370.52886962890625, 'logits/chosen': -0.7020672559738159, 'logits/rejected': -0.7079230546951294, 'epoch': 0.08}
+[c55:0]:{'loss': 0.2811, 'grad_norm': 61.75, 'learning_rate': 1.8350902317609982e-05, 'rewards/chosen': 1.011315107345581, 'rewards/rejected': -4.703204154968262, 'rewards/accuracies': 0.87890625, 'rewards/margins': 5.7145185470581055, 'logps/chosen': -573.8363037109375, 'logps/rejected': -365.7633972167969, 'logits/chosen': -0.70600825548172, 'logits/rejected': -0.8045570254325867, 'epoch': 0.08}
+[c55:0]:{'loss': 0.3174, 'grad_norm': 48.0, 'learning_rate': 1.9436754525752585e-05, 'rewards/chosen': 0.687757134437561, 'rewards/rejected': -2.6352906227111816, 'rewards/accuracies': 0.866406261920929, 'rewards/margins': 3.323047637939453, 'logps/chosen': -563.9907836914062, 'logps/rejected': -317.08514404296875, 'logits/chosen': -0.7464542388916016, 'logits/rejected': -0.8057613372802734, 'epoch': 0.09}
+[c55:0]:{'loss': 0.305, 'grad_norm': 61.5, 'learning_rate': 2.052260673389519e-05, 'rewards/chosen': 1.6612650156021118, 'rewards/rejected': -1.983496904373169, 'rewards/accuracies': 0.8695312738418579, 'rewards/margins': 3.6447620391845703, 'logps/chosen': -584.6478271484375, 'logps/rejected': -318.33038330078125, 'logits/chosen': -0.7002010941505432, 'logits/rejected': -0.7452049255371094, 'epoch': 0.09}
+[c55:0]:{'loss': 0.8285, 'grad_norm': 49.25, 'learning_rate': 2.1608458942037792e-05, 'rewards/chosen': 2.005638599395752, 'rewards/rejected': -1.0491766929626465, 'rewards/accuracies': 0.87890625, 'rewards/margins': 3.0548152923583984, 'logps/chosen': -539.962890625, 'logps/rejected': -296.296875, 'logits/chosen': -0.6482188701629639, 'logits/rejected': -0.7090535163879395, 'epoch': 0.1}
+[c55:0]:{'eval_loss': 0.33556997776031494, 'eval_runtime': 18.3028, 'eval_samples_per_second': 71.027, 'eval_steps_per_second': 8.906, 'eval_rewards/chosen': 2.2704577445983887, 'eval_rewards/rejected': -1.5237810611724854, 'eval_rewards/accuracies': 0.8619632124900818, 'eval_rewards/margins': 3.794238805770874, 'eval_logps/chosen': -558.3035888671875, 'eval_logps/rejected': -324.7139892578125, 'eval_logits/chosen': -0.6378719806671143, 'eval_logits/rejected': -0.6481070518493652, 'epoch': 0.1}
+[c55:0]:{'loss': 0.3, 'grad_norm': 71.5, 'learning_rate': 2.197005131101993e-05, 'rewards/chosen': 0.9721305966377258, 'rewards/rejected': -3.2274715900421143, 'rewards/accuracies': 0.883593738079071, 'rewards/margins': 4.199602127075195, 'logps/chosen': -604.0828857421875, 'logps/rejected': -337.16973876953125, 'logits/chosen': -0.6959255337715149, 'logits/rejected': -0.7401593327522278, 'epoch': 0.1}
+[c55:0]:{'loss': 0.3434, 'grad_norm': 67.5, 'learning_rate': 2.1848803787228428e-05, 'rewards/chosen': 0.03806663677096367, 'rewards/rejected': -4.796411991119385, 'rewards/accuracies': 0.85546875, 'rewards/margins': 4.834479331970215, 'logps/chosen': -530.7489624023438, 'logps/rejected': -331.7184753417969, 'logits/chosen': -0.7023653388023376, 'logits/rejected': -0.6985299587249756, 'epoch': 0.11}
+[c55:0]:{'loss': 1.7866, 'grad_norm': 60.25, 'learning_rate': 2.1727556263436928e-05, 'rewards/chosen': 1.5444601774215698, 'rewards/rejected': -1.8337576389312744, 'rewards/accuracies': 0.8617187738418579, 'rewards/margins': 3.3782176971435547, 'logps/chosen': -559.3592529296875, 'logps/rejected': -337.01043701171875, 'logits/chosen': -0.43132394552230835, 'logits/rejected': -0.45692476630210876, 'epoch': 0.11}
+[c55:0]:{'loss': 0.3366, 'grad_norm': 60.25, 'learning_rate': 2.1606308739645428e-05, 'rewards/chosen': 0.65674889087677, 'rewards/rejected': -6.981667995452881, 'rewards/accuracies': 0.854687511920929, 'rewards/margins': 7.638417720794678, 'logps/chosen': -542.0994873046875, 'logps/rejected': -333.870361328125, 'logits/chosen': -0.3899098038673401, 'logits/rejected': -0.39851683378219604, 'epoch': 0.12}
+[c55:0]:{'loss': 0.3457, 'grad_norm': 61.5, 'learning_rate': 2.1485061215853928e-05, 'rewards/chosen': -1.5529534816741943, 'rewards/rejected': -9.497426986694336, 'rewards/accuracies': 0.8578125238418579, 'rewards/margins': 7.944472312927246, 'logps/chosen': -546.7096557617188, 'logps/rejected': -324.3564453125, 'logits/chosen': -0.5505202412605286, 'logits/rejected': -0.5058141946792603, 'epoch': 0.12}
+[c55:0]:{'loss': 0.3477, 'grad_norm': 53.5, 'learning_rate': 2.1363813692062428e-05, 'rewards/chosen': -2.588648796081543, 'rewards/rejected': -10.074201583862305, 'rewards/accuracies': 0.854687511920929, 'rewards/margins': 7.4855523109436035, 'logps/chosen': -553.772705078125, 'logps/rejected': -342.400146484375, 'logits/chosen': -0.6771175265312195, 'logits/rejected': -0.6577587723731995, 'epoch': 0.13}
+[c55:0]:{'loss': 0.3619, 'grad_norm': 59.25, 'learning_rate': 2.1242566168270928e-05, 'rewards/chosen': -2.020922899246216, 'rewards/rejected': -11.766969680786133, 'rewards/accuracies': 0.859375, 'rewards/margins': 9.746047019958496, 'logps/chosen': -587.1300659179688, 'logps/rejected': -379.6204833984375, 'logits/chosen': -0.755818784236908, 'logits/rejected': -0.7261995673179626, 'epoch': 0.13}
+[c55:0]:{'loss': 0.3204, 'grad_norm': 65.5, 'learning_rate': 2.1121318644479427e-05, 'rewards/chosen': -1.8075854778289795, 'rewards/rejected': -11.286523818969727, 'rewards/accuracies': 0.866406261920929, 'rewards/margins': 9.478938102722168, 'logps/chosen': -589.865966796875, 'logps/rejected': -388.60870361328125, 'logits/chosen': -0.68727707862854, 'logits/rejected': -0.6607898473739624, 'epoch': 0.14}
+[c55:0]:{'loss': 0.3065, 'grad_norm': 67.0, 'learning_rate': 2.1000071120687927e-05, 'rewards/chosen': -1.3355581760406494, 'rewards/rejected': -6.494748115539551, 'rewards/accuracies': 0.87109375, 'rewards/margins': 5.1591901779174805, 'logps/chosen': -555.2774047851562, 'logps/rejected': -339.89373779296875, 'logits/chosen': -0.6424615383148193, 'logits/rejected': -0.6143380999565125, 'epoch': 0.14}
+[c55:0]:{'loss': 0.3194, 'grad_norm': 50.0, 'learning_rate': 2.0878823596896424e-05, 'rewards/chosen': -1.069395661354065, 'rewards/rejected': -5.729989051818848, 'rewards/accuracies': 0.856249988079071, 'rewards/margins': 4.660593509674072, 'logps/chosen': -577.9833984375, 'logps/rejected': -338.5106506347656, 'logits/chosen': -0.7149101495742798, 'logits/rejected': -0.6920599341392517, 'epoch': 0.15}
+[c55:0]:{'eval_loss': 0.3401675224304199, 'eval_runtime': 18.6885, 'eval_samples_per_second': 69.562, 'eval_steps_per_second': 8.722, 'eval_rewards/chosen': -0.9952151775360107, 'eval_rewards/rejected': -5.4512248039245605, 'eval_rewards/accuracies': 0.8611963391304016, 'eval_rewards/margins': 4.456009864807129, 'eval_logps/chosen': -571.0184326171875, 'eval_logps/rejected': -340.00531005859375, 'eval_logits/chosen': -0.7722452282905579, 'eval_logits/rejected': -0.7346881031990051, 'epoch': 0.15}
+[c55:0]:{'loss': 0.354, 'grad_norm': 47.75, 'learning_rate': 2.0757576073104924e-05, 'rewards/chosen': -0.30154961347579956, 'rewards/rejected': -10.402081489562988, 'rewards/accuracies': 0.866406261920929, 'rewards/margins': 10.100532531738281, 'logps/chosen': -577.8067626953125, 'logps/rejected': -376.59234619140625, 'logits/chosen': -0.70548015832901, 'logits/rejected': -0.7222915887832642, 'epoch': 0.15}
+[c55:0]:{'loss': 0.4837, 'grad_norm': 6048.0, 'learning_rate': 2.0636328549313424e-05, 'rewards/chosen': -0.3863505423069, 'rewards/rejected': -5.127854347229004, 'rewards/accuracies': 0.848437488079071, 'rewards/margins': 4.741503715515137, 'logps/chosen': -550.3575439453125, 'logps/rejected': -333.3182067871094, 'logits/chosen': -0.6958722472190857, 'logits/rejected': -0.6230674982070923, 'epoch': 0.16}
+[c55:0]:{'loss': 0.2891, 'grad_norm': 62.0, 'learning_rate': 2.0515081025521923e-05, 'rewards/chosen': 0.10405077785253525, 'rewards/rejected': -7.471107482910156, 'rewards/accuracies': 0.8695312738418579, 'rewards/margins': 7.57515811920166, 'logps/chosen': -557.7506103515625, 'logps/rejected': -335.257568359375, 'logits/chosen': -0.6978042125701904, 'logits/rejected': -0.6820533275604248, 'epoch': 0.16}
+[c55:0]:{'loss': 0.3113, 'grad_norm': 63.5, 'learning_rate': 2.039383350173042e-05, 'rewards/chosen': -0.40135541558265686, 'rewards/rejected': -8.699712753295898, 'rewards/accuracies': 0.8687499761581421, 'rewards/margins': 8.298357009887695, 'logps/chosen': -559.5951538085938, 'logps/rejected': -371.354248046875, 'logits/chosen': -0.7187658548355103, 'logits/rejected': -0.6491044163703918, 'epoch': 0.17}
+[c55:0]:{'loss': 0.3051, 'grad_norm': 68.5, 'learning_rate': 2.027258597793892e-05, 'rewards/chosen': -0.8830068707466125, 'rewards/rejected': -16.632526397705078, 'rewards/accuracies': 0.8804687261581421, 'rewards/margins': 15.749519348144531, 'logps/chosen': -542.4719848632812, 'logps/rejected': -492.81402587890625, 'logits/chosen': -0.7286460995674133, 'logits/rejected': -0.6148623824119568, 'epoch': 0.17}
+[c55:0]:{'loss': 0.3495, 'grad_norm': 52.5, 'learning_rate': 2.015133845414742e-05, 'rewards/chosen': -2.004246234893799, 'rewards/rejected': -7.004067897796631, 'rewards/accuracies': 0.8726562261581421, 'rewards/margins': 4.999821662902832, 'logps/chosen': -552.0597534179688, 'logps/rejected': -327.4841003417969, 'logits/chosen': -0.6534181833267212, 'logits/rejected': -0.6440310478210449, 'epoch': 0.18}
+[c55:0]:{'loss': 0.3323, 'grad_norm': 82.5, 'learning_rate': 2.003009093035592e-05, 'rewards/chosen': -1.3377265930175781, 'rewards/rejected': -6.569572448730469, 'rewards/accuracies': 0.8804687261581421, 'rewards/margins': 5.231846332550049, 'logps/chosen': -601.90087890625, 'logps/rejected': -333.18896484375, 'logits/chosen': -0.847291111946106, 'logits/rejected': -0.8070818781852722, 'epoch': 0.18}
+[c55:0]:{'loss': 0.2981, 'grad_norm': 57.5, 'learning_rate': 1.990884340656442e-05, 'rewards/chosen': -1.2089110612869263, 'rewards/rejected': -7.121604919433594, 'rewards/accuracies': 0.890625, 'rewards/margins': 5.912693977355957, 'logps/chosen': -589.3589477539062, 'logps/rejected': -343.9291076660156, 'logits/chosen': -0.6831027269363403, 'logits/rejected': -0.6318336129188538, 'epoch': 0.19}
+[c55:0]:{'loss': 0.3422, 'grad_norm': 59.5, 'learning_rate': 1.978759588277292e-05, 'rewards/chosen': -0.16570524871349335, 'rewards/rejected': -5.713346004486084, 'rewards/accuracies': 0.882031261920929, 'rewards/margins': 5.547640800476074, 'logps/chosen': -593.5747680664062, 'logps/rejected': -348.9130554199219, 'logits/chosen': -0.6022154688835144, 'logits/rejected': -0.5520076751708984, 'epoch': 0.19}
+[c55:0]:{'loss': 0.317, 'grad_norm': 57.75, 'learning_rate': 1.9666348358981416e-05, 'rewards/chosen': 0.10745507478713989, 'rewards/rejected': -6.634030818939209, 'rewards/accuracies': 0.871874988079071, 'rewards/margins': 6.741485595703125, 'logps/chosen': -573.0799560546875, 'logps/rejected': -356.54486083984375, 'logits/chosen': -0.5502943992614746, 'logits/rejected': -0.5602055788040161, 'epoch': 0.2}
+[c55:0]:{'eval_loss': 0.3293483257293701, 'eval_runtime': 18.3681, 'eval_samples_per_second': 70.775, 'eval_steps_per_second': 8.874, 'eval_rewards/chosen': -0.16493380069732666, 'eval_rewards/rejected': -5.432048320770264, 'eval_rewards/accuracies': 0.8688650131225586, 'eval_rewards/margins': 5.267115116119385, 'eval_logps/chosen': -567.7858276367188, 'eval_logps/rejected': -339.9306640625, 'eval_logits/chosen': -0.6145505309104919, 'eval_logits/rejected': -0.5734785795211792, 'epoch': 0.2}
+[c55:0]:{'loss': 0.3081, 'grad_norm': 57.75, 'learning_rate': 1.9545100835189916e-05, 'rewards/chosen': -0.11868144571781158, 'rewards/rejected': -5.245490550994873, 'rewards/accuracies': 0.88671875, 'rewards/margins': 5.126809597015381, 'logps/chosen': -577.9532470703125, 'logps/rejected': -327.3299865722656, 'logits/chosen': -0.6525748372077942, 'logits/rejected': -0.5891417860984802, 'epoch': 0.2}
+[c55:0]:{'loss': 0.3238, 'grad_norm': 71.5, 'learning_rate': 1.9423853311398416e-05, 'rewards/chosen': 0.03482074663043022, 'rewards/rejected': -7.510289669036865, 'rewards/accuracies': 0.8734375238418579, 'rewards/margins': 7.545111179351807, 'logps/chosen': -553.5919799804688, 'logps/rejected': -360.16510009765625, 'logits/chosen': -0.6915583610534668, 'logits/rejected': -0.604438066482544, 'epoch': 0.21}
+[c55:0]:{'loss': 0.2573, 'grad_norm': 48.25, 'learning_rate': 1.9302605787606916e-05, 'rewards/chosen': 0.29796546697616577, 'rewards/rejected': -13.67656135559082, 'rewards/accuracies': 0.8843749761581421, 'rewards/margins': 13.974527359008789, 'logps/chosen': -581.3580322265625, 'logps/rejected': -376.90509033203125, 'logits/chosen': -0.5961436033248901, 'logits/rejected': -0.5821316242218018, 'epoch': 0.21}
+[c55:0]:{'loss': 0.2809, 'grad_norm': 55.25, 'learning_rate': 1.9181358263815416e-05, 'rewards/chosen': 0.0011990010971203446, 'rewards/rejected': -10.831774711608887, 'rewards/accuracies': 0.889843761920929, 'rewards/margins': 10.83297348022461, 'logps/chosen': -564.7344970703125, 'logps/rejected': -360.2724609375, 'logits/chosen': -0.6584489345550537, 'logits/rejected': -0.5955228805541992, 'epoch': 0.22}
+[c55:0]:{'loss': 0.3152, 'grad_norm': 52.25, 'learning_rate': 1.9060110740023915e-05, 'rewards/chosen': -0.5781646966934204, 'rewards/rejected': -6.80118465423584, 'rewards/accuracies': 0.883593738079071, 'rewards/margins': 6.223019599914551, 'logps/chosen': -564.08642578125, 'logps/rejected': -333.3345642089844, 'logits/chosen': -0.5709963440895081, 'logits/rejected': -0.525525689125061, 'epoch': 0.22}
+[c55:0]:{'loss': 0.2998, 'grad_norm': 65.5, 'learning_rate': 1.8938863216232415e-05, 'rewards/chosen': -0.148477241396904, 'rewards/rejected': -10.514360427856445, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 10.365883827209473, 'logps/chosen': -566.23876953125, 'logps/rejected': -392.8253173828125, 'logits/chosen': -0.6252076029777527, 'logits/rejected': -0.530561089515686, 'epoch': 0.23}
+[c55:0]:{'loss': 0.2734, 'grad_norm': 57.75, 'learning_rate': 1.8817615692440912e-05, 'rewards/chosen': -0.004130455665290356, 'rewards/rejected': -5.84307861328125, 'rewards/accuracies': 0.895312488079071, 'rewards/margins': 5.8389482498168945, 'logps/chosen': -546.4109497070312, 'logps/rejected': -329.1739196777344, 'logits/chosen': -0.600067138671875, 'logits/rejected': -0.5577012300491333, 'epoch': 0.23}
+[c55:0]:{'loss': 0.2741, 'grad_norm': 64.5, 'learning_rate': 1.869636816864941e-05, 'rewards/chosen': -0.6072061657905579, 'rewards/rejected': -6.454009056091309, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 5.846802711486816, 'logps/chosen': -580.7071533203125, 'logps/rejected': -339.547607421875, 'logits/chosen': -0.6379604339599609, 'logits/rejected': -0.529998779296875, 'epoch': 0.24}
+[c55:0]:{'loss': 4.4081, 'grad_norm': 92.5, 'learning_rate': 1.8575120644857908e-05, 'rewards/chosen': -5.2793779373168945, 'rewards/rejected': -8.559223175048828, 'rewards/accuracies': 0.882031261920929, 'rewards/margins': 3.2798449993133545, 'logps/chosen': -598.1837768554688, 'logps/rejected': -354.190673828125, 'logits/chosen': -0.6037361025810242, 'logits/rejected': -0.5739281177520752, 'epoch': 0.24}
+[c55:0]:{'loss': 0.2868, 'grad_norm': 63.0, 'learning_rate': 1.8453873121066408e-05, 'rewards/chosen': -1.0828893184661865, 'rewards/rejected': -6.862738132476807, 'rewards/accuracies': 0.885937511920929, 'rewards/margins': 5.779848575592041, 'logps/chosen': -577.3677978515625, 'logps/rejected': -339.2308654785156, 'logits/chosen': -0.6222891807556152, 'logits/rejected': -0.5694835782051086, 'epoch': 0.25}
+[c55:0]:{'eval_loss': 0.3148390054702759, 'eval_runtime': 18.3151, 'eval_samples_per_second': 70.98, 'eval_steps_per_second': 8.9, 'eval_rewards/chosen': -1.0651226043701172, 'eval_rewards/rejected': -6.8797831535339355, 'eval_rewards/accuracies': 0.8826687335968018, 'eval_rewards/margins': 5.81466007232666, 'eval_logps/chosen': -571.29052734375, 'eval_logps/rejected': -345.5673828125, 'eval_logits/chosen': -0.6426345705986023, 'eval_logits/rejected': -0.5655975341796875, 'epoch': 0.25}
+[c55:0]:{'loss': 0.2401, 'grad_norm': 36.75, 'learning_rate': 1.8332625597274908e-05, 'rewards/chosen': -0.6170235872268677, 'rewards/rejected': -7.726137638092041, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 7.109114170074463, 'logps/chosen': -561.7313232421875, 'logps/rejected': -350.5247497558594, 'logits/chosen': -0.7526053190231323, 'logits/rejected': -0.6980441808700562, 'epoch': 0.25}
+[c55:0]:{'loss': 2.7197, 'grad_norm': 57.75, 'learning_rate': 1.8211378073483408e-05, 'rewards/chosen': -2.8910231590270996, 'rewards/rejected': -6.613726615905762, 'rewards/accuracies': 0.893750011920929, 'rewards/margins': 3.7227044105529785, 'logps/chosen': -593.636474609375, 'logps/rejected': -332.37908935546875, 'logits/chosen': -0.7481080293655396, 'logits/rejected': -0.6682556867599487, 'epoch': 0.26}
+[c55:0]:{'loss': 0.3141, 'grad_norm': 56.0, 'learning_rate': 1.8090130549691908e-05, 'rewards/chosen': -0.8858343362808228, 'rewards/rejected': -7.585860252380371, 'rewards/accuracies': 0.879687488079071, 'rewards/margins': 6.7000250816345215, 'logps/chosen': -550.4078979492188, 'logps/rejected': -339.20318603515625, 'logits/chosen': -0.7296518087387085, 'logits/rejected': -0.6869521737098694, 'epoch': 0.26}
+[c55:0]:{'loss': 0.2968, 'grad_norm': 68.5, 'learning_rate': 1.7968883025900408e-05, 'rewards/chosen': -0.6432135105133057, 'rewards/rejected': -6.036819934844971, 'rewards/accuracies': 0.8890625238418579, 'rewards/margins': 5.393605709075928, 'logps/chosen': -557.3453979492188, 'logps/rejected': -321.07501220703125, 'logits/chosen': -0.7505066990852356, 'logits/rejected': -0.6674844026565552, 'epoch': 0.27}
+[c55:0]:{'loss': 0.2767, 'grad_norm': 37.75, 'learning_rate': 1.7847635502108908e-05, 'rewards/chosen': -0.529924213886261, 'rewards/rejected': -6.201925277709961, 'rewards/accuracies': 0.88671875, 'rewards/margins': 5.672000885009766, 'logps/chosen': -546.7108154296875, 'logps/rejected': -334.8946838378906, 'logits/chosen': -0.7132459878921509, 'logits/rejected': -0.6387273073196411, 'epoch': 0.27}
+[c55:0]:{'loss': 0.2859, 'grad_norm': 57.75, 'learning_rate': 1.7726387978317407e-05, 'rewards/chosen': -0.9916585683822632, 'rewards/rejected': -8.909048080444336, 'rewards/accuracies': 0.893750011920929, 'rewards/margins': 7.9173903465271, 'logps/chosen': -575.4246215820312, 'logps/rejected': -372.40679931640625, 'logits/chosen': -0.8215265274047852, 'logits/rejected': -0.7559610605239868, 'epoch': 0.28}
+[c55:0]:{'loss': 0.3119, 'grad_norm': 43.25, 'learning_rate': 1.7605140454525904e-05, 'rewards/chosen': -1.0922667980194092, 'rewards/rejected': -8.085387229919434, 'rewards/accuracies': 0.870312511920929, 'rewards/margins': 6.993119716644287, 'logps/chosen': -575.1522216796875, 'logps/rejected': -370.7091979980469, 'logits/chosen': -0.6515716314315796, 'logits/rejected': -0.5881154537200928, 'epoch': 0.28}
+[c55:0]:{'loss': 0.2745, 'grad_norm': 55.5, 'learning_rate': 1.7483892930734404e-05, 'rewards/chosen': -1.1485774517059326, 'rewards/rejected': -7.5258636474609375, 'rewards/accuracies': 0.8999999761581421, 'rewards/margins': 6.377285957336426, 'logps/chosen': -584.9782104492188, 'logps/rejected': -366.1656799316406, 'logits/chosen': -0.7001253962516785, 'logits/rejected': -0.6224839091300964, 'epoch': 0.29}
+[c55:0]:{'loss': 0.308, 'grad_norm': 52.0, 'learning_rate': 1.7362645406942904e-05, 'rewards/chosen': -1.226060390472412, 'rewards/rejected': -10.394193649291992, 'rewards/accuracies': 0.88671875, 'rewards/margins': 9.168131828308105, 'logps/chosen': -588.330322265625, 'logps/rejected': -351.6412048339844, 'logits/chosen': -0.6667071580886841, 'logits/rejected': -0.6337259411811829, 'epoch': 0.29}
+[c55:0]:{'loss': 0.3383, 'grad_norm': 53.5, 'learning_rate': 1.7241397883151404e-05, 'rewards/chosen': -1.4185845851898193, 'rewards/rejected': -6.837131500244141, 'rewards/accuracies': 0.874218761920929, 'rewards/margins': 5.418546199798584, 'logps/chosen': -560.6007080078125, 'logps/rejected': -350.3297424316406, 'logits/chosen': -0.732571005821228, 'logits/rejected': -0.6377838253974915, 'epoch': 0.3}
+[c55:0]:{'eval_loss': 0.30255940556526184, 'eval_runtime': 18.2658, 'eval_samples_per_second': 71.171, 'eval_steps_per_second': 8.924, 'eval_rewards/chosen': -1.4854581356048584, 'eval_rewards/rejected': -6.909014701843262, 'eval_rewards/accuracies': 0.8895705342292786, 'eval_rewards/margins': 5.423556804656982, 'eval_logps/chosen': -572.9271240234375, 'eval_logps/rejected': -345.68121337890625, 'eval_logits/chosen': -0.6496318578720093, 'eval_logits/rejected': -0.5747445225715637, 'epoch': 0.3}
+[c55:0]:{'loss': 0.3177, 'grad_norm': 53.25, 'learning_rate': 1.7120150359359903e-05, 'rewards/chosen': -2.005465030670166, 'rewards/rejected': -7.2619428634643555, 'rewards/accuracies': 0.8765624761581421, 'rewards/margins': 5.256478309631348, 'logps/chosen': -560.489501953125, 'logps/rejected': -345.7681884765625, 'logits/chosen': -0.6631729006767273, 'logits/rejected': -0.5768457055091858, 'epoch': 0.3}
+[c55:0]:{'loss': 0.3176, 'grad_norm': 82.0, 'learning_rate': 1.6998902835568403e-05, 'rewards/chosen': -1.9645134210586548, 'rewards/rejected': -15.820890426635742, 'rewards/accuracies': 0.875781238079071, 'rewards/margins': 13.856378555297852, 'logps/chosen': -568.8213500976562, 'logps/rejected': -420.7538146972656, 'logits/chosen': -0.7956185340881348, 'logits/rejected': -0.7296867370605469, 'epoch': 0.31}
+[c55:0]:{'loss': 0.3211, 'grad_norm': 38.0, 'learning_rate': 1.6877655311776903e-05, 'rewards/chosen': -1.0290727615356445, 'rewards/rejected': -7.7220587730407715, 'rewards/accuracies': 0.889843761920929, 'rewards/margins': 6.692986965179443, 'logps/chosen': -578.1008911132812, 'logps/rejected': -351.6650390625, 'logits/chosen': -0.7545627951622009, 'logits/rejected': -0.6815866827964783, 'epoch': 0.31}
+[c55:0]:{'loss': 0.2803, 'grad_norm': 63.0, 'learning_rate': 1.67564077879854e-05, 'rewards/chosen': -1.4082392454147339, 'rewards/rejected': -10.127092361450195, 'rewards/accuracies': 0.895312488079071, 'rewards/margins': 8.718852043151855, 'logps/chosen': -579.37353515625, 'logps/rejected': -359.9348449707031, 'logits/chosen': -0.7666419744491577, 'logits/rejected': -0.695035457611084, 'epoch': 0.32}
+[c55:0]:{'loss': 0.2579, 'grad_norm': 56.75, 'learning_rate': 1.66351602641939e-05, 'rewards/chosen': -1.7279250621795654, 'rewards/rejected': -11.97523307800293, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 10.247308731079102, 'logps/chosen': -574.9939575195312, 'logps/rejected': -392.06024169921875, 'logits/chosen': -0.7065463066101074, 'logits/rejected': -0.6289834976196289, 'epoch': 0.32}
+[c55:0]:{'loss': 0.248, 'grad_norm': 66.0, 'learning_rate': 1.6513912740402396e-05, 'rewards/chosen': -1.8248465061187744, 'rewards/rejected': -12.552692413330078, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 10.727846145629883, 'logps/chosen': -591.3861694335938, 'logps/rejected': -367.1920471191406, 'logits/chosen': -0.7147292494773865, 'logits/rejected': -0.6745683550834656, 'epoch': 0.33}
+[c55:0]:{'loss': 0.2625, 'grad_norm': 40.5, 'learning_rate': 1.6392665216610896e-05, 'rewards/chosen': -1.0627195835113525, 'rewards/rejected': -13.333623886108398, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 12.270904541015625, 'logps/chosen': -571.6417846679688, 'logps/rejected': -396.4333190917969, 'logits/chosen': -0.742774486541748, 'logits/rejected': -0.682289719581604, 'epoch': 0.33}
+[c55:0]:{'loss': 0.7028, 'grad_norm': 46.25, 'learning_rate': 1.6271417692819396e-05, 'rewards/chosen': -2.231402635574341, 'rewards/rejected': -9.978578567504883, 'rewards/accuracies': 0.879687488079071, 'rewards/margins': 7.747176170349121, 'logps/chosen': -580.9927978515625, 'logps/rejected': -351.54241943359375, 'logits/chosen': -0.6731604337692261, 'logits/rejected': -0.6116909980773926, 'epoch': 0.34}[c55:0]:
+[c55:0]:{'loss': 0.2598, 'grad_norm': 64.0, 'learning_rate': 1.6150170169027896e-05, 'rewards/chosen': -1.8770557641983032, 'rewards/rejected': -13.658520698547363, 'rewards/accuracies': 0.895312488079071, 'rewards/margins': 11.781465530395508, 'logps/chosen': -603.5892944335938, 'logps/rejected': -424.4418029785156, 'logits/chosen': -0.6355255842208862, 'logits/rejected': -0.5644263625144958, 'epoch': 0.34}
+[c55:0]:{'loss': 0.2964, 'grad_norm': 161.0, 'learning_rate': 1.6028922645236396e-05, 'rewards/chosen': -1.2300231456756592, 'rewards/rejected': -7.04700231552124, 'rewards/accuracies': 0.8921874761581421, 'rewards/margins': 5.816978931427002, 'logps/chosen': -587.2733154296875, 'logps/rejected': -339.45001220703125, 'logits/chosen': -0.6675341725349426, 'logits/rejected': -0.5925819277763367, 'epoch': 0.35}
+[c55:0]:{'eval_loss': 0.30273663997650146, 'eval_runtime': 18.2903, 'eval_samples_per_second': 71.076, 'eval_steps_per_second': 8.912, 'eval_rewards/chosen': -0.6551958918571472, 'eval_rewards/rejected': -6.353639125823975, 'eval_rewards/accuracies': 0.8803681135177612, 'eval_rewards/margins': 5.69844388961792, 'eval_logps/chosen': -569.6945190429688, 'eval_logps/rejected': -343.5188903808594, 'eval_logits/chosen': -0.7571133375167847, 'eval_logits/rejected': -0.6817830801010132, 'epoch': 0.35}
+[c55:0]:{'loss': 0.2813, 'grad_norm': 46.25, 'learning_rate': 1.5907675121444896e-05, 'rewards/chosen': -0.5187518000602722, 'rewards/rejected': -8.420969009399414, 'rewards/accuracies': 0.885937511920929, 'rewards/margins': 7.90221643447876, 'logps/chosen': -575.6392211914062, 'logps/rejected': -421.5665588378906, 'logits/chosen': -0.795535683631897, 'logits/rejected': -0.7340630888938904, 'epoch': 0.35}
+[c55:0]:{'loss': 0.2245, 'grad_norm': 47.75, 'learning_rate': 1.5786427597653396e-05, 'rewards/chosen': -0.6309510469436646, 'rewards/rejected': -6.8647871017456055, 'rewards/accuracies': 0.9007812738418579, 'rewards/margins': 6.233836650848389, 'logps/chosen': -555.8828125, 'logps/rejected': -342.984375, 'logits/chosen': -0.6234914064407349, 'logits/rejected': -0.5697746276855469, 'epoch': 0.36}
+[c55:0]:{'loss': 0.2685, 'grad_norm': 84.0, 'learning_rate': 1.5665180073861895e-05, 'rewards/chosen': -0.54327392578125, 'rewards/rejected': -6.580630302429199, 'rewards/accuracies': 0.890625, 'rewards/margins': 6.037356376647949, 'logps/chosen': -569.2821044921875, 'logps/rejected': -327.8368225097656, 'logits/chosen': -0.6927198171615601, 'logits/rejected': -0.6086755394935608, 'epoch': 0.36}
+[c55:0]:{'loss': 0.33, 'grad_norm': 50.75, 'learning_rate': 1.5543932550070392e-05, 'rewards/chosen': 0.04230407625436783, 'rewards/rejected': -6.18019962310791, 'rewards/accuracies': 0.890625, 'rewards/margins': 6.222503662109375, 'logps/chosen': -543.779052734375, 'logps/rejected': -339.6365661621094, 'logits/chosen': -0.7891892790794373, 'logits/rejected': -0.7101091146469116, 'epoch': 0.37}
+[c55:0]:{'loss': 0.268, 'grad_norm': 87.5, 'learning_rate': 1.5422685026278892e-05, 'rewards/chosen': 0.6944355964660645, 'rewards/rejected': -6.334821701049805, 'rewards/accuracies': 0.8882812261581421, 'rewards/margins': 7.029257297515869, 'logps/chosen': -601.754150390625, 'logps/rejected': -326.66619873046875, 'logits/chosen': -0.7890170812606812, 'logits/rejected': -0.6997145414352417, 'epoch': 0.37}
+[c55:0]:{'loss': 0.3267, 'grad_norm': 50.75, 'learning_rate': 1.530143750248739e-05, 'rewards/chosen': 0.5564940571784973, 'rewards/rejected': -7.3770928382873535, 'rewards/accuracies': 0.887499988079071, 'rewards/margins': 7.933585166931152, 'logps/chosen': -545.8416748046875, 'logps/rejected': -330.9230651855469, 'logits/chosen': -0.7247387766838074, 'logits/rejected': -0.6341028213500977, 'epoch': 0.38}
+[c55:0]:{'loss': 0.2985, 'grad_norm': 80.0, 'learning_rate': 1.5180189978695892e-05, 'rewards/chosen': 0.9377204775810242, 'rewards/rejected': -6.047163963317871, 'rewards/accuracies': 0.889843761920929, 'rewards/margins': 6.984884738922119, 'logps/chosen': -569.2843017578125, 'logps/rejected': -337.03338623046875, 'logits/chosen': -0.8116706609725952, 'logits/rejected': -0.7408008575439453, 'epoch': 0.38}
+[c55:0]:{'loss': 1.4888, 'grad_norm': 56.5, 'learning_rate': 1.5058942454904391e-05, 'rewards/chosen': -1.2906811237335205, 'rewards/rejected': -7.008480072021484, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 5.717799186706543, 'logps/chosen': -600.9229736328125, 'logps/rejected': -361.59051513671875, 'logits/chosen': -0.6783687472343445, 'logits/rejected': -0.6254801750183105, 'epoch': 0.39}
+[c55:0]:{'loss': 0.2856, 'grad_norm': 126.5, 'learning_rate': 1.4937694931112888e-05, 'rewards/chosen': -1.1031615734100342, 'rewards/rejected': -7.079634189605713, 'rewards/accuracies': 0.8812500238418579, 'rewards/margins': 5.976473331451416, 'logps/chosen': -609.1998901367188, 'logps/rejected': -350.84381103515625, 'logits/chosen': -0.6339153051376343, 'logits/rejected': -0.6253286004066467, 'epoch': 0.39}
+[c55:0]:{'loss': 0.2568, 'grad_norm': 68.0, 'learning_rate': 1.4816447407321388e-05, 'rewards/chosen': -0.6529954671859741, 'rewards/rejected': -7.0320611000061035, 'rewards/accuracies': 0.90625, 'rewards/margins': 6.37906551361084, 'logps/chosen': -591.2816162109375, 'logps/rejected': -376.2562255859375, 'logits/chosen': -0.706874430179596, 'logits/rejected': -0.6671627163887024, 'epoch': 0.4}
+[c55:0]:{'eval_loss': 0.2813927233219147, 'eval_runtime': 18.4516, 'eval_samples_per_second': 70.455, 'eval_steps_per_second': 8.834, 'eval_rewards/chosen': -0.7291024923324585, 'eval_rewards/rejected': -6.795603275299072, 'eval_rewards/accuracies': 0.8949386477470398, 'eval_rewards/margins': 6.066501140594482, 'eval_logps/chosen': -569.9822998046875, 'eval_logps/rejected': -345.2396545410156, 'eval_logits/chosen': -0.6940416097640991, 'eval_logits/rejected': -0.614804744720459, 'epoch': 0.4}
+[c55:0]:{'loss': 0.2709, 'grad_norm': 50.0, 'learning_rate': 1.4695199883529888e-05, 'rewards/chosen': -0.7229917049407959, 'rewards/rejected': -11.034460067749023, 'rewards/accuracies': 0.90234375, 'rewards/margins': 10.311468124389648, 'logps/chosen': -583.2474365234375, 'logps/rejected': -356.2137451171875, 'logits/chosen': -0.6857444047927856, 'logits/rejected': -0.6240359544754028, 'epoch': 0.4}
+[c55:0]:{'loss': 0.2542, 'grad_norm': 51.75, 'learning_rate': 1.4573952359738386e-05, 'rewards/chosen': -0.7018740177154541, 'rewards/rejected': -6.808371543884277, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 6.106497287750244, 'logps/chosen': -559.1217041015625, 'logps/rejected': -325.20928955078125, 'logits/chosen': -0.6762105822563171, 'logits/rejected': -0.5872897505760193, 'epoch': 0.41}
+[c55:0]:{'loss': 0.7563, 'grad_norm': 92.0, 'learning_rate': 1.4452704835946886e-05, 'rewards/chosen': -0.8469377756118774, 'rewards/rejected': -6.627601623535156, 'rewards/accuracies': 0.8984375, 'rewards/margins': 5.780664443969727, 'logps/chosen': -593.1019287109375, 'logps/rejected': -359.93267822265625, 'logits/chosen': -0.6550998687744141, 'logits/rejected': -0.6552215814590454, 'epoch': 0.41}
+[c55:0]:{'loss': 0.2726, 'grad_norm': 49.5, 'learning_rate': 1.4331457312155386e-05, 'rewards/chosen': -0.32628923654556274, 'rewards/rejected': -7.732049465179443, 'rewards/accuracies': 0.8890625238418579, 'rewards/margins': 7.405759334564209, 'logps/chosen': -584.6876831054688, 'logps/rejected': -379.33563232421875, 'logits/chosen': -0.5802801847457886, 'logits/rejected': -0.5490670800209045, 'epoch': 0.42}
+[c55:0]:{'loss': 0.2971, 'grad_norm': 57.75, 'learning_rate': 1.4210209788363884e-05, 'rewards/chosen': -0.3666039705276489, 'rewards/rejected': -6.143343448638916, 'rewards/accuracies': 0.8882812261581421, 'rewards/margins': 5.776739120483398, 'logps/chosen': -582.2455444335938, 'logps/rejected': -332.46746826171875, 'logits/chosen': -0.7309190034866333, 'logits/rejected': -0.6633928418159485, 'epoch': 0.42}
+[c55:0]:{'loss': 1.3807, 'grad_norm': 25.125, 'learning_rate': 1.4088962264572384e-05, 'rewards/chosen': -1.8568092584609985, 'rewards/rejected': -8.057397842407227, 'rewards/accuracies': 0.89453125, 'rewards/margins': 6.200588226318359, 'logps/chosen': -586.2005004882812, 'logps/rejected': -337.6799011230469, 'logits/chosen': -0.6250690817832947, 'logits/rejected': -0.549223780632019, 'epoch': 0.43}
+[c55:0]:{'loss': 0.2443, 'grad_norm': 45.75, 'learning_rate': 1.3967714740780884e-05, 'rewards/chosen': -0.49623018503189087, 'rewards/rejected': -14.717752456665039, 'rewards/accuracies': 0.891406238079071, 'rewards/margins': 14.221521377563477, 'logps/chosen': -546.8197631835938, 'logps/rejected': -435.65472412109375, 'logits/chosen': -0.6451324224472046, 'logits/rejected': -0.5868552923202515, 'epoch': 0.43}
+[c55:0]:{'loss': 0.4478, 'grad_norm': 15744.0, 'learning_rate': 1.3846467216989384e-05, 'rewards/chosen': -0.5473260879516602, 'rewards/rejected': -9.268430709838867, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 8.721105575561523, 'logps/chosen': -560.2506103515625, 'logps/rejected': -425.34307861328125, 'logits/chosen': -0.6811283230781555, 'logits/rejected': -0.5439852476119995, 'epoch': 0.44}
+[c55:0]:{'loss': 0.2676, 'grad_norm': 75.0, 'learning_rate': 1.3725219693197882e-05, 'rewards/chosen': -0.6994462609291077, 'rewards/rejected': -9.032251358032227, 'rewards/accuracies': 0.9039062261581421, 'rewards/margins': 8.332804679870605, 'logps/chosen': -557.4138793945312, 'logps/rejected': -343.2582092285156, 'logits/chosen': -0.7550597786903381, 'logits/rejected': -0.6696916818618774, 'epoch': 0.44}
+[c55:0]:{'loss': 0.2793, 'grad_norm': 49.5, 'learning_rate': 1.3603972169406382e-05, 'rewards/chosen': -0.7002522349357605, 'rewards/rejected': -12.704395294189453, 'rewards/accuracies': 0.88671875, 'rewards/margins': 12.004144668579102, 'logps/chosen': -585.4219970703125, 'logps/rejected': -371.46173095703125, 'logits/chosen': -0.725136399269104, 'logits/rejected': -0.7063146829605103, 'epoch': 0.45}
+[c55:0]:{'eval_loss': 0.2893059253692627, 'eval_runtime': 18.2593, 'eval_samples_per_second': 71.197, 'eval_steps_per_second': 8.927, 'eval_rewards/chosen': -0.7743710875511169, 'eval_rewards/rejected': -6.967982292175293, 'eval_rewards/accuracies': 0.8811349868774414, 'eval_rewards/margins': 6.193611145019531, 'eval_logps/chosen': -570.1585693359375, 'eval_logps/rejected': -345.9107971191406, 'eval_logits/chosen': -0.7817195057868958, 'eval_logits/rejected': -0.6935126185417175, 'epoch': 0.45}
+[c55:0]:{'loss': 0.283, 'grad_norm': 52.25, 'learning_rate': 1.3482724645614882e-05, 'rewards/chosen': -0.5828384160995483, 'rewards/rejected': -12.57085132598877, 'rewards/accuracies': 0.890625, 'rewards/margins': 11.988012313842773, 'logps/chosen': -566.833984375, 'logps/rejected': -439.04840087890625, 'logits/chosen': -0.8089162707328796, 'logits/rejected': -0.7625946402549744, 'epoch': 0.45}
+[c55:0]:{'loss': 0.2495, 'grad_norm': 35.0, 'learning_rate': 1.3361477121823381e-05, 'rewards/chosen': -0.0745694637298584, 'rewards/rejected': -13.062173843383789, 'rewards/accuracies': 0.8999999761581421, 'rewards/margins': 12.987604141235352, 'logps/chosen': -545.1655883789062, 'logps/rejected': -427.969482421875, 'logits/chosen': -0.8480262756347656, 'logits/rejected': -0.7711483240127563, 'epoch': 0.46}
+[c55:0]:{'loss': 1.5153, 'grad_norm': 44.5, 'learning_rate': 1.324022959803188e-05, 'rewards/chosen': -0.7518453001976013, 'rewards/rejected': -5.694246292114258, 'rewards/accuracies': 0.890625, 'rewards/margins': 4.942400932312012, 'logps/chosen': -573.3799438476562, 'logps/rejected': -338.727294921875, 'logits/chosen': -0.8262484669685364, 'logits/rejected': -0.7864941358566284, 'epoch': 0.46}
+[c55:0]:{'loss': 0.282, 'grad_norm': 45.5, 'learning_rate': 1.3118982074240378e-05, 'rewards/chosen': 0.5689836144447327, 'rewards/rejected': -5.553336143493652, 'rewards/accuracies': 0.8929687738418579, 'rewards/margins': 6.122320175170898, 'logps/chosen': -583.6304931640625, 'logps/rejected': -327.06756591796875, 'logits/chosen': -0.7087189555168152, 'logits/rejected': -0.7087382078170776, 'epoch': 0.47}
+[c55:0]:{'loss': 0.2587, 'grad_norm': 40.25, 'learning_rate': 1.2997734550448876e-05, 'rewards/chosen': -0.2434055358171463, 'rewards/rejected': -11.872283935546875, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 11.628877639770508, 'logps/chosen': -601.0581665039062, 'logps/rejected': -401.779541015625, 'logits/chosen': -0.7001453638076782, 'logits/rejected': -0.6315244436264038, 'epoch': 0.47}
+[c55:0]:{'loss': 0.2942, 'grad_norm': 67.0, 'learning_rate': 1.2876487026657376e-05, 'rewards/chosen': -0.8142517805099487, 'rewards/rejected': -6.9142746925354, 'rewards/accuracies': 0.914843738079071, 'rewards/margins': 6.100022315979004, 'logps/chosen': -597.4825439453125, 'logps/rejected': -373.89288330078125, 'logits/chosen': -0.6394972205162048, 'logits/rejected': -0.5745033025741577, 'epoch': 0.48}
+[c55:0]:{'loss': 1.8138, 'grad_norm': 57.0, 'learning_rate': 1.2755239502865876e-05, 'rewards/chosen': -2.463278293609619, 'rewards/rejected': -10.128157615661621, 'rewards/accuracies': 0.893750011920929, 'rewards/margins': 7.664878845214844, 'logps/chosen': -587.8551025390625, 'logps/rejected': -377.9417419433594, 'logits/chosen': -0.6894325613975525, 'logits/rejected': -0.6319006085395813, 'epoch': 0.48}
+[c55:0]:{'loss': 0.2384, 'grad_norm': 60.25, 'learning_rate': 1.2633991979074376e-05, 'rewards/chosen': -0.8117713928222656, 'rewards/rejected': -7.0156755447387695, 'rewards/accuracies': 0.90625, 'rewards/margins': 6.203904151916504, 'logps/chosen': -613.9751586914062, 'logps/rejected': -347.0933532714844, 'logits/chosen': -0.709885835647583, 'logits/rejected': -0.6900768876075745, 'epoch': 0.49}
+[c55:0]:{'loss': 0.2457, 'grad_norm': 54.0, 'learning_rate': 1.2512744455282874e-05, 'rewards/chosen': -0.4059697985649109, 'rewards/rejected': -6.230770111083984, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 5.824800491333008, 'logps/chosen': -562.9520263671875, 'logps/rejected': -333.5160217285156, 'logits/chosen': -0.7203587293624878, 'logits/rejected': -0.6656541228294373, 'epoch': 0.49}
+[c55:0]:{'loss': 2.6909, 'grad_norm': 64000.0, 'learning_rate': 1.2391496931491374e-05, 'rewards/chosen': -2.826129198074341, 'rewards/rejected': -6.919806480407715, 'rewards/accuracies': 0.9046875238418579, 'rewards/margins': 4.093677997589111, 'logps/chosen': -666.0780029296875, 'logps/rejected': -335.4725036621094, 'logits/chosen': -0.679917573928833, 'logits/rejected': -0.6584351062774658, 'epoch': 0.49}
+[c55:0]:{'eval_loss': 0.2801514267921448, 'eval_runtime': 18.2432, 'eval_samples_per_second': 71.26, 'eval_steps_per_second': 8.935, 'eval_rewards/chosen': -1.0070672035217285, 'eval_rewards/rejected': -6.7726593017578125, 'eval_rewards/accuracies': 0.8888036608695984, 'eval_rewards/margins': 5.765592098236084, 'eval_logps/chosen': -571.0645141601562, 'eval_logps/rejected': -345.1502990722656, 'eval_logits/chosen': -0.7063173055648804, 'eval_logits/rejected': -0.6423501968383789, 'epoch': 0.49}
+[c55:0]:{'loss': 0.2438, 'grad_norm': 40.25, 'learning_rate': 1.2270249407699874e-05, 'rewards/chosen': 0.45644426345825195, 'rewards/rejected': -7.300412178039551, 'rewards/accuracies': 0.9078124761581421, 'rewards/margins': 7.7568559646606445, 'logps/chosen': -575.505126953125, 'logps/rejected': -317.50555419921875, 'logits/chosen': -0.7565752863883972, 'logits/rejected': -0.6965365409851074, 'epoch': 0.5}
+[c55:0]:{'loss': 0.2661, 'grad_norm': 21.5, 'learning_rate': 1.2149001883908372e-05, 'rewards/chosen': -0.5636190176010132, 'rewards/rejected': -8.708271026611328, 'rewards/accuracies': 0.89453125, 'rewards/margins': 8.144652366638184, 'logps/chosen': -576.1864013671875, 'logps/rejected': -413.307373046875, 'logits/chosen': -0.662664532661438, 'logits/rejected': -0.6616520285606384, 'epoch': 0.5}
+[c55:0]:{'loss': 0.1891, 'grad_norm': 51.75, 'learning_rate': 1.2027754360116872e-05, 'rewards/chosen': 0.3673078417778015, 'rewards/rejected': -6.886412620544434, 'rewards/accuracies': 0.917187511920929, 'rewards/margins': 7.253720283508301, 'logps/chosen': -591.1236572265625, 'logps/rejected': -340.8327331542969, 'logits/chosen': -0.6231632232666016, 'logits/rejected': -0.5226699709892273, 'epoch': 0.51}
+[c55:0]:{'loss': 0.2386, 'grad_norm': 50.0, 'learning_rate': 1.1906506836325372e-05, 'rewards/chosen': 0.019253773614764214, 'rewards/rejected': -6.989477634429932, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 7.008730888366699, 'logps/chosen': -587.1722412109375, 'logps/rejected': -362.5877685546875, 'logits/chosen': -0.530889630317688, 'logits/rejected': -0.5024747252464294, 'epoch': 0.51}
+[c55:0]:{'loss': 0.2632, 'grad_norm': 39.25, 'learning_rate': 1.1785259312533872e-05, 'rewards/chosen': -0.18092603981494904, 'rewards/rejected': -6.228806018829346, 'rewards/accuracies': 0.893750011920929, 'rewards/margins': 6.047879219055176, 'logps/chosen': -588.614501953125, 'logps/rejected': -331.6248779296875, 'logits/chosen': -0.5415300130844116, 'logits/rejected': -0.49071383476257324, 'epoch': 0.52}
+[c55:0]:{'loss': 0.2816, 'grad_norm': 58.5, 'learning_rate': 1.166401178874237e-05, 'rewards/chosen': -0.15716145932674408, 'rewards/rejected': -6.0516815185546875, 'rewards/accuracies': 0.885937511920929, 'rewards/margins': 5.8945207595825195, 'logps/chosen': -552.003173828125, 'logps/rejected': -328.8538513183594, 'logits/chosen': -0.6276730298995972, 'logits/rejected': -0.531430184841156, 'epoch': 0.52}
+[c55:0]:{'loss': 2.723, 'grad_norm': 23.375, 'learning_rate': 1.154276426495087e-05, 'rewards/chosen': -0.02214876376092434, 'rewards/rejected': -4.911024570465088, 'rewards/accuracies': 0.8984375, 'rewards/margins': 4.888875484466553, 'logps/chosen': -555.2664794921875, 'logps/rejected': -359.44439697265625, 'logits/chosen': -0.7788991928100586, 'logits/rejected': -0.6654037833213806, 'epoch': 0.53}
+[c55:0]:{'loss': 0.7465, 'grad_norm': 63.0, 'learning_rate': 1.142151674115937e-05, 'rewards/chosen': -0.07527337968349457, 'rewards/rejected': -5.528240203857422, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 5.452966690063477, 'logps/chosen': -589.8211669921875, 'logps/rejected': -369.2077331542969, 'logits/chosen': -0.7188527584075928, 'logits/rejected': -0.6967090964317322, 'epoch': 0.53}
+[c55:0]:{'loss': 0.2356, 'grad_norm': 56.5, 'learning_rate': 1.1300269217367866e-05, 'rewards/chosen': -0.5138992667198181, 'rewards/rejected': -6.212064266204834, 'rewards/accuracies': 0.909375011920929, 'rewards/margins': 5.698165416717529, 'logps/chosen': -578.523193359375, 'logps/rejected': -332.79351806640625, 'logits/chosen': -0.7492778301239014, 'logits/rejected': -0.7257035970687866, 'epoch': 0.54}
+[c55:0]:{'loss': 0.2941, 'grad_norm': 41.25, 'learning_rate': 1.1179021693576366e-05, 'rewards/chosen': -0.7487276792526245, 'rewards/rejected': -9.610506057739258, 'rewards/accuracies': 0.8882812261581421, 'rewards/margins': 8.861776351928711, 'logps/chosen': -568.5108642578125, 'logps/rejected': -373.87200927734375, 'logits/chosen': -0.7150954604148865, 'logits/rejected': -0.5811241865158081, 'epoch': 0.54}
+[c55:0]:{'eval_loss': 0.25935098528862, 'eval_runtime': 18.3606, 'eval_samples_per_second': 70.804, 'eval_steps_per_second': 8.878, 'eval_rewards/chosen': -0.6888777613639832, 'eval_rewards/rejected': -6.503417015075684, 'eval_rewards/accuracies': 0.9010736346244812, 'eval_rewards/margins': 5.814539909362793, 'eval_logps/chosen': -569.8256225585938, 'eval_logps/rejected': -344.10198974609375, 'eval_logits/chosen': -0.6751207113265991, 'eval_logits/rejected': -0.6048949360847473, 'epoch': 0.54}
+[c55:0]:{'loss': 0.2393, 'grad_norm': 55.25, 'learning_rate': 1.1057774169784866e-05, 'rewards/chosen': -0.7244824171066284, 'rewards/rejected': -6.593981742858887, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 5.869499206542969, 'logps/chosen': -583.1795654296875, 'logps/rejected': -337.88262939453125, 'logits/chosen': -0.6248541474342346, 'logits/rejected': -0.6070539355278015, 'epoch': 0.55}
+[c55:0]:{'loss': 0.271, 'grad_norm': 84.0, 'learning_rate': 1.0936526645993366e-05, 'rewards/chosen': -0.47320953011512756, 'rewards/rejected': -6.660579681396484, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 6.187369346618652, 'logps/chosen': -639.3597412109375, 'logps/rejected': -355.7694091796875, 'logits/chosen': -0.6220700740814209, 'logits/rejected': -0.6258728504180908, 'epoch': 0.55}
+[c55:0]:{'loss': 0.2421, 'grad_norm': 72.5, 'learning_rate': 1.0815279122201864e-05, 'rewards/chosen': -0.4072273373603821, 'rewards/rejected': -6.510627746582031, 'rewards/accuracies': 0.9046875238418579, 'rewards/margins': 6.103399753570557, 'logps/chosen': -601.177978515625, 'logps/rejected': -335.5321960449219, 'logits/chosen': -0.600452721118927, 'logits/rejected': -0.5841832756996155, 'epoch': 0.56}
+[c55:0]:{'loss': 1.8461, 'grad_norm': 53.5, 'learning_rate': 1.0694031598410364e-05, 'rewards/chosen': -1.86875319480896, 'rewards/rejected': -6.1627068519592285, 'rewards/accuracies': 0.8843749761581421, 'rewards/margins': 4.293953895568848, 'logps/chosen': -600.03173828125, 'logps/rejected': -334.8079528808594, 'logits/chosen': -0.6150492429733276, 'logits/rejected': -0.5737471580505371, 'epoch': 0.56}
+[c55:0]:{'loss': 0.2037, 'grad_norm': 40.25, 'learning_rate': 1.0572784074618864e-05, 'rewards/chosen': -0.2707095742225647, 'rewards/rejected': -7.0493292808532715, 'rewards/accuracies': 0.9125000238418579, 'rewards/margins': 6.778619289398193, 'logps/chosen': -567.8343505859375, 'logps/rejected': -332.047607421875, 'logits/chosen': -0.7437310814857483, 'logits/rejected': -0.6836347579956055, 'epoch': 0.57}
+[c55:0]:{'loss': 0.2221, 'grad_norm': 35.75, 'learning_rate': 1.0451536550827362e-05, 'rewards/chosen': -0.6215806603431702, 'rewards/rejected': -7.0832929611206055, 'rewards/accuracies': 0.9156249761581421, 'rewards/margins': 6.461712837219238, 'logps/chosen': -600.6267700195312, 'logps/rejected': -329.5519104003906, 'logits/chosen': -0.7098701596260071, 'logits/rejected': -0.6716099977493286, 'epoch': 0.57}
+[c55:0]:{'loss': 0.2452, 'grad_norm': 45.75, 'learning_rate': 1.0330289027035862e-05, 'rewards/chosen': 0.36736494302749634, 'rewards/rejected': -6.679232597351074, 'rewards/accuracies': 0.907031238079071, 'rewards/margins': 7.046597957611084, 'logps/chosen': -589.125, 'logps/rejected': -358.1959533691406, 'logits/chosen': -0.6901477575302124, 'logits/rejected': -0.6332571506500244, 'epoch': 0.58}
+[c55:0]:{'loss': 0.2706, 'grad_norm': 39.25, 'learning_rate': 1.0209041503244362e-05, 'rewards/chosen': -0.7779836654663086, 'rewards/rejected': -6.443850517272949, 'rewards/accuracies': 0.8984375, 'rewards/margins': 5.665867328643799, 'logps/chosen': -545.3394775390625, 'logps/rejected': -329.293701171875, 'logits/chosen': -0.7269548177719116, 'logits/rejected': -0.6106295585632324, 'epoch': 0.58}
+[c55:0]:{'loss': 0.2943, 'grad_norm': 24064.0, 'learning_rate': 1.0087793979452862e-05, 'rewards/chosen': -1.3042349815368652, 'rewards/rejected': -7.349421501159668, 'rewards/accuracies': 0.9125000238418579, 'rewards/margins': 6.045186996459961, 'logps/chosen': -591.1383056640625, 'logps/rejected': -371.91656494140625, 'logits/chosen': -0.5751966238021851, 'logits/rejected': -0.49784499406814575, 'epoch': 0.59}
+[c55:0]:{'loss': 0.5298, 'grad_norm': 51.0, 'learning_rate': 9.96654645566136e-06, 'rewards/chosen': -1.1316568851470947, 'rewards/rejected': -6.676128387451172, 'rewards/accuracies': 0.8921874761581421, 'rewards/margins': 5.544471740722656, 'logps/chosen': -615.2213134765625, 'logps/rejected': -384.4615783691406, 'logits/chosen': -0.6623655557632446, 'logits/rejected': -0.5948209762573242, 'epoch': 0.59}
+[c55:0]:{'eval_loss': 0.2578168511390686, 'eval_runtime': 18.266, 'eval_samples_per_second': 71.171, 'eval_steps_per_second': 8.924, 'eval_rewards/chosen': -1.1207743883132935, 'eval_rewards/rejected': -6.931268215179443, 'eval_rewards/accuracies': 0.8980061411857605, 'eval_rewards/margins': 5.8104939460754395, 'eval_logps/chosen': -571.5072631835938, 'eval_logps/rejected': -345.767822265625, 'eval_logits/chosen': -0.6357173919677734, 'eval_logits/rejected': -0.5691582560539246, 'epoch': 0.59}
+[c55:0]:{'loss': 0.2835, 'grad_norm': 76.0, 'learning_rate': 9.845298931869858e-06, 'rewards/chosen': -0.8243061900138855, 'rewards/rejected': -6.857187747955322, 'rewards/accuracies': 0.8999999761581421, 'rewards/margins': 6.032882213592529, 'logps/chosen': -590.6878662109375, 'logps/rejected': -336.01739501953125, 'logits/chosen': -0.7497402429580688, 'logits/rejected': -0.7056177854537964, 'epoch': 0.6}
+[c55:0]:{'loss': 0.2473, 'grad_norm': 48.0, 'learning_rate': 9.724051408078358e-06, 'rewards/chosen': -0.4042084813117981, 'rewards/rejected': -9.113738059997559, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 8.709529876708984, 'logps/chosen': -554.9052734375, 'logps/rejected': -372.8832092285156, 'logits/chosen': -0.6662241220474243, 'logits/rejected': -0.6333173513412476, 'epoch': 0.6}
+[c55:0]:{'loss': 0.2194, 'grad_norm': 48.75, 'learning_rate': 9.602803884286858e-06, 'rewards/chosen': -0.3906448185443878, 'rewards/rejected': -6.627722263336182, 'rewards/accuracies': 0.9085937738418579, 'rewards/margins': 6.237076759338379, 'logps/chosen': -562.8841552734375, 'logps/rejected': -323.3074951171875, 'logits/chosen': -0.6182655096054077, 'logits/rejected': -0.6284516453742981, 'epoch': 0.61}
+[c55:0]:{'loss': 0.2135, 'grad_norm': 54.5, 'learning_rate': 9.481556360495356e-06, 'rewards/chosen': -0.09227419644594193, 'rewards/rejected': -5.851326942443848, 'rewards/accuracies': 0.9078124761581421, 'rewards/margins': 5.759052753448486, 'logps/chosen': -578.995361328125, 'logps/rejected': -333.6424865722656, 'logits/chosen': -0.7151792645454407, 'logits/rejected': -0.6209444403648376, 'epoch': 0.61}
+[c55:0]:{'loss': 0.2547, 'grad_norm': 62.0, 'learning_rate': 9.360308836703856e-06, 'rewards/chosen': -0.5036978721618652, 'rewards/rejected': -6.600799560546875, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 6.09710168838501, 'logps/chosen': -588.2069091796875, 'logps/rejected': -355.05206298828125, 'logits/chosen': -0.6659225821495056, 'logits/rejected': -0.5782315731048584, 'epoch': 0.62}
+[c55:0]:{'loss': 0.277, 'grad_norm': 66.5, 'learning_rate': 9.239061312912356e-06, 'rewards/chosen': -0.36332687735557556, 'rewards/rejected': -9.12651252746582, 'rewards/accuracies': 0.8984375, 'rewards/margins': 8.763185501098633, 'logps/chosen': -594.2733154296875, 'logps/rejected': -373.51239013671875, 'logits/chosen': -0.5578974485397339, 'logits/rejected': -0.5219231247901917, 'epoch': 0.62}
+[c55:0]:{'loss': 0.2009, 'grad_norm': 46.0, 'learning_rate': 9.117813789120854e-06, 'rewards/chosen': -0.4222409725189209, 'rewards/rejected': -6.274941921234131, 'rewards/accuracies': 0.9125000238418579, 'rewards/margins': 5.852701187133789, 'logps/chosen': -541.6384887695312, 'logps/rejected': -306.19586181640625, 'logits/chosen': -0.6450812220573425, 'logits/rejected': -0.5751814246177673, 'epoch': 0.63}
+[c55:0]:{'loss': 1.4746, 'grad_norm': 55.0, 'learning_rate': 8.996566265329354e-06, 'rewards/chosen': -0.5177698135375977, 'rewards/rejected': -5.611490249633789, 'rewards/accuracies': 0.8984375, 'rewards/margins': 5.093720436096191, 'logps/chosen': -588.36083984375, 'logps/rejected': -355.6748046875, 'logits/chosen': -0.5896456241607666, 'logits/rejected': -0.4953064024448395, 'epoch': 0.63}
+[c55:0]:{'loss': 0.2304, 'grad_norm': 42.0, 'learning_rate': 8.875318741537852e-06, 'rewards/chosen': -0.5549185276031494, 'rewards/rejected': -7.689852237701416, 'rewards/accuracies': 0.9039062261581421, 'rewards/margins': 7.134932518005371, 'logps/chosen': -576.6171875, 'logps/rejected': -377.76556396484375, 'logits/chosen': -0.6114274263381958, 'logits/rejected': -0.5406880974769592, 'epoch': 0.64}
+[c55:0]:{'loss': 1.1013, 'grad_norm': 52.75, 'learning_rate': 8.754071217746352e-06, 'rewards/chosen': -0.7776139974594116, 'rewards/rejected': -6.076253890991211, 'rewards/accuracies': 0.9195312261581421, 'rewards/margins': 5.29863977432251, 'logps/chosen': -586.75146484375, 'logps/rejected': -346.9519348144531, 'logits/chosen': -0.6931048631668091, 'logits/rejected': -0.643296480178833, 'epoch': 0.64}
+[c55:0]:{'eval_loss': 0.24913877248764038, 'eval_runtime': 18.2182, 'eval_samples_per_second': 71.357, 'eval_steps_per_second': 8.947, 'eval_rewards/chosen': -0.7343345880508423, 'eval_rewards/rejected': -6.42832612991333, 'eval_rewards/accuracies': 0.9026073813438416, 'eval_rewards/margins': 5.693991661071777, 'eval_logps/chosen': -570.002685546875, 'eval_logps/rejected': -343.80963134765625, 'eval_logits/chosen': -0.6351441740989685, 'eval_logits/rejected': -0.5623676776885986, 'epoch': 0.64}
+[c55:0]:{'loss': 0.2392, 'grad_norm': 42.5, 'learning_rate': 8.632823693954852e-06, 'rewards/chosen': -0.7183846235275269, 'rewards/rejected': -7.570017337799072, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 6.851632595062256, 'logps/chosen': -594.2245483398438, 'logps/rejected': -378.4684143066406, 'logits/chosen': -0.6294767260551453, 'logits/rejected': -0.6124780774116516, 'epoch': 0.65}
+[c55:0]:{'loss': 0.2426, 'grad_norm': 57.0, 'learning_rate': 8.511576170163352e-06, 'rewards/chosen': -0.5338292121887207, 'rewards/rejected': -8.600199699401855, 'rewards/accuracies': 0.9007812738418579, 'rewards/margins': 8.06637191772461, 'logps/chosen': -597.4117431640625, 'logps/rejected': -376.3910217285156, 'logits/chosen': -0.6875845789909363, 'logits/rejected': -0.611205518245697, 'epoch': 0.65}
+[c55:0]:{'loss': 0.2358, 'grad_norm': 43.25, 'learning_rate': 8.39032864637185e-06, 'rewards/chosen': -0.42151007056236267, 'rewards/rejected': -6.450804233551025, 'rewards/accuracies': 0.8984375, 'rewards/margins': 6.029294013977051, 'logps/chosen': -564.724609375, 'logps/rejected': -317.824951171875, 'logits/chosen': -0.5790847539901733, 'logits/rejected': -0.49119406938552856, 'epoch': 0.66}
+[c55:0]:{'loss': 0.2708, 'grad_norm': 76.0, 'learning_rate': 8.26908112258035e-06, 'rewards/chosen': -0.9291265606880188, 'rewards/rejected': -6.71105432510376, 'rewards/accuracies': 0.8984375, 'rewards/margins': 5.781928062438965, 'logps/chosen': -599.5571899414062, 'logps/rejected': -339.5147399902344, 'logits/chosen': -0.6003859043121338, 'logits/rejected': -0.548041045665741, 'epoch': 0.66}
+[c55:0]:{'loss': 0.1977, 'grad_norm': 55.0, 'learning_rate': 8.147833598788848e-06, 'rewards/chosen': -0.8766066431999207, 'rewards/rejected': -7.173432350158691, 'rewards/accuracies': 0.913281261920929, 'rewards/margins': 6.296825408935547, 'logps/chosen': -601.2882080078125, 'logps/rejected': -341.3407287597656, 'logits/chosen': -0.6265000700950623, 'logits/rejected': -0.600678026676178, 'epoch': 0.67}
+[c55:0]:{'loss': 0.2678, 'grad_norm': 47.0, 'learning_rate': 8.026586074997348e-06, 'rewards/chosen': -0.7097808122634888, 'rewards/rejected': -6.387371063232422, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 5.677590370178223, 'logps/chosen': -557.8050537109375, 'logps/rejected': -320.3271179199219, 'logits/chosen': -0.6384739875793457, 'logits/rejected': -0.56879061460495, 'epoch': 0.67}
+[c55:0]:{'loss': 0.258, 'grad_norm': 81.0, 'learning_rate': 7.905338551205848e-06, 'rewards/chosen': -0.739669144153595, 'rewards/rejected': -7.48736572265625, 'rewards/accuracies': 0.8984375, 'rewards/margins': 6.7476959228515625, 'logps/chosen': -574.1710815429688, 'logps/rejected': -349.07080078125, 'logits/chosen': -0.5573348999023438, 'logits/rejected': -0.5113740563392639, 'epoch': 0.68}
+[c55:0]:{'loss': 0.2459, 'grad_norm': 58.75, 'learning_rate': 7.784091027414346e-06, 'rewards/chosen': -0.5408552885055542, 'rewards/rejected': -9.470911979675293, 'rewards/accuracies': 0.9007812738418579, 'rewards/margins': 8.930055618286133, 'logps/chosen': -540.8712158203125, 'logps/rejected': -380.53094482421875, 'logits/chosen': -0.632848858833313, 'logits/rejected': -0.5415729880332947, 'epoch': 0.68}
+[c55:0]:{'loss': 0.2181, 'grad_norm': 55.75, 'learning_rate': 7.662843503622846e-06, 'rewards/chosen': -0.47677868604660034, 'rewards/rejected': -9.254570007324219, 'rewards/accuracies': 0.91015625, 'rewards/margins': 8.777790069580078, 'logps/chosen': -559.2257080078125, 'logps/rejected': -345.8473815917969, 'logits/chosen': -0.6979658603668213, 'logits/rejected': -0.6505337953567505, 'epoch': 0.69}
+[c55:0]:{'loss': 0.2491, 'grad_norm': 72.0, 'learning_rate': 7.541595979831346e-06, 'rewards/chosen': -0.6125649809837341, 'rewards/rejected': -6.124228477478027, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 5.511663913726807, 'logps/chosen': -541.4566040039062, 'logps/rejected': -322.5269775390625, 'logits/chosen': -0.630567729473114, 'logits/rejected': -0.6035361886024475, 'epoch': 0.69}
+[c55:0]:{'eval_loss': 0.2452491670846939, 'eval_runtime': 18.2513, 'eval_samples_per_second': 71.228, 'eval_steps_per_second': 8.931, 'eval_rewards/chosen': -0.7273488640785217, 'eval_rewards/rejected': -6.341346263885498, 'eval_rewards/accuracies': 0.9056748747825623, 'eval_rewards/margins': 5.613996982574463, 'eval_logps/chosen': -569.9754638671875, 'eval_logps/rejected': -343.47100830078125, 'eval_logits/chosen': -0.6149819493293762, 'eval_logits/rejected': -0.5413612127304077, 'epoch': 0.69}
+[c55:0]:{'loss': 0.26, 'grad_norm': 50.75, 'learning_rate': 7.420348456039845e-06, 'rewards/chosen': -0.6416806578636169, 'rewards/rejected': -9.274287223815918, 'rewards/accuracies': 0.8921874761581421, 'rewards/margins': 8.632606506347656, 'logps/chosen': -567.1441650390625, 'logps/rejected': -358.48089599609375, 'logits/chosen': -0.5543266534805298, 'logits/rejected': -0.49040013551712036, 'epoch': 0.7}
+[c55:0]:{'loss': 0.2414, 'grad_norm': 40.0, 'learning_rate': 7.299100932248343e-06, 'rewards/chosen': -0.7996171712875366, 'rewards/rejected': -6.396491050720215, 'rewards/accuracies': 0.903124988079071, 'rewards/margins': 5.596873760223389, 'logps/chosen': -556.7494506835938, 'logps/rejected': -320.17169189453125, 'logits/chosen': -0.62741619348526, 'logits/rejected': -0.5625659823417664, 'epoch': 0.7}
+[c55:0]:{'loss': 0.2601, 'grad_norm': 65.5, 'learning_rate': 7.177853408456842e-06, 'rewards/chosen': -0.8714873194694519, 'rewards/rejected': -6.443389892578125, 'rewards/accuracies': 0.90234375, 'rewards/margins': 5.571902275085449, 'logps/chosen': -588.5975952148438, 'logps/rejected': -333.16961669921875, 'logits/chosen': -0.6478101015090942, 'logits/rejected': -0.6106408834457397, 'epoch': 0.71}
+[c55:0]:{'loss': 0.2974, 'grad_norm': 65.5, 'learning_rate': 7.056605884665342e-06, 'rewards/chosen': -0.6832830905914307, 'rewards/rejected': -6.312353610992432, 'rewards/accuracies': 0.8890625238418579, 'rewards/margins': 5.629070281982422, 'logps/chosen': -600.9539794921875, 'logps/rejected': -344.56121826171875, 'logits/chosen': -0.6584548354148865, 'logits/rejected': -0.5750455856323242, 'epoch': 0.71}
+[c55:0]:{'loss': 0.26, 'grad_norm': 33.75, 'learning_rate': 6.935358360873841e-06, 'rewards/chosen': -0.6810413599014282, 'rewards/rejected': -6.078461647033691, 'rewards/accuracies': 0.891406238079071, 'rewards/margins': 5.397420406341553, 'logps/chosen': -560.486572265625, 'logps/rejected': -329.1331481933594, 'logits/chosen': -0.6341978907585144, 'logits/rejected': -0.5670490264892578, 'epoch': 0.72}
+[c55:0]:{'loss': 0.2447, 'grad_norm': 59.0, 'learning_rate': 6.814110837082341e-06, 'rewards/chosen': -0.4193476736545563, 'rewards/rejected': -6.018388748168945, 'rewards/accuracies': 0.90234375, 'rewards/margins': 5.599040985107422, 'logps/chosen': -577.9700927734375, 'logps/rejected': -319.6180419921875, 'logits/chosen': -0.6500004529953003, 'logits/rejected': -0.615612804889679, 'epoch': 0.72}
+[c55:0]:{'loss': 0.2239, 'grad_norm': 59.0, 'learning_rate': 6.69286331329084e-06, 'rewards/chosen': -0.3986450731754303, 'rewards/rejected': -7.636307716369629, 'rewards/accuracies': 0.9039062261581421, 'rewards/margins': 7.237663269042969, 'logps/chosen': -573.0517578125, 'logps/rejected': -377.1355895996094, 'logits/chosen': -0.6377085447311401, 'logits/rejected': -0.5442582368850708, 'epoch': 0.73}
+[c55:0]:{'loss': 1.8818, 'grad_norm': 40.0, 'learning_rate': 6.57161578949934e-06, 'rewards/chosen': -0.35485535860061646, 'rewards/rejected': -4.31691837310791, 'rewards/accuracies': 0.897656261920929, 'rewards/margins': 3.9620628356933594, 'logps/chosen': -579.8465576171875, 'logps/rejected': -335.73565673828125, 'logits/chosen': -0.6501162648200989, 'logits/rejected': -0.5356000065803528, 'epoch': 0.73}
+[c55:0]:{'loss': 0.2561, 'grad_norm': 65.0, 'learning_rate': 6.450368265707839e-06, 'rewards/chosen': -0.18108142912387848, 'rewards/rejected': -5.681466579437256, 'rewards/accuracies': 0.8929687738418579, 'rewards/margins': 5.500385284423828, 'logps/chosen': -541.7724609375, 'logps/rejected': -319.4947204589844, 'logits/chosen': -0.5968133211135864, 'logits/rejected': -0.5368520021438599, 'epoch': 0.74}
+[c55:0]:{'loss': 0.235, 'grad_norm': 64.0, 'learning_rate': 6.329120741916337e-06, 'rewards/chosen': -0.16521055996418, 'rewards/rejected': -5.863524436950684, 'rewards/accuracies': 0.9078124761581421, 'rewards/margins': 5.6983137130737305, 'logps/chosen': -579.1146850585938, 'logps/rejected': -342.8007507324219, 'logits/chosen': -0.671999454498291, 'logits/rejected': -0.5983597040176392, 'epoch': 0.74}
+[c55:0]:{'eval_loss': 0.23267613351345062, 'eval_runtime': 18.2804, 'eval_samples_per_second': 71.114, 'eval_steps_per_second': 8.917, 'eval_rewards/chosen': -0.2812631130218506, 'eval_rewards/rejected': -5.9400200843811035, 'eval_rewards/accuracies': 0.9010736346244812, 'eval_rewards/margins': 5.658756732940674, 'eval_logps/chosen': -568.2385864257812, 'eval_logps/rejected': -341.9084167480469, 'eval_logits/chosen': -0.6414834260940552, 'eval_logits/rejected': -0.5696728825569153, 'epoch': 0.74}
+[c55:0]:{'loss': 0.2688, 'grad_norm': 83.5, 'learning_rate': 6.207873218124837e-06, 'rewards/chosen': -0.3668820559978485, 'rewards/rejected': -7.069698333740234, 'rewards/accuracies': 0.89453125, 'rewards/margins': 6.702816963195801, 'logps/chosen': -550.4180908203125, 'logps/rejected': -371.97418212890625, 'logits/chosen': -0.6019845008850098, 'logits/rejected': -0.5001555681228638, 'epoch': 0.75}
+[c55:0]:{'loss': 0.2466, 'grad_norm': 63.5, 'learning_rate': 6.086625694333336e-06, 'rewards/chosen': -0.2322266399860382, 'rewards/rejected': -6.972973823547363, 'rewards/accuracies': 0.8921874761581421, 'rewards/margins': 6.740746974945068, 'logps/chosen': -588.859375, 'logps/rejected': -344.17333984375, 'logits/chosen': -0.6725142598152161, 'logits/rejected': -0.6593679189682007, 'epoch': 0.75}
+[c55:0]:{'loss': 0.2428, 'grad_norm': 62.25, 'learning_rate': 5.965378170541836e-06, 'rewards/chosen': -0.0983048528432846, 'rewards/rejected': -6.545743465423584, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 6.447438716888428, 'logps/chosen': -585.8424682617188, 'logps/rejected': -370.54473876953125, 'logits/chosen': -0.6853536367416382, 'logits/rejected': -0.6138363480567932, 'epoch': 0.76}
+[c55:0]:{'loss': 0.2161, 'grad_norm': 27.875, 'learning_rate': 5.844130646750335e-06, 'rewards/chosen': -0.012198759242892265, 'rewards/rejected': -7.036050319671631, 'rewards/accuracies': 0.909375011920929, 'rewards/margins': 7.023850917816162, 'logps/chosen': -570.6926879882812, 'logps/rejected': -360.3362121582031, 'logits/chosen': -0.7198865413665771, 'logits/rejected': -0.6487752795219421, 'epoch': 0.76}
+[c55:0]:{'loss': 0.2115, 'grad_norm': 55.0, 'learning_rate': 5.722883122958835e-06, 'rewards/chosen': -0.09203474223613739, 'rewards/rejected': -6.068090915679932, 'rewards/accuracies': 0.9203125238418579, 'rewards/margins': 5.976056098937988, 'logps/chosen': -589.6889038085938, 'logps/rejected': -351.8415832519531, 'logits/chosen': -0.760664701461792, 'logits/rejected': -0.7048050165176392, 'epoch': 0.77}
+[c55:0]:{'loss': 0.2285, 'grad_norm': 48.0, 'learning_rate': 5.601635599167334e-06, 'rewards/chosen': -0.1861654818058014, 'rewards/rejected': -12.526187896728516, 'rewards/accuracies': 0.9164062738418579, 'rewards/margins': 12.3400239944458, 'logps/chosen': -550.7295532226562, 'logps/rejected': -391.0050048828125, 'logits/chosen': -0.6880393028259277, 'logits/rejected': -0.5863345861434937, 'epoch': 0.77}
+[c55:0]:{'loss': 0.2267, 'grad_norm': 51.0, 'learning_rate': 5.480388075375833e-06, 'rewards/chosen': -0.037940699607133865, 'rewards/rejected': -7.0569915771484375, 'rewards/accuracies': 0.914843738079071, 'rewards/margins': 7.019051551818848, 'logps/chosen': -579.9972534179688, 'logps/rejected': -372.3219299316406, 'logits/chosen': -0.6858315467834473, 'logits/rejected': -0.6489421129226685, 'epoch': 0.78}
+[c55:0]:{'loss': 0.2329, 'grad_norm': 43.25, 'learning_rate': 5.359140551584332e-06, 'rewards/chosen': -0.2724739909172058, 'rewards/rejected': -7.172122001647949, 'rewards/accuracies': 0.901562511920929, 'rewards/margins': 6.8996477127075195, 'logps/chosen': -549.0357666015625, 'logps/rejected': -374.74407958984375, 'logits/chosen': -0.6756025552749634, 'logits/rejected': -0.6052704453468323, 'epoch': 0.78}
+[c55:0]:{'loss': 0.2304, 'grad_norm': 76.0, 'learning_rate': 5.237893027792831e-06, 'rewards/chosen': -0.14567284286022186, 'rewards/rejected': -5.9881086349487305, 'rewards/accuracies': 0.909375011920929, 'rewards/margins': 5.84243631362915, 'logps/chosen': -597.4420166015625, 'logps/rejected': -341.3926696777344, 'logits/chosen': -0.6824920773506165, 'logits/rejected': -0.5979297161102295, 'epoch': 0.79}
+[c55:0]:{'loss': 0.583, 'grad_norm': 38.0, 'learning_rate': 5.116645504001331e-06, 'rewards/chosen': -0.3118579387664795, 'rewards/rejected': -6.4563446044921875, 'rewards/accuracies': 0.9046875238418579, 'rewards/margins': 6.144486427307129, 'logps/chosen': -562.11865234375, 'logps/rejected': -374.931884765625, 'logits/chosen': -0.6475610733032227, 'logits/rejected': -0.5878505706787109, 'epoch': 0.79}
+[c55:0]:{'eval_loss': 0.2319543957710266, 'eval_runtime': 18.3818, 'eval_samples_per_second': 70.722, 'eval_steps_per_second': 8.867, 'eval_rewards/chosen': -0.4056054651737213, 'eval_rewards/rejected': -6.205061912536621, 'eval_rewards/accuracies': 0.9010736346244812, 'eval_rewards/margins': 5.799455642700195, 'eval_logps/chosen': -568.7227783203125, 'eval_logps/rejected': -342.94036865234375, 'eval_logits/chosen': -0.6511328816413879, 'eval_logits/rejected': -0.579352080821991, 'epoch': 0.79}
+[c55:0]:{'loss': 0.2307, 'grad_norm': 51.75, 'learning_rate': 4.99539798020983e-06, 'rewards/chosen': -0.2732686400413513, 'rewards/rejected': -7.1808600425720215, 'rewards/accuracies': 0.903124988079071, 'rewards/margins': 6.907591342926025, 'logps/chosen': -566.6273803710938, 'logps/rejected': -373.3489074707031, 'logits/chosen': -0.6939021944999695, 'logits/rejected': -0.6303076148033142, 'epoch': 0.8}
+[c55:0]:{'loss': 0.2264, 'grad_norm': 23.5, 'learning_rate': 4.874150456418329e-06, 'rewards/chosen': -0.2309526950120926, 'rewards/rejected': -11.10285472869873, 'rewards/accuracies': 0.910937488079071, 'rewards/margins': 10.871902465820312, 'logps/chosen': -579.2280883789062, 'logps/rejected': -364.7756652832031, 'logits/chosen': -0.6484133005142212, 'logits/rejected': -0.6200224757194519, 'epoch': 0.8}
+[c55:0]:{'loss': 0.243, 'grad_norm': 61.25, 'learning_rate': 4.752902932626828e-06, 'rewards/chosen': -0.2780967354774475, 'rewards/rejected': -6.199972629547119, 'rewards/accuracies': 0.91015625, 'rewards/margins': 5.921875476837158, 'logps/chosen': -589.5335083007812, 'logps/rejected': -340.07281494140625, 'logits/chosen': -0.6694439649581909, 'logits/rejected': -0.5895115733146667, 'epoch': 0.81}
+[c55:0]:{'loss': 0.2313, 'grad_norm': 48.25, 'learning_rate': 4.631655408835328e-06, 'rewards/chosen': -0.313162624835968, 'rewards/rejected': -6.165208339691162, 'rewards/accuracies': 0.910937488079071, 'rewards/margins': 5.852046012878418, 'logps/chosen': -592.9116821289062, 'logps/rejected': -337.4669189453125, 'logits/chosen': -0.6093898415565491, 'logits/rejected': -0.5954740047454834, 'epoch': 0.81}
+[c55:0]:{'loss': 0.243, 'grad_norm': 51.5, 'learning_rate': 4.510407885043827e-06, 'rewards/chosen': -0.40957894921302795, 'rewards/rejected': -7.415927886962891, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 7.006349086761475, 'logps/chosen': -583.8427734375, 'logps/rejected': -333.45050048828125, 'logits/chosen': -0.6587278246879578, 'logits/rejected': -0.6298956871032715, 'epoch': 0.82}
+[c55:0]:{'loss': 1.3323, 'grad_norm': 13184.0, 'learning_rate': 4.389160361252327e-06, 'rewards/chosen': -0.3849886357784271, 'rewards/rejected': -4.913629055023193, 'rewards/accuracies': 0.901562511920929, 'rewards/margins': 4.528640270233154, 'logps/chosen': -575.7299194335938, 'logps/rejected': -345.2442321777344, 'logits/chosen': -0.6563283205032349, 'logits/rejected': -0.581383466720581, 'epoch': 0.82}
+[c55:0]:{'loss': 0.2186, 'grad_norm': 76.5, 'learning_rate': 4.267912837460825e-06, 'rewards/chosen': -0.3165988326072693, 'rewards/rejected': -6.145723819732666, 'rewards/accuracies': 0.8999999761581421, 'rewards/margins': 5.82912540435791, 'logps/chosen': -568.3684692382812, 'logps/rejected': -332.08709716796875, 'logits/chosen': -0.7102317214012146, 'logits/rejected': -0.6377209424972534, 'epoch': 0.83}
+[c55:0]:{'loss': 0.6095, 'grad_norm': 43.0, 'learning_rate': 4.146665313669325e-06, 'rewards/chosen': -0.8107585906982422, 'rewards/rejected': -6.321929931640625, 'rewards/accuracies': 0.914843738079071, 'rewards/margins': 5.511170864105225, 'logps/chosen': -602.7427978515625, 'logps/rejected': -336.2369689941406, 'logits/chosen': -0.6192544102668762, 'logits/rejected': -0.5486109256744385, 'epoch': 0.83}
+[c55:0]:{'loss': 2.7571, 'grad_norm': 62.5, 'learning_rate': 4.025417789877824e-06, 'rewards/chosen': -0.25497326254844666, 'rewards/rejected': -5.262659549713135, 'rewards/accuracies': 0.90234375, 'rewards/margins': 5.007686614990234, 'logps/chosen': -601.2523193359375, 'logps/rejected': -360.3771057128906, 'logits/chosen': -0.6369892954826355, 'logits/rejected': -0.5780271887779236, 'epoch': 0.84}
+[c55:0]:{'loss': 0.8862, 'grad_norm': 38.0, 'learning_rate': 3.904170266086323e-06, 'rewards/chosen': -0.29092198610305786, 'rewards/rejected': -5.712065696716309, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 5.421143531799316, 'logps/chosen': -591.5042114257812, 'logps/rejected': -340.5201110839844, 'logits/chosen': -0.6152938008308411, 'logits/rejected': -0.598641037940979, 'epoch': 0.84}
+[c55:0]:{'eval_loss': 0.2319243848323822, 'eval_runtime': 18.2697, 'eval_samples_per_second': 71.156, 'eval_steps_per_second': 8.922, 'eval_rewards/chosen': -0.4137800633907318, 'eval_rewards/rejected': -6.163972854614258, 'eval_rewards/accuracies': 0.9033742547035217, 'eval_rewards/margins': 5.750192642211914, 'eval_logps/chosen': -568.7545776367188, 'eval_logps/rejected': -342.7804260253906, 'eval_logits/chosen': -0.6362930536270142, 'eval_logits/rejected': -0.5651981234550476, 'epoch': 0.84}
+[c55:0]:{'loss': 0.2711, 'grad_norm': 42.0, 'learning_rate': 3.7829227422948225e-06, 'rewards/chosen': -0.4115997850894928, 'rewards/rejected': -6.100357532501221, 'rewards/accuracies': 0.891406238079071, 'rewards/margins': 5.68875789642334, 'logps/chosen': -541.7791748046875, 'logps/rejected': -328.9628601074219, 'logits/chosen': -0.6305440664291382, 'logits/rejected': -0.6603025197982788, 'epoch': 0.85}
+[c55:0]:{'loss': 0.233, 'grad_norm': 62.0, 'learning_rate': 3.661675218503322e-06, 'rewards/chosen': -0.42347773909568787, 'rewards/rejected': -6.358231544494629, 'rewards/accuracies': 0.889843761920929, 'rewards/margins': 5.934754371643066, 'logps/chosen': -551.2108154296875, 'logps/rejected': -340.3154602050781, 'logits/chosen': -0.6705220937728882, 'logits/rejected': -0.591639518737793, 'epoch': 0.85}
+[c55:0]:{'loss': 0.5373, 'grad_norm': 61.0, 'learning_rate': 3.5404276947118214e-06, 'rewards/chosen': -0.2877764403820038, 'rewards/rejected': -5.663711071014404, 'rewards/accuracies': 0.9046875238418579, 'rewards/margins': 5.375934600830078, 'logps/chosen': -552.3508911132812, 'logps/rejected': -350.75201416015625, 'logits/chosen': -0.6533156037330627, 'logits/rejected': -0.6173828840255737, 'epoch': 0.86}
+[c55:0]:{'loss': 1.6767, 'grad_norm': 40448.0, 'learning_rate': 3.41918017092032e-06, 'rewards/chosen': -0.2032172679901123, 'rewards/rejected': -4.422869682312012, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 4.2196526527404785, 'logps/chosen': -575.1817016601562, 'logps/rejected': -372.0775451660156, 'logits/chosen': -0.7033209204673767, 'logits/rejected': -0.6320317983627319, 'epoch': 0.86}
+[c55:0]:{'loss': 0.2729, 'grad_norm': 40.0, 'learning_rate': 3.2979326471288195e-06, 'rewards/chosen': 0.26705560088157654, 'rewards/rejected': -6.053488254547119, 'rewards/accuracies': 0.9039062261581421, 'rewards/margins': 6.320544242858887, 'logps/chosen': -624.2637939453125, 'logps/rejected': -337.4213562011719, 'logits/chosen': -0.6480724215507507, 'logits/rejected': -0.6361039876937866, 'epoch': 0.87}
+[c55:0]:{'loss': 0.2595, 'grad_norm': 40.5, 'learning_rate': 3.176685123337319e-06, 'rewards/chosen': -0.5413386821746826, 'rewards/rejected': -7.009429931640625, 'rewards/accuracies': 0.8984375, 'rewards/margins': 6.468091011047363, 'logps/chosen': -538.3670654296875, 'logps/rejected': -332.12042236328125, 'logits/chosen': -0.6242645978927612, 'logits/rejected': -0.5719627141952515, 'epoch': 0.87}
+[c55:0]:{'loss': 0.2307, 'grad_norm': 50.25, 'learning_rate': 3.0554375995458184e-06, 'rewards/chosen': -0.34717708826065063, 'rewards/rejected': -10.384404182434082, 'rewards/accuracies': 0.9085937738418579, 'rewards/margins': 10.037226676940918, 'logps/chosen': -588.7009887695312, 'logps/rejected': -380.11181640625, 'logits/chosen': -0.5836746096611023, 'logits/rejected': -0.5469798445701599, 'epoch': 0.88}
+[c55:0]:{'loss': 0.2179, 'grad_norm': 46.25, 'learning_rate': 2.9341900757543175e-06, 'rewards/chosen': -0.3031991720199585, 'rewards/rejected': -6.672391414642334, 'rewards/accuracies': 0.9085937738418579, 'rewards/margins': 6.369192600250244, 'logps/chosen': -592.0938720703125, 'logps/rejected': -343.8870849609375, 'logits/chosen': -0.6496321558952332, 'logits/rejected': -0.5699096322059631, 'epoch': 0.88}
+[c55:0]:{'loss': 0.2458, 'grad_norm': 67.5, 'learning_rate': 2.812942551962817e-06, 'rewards/chosen': -0.5211101174354553, 'rewards/rejected': -6.6264328956604, 'rewards/accuracies': 0.895312488079071, 'rewards/margins': 6.105322360992432, 'logps/chosen': -574.7384643554688, 'logps/rejected': -335.1128845214844, 'logits/chosen': -0.6394159197807312, 'logits/rejected': -0.5615227222442627, 'epoch': 0.89}
+[c55:0]:{'loss': 0.2369, 'grad_norm': 44.25, 'learning_rate': 2.6916950281713164e-06, 'rewards/chosen': -0.3942812979221344, 'rewards/rejected': -6.482133388519287, 'rewards/accuracies': 0.899218738079071, 'rewards/margins': 6.0878520011901855, 'logps/chosen': -569.0731201171875, 'logps/rejected': -341.2292785644531, 'logits/chosen': -0.6692106127738953, 'logits/rejected': -0.6557018756866455, 'epoch': 0.89}
+[c55:0]:{'eval_loss': 0.23301677405834198, 'eval_runtime': 18.1788, 'eval_samples_per_second': 71.512, 'eval_steps_per_second': 8.966, 'eval_rewards/chosen': -0.5569022297859192, 'eval_rewards/rejected': -6.281344413757324, 'eval_rewards/accuracies': 0.9033742547035217, 'eval_rewards/margins': 5.724441051483154, 'eval_logps/chosen': -569.3118286132812, 'eval_logps/rejected': -343.23736572265625, 'eval_logits/chosen': -0.6451857686042786, 'eval_logits/rejected': -0.5741579532623291, 'epoch': 0.89}
+[c55:0]:{'loss': 0.2351, 'grad_norm': 44.0, 'learning_rate': 2.5704475043798154e-06, 'rewards/chosen': -0.26214855909347534, 'rewards/rejected': -7.473438262939453, 'rewards/accuracies': 0.9039062261581421, 'rewards/margins': 7.211289882659912, 'logps/chosen': -576.03564453125, 'logps/rejected': -398.515869140625, 'logits/chosen': -0.6542530059814453, 'logits/rejected': -0.6360448598861694, 'epoch': 0.9}
+[c55:0]:{'loss': 0.2985, 'grad_norm': 47.75, 'learning_rate': 2.4491999805883145e-06, 'rewards/chosen': -0.42740947008132935, 'rewards/rejected': -6.791413307189941, 'rewards/accuracies': 0.893750011920929, 'rewards/margins': 6.364003658294678, 'logps/chosen': -622.3823852539062, 'logps/rejected': -385.9173889160156, 'logits/chosen': -0.6470150351524353, 'logits/rejected': -0.6069141626358032, 'epoch': 0.9}
+[c55:0]:{'loss': 0.1979, 'grad_norm': 40.5, 'learning_rate': 2.327952456796814e-06, 'rewards/chosen': -0.2973882257938385, 'rewards/rejected': -10.626300811767578, 'rewards/accuracies': 0.9140625, 'rewards/margins': 10.328912734985352, 'logps/chosen': -559.9741821289062, 'logps/rejected': -404.8858642578125, 'logits/chosen': -0.6432042717933655, 'logits/rejected': -0.5910893678665161, 'epoch': 0.91}
+[c55:0]:{'loss': 0.2317, 'grad_norm': 31.125, 'learning_rate': 2.206704933005313e-06, 'rewards/chosen': -0.3836504817008972, 'rewards/rejected': -7.12582540512085, 'rewards/accuracies': 0.9117187261581421, 'rewards/margins': 6.7421746253967285, 'logps/chosen': -578.8077392578125, 'logps/rejected': -340.4340515136719, 'logits/chosen': -0.7081129550933838, 'logits/rejected': -0.6260038614273071, 'epoch': 0.91}
+[c55:0]:{'loss': 1.5806, 'grad_norm': 20736.0, 'learning_rate': 2.0854574092138125e-06, 'rewards/chosen': -0.3722655773162842, 'rewards/rejected': -4.789515495300293, 'rewards/accuracies': 0.91015625, 'rewards/margins': 4.417250156402588, 'logps/chosen': -559.8314819335938, 'logps/rejected': -340.73492431640625, 'logits/chosen': -0.6482413411140442, 'logits/rejected': -0.5810584425926208, 'epoch': 0.92}
+[c55:0]:{'loss': 0.3272, 'grad_norm': 51.5, 'learning_rate': 1.9642098854223115e-06, 'rewards/chosen': -0.39165887236595154, 'rewards/rejected': -8.746014595031738, 'rewards/accuracies': 0.9140625, 'rewards/margins': 8.354355812072754, 'logps/chosen': -606.5828247070312, 'logps/rejected': -401.36700439453125, 'logits/chosen': -0.6283246278762817, 'logits/rejected': -0.6071902513504028, 'epoch': 0.92}
+[c55:0]:{'loss': 1.5519, 'grad_norm': 50.75, 'learning_rate': 1.842962361630811e-06, 'rewards/chosen': -0.3284509778022766, 'rewards/rejected': -4.788242340087891, 'rewards/accuracies': 0.9117187261581421, 'rewards/margins': 4.459791660308838, 'logps/chosen': -578.1590576171875, 'logps/rejected': -380.48077392578125, 'logits/chosen': -0.7044672966003418, 'logits/rejected': -0.7035653591156006, 'epoch': 0.93}
+[c55:0]:{'loss': 0.1989, 'grad_norm': 41.25, 'learning_rate': 1.7217148378393102e-06, 'rewards/chosen': -0.23637767136096954, 'rewards/rejected': -6.227442741394043, 'rewards/accuracies': 0.913281261920929, 'rewards/margins': 5.991064548492432, 'logps/chosen': -596.7489013671875, 'logps/rejected': -334.11212158203125, 'logits/chosen': -0.6261841058731079, 'logits/rejected': -0.6364557147026062, 'epoch': 0.93}
+[c55:0]:{'loss': 0.2246, 'grad_norm': 43.75, 'learning_rate': 1.6004673140478097e-06, 'rewards/chosen': -0.4040552079677582, 'rewards/rejected': -9.570262908935547, 'rewards/accuracies': 0.9007812738418579, 'rewards/margins': 9.166208267211914, 'logps/chosen': -568.9579467773438, 'logps/rejected': -386.1761474609375, 'logits/chosen': -0.6584404706954956, 'logits/rejected': -0.6326830983161926, 'epoch': 0.94}
+[c55:0]:{'loss': 0.2354, 'grad_norm': 71.5, 'learning_rate': 1.4792197902563087e-06, 'rewards/chosen': -0.45843881368637085, 'rewards/rejected': -9.177709579467773, 'rewards/accuracies': 0.905468761920929, 'rewards/margins': 8.719270706176758, 'logps/chosen': -577.6490478515625, 'logps/rejected': -359.35528564453125, 'logits/chosen': -0.646103024482727, 'logits/rejected': -0.5714514255523682, 'epoch': 0.94}
+[c55:0]:{'eval_loss': 0.23290827870368958, 'eval_runtime': 18.347, 'eval_samples_per_second': 70.856, 'eval_steps_per_second': 8.884, 'eval_rewards/chosen': -0.5391471982002258, 'eval_rewards/rejected': -6.277434349060059, 'eval_rewards/accuracies': 0.900306761264801, 'eval_rewards/margins': 5.738286972045898, 'eval_logps/chosen': -569.2427368164062, 'eval_logps/rejected': -343.22216796875, 'eval_logits/chosen': -0.6451114416122437, 'eval_logits/rejected': -0.5749831199645996, 'epoch': 0.94}
+[c55:0]:{'loss': 0.2414, 'grad_norm': 42.75, 'learning_rate': 1.357972266464808e-06, 'rewards/chosen': -0.5771225690841675, 'rewards/rejected': -6.115462303161621, 'rewards/accuracies': 0.91015625, 'rewards/margins': 5.538339614868164, 'logps/chosen': -528.2003173828125, 'logps/rejected': -316.44195556640625, 'logits/chosen': -0.6402784585952759, 'logits/rejected': -0.5792350172996521, 'epoch': 0.95}
+[c55:0]:{'loss': 0.2535, 'grad_norm': 35.25, 'learning_rate': 1.2367247426733075e-06, 'rewards/chosen': -0.4135291576385498, 'rewards/rejected': -6.200649738311768, 'rewards/accuracies': 0.901562511920929, 'rewards/margins': 5.7871198654174805, 'logps/chosen': -555.2185668945312, 'logps/rejected': -332.01446533203125, 'logits/chosen': -0.5813206434249878, 'logits/rejected': -0.4708253741264343, 'epoch': 0.95}
+[c55:0]:{'loss': 1.7458, 'grad_norm': 43.25, 'learning_rate': 1.1154772188818067e-06, 'rewards/chosen': -0.7586169838905334, 'rewards/rejected': -4.959120273590088, 'rewards/accuracies': 0.8960937261581421, 'rewards/margins': 4.200502395629883, 'logps/chosen': -569.7042846679688, 'logps/rejected': -358.5823974609375, 'logits/chosen': -0.6891152262687683, 'logits/rejected': -0.5617183446884155, 'epoch': 0.96}
+[c56:0]:2026-04-18 07:40:40 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-136e98bf1619ee74_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:47 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1db858b8916e9d5f_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:48 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:48 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-adbac820a794ccde_*_of_00001.arrow
+[c56:0]:2026-04-18 07:40:48 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-79938929457a7e89_*_of_00001.arrow
+[c56:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c56:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c56:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c56:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c56:0]:2026-04-18 07:41:23 - INFO - __main__ - *** Train ***
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO [Service thread] Connection closed by localRank 3
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+[c56:1]:c56:3920559:3921011 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+[c56:3]:c56:3920561:3921013 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+[c56:0]:c56:3920558:3921015 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+[c56:2]:c56:3920560:3921017 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+[c56:1]:c56:3920559:3970919 [1] NCCL INFO comm 0x11f6c4a0 rank 5 nranks 8 cudaDev 1 busId 26000 - Abort COMPLETE
+[c56:2]:c56:3920560:3970918 [2] NCCL INFO comm 0x1163ea10 rank 6 nranks 8 cudaDev 2 busId a6000 - Abort COMPLETE
+[c56:3]:c56:3920561:3970920 [3] NCCL INFO comm 0x10d02610 rank 7 nranks 8 cudaDev 3 busId c6000 - Abort COMPLETE
+[c56:0]:c56:3920558:3970921 [0] NCCL INFO comm 0x103d9f90 rank 4 nranks 8 cudaDev 0 busId 6000 - Abort COMPLETE
+END TIME: Sat Apr 18 10:36:07 CEST 2026
+END 3381219: Sat Apr 18 10:36:07 CEST 2026

@@ -2,12 +2,12 @@
 #SBATCH --job-name=Qwen3-0.6B-DPO-SFT_5e-5-Beta1.0_LR3e-6
 #SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR5e-5/%x_%j.out
 #SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/0.6B/DPO/SFT-LR5e-5/%x_%j.err
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --time=05:00:00
+#SBATCH --time=07:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
