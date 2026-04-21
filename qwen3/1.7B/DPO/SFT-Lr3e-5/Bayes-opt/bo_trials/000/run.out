@@ -1,0 +1,6 @@
+JOB NAME qwen3_1.7b_dpo_bayesopt
+head_node=c31
+NPROC_PER_NODE=4
+JOBNAME qwen3_1.7b_dpo_bayesopt
+CONFIG /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/1.7B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/000/config.yaml
+/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook
