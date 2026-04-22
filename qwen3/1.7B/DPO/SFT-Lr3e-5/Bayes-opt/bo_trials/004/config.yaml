@@ -1,0 +1,35 @@
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/
+torch_dtype: bfloat16
+use_liger_kernel: true
+attn_implementation: flash_attention_2
+dataset_name: allenai/Dolci-Instruct-DPO
+bf16: true
+beta: 0.09052813879088405
+do_eval: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 7.72695865860831e-06
+log_level: info
+logging_steps: 10
+lr_scheduler_type: linear
+max_length: 4096
+max_prompt_length: 512
+num_train_epochs: 1
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-DPO-BO-trial004-b0.0905-lr7.73e-06/
+overwrite_output_dir: true
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+gradient_checkpointing: true
+save_strategy: steps
+save_steps: 400
+save_total_limit: 20
+seed: 8
+warmup_ratio: 0.1
+length_normalize_logps: false
+dataset_test_split_size: 0.005
+dataset_test_split_seed: 42
+do_train: true
+eval_strategy: steps
+eval_steps: 100

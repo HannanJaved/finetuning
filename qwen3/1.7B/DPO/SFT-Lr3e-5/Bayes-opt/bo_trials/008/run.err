@@ -1,0 +1,1007 @@
+Module CUDA/12.4.0 unloaded.
+Module CUDA/12.4.0 loaded.
+Module CUDA/12.4.0 unloaded.
+Module CUDA/12.4.0 loaded.
+[c72:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:20,262 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c34:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:20,262 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c68:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:20,262 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c31:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:20,262 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c31:0]:[WARNING|logging.py:328] 2026-04-22 09:09:20,538 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c31:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:20,540 >> Model config Qwen3Config {
+[c31:0]:  "architectures": [
+[c31:0]:    "Qwen3ForCausalLM"
+[c31:0]:  ],
+[c31:0]:  "attention_bias": false,
+[c31:0]:  "attention_dropout": 0.0,
+[c31:0]:  "dtype": "bfloat16",
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "head_dim": 128,
+[c31:0]:  "hidden_act": "silu",
+[c31:0]:  "hidden_size": 2048,
+[c31:0]:  "initializer_range": 0.02,
+[c31:0]:  "intermediate_size": 6144,
+[c31:0]:  "layer_types": [
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention"
+[c31:0]:  ],
+[c31:0]:  "max_position_embeddings": 32768,
+[c31:0]:  "max_window_layers": 28,
+[c31:0]:  "model_type": "qwen3",
+[c31:0]:  "num_attention_heads": 16,
+[c31:0]:  "num_hidden_layers": 28,
+[c31:0]:  "num_key_value_heads": 8,
+[c31:0]:  "pad_token_id": 151643,
+[c31:0]:  "rms_norm_eps": 1e-06,
+[c31:0]:  "rope_scaling": null,
+[c31:0]:  "rope_theta": 1000000,
+[c31:0]:  "sliding_window": null,
+[c31:0]:  "tie_word_embeddings": true,
+[c31:0]:  "transformers_version": "4.57.0",
+[c31:0]:  "use_cache": false,
+[c31:0]:  "use_sliding_window": false,
+[c31:0]:  "vocab_size": 151936
+[c31:0]:}
+[c31:0]:
+[c72:0]:[WARNING|logging.py:328] 2026-04-22 09:09:20,539 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c72:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:20,540 >> Model config Qwen3Config {
+[c72:0]:  "architectures": [
+[c72:0]:    "Qwen3ForCausalLM"
+[c72:0]:  ],
+[c72:0]:  "attention_bias": false,
+[c72:0]:  "attention_dropout": 0.0,
+[c72:0]:  "dtype": "bfloat16",
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "head_dim": 128,
+[c72:0]:  "hidden_act": "silu",
+[c72:0]:  "hidden_size": 2048,
+[c72:0]:  "initializer_range": 0.02,
+[c72:0]:  "intermediate_size": 6144,
+[c72:0]:  "layer_types": [
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention"
+[c72:0]:  ],
+[c72:0]:  "max_position_embeddings": 32768,
+[c72:0]:  "max_window_layers": 28,
+[c72:0]:  "model_type": "qwen3",
+[c72:0]:  "num_attention_heads": 16,
+[c72:0]:  "num_hidden_layers": 28,
+[c72:0]:  "num_key_value_heads": 8,
+[c72:0]:  "pad_token_id": 151643,
+[c72:0]:  "rms_norm_eps": 1e-06,
+[c72:0]:  "rope_scaling": null,
+[c72:0]:  "rope_theta": 1000000,
+[c72:0]:  "sliding_window": null,
+[c72:0]:  "tie_word_embeddings": true,
+[c72:0]:  "transformers_version": "4.57.0",
+[c72:0]:  "use_cache": false,
+[c72:0]:  "use_sliding_window": false,
+[c72:0]:  "vocab_size": 151936
+[c72:0]:}
+[c72:0]:
+[c34:0]:[WARNING|logging.py:328] 2026-04-22 09:09:20,538 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c34:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:20,540 >> Model config Qwen3Config {
+[c34:0]:  "architectures": [
+[c34:0]:    "Qwen3ForCausalLM"
+[c34:0]:  ],
+[c34:0]:  "attention_bias": false,
+[c34:0]:  "attention_dropout": 0.0,
+[c34:0]:  "dtype": "bfloat16",
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "head_dim": 128,
+[c34:0]:  "hidden_act": "silu",
+[c34:0]:  "hidden_size": 2048,
+[c34:0]:  "initializer_range": 0.02,
+[c34:0]:  "intermediate_size": 6144,
+[c34:0]:  "layer_types": [
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c68:0]:[WARNING|logging.py:328] 2026-04-22 09:09:20,539 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c68:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:20,540 >> Model config Qwen3Config {
+[c68:0]:  "architectures": [
+[c68:0]:    "Qwen3ForCausalLM"
+[c68:0]:  ],
+[c68:0]:  "attention_bias": false,
+[c68:0]:  "attention_dropout": 0.0,
+[c68:0]:  "dtype": "bfloat16",
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "head_dim": 128,
+[c68:0]:  "hidden_act": "silu",
+[c68:0]:  "hidden_size": 2048,
+[c68:0]:  "initializer_range": 0.02,
+[c68:0]:  "intermediate_size": 6144,
+[c68:0]:  "layer_types": [
+[c68:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention"
+[c34:0]:  ],
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c34:0]:  "max_position_embeddings": 32768,
+[c34:0]:  "max_window_layers": 28,
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention"
+[c68:0]:  ],
+[c68:0]:  "max_position_embeddings": 32768,
+[c68:0]:  "max_window_layers": 28,
+[c34:0]:  "model_type": "qwen3",
+[c34:0]:  "num_attention_heads": 16,
+[c34:0]:  "num_hidden_layers": 28,
+[c68:0]:  "model_type": "qwen3",
+[c68:0]:  "num_attention_heads": 16,
+[c68:0]:  "num_hidden_layers": 28,
+[c68:0]:  "num_key_value_heads": 8,
+[c68:0]:  "pad_token_id": 151643,
+[c68:0]:  "rms_norm_eps": 1e-06,
+[c34:0]:  "num_key_value_heads": 8,
+[c34:0]:  "pad_token_id": 151643,
+[c34:0]:  "rms_norm_eps": 1e-06,
+[c34:0]:  "rope_scaling": null,
+[c34:0]:  "rope_theta": 1000000,
+[c34:0]:  "sliding_window": null,
+[c34:0]:  "tie_word_embeddings": true,
+[c34:0]:  "transformers_version": "4.57.0",
+[c34:0]:  "use_cache": false,
+[c34:0]:  "use_sliding_window": false,
+[c68:0]:  "rope_scaling": null,
+[c68:0]:  "rope_theta": 1000000,
+[c68:0]:  "sliding_window": null,
+[c68:0]:  "tie_word_embeddings": true,
+[c68:0]:  "transformers_version": "4.57.0",
+[c68:0]:  "use_cache": false,
+[c68:0]:  "use_sliding_window": false,
+[c68:0]:  "vocab_size": 151936
+[c68:0]:}
+[c34:0]:  "vocab_size": 151936
+[c34:0]:}
+[c34:0]:
+[c68:0]:
+[c72:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:20,801 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c34:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:20,800 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c68:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:20,801 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c31:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:20,801 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c72:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:20,950 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c34:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:20,965 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c68:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:20,983 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c31:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:20,961 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c72:3]:[WARNING|logging.py:328] 2026-04-22 09:09:21,773 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c34:1]:[WARNING|logging.py:328] 2026-04-22 09:09:21,802 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c34:3]:[WARNING|logging.py:328] 2026-04-22 09:09:21,806 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c34:2]:[WARNING|logging.py:328] 2026-04-22 09:09:21,806 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c72:2]:[WARNING|logging.py:328] 2026-04-22 09:09:21,774 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c68:3]:[WARNING|logging.py:328] 2026-04-22 09:09:21,817 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c68:1]:[WARNING|logging.py:328] 2026-04-22 09:09:21,814 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c31:1]:[WARNING|logging.py:328] 2026-04-22 09:09:21,834 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c31:3]:[WARNING|logging.py:328] 2026-04-22 09:09:21,833 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c31:2]:[WARNING|logging.py:328] 2026-04-22 09:09:21,837 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c72:1]:[WARNING|logging.py:328] 2026-04-22 09:09:21,775 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c68:2]:[WARNING|logging.py:328] 2026-04-22 09:09:21,817 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c34:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:22,006 >> Generate config GenerationConfig {
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "pad_token_id": 151643,
+[c34:0]:  "use_cache": false
+[c34:0]:}
+[c34:0]:
+[c68:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:22,007 >> Generate config GenerationConfig {
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "pad_token_id": 151643,
+[c68:0]:  "use_cache": false
+[c68:0]:}
+[c68:0]:
+[c31:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:22,006 >> Generate config GenerationConfig {
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "pad_token_id": 151643,
+[c31:0]:  "use_cache": false
+[c31:0]:}
+[c31:0]:
+[c72:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:22,007 >> Generate config GenerationConfig {
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "pad_token_id": 151643,
+[c72:0]:  "use_cache": false
+[c72:0]:}
+[c72:0]:
+[c68:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:24,915 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:24,914 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c68:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:24,915 >> Generate config GenerationConfig {
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "max_new_tokens": 2048,
+[c68:0]:  "pad_token_id": 151643
+[c68:0]:}
+[c68:0]:
+[c68:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:24,915 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:24,915 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c68:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:24,918 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c68:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:24,918 >> Model config Qwen3Config {
+[c68:0]:  "architectures": [
+[c68:0]:    "Qwen3ForCausalLM"
+[c68:0]:  ],
+[c68:0]:  "attention_bias": false,
+[c68:0]:  "attention_dropout": 0.0,
+[c68:0]:  "dtype": "bfloat16",
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "head_dim": 128,
+[c68:0]:  "hidden_act": "silu",
+[c68:0]:  "hidden_size": 2048,
+[c68:0]:  "initializer_range": 0.02,
+[c68:0]:  "intermediate_size": 6144,
+[c68:0]:  "layer_types": [
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention",
+[c68:0]:    "full_attention"
+[c68:0]:  ],
+[c68:0]:  "max_position_embeddings": 32768,
+[c68:0]:  "max_window_layers": 28,
+[c68:0]:  "model_type": "qwen3",
+[c68:0]:  "num_attention_heads": 16,
+[c68:0]:  "num_hidden_layers": 28,
+[c68:0]:  "num_key_value_heads": 8,
+[c68:0]:  "pad_token_id": 151643,
+[c68:0]:  "rms_norm_eps": 1e-06,
+[c68:0]:  "rope_scaling": null,
+[c68:0]:  "rope_theta": 1000000,
+[c68:0]:  "sliding_window": null,
+[c68:0]:  "tie_word_embeddings": true,
+[c68:0]:  "transformers_version": "4.57.0",
+[c68:0]:  "use_cache": false,
+[c68:0]:  "use_sliding_window": false,
+[c68:0]:  "vocab_size": 151936
+[c68:0]:}
+[c68:0]:
+[c68:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:24,919 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c68:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:24,919 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c68:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:24,932 >> Generate config GenerationConfig {
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "pad_token_id": 151643,
+[c68:0]:  "use_cache": false
+[c68:0]:}
+[c68:0]:
+[c68:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:24,915 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:24,915 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,003 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:25,000 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c68:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,001 >> Generate config GenerationConfig {
+[c68:0]:  "eos_token_id": 151643,
+[c68:0]:  "max_new_tokens": 2048,
+[c68:0]:  "pad_token_id": 151643
+[c68:0]:}
+[c68:0]:
+[c68:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,001 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c68:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:25,001 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c68:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,000 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,007 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,007 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,007 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:25,007 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c31:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,008 >> Generate config GenerationConfig {
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "max_new_tokens": 2048,
+[c31:0]:  "pad_token_id": 151643
+[c31:0]:}
+[c31:0]:
+[c31:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,008 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:25,008 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c31:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:25,009 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c31:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:25,010 >> Model config Qwen3Config {
+[c31:0]:  "architectures": [
+[c31:0]:    "Qwen3ForCausalLM"
+[c31:0]:  ],
+[c31:0]:  "attention_bias": false,
+[c31:0]:  "attention_dropout": 0.0,
+[c31:0]:  "dtype": "bfloat16",
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "head_dim": 128,
+[c31:0]:  "hidden_act": "silu",
+[c31:0]:  "hidden_size": 2048,
+[c31:0]:  "initializer_range": 0.02,
+[c31:0]:  "intermediate_size": 6144,
+[c31:0]:  "layer_types": [
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention",
+[c31:0]:    "full_attention"
+[c31:0]:  ],
+[c31:0]:  "max_position_embeddings": 32768,
+[c31:0]:  "max_window_layers": 28,
+[c31:0]:  "model_type": "qwen3",
+[c31:0]:  "num_attention_heads": 16,
+[c31:0]:  "num_hidden_layers": 28,
+[c31:0]:  "num_key_value_heads": 8,
+[c31:0]:  "pad_token_id": 151643,
+[c31:0]:  "rms_norm_eps": 1e-06,
+[c31:0]:  "rope_scaling": null,
+[c31:0]:  "rope_theta": 1000000,
+[c31:0]:  "sliding_window": null,
+[c31:0]:  "tie_word_embeddings": true,
+[c31:0]:  "transformers_version": "4.57.0",
+[c31:0]:  "use_cache": false,
+[c31:0]:  "use_sliding_window": false,
+[c31:0]:  "vocab_size": 151936
+[c31:0]:}
+[c31:0]:
+[c31:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:25,010 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c31:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:25,011 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c31:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,024 >> Generate config GenerationConfig {
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "pad_token_id": 151643,
+[c31:0]:  "use_cache": false
+[c31:0]:}
+[c31:0]:
+[c68:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,000 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:25,084 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c72:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,084 >> Generate config GenerationConfig {
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "max_new_tokens": 2048,
+[c72:0]:  "pad_token_id": 151643
+[c72:0]:}
+[c72:0]:
+[c72:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,084 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:25,084 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c72:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:25,086 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c72:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:25,086 >> Model config Qwen3Config {
+[c72:0]:  "architectures": [
+[c72:0]:    "Qwen3ForCausalLM"
+[c72:0]:  ],
+[c72:0]:  "attention_bias": false,
+[c72:0]:  "attention_dropout": 0.0,
+[c72:0]:  "dtype": "bfloat16",
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "head_dim": 128,
+[c72:0]:  "hidden_act": "silu",
+[c72:0]:  "hidden_size": 2048,
+[c72:0]:  "initializer_range": 0.02,
+[c72:0]:  "intermediate_size": 6144,
+[c72:0]:  "layer_types": [
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention",
+[c72:0]:    "full_attention"
+[c72:0]:  ],
+[c72:0]:  "max_position_embeddings": 32768,
+[c72:0]:  "max_window_layers": 28,
+[c72:0]:  "model_type": "qwen3",
+[c72:0]:  "num_attention_heads": 16,
+[c72:0]:  "num_hidden_layers": 28,
+[c72:0]:  "num_key_value_heads": 8,
+[c72:0]:  "pad_token_id": 151643,
+[c72:0]:  "rms_norm_eps": 1e-06,
+[c72:0]:  "rope_scaling": null,
+[c72:0]:  "rope_theta": 1000000,
+[c72:0]:  "sliding_window": null,
+[c72:0]:  "tie_word_embeddings": true,
+[c72:0]:  "transformers_version": "4.57.0",
+[c72:0]:  "use_cache": false,
+[c72:0]:  "use_sliding_window": false,
+[c72:0]:  "vocab_size": 151936
+[c72:0]:}
+[c72:0]:
+[c72:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:25,087 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c72:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:25,088 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c72:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,103 >> Generate config GenerationConfig {
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "pad_token_id": 151643,
+[c72:0]:  "use_cache": false
+[c72:0]:}
+[c72:0]:
+[c72:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,083 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,083 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,094 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,093 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,093 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:25,093 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c31:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,093 >> Generate config GenerationConfig {
+[c31:0]:  "eos_token_id": 151643,
+[c31:0]:  "max_new_tokens": 2048,
+[c31:0]:  "pad_token_id": 151643
+[c31:0]:}
+[c31:0]:
+[c31:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,094 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c31:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:25,094 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c72:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,083 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:25,171 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c72:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:25,171 >> Generate config GenerationConfig {
+[c72:0]:  "eos_token_id": 151643,
+[c72:0]:  "max_new_tokens": 2048,
+[c72:0]:  "pad_token_id": 151643
+[c72:0]:}
+[c72:0]:
+[c72:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,172 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:25,172 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c72:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,169 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,169 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:25,169 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,791 >> loading file vocab.json
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file merges.txt
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer.json
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file added_tokens.json
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file special_tokens_map.json
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer_config.json
+[c72:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file chat_template.jinja
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file vocab.json
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file merges.txt
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer.json
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file added_tokens.json
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file special_tokens_map.json
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer_config.json
+[c68:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file chat_template.jinja
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,791 >> loading file vocab.json
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file merges.txt
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer.json
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file added_tokens.json
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file special_tokens_map.json
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file tokenizer_config.json
+[c31:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:25,792 >> loading file chat_template.jinja
+[c34:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,184 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,185 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,184 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:26,184 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c34:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:26,184 >> Generate config GenerationConfig {
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "max_new_tokens": 2048,
+[c34:0]:  "pad_token_id": 151643
+[c34:0]:}
+[c34:0]:
+[c34:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,184 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:26,184 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c34:0]:[INFO|configuration_utils.py:763] 2026-04-22 09:09:26,186 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/config.json
+[c34:0]:[INFO|configuration_utils.py:839] 2026-04-22 09:09:26,186 >> Model config Qwen3Config {
+[c34:0]:  "architectures": [
+[c34:0]:    "Qwen3ForCausalLM"
+[c34:0]:  ],
+[c34:0]:  "attention_bias": false,
+[c34:0]:  "attention_dropout": 0.0,
+[c34:0]:  "dtype": "bfloat16",
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "head_dim": 128,
+[c34:0]:  "hidden_act": "silu",
+[c34:0]:  "hidden_size": 2048,
+[c34:0]:  "initializer_range": 0.02,
+[c34:0]:  "intermediate_size": 6144,
+[c34:0]:  "layer_types": [
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention",
+[c34:0]:    "full_attention"
+[c34:0]:  ],
+[c34:0]:  "max_position_embeddings": 32768,
+[c34:0]:  "max_window_layers": 28,
+[c34:0]:  "model_type": "qwen3",
+[c34:0]:  "num_attention_heads": 16,
+[c34:0]:  "num_hidden_layers": 28,
+[c34:0]:  "num_key_value_heads": 8,
+[c34:0]:  "pad_token_id": 151643,
+[c34:0]:  "rms_norm_eps": 1e-06,
+[c34:0]:  "rope_scaling": null,
+[c34:0]:  "rope_theta": 1000000,
+[c34:0]:  "sliding_window": null,
+[c34:0]:  "tie_word_embeddings": true,
+[c34:0]:  "transformers_version": "4.57.0",
+[c34:0]:  "use_cache": false,
+[c34:0]:  "use_sliding_window": false,
+[c34:0]:  "vocab_size": 151936
+[c34:0]:}
+[c34:0]:
+[c34:0]:[INFO|modeling_utils.py:1173] 2026-04-22 09:09:26,187 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/model.safetensors
+[c34:0]:[INFO|modeling_utils.py:2345] 2026-04-22 09:09:26,188 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c34:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:26,198 >> Generate config GenerationConfig {
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "pad_token_id": 151643,
+[c34:0]:  "use_cache": false
+[c34:0]:}
+[c34:0]:
+[c34:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,267 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,269 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,272 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:0]:[INFO|configuration_utils.py:939] 2026-04-22 09:09:26,269 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/generation_config.json
+[c34:0]:[INFO|configuration_utils.py:986] 2026-04-22 09:09:26,270 >> Generate config GenerationConfig {
+[c34:0]:  "eos_token_id": 151643,
+[c34:0]:  "max_new_tokens": 2048,
+[c34:0]:  "pad_token_id": 151643
+[c34:0]:}
+[c34:0]:
+[c34:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-22 09:09:26,270 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c34:0]:[INFO|dynamic_module_utils.py:423] 2026-04-22 09:09:26,270 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-1.7B-Base/SFT-sweep/Qwen3-1.7B-SFT-LR3e-5/.
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file vocab.json
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file merges.txt
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file tokenizer.json
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file added_tokens.json
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file special_tokens_map.json
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file tokenizer_config.json
+[c34:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-22 09:09:26,290 >> loading file chat_template.jinja
+[c34:0]:[INFO|tokenization_utils_base.py:2364] 2026-04-22 09:09:26,918 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[c68:0]:[INFO|tokenization_utils_base.py:2364] 2026-04-22 09:09:26,889 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[c31:0]:[INFO|tokenization_utils_base.py:2364] 2026-04-22 09:09:26,907 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[c72:0]:[INFO|tokenization_utils_base.py:2364] 2026-04-22 09:09:26,910 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[c72:0]:Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c34:0]:Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c68:0]:Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c31:0]:Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c72:0]:Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c72:3]:[rank15]:[W422 09:09:35.048117900 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 15]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c72:2]:[rank14]:[W422 09:09:35.074045474 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 14]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c72:1]:[rank13]:[W422 09:09:35.073942224 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 13]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c72:0]:[rank12]:[W422 09:09:35.233446186 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 12]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c68:0]:Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c34:0]:Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c68:2]:[rank10]:[W422 09:09:36.470111803 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 10]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c68:1]:[rank9]:[W422 09:09:36.470258523 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 9]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c68:3]:[rank11]:[W422 09:09:36.470106723 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 11]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c31:0]:Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c34:3]:[rank7]:[W422 09:09:36.687321416 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c34:1]:[rank5]:[W422 09:09:36.687328596 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c34:2]:[rank6]:[W422 09:09:36.687345596 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c68:0]:[rank8]:[W422 09:09:36.619995282 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 8]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c34:0]:[rank4]:[W422 09:09:36.768992208 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c31:3]:[rank3]:[W422 09:09:37.408674105 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c31:1]:[rank1]:[W422 09:09:37.406804516 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c31:2]:[rank2]:[W422 09:09:37.406317617 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-f4402784111b6127_*_of_00001.arrow
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-260093718bc0cf6b_*_of_00001.arrow
+[c31:0]:[rank0]:[W422 09:09:54.602816101 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-477ec4ac0cc35966_*_of_00001.arrow
+[c31:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6adaa4033a11e74f_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-f4402784111b6127_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-f4402784111b6127_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-f4402784111b6127_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-260093718bc0cf6b_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-260093718bc0cf6b_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-260093718bc0cf6b_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-477ec4ac0cc35966_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-477ec4ac0cc35966_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-477ec4ac0cc35966_*_of_00001.arrow
+[c72:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6adaa4033a11e74f_*_of_00001.arrow
+[c68:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6adaa4033a11e74f_*_of_00001.arrow
+[c34:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6adaa4033a11e74f_*_of_00001.arrow
+[c31:0]:[INFO|trainer.py:749] 2026-04-22 09:13:59,935 >> Using auto half precision backend
+[c72:0]:[INFO|trainer.py:749] 2026-04-22 09:13:59,934 >> Using auto half precision backend
+[c68:0]:[INFO|trainer.py:749] 2026-04-22 09:13:59,933 >> Using auto half precision backend
+[c34:0]:[INFO|trainer.py:749] 2026-04-22 09:13:59,933 >> Using auto half precision backend
+[c68:0]:[INFO|trainer.py:1012] 2026-04-22 09:14:02,003 >> The following columns in the Training set don't have a corresponding argument in `Qwen3ForCausalLM.forward` and have been ignored: prompt, rejected_model, chosen_model, prompt_id, preference_type. If prompt, rejected_model, chosen_model, prompt_id, preference_type are not expected by `Qwen3ForCausalLM.forward`,  you can safely ignore this message.
+[c34:0]:[INFO|trainer.py:1012] 2026-04-22 09:14:02,729 >> The following columns in the Training set don't have a corresponding argument in `Qwen3ForCausalLM.forward` and have been ignored: preference_type, prompt, chosen_model, prompt_id, rejected_model. If preference_type, prompt, chosen_model, prompt_id, rejected_model are not expected by `Qwen3ForCausalLM.forward`,  you can safely ignore this message.
+[c72:0]:[INFO|trainer.py:1012] 2026-04-22 09:14:02,729 >> The following columns in the Training set don't have a corresponding argument in `Qwen3ForCausalLM.forward` and have been ignored: preference_type, prompt_id, rejected_model, chosen_model, prompt. If preference_type, prompt_id, rejected_model, chosen_model, prompt are not expected by `Qwen3ForCausalLM.forward`,  you can safely ignore this message.
+[c31:0]:[INFO|trainer.py:1012] 2026-04-22 09:14:03,161 >> The following columns in the Training set don't have a corresponding argument in `Qwen3ForCausalLM.forward` and have been ignored: chosen_model, preference_type, prompt, rejected_model, prompt_id. If chosen_model, preference_type, prompt, rejected_model, prompt_id are not expected by `Qwen3ForCausalLM.forward`,  you can safely ignore this message.
+[c31:0]:[INFO|trainer.py:2519] 2026-04-22 09:14:04,622 >> ***** Running training *****
+[c31:0]:[INFO|trainer.py:2520] 2026-04-22 09:14:04,622 >>   Num examples = 258,622
+[c31:0]:[INFO|trainer.py:2521] 2026-04-22 09:14:04,622 >>   Num Epochs = 1
+[c31:0]:[INFO|trainer.py:2522] 2026-04-22 09:14:04,622 >>   Instantaneous batch size per device = 1
+[c31:0]:[INFO|trainer.py:2525] 2026-04-22 09:14:04,622 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[c31:0]:[INFO|trainer.py:2526] 2026-04-22 09:14:04,622 >>   Gradient Accumulation steps = 8
+[c31:0]:[INFO|trainer.py:2527] 2026-04-22 09:14:04,622 >>   Total optimization steps = 2,021
+[c31:0]:[INFO|trainer.py:2528] 2026-04-22 09:14:04,623 >>   Number of trainable parameters = 1,720,574,976
+[c31:0]:[INFO|integration_utils.py:867] 2026-04-22 09:14:04,632 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+[c72:0]:[INFO|trainer.py:2519] 2026-04-22 09:14:04,621 >> ***** Running training *****
+[c72:0]:[INFO|trainer.py:2520] 2026-04-22 09:14:04,621 >>   Num examples = 258,622
+[c72:0]:[INFO|trainer.py:2521] 2026-04-22 09:14:04,621 >>   Num Epochs = 1
+[c72:0]:[INFO|trainer.py:2522] 2026-04-22 09:14:04,621 >>   Instantaneous batch size per device = 1
+[c72:0]:[INFO|trainer.py:2525] 2026-04-22 09:14:04,621 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[c72:0]:[INFO|trainer.py:2526] 2026-04-22 09:14:04,621 >>   Gradient Accumulation steps = 8
+[c72:0]:[INFO|trainer.py:2527] 2026-04-22 09:14:04,621 >>   Total optimization steps = 2,021
+[c72:0]:[INFO|trainer.py:2528] 2026-04-22 09:14:04,622 >>   Number of trainable parameters = 1,720,574,976
+[c68:0]:[INFO|trainer.py:2519] 2026-04-22 09:14:04,622 >> ***** Running training *****
+[c68:0]:[INFO|trainer.py:2520] 2026-04-22 09:14:04,622 >>   Num examples = 258,622
+[c68:0]:[INFO|trainer.py:2521] 2026-04-22 09:14:04,622 >>   Num Epochs = 1
+[c68:0]:[INFO|trainer.py:2522] 2026-04-22 09:14:04,622 >>   Instantaneous batch size per device = 1
+[c68:0]:[INFO|trainer.py:2525] 2026-04-22 09:14:04,622 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[c68:0]:[INFO|trainer.py:2526] 2026-04-22 09:14:04,622 >>   Gradient Accumulation steps = 8
+[c68:0]:[INFO|trainer.py:2527] 2026-04-22 09:14:04,622 >>   Total optimization steps = 2,021
+[c68:0]:[INFO|trainer.py:2528] 2026-04-22 09:14:04,623 >>   Number of trainable parameters = 1,720,574,976
+[c34:0]:[INFO|trainer.py:2519] 2026-04-22 09:14:04,699 >> ***** Running training *****
+[c34:0]:[INFO|trainer.py:2520] 2026-04-22 09:14:04,699 >>   Num examples = 258,622
+[c34:0]:[INFO|trainer.py:2521] 2026-04-22 09:14:04,699 >>   Num Epochs = 1
+[c34:0]:[INFO|trainer.py:2522] 2026-04-22 09:14:04,699 >>   Instantaneous batch size per device = 1
+[c34:0]:[INFO|trainer.py:2525] 2026-04-22 09:14:04,699 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[c34:0]:[INFO|trainer.py:2526] 2026-04-22 09:14:04,699 >>   Gradient Accumulation steps = 8
+[c34:0]:[INFO|trainer.py:2527] 2026-04-22 09:14:04,699 >>   Total optimization steps = 2,021
+[c34:0]:[INFO|trainer.py:2528] 2026-04-22 09:14:04,700 >>   Number of trainable parameters = 1,720,574,976
+[c31:0]:wandb: Currently logged in as: hannanm (openeurollm-project) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[c31:0]:[rank0]: Traceback (most recent call last):
+[c31:0]:[rank0]:   File "/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/scripts/dpo.py", line 189, in <module>
+[c31:0]:[rank0]:     main(script_args, training_args, model_args)
+[c31:0]:[rank0]:   File "/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/scripts/dpo.py", line 168, in main
+[c31:0]:[rank0]:     train_result = trainer.train(resume_from_checkpoint=checkpoint)
+[c31:0]:[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/trainer.py", line 2325, in train
+[c31:0]:[rank0]:     return inner_training_loop(
+[c31:0]:[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/trainer.py", line 2573, in _inner_training_loop
+[c31:0]:[rank0]:     self.control = self.callback_handler.on_train_begin(args, self.state, self.control)
+[c31:0]:[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/trainer_callback.py", line 506, in on_train_begin
+[c31:0]:[rank0]:     return self.call_event("on_train_begin", args, state, control)
+[c31:0]:[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/trainer_callback.py", line 556, in call_event
+[c31:0]:[rank0]:     result = getattr(callback, event)(
+[c31:0]:[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/integrations/integration_utils.py", line 966, in on_train_begin
+[c31:0]:[rank0]:     self.setup(args, state, model, **kwargs)
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/transformers/integrations/integration_utils.py", line 893, in setup
+[c31:0]:[rank0]:     self._wandb.init(
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1603, in init
+[c31:0]:[rank0]:     get_sentry().reraise(e)
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/analytics/sentry.py", line 190, in reraise
+[c31:0]:[rank0]:     raise exc.with_traceback(tb)
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1586, in init
+[c31:0]:[rank0]:     run = wi.init(run_settings, run_config, run_printer)
+[c31:0]:[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 890, in init
+[c31:0]:[rank0]:     service = self._wl.ensure_service()
+[c31:0]:[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/wandb_setup.py", line 402, in ensure_service
+[c31:0]:[rank0]:     self._connection = service_connection.connect_to_service(
+[c31:0]:[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_connection.py", line 39, in connect_to_service
+[c31:0]:[rank0]:     return _start_and_connect_service(asyncer, settings)
+[c31:0]:[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_connection.py", line 52, in _start_and_connect_service
+[c31:0]:[rank0]:     proc = service_process.start(settings)
+[c31:0]:[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_process.py", line 35, in start
+[c31:0]:[rank0]:     get_sentry().reraise(e)
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/analytics/sentry.py", line 190, in reraise
+[c31:0]:[rank0]:     raise exc.with_traceback(tb)
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_process.py", line 33, in start
+[c31:0]:[rank0]:     return _launch_server(settings)
+[c31:0]:[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_process.py", line 105, in _launch_server
+[c31:0]:[rank0]:     token = service_port_file.poll_for_token(
+[c31:0]:[rank0]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[c31:0]:[rank0]:   File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/wandb/sdk/lib/service/service_port_file.py", line 63, in poll_for_token
+[c31:0]:[rank0]:     raise ServicePollForTokenError(
+[c31:0]:[rank0]: wandb.sdk.lib.service.service_port_file.ServicePollForTokenError: Failed to read port info after 30.0 seconds.
+[c31:0]:[rank0]:[W422 09:14:55.314743113 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+[c31:0]:[rank0]:[E422 09:25:19.063769402 ProcessGroupNCCL.cpp:1484] [PG ID 0 PG GUID 0(default_pg) Rank 0] ProcessGroupNCCL's watchdog got stuck for 480 seconds without making progress in monitoring enqueued collectives. This typically indicates a NCCL/CUDA API (e.g., CudaEventDestroy) hang blocking the watchdog, and could be triggered by another thread holding the GIL inside a CUDA api (for example, CudaEventDestroy), or other deadlock-prone behaviors.If you suspect the watchdog is not actually stuck and a longer timeout would help, you can either increase the timeout (TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC) to a larger value or disable the heartbeat monitor (TORCH_NCCL_ENABLE_MONITORING=0).If either of aforementioned helps, feel free to file an issue to PyTorch about the short timeout or false positive abort; otherwise, please attempt to debug the hang. 
+[c31:0]:[rank0]:[F422 09:33:19.079429814 ProcessGroupNCCL.cpp:1306] [PG ID 0 PG GUID 0(default_pg) Rank 0] [PG ID 0 PG GUID 0(default_pg) Rank 0] Terminating the process after attempting to dump debug info, due to ProcessGroupNCCL watchdog hang.
+W0422 09:33:20.084000 2781091 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2784664 closing signal SIGTERM
+W0422 09:33:20.086000 2781091 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2784665 closing signal SIGTERM
+W0422 09:33:20.087000 2781091 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2784666 closing signal SIGTERM
+E0422 09:33:20.906000 2781091 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: -6) local_rank: 0 (pid: 2784663) of binary: /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/python
+Traceback (most recent call last):
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1226, in launch_command
+    multi_gpu_launcher(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 853, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+========================================================
+scripts/dpo.py FAILED
+--------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+--------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-04-22_09:33:20
+  host      : c31.capella.hpc.tu-dresden.de
+  rank      : 0 (local_rank: 0)
+  exitcode  : -6 (pid: 2784663)
+  error_file: <N/A>
+  traceback : Signal 6 (SIGABRT) received by PID 2784663
+========================================================
+srun: error: c31: task 0: Exited with exit code 1
+srun: Terminating StepId=3404802.8
+W0422 09:33:25.525000 2856072 torch/distributed/elastic/agent/server/api.py:704] Received 15 death signal, shutting down workers
+W0422 09:33:25.526000 1224904 torch/distributed/elastic/agent/server/api.py:704] Received 15 death signal, shutting down workers
+W0422 09:33:25.527000 2856072 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2859629 closing signal SIGTERM
+W0422 09:33:25.527000 1224904 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1228465 closing signal SIGTERM
+W0422 09:33:25.525000 92922 torch/distributed/elastic/agent/server/api.py:704] Received 15 death signal, shutting down workers
+W0422 09:33:25.528000 92922 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 96758 closing signal SIGTERM
+W0422 09:33:25.528000 2856072 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2859630 closing signal SIGTERM
+W0422 09:33:25.529000 2856072 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2859631 closing signal SIGTERM
+W0422 09:33:25.535000 2856072 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2859632 closing signal SIGTERM
+W0422 09:33:25.535000 92922 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 96759 closing signal SIGTERM
+W0422 09:33:25.537000 1224904 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1228466 closing signal SIGTERM
+W0422 09:33:25.541000 1224904 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1228467 closing signal SIGTERM
+W0422 09:33:25.542000 1224904 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1228468 closing signal SIGTERM
+W0422 09:33:25.547000 92922 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 96760 closing signal SIGTERM
+W0422 09:33:25.551000 92922 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 96761 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+Traceback (most recent call last):
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/accelerate", line 8, in <module>
+             ^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    sys.exit(main())
+             ^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1226, in launch_command
+Traceback (most recent call last):
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/accelerate", line 8, in <module>
+    args.func(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1226, in launch_command
+    sys.exit(main())
+             ^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    multi_gpu_launcher(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 853, in multi_gpu_launcher
+    multi_gpu_launcher(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 853, in multi_gpu_launcher
+    args.func(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1226, in launch_command
+    distrib_run.run(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/run.py", line 910, in run
+    distrib_run.run(args)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/run.py", line 910, in run
+    multi_gpu_launcher(args)
+    elastic_launch(
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/accelerate/commands/launch.py", line 853, in multi_gpu_launcher
+    elastic_launch(
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 260, in launch_agent
+    distrib_run.run(args)
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/run.py", line 910, in run
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 260, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 696, in run
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 696, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 855, in _invoke_run
+    result = self._invoke_run(role)
+    elastic_launch(
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 855, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    time.sleep(monitor_interval)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 260, in launch_agent
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2856072 got signal: 15
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1224904 got signal: 15
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 696, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/agent/server/api.py", line 855, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 92922 got signal: 15
+srun: error: c72: task 3: Exited with exit code 1
+srun: error: c34: task 1: Exited with exit code 1
+srun: error: c68: task 2: Exited with exit code 1

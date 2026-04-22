@@ -5,6 +5,7 @@ import os
 import re
 import subprocess
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import optuna
@@ -19,6 +20,7 @@ N_TRIALS = 20
 POLL_SECONDS = 30
 TRAINER_STATE_TIMEOUT_SECONDS = 60 * 30
 TRAINER_STATE_POLL_SECONDS = 20
+STALE_TRIAL_MAX_AGE_SECONDS = 60 * 30
 
 # IMPORTANT: choose what to optimize
 METRIC_KEY = "eval_loss"   # fallback to "loss" if eval not available
@@ -134,6 +136,24 @@ def extract_metric_from_trainer_state(output_dir: Path, metric_key: str) -> floa
     raise RuntimeError(f"Metric '{metric_key}' not found under {output_dir}")
 
 
+def cleanup_stale_trials(study: optuna.Study) -> int:
+    """Mark stale RUNNING trials as FAIL so a restart can continue cleanly."""
+    now = datetime.now()
+    stale_count = 0
+    for trial in study.get_trials(states=[optuna.trial.TrialState.RUNNING]):
+        if trial.datetime_start is None:
+            continue
+        age_seconds = (now - trial.datetime_start).total_seconds()
+        if age_seconds >= STALE_TRIAL_MAX_AGE_SECONDS:
+            study._storage.set_trial_state_values(
+                trial._trial_id,
+                optuna.trial.TrialState.FAIL,
+                values=None,
+            )
+            stale_count += 1
+    return stale_count
+
+
 def objective(trial: optuna.Trial) -> float:
     lr = trial.suggest_float("learning_rate", 1e-6, 5e-5, log=True)
     beta = trial.suggest_float("beta", 0.01, 1.0, log=True)
@@ -155,7 +175,7 @@ def objective(trial: optuna.Trial) -> float:
     state = run_job_in_allocation(job_script, trial_dir)
     if state != "COMPLETED":
         trial.set_user_attr("terminal_state", state)
-        return float("inf") if DIRECTION == "minimize" else float("-inf")
+        raise optuna.exceptions.TrialPruned()
 
     # output_dir from config
     cfg = yaml.safe_load(config_path.read_text())
@@ -164,7 +184,7 @@ def objective(trial: optuna.Trial) -> float:
         return metric
     except Exception as exc:
         trial.set_user_attr("metric_error", str(exc))
-        return float("inf") if DIRECTION == "minimize" else float("-inf")
+        raise optuna.exceptions.TrialPruned()
 
 
 def main():
@@ -177,7 +197,23 @@ def main():
         storage=storage,
         load_if_exists=True,
     )
-    study.optimize(objective, n_trials=N_TRIALS)
+
+    stale = cleanup_stale_trials(study)
+    if stale:
+        print(f"Marked {stale} stale RUNNING trial(s) as FAIL.")
+
+    completed_states = [
+        optuna.trial.TrialState.COMPLETE,
+        optuna.trial.TrialState.FAIL,
+    ]
+    completed = len(study.get_trials(states=completed_states))
+    remaining = max(0, N_TRIALS - completed)
+
+    if remaining == 0:
+        print("All requested trials are already finished.")
+        return
+
+    study.optimize(objective, n_trials=remaining)
 
     print("Best value:", study.best_value)
     print("Best params:", study.best_params)

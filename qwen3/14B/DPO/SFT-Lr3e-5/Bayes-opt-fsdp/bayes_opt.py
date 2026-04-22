@@ -31,8 +31,12 @@ def write_config(trial_dir: Path, lr: float, beta: float) -> Path:
     with CONFIG_TEMPLATE.open() as f:
         cfg = yaml.safe_load(f)
 
-    run_name = f"Qwen3-4B-DPO-BO-trial{trial_dir.name}-b{beta:.4f}-lr{lr:.2e}"
-    out_dir = f"/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/{run_name}/"
+    run_name = f"Qwen3-14B-DPO-BO-FSDP-trial{trial_dir.name}-b{beta:.4f}-lr{lr:.2e}"
+    out_dir = (
+        "/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/"
+        "Qwen3-14B-Base/SFT-sweep-fsdp/"
+        f"{run_name}/"
+    )
 
     cfg["learning_rate"] = float(lr)
     cfg["beta"] = float(beta)
@@ -47,8 +51,8 @@ def write_config(trial_dir: Path, lr: float, beta: float) -> Path:
     target_global_batch = 128
     cfg["gradient_accumulation_steps"] = max(1, math.ceil(target_global_batch / (per_device * world_size)))
 
-    # Use 1% of the dataset as validation by creating a test split.
-    # The remaining 99% stays in train.
+    # Use 0.5% of the dataset as validation by creating a test split.
+    # The remaining 99.5% stays in train.
     cfg["dataset_test_split_size"] = 0.005
     cfg["dataset_test_split_seed"] = 42
 
@@ -83,7 +87,7 @@ def write_job_script(trial_dir: Path, config_path: Path, run_name: str) -> Path:
 def run_job_in_allocation(job_script: Path, trial_dir: Path) -> str:
     """
     Run the trial job directly inside the current Slurm allocation.
-    This avoids sbatch queue latency and keeps the 4-GPU allocation busy.
+    This avoids sbatch queue latency and keeps the 8-GPU allocation busy.
     """
     stdout_path = trial_dir / "run.out"
     stderr_path = trial_dir / "run.err"
@@ -160,7 +164,7 @@ def objective(trial: optuna.Trial) -> float:
 
     trial_dir = SCRIPT_DIR / "bo_trials" / f"{trial.number:03d}"
     trial_dir.mkdir(parents=True, exist_ok=True)
-    run_name = f"Qwen3-4B-DPO-BO-t{trial.number:03d}"
+    run_name = f"Qwen3-14B-DPO-BO-FSDP-t{trial.number:03d}"
 
     config_path = write_config(trial_dir, lr, beta)
     job_script = write_job_script(trial_dir, config_path, run_name)
@@ -188,10 +192,10 @@ def objective(trial: optuna.Trial) -> float:
 
 
 def main():
-    storage = f"sqlite:///{SCRIPT_DIR / 'optuna_qwen_dpo.db'}"
+    storage = f"sqlite:///{SCRIPT_DIR / 'optuna_qwen_dpo_fsdp.db'}"
     sampler = optuna.samplers.TPESampler(n_startup_trials=5, seed=8)
     study = optuna.create_study(
-        study_name="qwen3_4B_dpo_bo",
+        study_name="qwen3_14B_dpo_bo_fsdp",
         direction=DIRECTION,
         sampler=sampler,
         storage=storage,
