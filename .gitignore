@@ -20,3 +20,7 @@ throughput*.png
 */__pycache__/
 pruning_analysis/output*
 *.db
+qwen3/entropy/results*/
+qwen3/entropy/entropy_plot*
+*.png
+*.jsonl
