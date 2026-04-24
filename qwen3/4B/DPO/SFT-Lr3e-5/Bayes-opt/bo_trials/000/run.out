@@ -1,0 +1,1965 @@
+JOB NAME qwen3_4b_dpo_bayesopt
+head_node=c9
+NPROC_PER_NODE=4
+JOBNAME qwen3_4b_dpo_bayesopt
+CONFIG /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/000/config.yaml
+/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook
+[c32:0]:2026-04-23 08:31:35 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c32:0]:2026-04-23 08:31:35 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c32:0]:2026-04-23 08:31:35 - INFO - __main__ - Training parameters DPOConfig(
+[c32:0]:_n_gpu=1,
+[c32:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c32:0]:adafactor=False,
+[c32:0]:adam_beta1=0.9,
+[c32:0]:adam_beta2=0.999,
+[c32:0]:adam_epsilon=1e-08,
+[c32:0]:apdo_alpha=0.5,
+[c32:0]:apdo_beta0=0.1,
+[c32:0]:apdo_enabled=False,
+[c32:0]:apdo_gamma=0.5,
+[c32:0]:apdo_lambda_r=0.4,
+[c32:0]:apdo_lambda_w=0.6,
+[c32:0]:apdo_max_beta=0.1,
+[c32:0]:apdo_min_beta=0.0,
+[c32:0]:apdo_ref_ema_enabled=True,
+[c32:0]:apdo_ref_ema_tau=0.99,
+[c32:0]:apdo_similarity_mix=0.5,
+[c32:0]:apdo_warmup_steps=0,
+[c32:0]:auto_find_batch_size=False,
+[c32:0]:average_tokens_across_devices=True,
+[c32:0]:base_model_attribute_name=model,
+[c32:0]:batch_eval_metrics=False,
+[c32:0]:beta=0.8651299071518214,
+[c32:0]:bf16=True,
+[c32:0]:bf16_full_eval=False,
+[c32:0]:chat_template=None,
+[c32:0]:data_seed=None,
+[c32:0]:dataloader_drop_last=False,
+[c32:0]:dataloader_num_workers=0,
+[c32:0]:dataloader_persistent_workers=False,
+[c32:0]:dataloader_pin_memory=True,
+[c32:0]:dataloader_prefetch_factor=None,
+[c32:0]:dataset_num_proc=None,
+[c32:0]:ddp_backend=None,
+[c32:0]:ddp_broadcast_buffers=None,
+[c32:0]:ddp_bucket_cap_mb=None,
+[c32:0]:ddp_find_unused_parameters=None,
+[c32:0]:ddp_timeout=1800,
+[c32:0]:debug=[],
+[c32:0]:deepspeed=None,
+[c32:0]:disable_dropout=True,
+[c32:0]:disable_tqdm=False,
+[c32:0]:discopop_tau=0.05,
+[c32:0]:do_eval=True,
+[c32:0]:do_predict=False,
+[c32:0]:do_train=True,
+[c32:0]:emdpo_decay_disable_length_norm=True,
+[c32:0]:emdpo_decay_eps_max=0.3,
+[c32:0]:emdpo_decay_eps_min=0.1,
+[c32:0]:emdpo_decay_total_steps=0,
+[c32:0]:emdpo_detach_weights=True,
+[c32:0]:emdpo_enabled=False,
+[c32:0]:emdpo_length_scale=0.25,
+[c32:0]:emdpo_lite_detach_weights=True,
+[c32:0]:emdpo_lite_enabled=False,
+[c32:0]:emdpo_lite_length_lr_enabled=True,
+[c32:0]:emdpo_lite_length_lr_interval=50,
+[c32:0]:emdpo_lite_margin_clip=5.0,
+[c32:0]:emdpo_lite_max_weight=1.0,
+[c32:0]:emdpo_lite_min_weight=0.2,
+[c32:0]:emdpo_lite_noise_eps=0.1,
+[c32:0]:emdpo_lite_policy_scale=0.0,
+[c32:0]:emdpo_lite_ref_scale=1.0,
+[c32:0]:emdpo_lite_warmup_steps=0,
+[c32:0]:emdpo_margin_clip=5.0,
+[c32:0]:emdpo_max_weight=1.0,
+[c32:0]:emdpo_min_weight=0.2,
+[c32:0]:emdpo_noise_eps=0.1,
+[c32:0]:emdpo_policy_scale=1.0,
+[c32:0]:emdpo_ref_scale=2.0,
+[c32:0]:emdpo_v2_norm_eps=1e-06,
+[c32:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c32:0]:emdpo_v2_policy_ramp_steps=0,
+[c32:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c32:0]:emdpo_v2_policy_warmup_steps=0,
+[c32:0]:emdpo_warmup_steps=0,
+[c32:0]:eval_accumulation_steps=None,
+[c32:0]:eval_delay=0,
+[c32:0]:eval_do_concat_batches=True,
+[c32:0]:eval_on_start=False,
+[c32:0]:eval_steps=100,
+[c32:0]:eval_strategy=IntervalStrategy.STEPS,
+[c32:0]:eval_use_gather_object=False,
+[c32:0]:f_alpha_divergence_coef=1.0,
+[c32:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c32:0]:force_use_ref_model=False,
+[c32:0]:fp16=False,
+[c32:0]:fp16_backend=auto,
+[c32:0]:fp16_full_eval=False,
+[c32:0]:fp16_opt_level=O1,
+[c32:0]:fsdp=[],
+[c32:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c32:0]:fsdp_min_num_params=0,
+[c32:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c32:0]:full_determinism=False,
+[c32:0]:generate_during_eval=False,
+[c32:0]:gradient_accumulation_steps=8,
+[c32:0]:gradient_checkpointing=True,
+[c32:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c32:0]:greater_is_better=None,
+[c32:0]:group_by_length=False,
+[c32:0]:half_precision_backend=auto,
+[c32:0]:hub_always_push=False,
+[c32:0]:hub_model_id=None,
+[c32:0]:hub_private_repo=None,
+[c32:0]:hub_revision=None,
+[c32:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c32:0]:hub_token=<HUB_TOKEN>,
+[c32:0]:ignore_data_skip=False,
+[c32:0]:include_for_metrics=[],
+[c32:0]:include_inputs_for_metrics=False,
+[c32:0]:include_num_input_tokens_seen=no,
+[c32:0]:include_tokens_per_second=False,
+[c32:0]:jit_mode_eval=False,
+[c32:0]:label_names=None,
+[c32:0]:label_pad_token_id=-100,
+[c32:0]:label_smoothing=0.0,
+[c32:0]:label_smoothing_factor=0.0,
+[c32:0]:ld_alpha=None,
+[c32:0]:learning_rate=3.0474062663500436e-05,
+[c32:0]:length_column_name=length,
+[c32:0]:length_norm_exponent=1.0,
+[c32:0]:length_norm_min_tokens=1.0,
+[c32:0]:length_normalize_logps=False,
+[c32:0]:liger_kernel_config=None,
+[c32:0]:load_best_model_at_end=False,
+[c32:0]:local_rank=0,
+[c32:0]:log_level=info,
+[c32:0]:log_level_replica=warning,
+[c32:0]:log_on_each_node=True,
+[c32:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/runs/Apr23_08-31-33_c32,
+[c32:0]:logging_first_step=False,
+[c32:0]:logging_nan_inf_filter=True,
+[c32:0]:logging_steps=10,
+[c32:0]:logging_strategy=IntervalStrategy.STEPS,
+[c32:0]:loss_type=sigmoid,
+[c32:0]:loss_weights=None,
+[c32:0]:lr_scheduler_kwargs={},
+[c32:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c32:0]:max_completion_length=None,
+[c32:0]:max_grad_norm=1.0,
+[c32:0]:max_length=4096,
+[c32:0]:max_prompt_length=512,
+[c32:0]:max_steps=-1,
+[c32:0]:metric_for_best_model=None,
+[c32:0]:model_adapter_name=None,
+[c32:0]:model_init_kwargs=None,
+[c32:0]:mp_parameters=,
+[c32:0]:neftune_noise_alpha=None,
+[c32:0]:no_cuda=False,
+[c32:0]:num_train_epochs=1,
+[c32:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c32:0]:optim_args=None,
+[c32:0]:optim_target_modules=None,
+[c32:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/,
+[c32:0]:overwrite_output_dir=True,
+[c32:0]:pad_token=<PAD_TOKEN>,
+[c32:0]:padding_free=False,
+[c32:0]:padding_value=None,
+[c32:0]:parallelism_config=None,
+[c32:0]:past_index=-1,
+[c32:0]:per_device_eval_batch_size=1,
+[c32:0]:per_device_train_batch_size=1,
+[c32:0]:precompute_ref_batch_size=None,
+[c32:0]:precompute_ref_log_probs=False,
+[c32:0]:prediction_loss_only=False,
+[c32:0]:project=huggingface,
+[c32:0]:push_to_hub=False,
+[c32:0]:push_to_hub_model_id=None,
+[c32:0]:push_to_hub_organization=None,
+[c32:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c32:0]:ray_scope=last,
+[c32:0]:ref_adapter_name=None,
+[c32:0]:ref_model_init_kwargs=None,
+[c32:0]:ref_model_mixup_alpha=0.6,
+[c32:0]:ref_model_sync_steps=512,
+[c32:0]:reference_free=False,
+[c32:0]:remove_unused_columns=True,
+[c32:0]:report_to=['tensorboard', 'wandb'],
+[c32:0]:restore_callback_states_from_checkpoint=False,
+[c32:0]:resume_from_checkpoint=None,
+[c32:0]:rpo_alpha=None,
+[c32:0]:run_name=None,
+[c32:0]:save_on_each_node=False,
+[c32:0]:save_only_model=False,
+[c32:0]:save_safetensors=True,
+[c32:0]:save_steps=400,
+[c32:0]:save_strategy=SaveStrategy.STEPS,
+[c32:0]:save_total_limit=20,
+[c32:0]:sdpo_detach_phi=True,
+[c32:0]:sdpo_enabled=False,
+[c32:0]:sdpo_kappa=1.0,
+[c32:0]:sdpo_lambda_r=0.4,
+[c32:0]:sdpo_lambda_w=0.6,
+[c32:0]:sdpo_lite_beta=1.0,
+[c32:0]:sdpo_lite_decay_retention_alpha=False,
+[c32:0]:sdpo_lite_enabled=False,
+[c32:0]:sdpo_lite_ref_ema_enabled=True,
+[c32:0]:sdpo_lite_ref_ema_tau=0.99,
+[c32:0]:sdpo_lite_retention_alpha=0.2,
+[c32:0]:sdpo_lite_retention_alpha_final=0.05,
+[c63:0]:2026-04-23 08:31:35 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c63:0]:2026-04-23 08:31:35 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c63:0]:2026-04-23 08:31:35 - INFO - __main__ - Training parameters DPOConfig(
+[c63:0]:_n_gpu=1,
+[c63:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c63:0]:adafactor=False,
+[c63:0]:adam_beta1=0.9,
+[c63:0]:adam_beta2=0.999,
+[c63:0]:adam_epsilon=1e-08,
+[c63:0]:apdo_alpha=0.5,
+[c63:0]:apdo_beta0=0.1,
+[c63:0]:apdo_enabled=False,
+[c63:0]:apdo_gamma=0.5,
+[c63:0]:apdo_lambda_r=0.4,
+[c63:0]:apdo_lambda_w=0.6,
+[c63:0]:apdo_max_beta=0.1,
+[c63:0]:apdo_min_beta=0.0,
+[c63:0]:apdo_ref_ema_enabled=True,
+[c63:0]:apdo_ref_ema_tau=0.99,
+[c63:0]:apdo_similarity_mix=0.5,
+[c63:0]:apdo_warmup_steps=0,
+[c63:0]:auto_find_batch_size=False,
+[c63:0]:average_tokens_across_devices=True,
+[c63:0]:base_model_attribute_name=model,
+[c63:0]:batch_eval_metrics=False,
+[c63:0]:beta=0.8651299071518214,
+[c63:0]:bf16=True,
+[c63:0]:bf16_full_eval=False,
+[c63:0]:chat_template=None,
+[c63:0]:data_seed=None,
+[c63:0]:dataloader_drop_last=False,
+[c63:0]:dataloader_num_workers=0,
+[c63:0]:dataloader_persistent_workers=False,
+[c63:0]:dataloader_pin_memory=True,
+[c63:0]:dataloader_prefetch_factor=None,
+[c63:0]:dataset_num_proc=None,
+[c63:0]:ddp_backend=None,
+[c63:0]:ddp_broadcast_buffers=None,
+[c63:0]:ddp_bucket_cap_mb=None,
+[c63:0]:ddp_find_unused_parameters=None,
+[c63:0]:ddp_timeout=1800,
+[c63:0]:debug=[],
+[c63:0]:deepspeed=None,
+[c63:0]:disable_dropout=True,
+[c63:0]:disable_tqdm=False,
+[c63:0]:discopop_tau=0.05,
+[c63:0]:do_eval=True,
+[c63:0]:do_predict=False,
+[c63:0]:do_train=True,
+[c63:0]:emdpo_decay_disable_length_norm=True,
+[c63:0]:emdpo_decay_eps_max=0.3,
+[c63:0]:emdpo_decay_eps_min=0.1,
+[c63:0]:emdpo_decay_total_steps=0,
+[c63:0]:emdpo_detach_weights=True,
+[c63:0]:emdpo_enabled=False,
+[c63:0]:emdpo_length_scale=0.25,
+[c63:0]:emdpo_lite_detach_weights=True,
+[c63:0]:emdpo_lite_enabled=False,
+[c63:0]:emdpo_lite_length_lr_enabled=True,
+[c63:0]:emdpo_lite_length_lr_interval=50,
+[c63:0]:emdpo_lite_margin_clip=5.0,
+[c63:0]:emdpo_lite_max_weight=1.0,
+[c63:0]:emdpo_lite_min_weight=0.2,
+[c63:0]:emdpo_lite_noise_eps=0.1,
+[c63:0]:emdpo_lite_policy_scale=0.0,
+[c63:0]:emdpo_lite_ref_scale=1.0,
+[c63:0]:emdpo_lite_warmup_steps=0,
+[c63:0]:emdpo_margin_clip=5.0,
+[c63:0]:emdpo_max_weight=1.0,
+[c63:0]:emdpo_min_weight=0.2,
+[c63:0]:emdpo_noise_eps=0.1,
+[c63:0]:emdpo_policy_scale=1.0,
+[c63:0]:emdpo_ref_scale=2.0,
+[c63:0]:emdpo_v2_norm_eps=1e-06,
+[c63:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c63:0]:emdpo_v2_policy_ramp_steps=0,
+[c63:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c63:0]:emdpo_v2_policy_warmup_steps=0,
+[c63:0]:emdpo_warmup_steps=0,
+[c63:0]:eval_accumulation_steps=None,
+[c63:0]:eval_delay=0,
+[c63:0]:eval_do_concat_batches=True,
+[c63:0]:eval_on_start=False,
+[c63:0]:eval_steps=100,
+[c63:0]:eval_strategy=IntervalStrategy.STEPS,
+[c63:0]:eval_use_gather_object=False,
+[c63:0]:f_alpha_divergence_coef=1.0,
+[c63:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c63:0]:force_use_ref_model=False,
+[c63:0]:fp16=False,
+[c63:0]:fp16_backend=auto,
+[c63:0]:fp16_full_eval=False,
+[c63:0]:fp16_opt_level=O1,
+[c63:0]:fsdp=[],
+[c63:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c63:0]:fsdp_min_num_params=0,
+[c63:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c63:0]:full_determinism=False,
+[c63:0]:generate_during_eval=False,
+[c63:0]:gradient_accumulation_steps=8,
+[c63:0]:gradient_checkpointing=True,
+[c63:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c63:0]:greater_is_better=None,
+[c63:0]:group_by_length=False,
+[c63:0]:half_precision_backend=auto,
+[c63:0]:hub_always_push=False,
+[c63:0]:hub_model_id=None,
+[c63:0]:hub_private_repo=None,
+[c63:0]:hub_revision=None,
+[c63:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c63:0]:hub_token=<HUB_TOKEN>,
+[c63:0]:ignore_data_skip=False,
+[c63:0]:include_for_metrics=[],
+[c63:0]:include_inputs_for_metrics=False,
+[c63:0]:include_num_input_tokens_seen=no,
+[c63:0]:include_tokens_per_second=False,
+[c63:0]:jit_mode_eval=False,
+[c63:0]:label_names=None,
+[c63:0]:label_pad_token_id=-100,
+[c63:0]:label_smoothing=0.0,
+[c63:0]:label_smoothing_factor=0.0,
+[c63:0]:ld_alpha=None,
+[c63:0]:learning_rate=3.0474062663500436e-05,
+[c63:0]:length_column_name=length,
+[c63:0]:length_norm_exponent=1.0,
+[c63:0]:length_norm_min_tokens=1.0,
+[c63:0]:length_normalize_logps=False,
+[c63:0]:liger_kernel_config=None,
+[c63:0]:load_best_model_at_end=False,
+[c63:0]:local_rank=0,
+[c63:0]:log_level=info,
+[c63:0]:log_level_replica=warning,
+[c63:0]:log_on_each_node=True,
+[c63:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/runs/Apr23_08-31-33_c63,
+[c63:0]:logging_first_step=False,
+[c63:0]:logging_nan_inf_filter=True,
+[c63:0]:logging_steps=10,
+[c63:0]:logging_strategy=IntervalStrategy.STEPS,
+[c63:0]:loss_type=sigmoid,
+[c63:0]:loss_weights=None,
+[c63:0]:lr_scheduler_kwargs={},
+[c63:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c63:0]:max_completion_length=None,
+[c63:0]:max_grad_norm=1.0,
+[c63:0]:max_length=4096,
+[c63:0]:max_prompt_length=512,
+[c63:0]:max_steps=-1,
+[c63:0]:metric_for_best_model=None,
+[c63:0]:model_adapter_name=None,
+[c63:0]:model_init_kwargs=None,
+[c63:0]:mp_parameters=,
+[c63:0]:neftune_noise_alpha=None,
+[c63:0]:no_cuda=False,
+[c63:0]:num_train_epochs=1,
+[c63:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c63:0]:optim_args=None,
+[c63:0]:optim_target_modules=None,
+[c63:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/,
+[c63:0]:overwrite_output_dir=True,
+[c63:0]:pad_token=<PAD_TOKEN>,
+[c63:0]:padding_free=False,
+[c63:0]:padding_value=None,
+[c63:0]:parallelism_config=None,
+[c63:0]:past_index=-1,
+[c63:0]:per_device_eval_batch_size=1,
+[c63:0]:per_device_train_batch_size=1,
+[c63:0]:precompute_ref_batch_size=None,
+[c63:0]:precompute_ref_log_probs=False,
+[c63:0]:prediction_loss_only=False,
+[c63:0]:project=huggingface,
+[c63:0]:push_to_hub=False,
+[c63:0]:push_to_hub_model_id=None,
+[c63:0]:push_to_hub_organization=None,
+[c63:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c63:0]:ray_scope=last,
+[c63:0]:ref_adapter_name=None,
+[c63:0]:ref_model_init_kwargs=None,
+[c63:0]:ref_model_mixup_alpha=0.6,
+[c63:0]:ref_model_sync_steps=512,
+[c63:0]:reference_free=False,
+[c63:0]:remove_unused_columns=True,
+[c63:0]:report_to=['tensorboard', 'wandb'],
+[c63:0]:restore_callback_states_from_checkpoint=False,
+[c63:0]:resume_from_checkpoint=None,
+[c63:0]:rpo_alpha=None,
+[c63:0]:run_name=None,
+[c63:0]:save_on_each_node=False,
+[c63:0]:save_only_model=False,
+[c63:0]:save_safetensors=True,
+[c63:0]:save_steps=400,
+[c63:0]:save_strategy=SaveStrategy.STEPS,
+[c63:0]:save_total_limit=20,
+[c63:0]:sdpo_detach_phi=True,
+[c63:0]:sdpo_enabled=False,
+[c63:0]:sdpo_kappa=1.0,
+[c63:0]:sdpo_lambda_r=0.4,
+[c63:0]:sdpo_lambda_w=0.6,
+[c63:0]:sdpo_lite_beta=1.0,
+[c63:0]:sdpo_lite_decay_retention_alpha=False,
+[c63:0]:sdpo_lite_enabled=False,
+[c63:0]:sdpo_lite_ref_ema_enabled=True,
+[c63:0]:sdpo_lite_ref_ema_tau=0.99,
+[c63:0]:sdpo_lite_retention_alpha=0.2,
+[c63:0]:sdpo_lite_retention_alpha_final=0.05,
+[c87:0]:2026-04-23 08:31:35 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c87:0]:2026-04-23 08:31:35 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c87:0]:2026-04-23 08:31:35 - INFO - __main__ - Training parameters DPOConfig(
+[c87:0]:_n_gpu=1,
+[c87:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c87:0]:adafactor=False,
+[c87:0]:adam_beta1=0.9,
+[c87:0]:adam_beta2=0.999,
+[c87:0]:adam_epsilon=1e-08,
+[c87:0]:apdo_alpha=0.5,
+[c87:0]:apdo_beta0=0.1,
+[c87:0]:apdo_enabled=False,
+[c87:0]:apdo_gamma=0.5,
+[c87:0]:apdo_lambda_r=0.4,
+[c87:0]:apdo_lambda_w=0.6,
+[c87:0]:apdo_max_beta=0.1,
+[c87:0]:apdo_min_beta=0.0,
+[c87:0]:apdo_ref_ema_enabled=True,
+[c87:0]:apdo_ref_ema_tau=0.99,
+[c87:0]:apdo_similarity_mix=0.5,
+[c87:0]:apdo_warmup_steps=0,
+[c87:0]:auto_find_batch_size=False,
+[c87:0]:average_tokens_across_devices=True,
+[c87:0]:base_model_attribute_name=model,
+[c87:0]:batch_eval_metrics=False,
+[c87:0]:beta=0.8651299071518214,
+[c87:0]:bf16=True,
+[c87:0]:bf16_full_eval=False,
+[c87:0]:chat_template=None,
+[c87:0]:data_seed=None,
+[c87:0]:dataloader_drop_last=False,
+[c87:0]:dataloader_num_workers=0,
+[c87:0]:dataloader_persistent_workers=False,
+[c87:0]:dataloader_pin_memory=True,
+[c87:0]:dataloader_prefetch_factor=None,
+[c87:0]:dataset_num_proc=None,
+[c87:0]:ddp_backend=None,
+[c87:0]:ddp_broadcast_buffers=None,
+[c87:0]:ddp_bucket_cap_mb=None,
+[c87:0]:ddp_find_unused_parameters=None,
+[c87:0]:ddp_timeout=1800,
+[c87:0]:debug=[],
+[c87:0]:deepspeed=None,
+[c87:0]:disable_dropout=True,
+[c87:0]:disable_tqdm=False,
+[c87:0]:discopop_tau=0.05,
+[c87:0]:do_eval=True,
+[c87:0]:do_predict=False,
+[c87:0]:do_train=True,
+[c87:0]:emdpo_decay_disable_length_norm=True,
+[c87:0]:emdpo_decay_eps_max=0.3,
+[c87:0]:emdpo_decay_eps_min=0.1,
+[c87:0]:emdpo_decay_total_steps=0,
+[c87:0]:emdpo_detach_weights=True,
+[c87:0]:emdpo_enabled=False,
+[c87:0]:emdpo_length_scale=0.25,
+[c87:0]:emdpo_lite_detach_weights=True,
+[c87:0]:emdpo_lite_enabled=False,
+[c87:0]:emdpo_lite_length_lr_enabled=True,
+[c87:0]:emdpo_lite_length_lr_interval=50,
+[c87:0]:emdpo_lite_margin_clip=5.0,
+[c87:0]:emdpo_lite_max_weight=1.0,
+[c87:0]:emdpo_lite_min_weight=0.2,
+[c87:0]:emdpo_lite_noise_eps=0.1,
+[c87:0]:emdpo_lite_policy_scale=0.0,
+[c87:0]:emdpo_lite_ref_scale=1.0,
+[c87:0]:emdpo_lite_warmup_steps=0,
+[c87:0]:emdpo_margin_clip=5.0,
+[c87:0]:emdpo_max_weight=1.0,
+[c87:0]:emdpo_min_weight=0.2,
+[c87:0]:emdpo_noise_eps=0.1,
+[c87:0]:emdpo_policy_scale=1.0,
+[c87:0]:emdpo_ref_scale=2.0,
+[c87:0]:emdpo_v2_norm_eps=1e-06,
+[c87:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c87:0]:emdpo_v2_policy_ramp_steps=0,
+[c87:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c87:0]:emdpo_v2_policy_warmup_steps=0,
+[c87:0]:emdpo_warmup_steps=0,
+[c87:0]:eval_accumulation_steps=None,
+[c87:0]:eval_delay=0,
+[c87:0]:eval_do_concat_batches=True,
+[c87:0]:eval_on_start=False,
+[c87:0]:eval_steps=100,
+[c87:0]:eval_strategy=IntervalStrategy.STEPS,
+[c87:0]:eval_use_gather_object=False,
+[c87:0]:f_alpha_divergence_coef=1.0,
+[c87:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c87:0]:force_use_ref_model=False,
+[c87:0]:fp16=False,
+[c87:0]:fp16_backend=auto,
+[c87:0]:fp16_full_eval=False,
+[c87:0]:fp16_opt_level=O1,
+[c87:0]:fsdp=[],
+[c87:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c87:0]:fsdp_min_num_params=0,
+[c87:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c87:0]:full_determinism=False,
+[c87:0]:generate_during_eval=False,
+[c87:0]:gradient_accumulation_steps=8,
+[c87:0]:gradient_checkpointing=True,
+[c87:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c87:0]:greater_is_better=None,
+[c87:0]:group_by_length=False,
+[c87:0]:half_precision_backend=auto,
+[c87:0]:hub_always_push=False,
+[c87:0]:hub_model_id=None,
+[c87:0]:hub_private_repo=None,
+[c87:0]:hub_revision=None,
+[c87:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c87:0]:hub_token=<HUB_TOKEN>,
+[c87:0]:ignore_data_skip=False,
+[c87:0]:include_for_metrics=[],
+[c87:0]:include_inputs_for_metrics=False,
+[c87:0]:include_num_input_tokens_seen=no,
+[c87:0]:include_tokens_per_second=False,
+[c87:0]:jit_mode_eval=False,
+[c87:0]:label_names=None,
+[c87:0]:label_pad_token_id=-100,
+[c87:0]:label_smoothing=0.0,
+[c87:0]:label_smoothing_factor=0.0,
+[c87:0]:ld_alpha=None,
+[c87:0]:learning_rate=3.0474062663500436e-05,
+[c87:0]:length_column_name=length,
+[c87:0]:length_norm_exponent=1.0,
+[c87:0]:length_norm_min_tokens=1.0,
+[c87:0]:length_normalize_logps=False,
+[c87:0]:liger_kernel_config=None,
+[c87:0]:load_best_model_at_end=False,
+[c87:0]:local_rank=0,
+[c87:0]:log_level=info,
+[c87:0]:log_level_replica=warning,
+[c87:0]:log_on_each_node=True,
+[c87:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/runs/Apr23_08-31-33_c87,
+[c87:0]:logging_first_step=False,
+[c87:0]:logging_nan_inf_filter=True,
+[c87:0]:logging_steps=10,
+[c87:0]:logging_strategy=IntervalStrategy.STEPS,
+[c87:0]:loss_type=sigmoid,
+[c87:0]:loss_weights=None,
+[c87:0]:lr_scheduler_kwargs={},
+[c87:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c87:0]:max_completion_length=None,
+[c87:0]:max_grad_norm=1.0,
+[c87:0]:max_length=4096,
+[c87:0]:max_prompt_length=512,
+[c87:0]:max_steps=-1,
+[c87:0]:metric_for_best_model=None,
+[c87:0]:model_adapter_name=None,
+[c87:0]:model_init_kwargs=None,
+[c87:0]:mp_parameters=,
+[c87:0]:neftune_noise_alpha=None,
+[c87:0]:no_cuda=False,
+[c87:0]:num_train_epochs=1,
+[c87:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c87:0]:optim_args=None,
+[c87:0]:optim_target_modules=None,
+[c87:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/,
+[c87:0]:overwrite_output_dir=True,
+[c87:0]:pad_token=<PAD_TOKEN>,
+[c87:0]:padding_free=False,
+[c87:0]:padding_value=None,
+[c87:0]:parallelism_config=None,
+[c87:0]:past_index=-1,
+[c87:0]:per_device_eval_batch_size=1,
+[c87:0]:per_device_train_batch_size=1,
+[c87:0]:precompute_ref_batch_size=None,
+[c87:0]:precompute_ref_log_probs=False,
+[c87:0]:prediction_loss_only=False,
+[c87:0]:project=huggingface,
+[c87:0]:push_to_hub=False,
+[c87:0]:push_to_hub_model_id=None,
+[c87:0]:push_to_hub_organization=None,
+[c87:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c87:0]:ray_scope=last,
+[c87:0]:ref_adapter_name=None,
+[c87:0]:ref_model_init_kwargs=None,
+[c87:0]:ref_model_mixup_alpha=0.6,
+[c87:0]:ref_model_sync_steps=512,
+[c87:0]:reference_free=False,
+[c87:0]:remove_unused_columns=True,
+[c87:0]:report_to=['tensorboard', 'wandb'],
+[c87:0]:restore_callback_states_from_checkpoint=False,
+[c87:0]:resume_from_checkpoint=None,
+[c87:0]:rpo_alpha=None,
+[c87:0]:run_name=None,
+[c87:0]:save_on_each_node=False,
+[c87:0]:save_only_model=False,
+[c87:0]:save_safetensors=True,
+[c87:0]:save_steps=400,
+[c87:0]:save_strategy=SaveStrategy.STEPS,
+[c87:0]:save_total_limit=20,
+[c87:0]:sdpo_detach_phi=True,
+[c87:0]:sdpo_enabled=False,
+[c87:0]:sdpo_kappa=1.0,
+[c87:0]:sdpo_lambda_r=0.4,
+[c87:0]:sdpo_lambda_w=0.6,
+[c87:0]:sdpo_lite_beta=1.0,
+[c87:0]:sdpo_lite_decay_retention_alpha=False,
+[c87:0]:sdpo_lite_enabled=False,
+[c87:0]:sdpo_lite_ref_ema_enabled=True,
+[c87:0]:sdpo_lite_ref_ema_tau=0.99,
+[c87:0]:sdpo_lite_retention_alpha=0.2,
+[c87:0]:sdpo_lite_retention_alpha_final=0.05,
+[c9:0]:2026-04-23 08:31:35 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c9:0]:2026-04-23 08:31:35 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c9:0]:2026-04-23 08:31:35 - INFO - __main__ - Training parameters DPOConfig(
+[c9:0]:_n_gpu=1,
+[c9:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c9:0]:adafactor=False,
+[c9:0]:adam_beta1=0.9,
+[c9:0]:adam_beta2=0.999,
+[c9:0]:adam_epsilon=1e-08,
+[c9:0]:apdo_alpha=0.5,
+[c9:0]:apdo_beta0=0.1,
+[c9:0]:apdo_enabled=False,
+[c9:0]:apdo_gamma=0.5,
+[c9:0]:apdo_lambda_r=0.4,
+[c9:0]:apdo_lambda_w=0.6,
+[c9:0]:apdo_max_beta=0.1,
+[c9:0]:apdo_min_beta=0.0,
+[c9:0]:apdo_ref_ema_enabled=True,
+[c9:0]:apdo_ref_ema_tau=0.99,
+[c9:0]:apdo_similarity_mix=0.5,
+[c9:0]:apdo_warmup_steps=0,
+[c9:0]:auto_find_batch_size=False,
+[c9:0]:average_tokens_across_devices=True,
+[c9:0]:base_model_attribute_name=model,
+[c9:0]:batch_eval_metrics=False,
+[c9:0]:beta=0.8651299071518214,
+[c9:0]:bf16=True,
+[c9:0]:bf16_full_eval=False,
+[c9:0]:chat_template=None,
+[c9:0]:data_seed=None,
+[c9:0]:dataloader_drop_last=False,
+[c9:0]:dataloader_num_workers=0,
+[c9:0]:dataloader_persistent_workers=False,
+[c9:0]:dataloader_pin_memory=True,
+[c9:0]:dataloader_prefetch_factor=None,
+[c9:0]:dataset_num_proc=None,
+[c9:0]:ddp_backend=None,
+[c9:0]:ddp_broadcast_buffers=None,
+[c9:0]:ddp_bucket_cap_mb=None,
+[c9:0]:ddp_find_unused_parameters=None,
+[c9:0]:ddp_timeout=1800,
+[c9:0]:debug=[],
+[c9:0]:deepspeed=None,
+[c9:0]:disable_dropout=True,
+[c9:0]:disable_tqdm=False,
+[c9:0]:discopop_tau=0.05,
+[c9:0]:do_eval=True,
+[c9:0]:do_predict=False,
+[c9:0]:do_train=True,
+[c9:0]:emdpo_decay_disable_length_norm=True,
+[c9:0]:emdpo_decay_eps_max=0.3,
+[c9:0]:emdpo_decay_eps_min=0.1,
+[c9:0]:emdpo_decay_total_steps=0,
+[c9:0]:emdpo_detach_weights=True,
+[c9:0]:emdpo_enabled=False,
+[c9:0]:emdpo_length_scale=0.25,
+[c9:0]:emdpo_lite_detach_weights=True,
+[c9:0]:emdpo_lite_enabled=False,
+[c9:0]:emdpo_lite_length_lr_enabled=True,
+[c9:0]:emdpo_lite_length_lr_interval=50,
+[c9:0]:emdpo_lite_margin_clip=5.0,
+[c9:0]:emdpo_lite_max_weight=1.0,
+[c9:0]:emdpo_lite_min_weight=0.2,
+[c9:0]:emdpo_lite_noise_eps=0.1,
+[c9:0]:emdpo_lite_policy_scale=0.0,
+[c9:0]:emdpo_lite_ref_scale=1.0,
+[c9:0]:emdpo_lite_warmup_steps=0,
+[c9:0]:emdpo_margin_clip=5.0,
+[c9:0]:emdpo_max_weight=1.0,
+[c9:0]:emdpo_min_weight=0.2,
+[c9:0]:emdpo_noise_eps=0.1,
+[c9:0]:emdpo_policy_scale=1.0,
+[c9:0]:emdpo_ref_scale=2.0,
+[c9:0]:emdpo_v2_norm_eps=1e-06,
+[c9:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c9:0]:emdpo_v2_policy_ramp_steps=0,
+[c9:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c9:0]:emdpo_v2_policy_warmup_steps=0,
+[c9:0]:emdpo_warmup_steps=0,
+[c9:0]:eval_accumulation_steps=None,
+[c9:0]:eval_delay=0,
+[c9:0]:eval_do_concat_batches=True,
+[c9:0]:eval_on_start=False,
+[c9:0]:eval_steps=100,
+[c9:0]:eval_strategy=IntervalStrategy.STEPS,
+[c9:0]:eval_use_gather_object=False,
+[c9:0]:f_alpha_divergence_coef=1.0,
+[c9:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c9:0]:force_use_ref_model=False,
+[c9:0]:fp16=False,
+[c9:0]:fp16_backend=auto,
+[c9:0]:fp16_full_eval=False,
+[c9:0]:fp16_opt_level=O1,
+[c9:0]:fsdp=[],
+[c9:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c9:0]:fsdp_min_num_params=0,
+[c9:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c9:0]:full_determinism=False,
+[c9:0]:generate_during_eval=False,
+[c9:0]:gradient_accumulation_steps=8,
+[c9:0]:gradient_checkpointing=True,
+[c9:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c9:0]:greater_is_better=None,
+[c9:0]:group_by_length=False,
+[c9:0]:half_precision_backend=auto,
+[c9:0]:hub_always_push=False,
+[c9:0]:hub_model_id=None,
+[c9:0]:hub_private_repo=None,
+[c9:0]:hub_revision=None,
+[c9:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c9:0]:hub_token=<HUB_TOKEN>,
+[c9:0]:ignore_data_skip=False,
+[c9:0]:include_for_metrics=[],
+[c9:0]:include_inputs_for_metrics=False,
+[c9:0]:include_num_input_tokens_seen=no,
+[c9:0]:include_tokens_per_second=False,
+[c9:0]:jit_mode_eval=False,
+[c9:0]:label_names=None,
+[c9:0]:label_pad_token_id=-100,
+[c9:0]:label_smoothing=0.0,
+[c9:0]:label_smoothing_factor=0.0,
+[c9:0]:ld_alpha=None,
+[c9:0]:learning_rate=3.0474062663500436e-05,
+[c9:0]:length_column_name=length,
+[c9:0]:length_norm_exponent=1.0,
+[c9:0]:length_norm_min_tokens=1.0,
+[c9:0]:length_normalize_logps=False,
+[c9:0]:liger_kernel_config=None,
+[c9:0]:load_best_model_at_end=False,
+[c9:0]:local_rank=0,
+[c9:0]:log_level=info,
+[c9:0]:log_level_replica=warning,
+[c9:0]:log_on_each_node=True,
+[c9:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/runs/Apr23_08-31-34_c9,
+[c9:0]:logging_first_step=False,
+[c9:0]:logging_nan_inf_filter=True,
+[c9:0]:logging_steps=10,
+[c9:0]:logging_strategy=IntervalStrategy.STEPS,
+[c9:0]:loss_type=sigmoid,
+[c9:0]:loss_weights=None,
+[c9:0]:lr_scheduler_kwargs={},
+[c9:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c9:0]:max_completion_length=None,
+[c9:0]:max_grad_norm=1.0,
+[c9:0]:max_length=4096,
+[c9:0]:max_prompt_length=512,
+[c9:0]:max_steps=-1,
+[c9:0]:metric_for_best_model=None,
+[c9:0]:model_adapter_name=None,
+[c9:0]:model_init_kwargs=None,
+[c9:0]:mp_parameters=,
+[c9:0]:neftune_noise_alpha=None,
+[c9:0]:no_cuda=False,
+[c9:0]:num_train_epochs=1,
+[c9:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c9:0]:optim_args=None,
+[c9:0]:optim_target_modules=None,
+[c9:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-DPO-BO-trial000-b0.8651-lr3.05e-05/,
+[c9:0]:overwrite_output_dir=True,
+[c9:0]:pad_token=<PAD_TOKEN>,
+[c9:0]:padding_free=False,
+[c9:0]:padding_value=None,
+[c9:0]:parallelism_config=None,
+[c9:0]:past_index=-1,
+[c9:0]:per_device_eval_batch_size=1,
+[c9:0]:per_device_train_batch_size=1,
+[c9:0]:precompute_ref_batch_size=None,
+[c9:0]:precompute_ref_log_probs=False,
+[c9:0]:prediction_loss_only=False,
+[c9:0]:project=huggingface,
+[c9:0]:push_to_hub=False,
+[c9:0]:push_to_hub_model_id=None,
+[c9:0]:push_to_hub_organization=None,
+[c9:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c9:0]:ray_scope=last,
+[c9:0]:ref_adapter_name=None,
+[c9:0]:ref_model_init_kwargs=None,
+[c9:0]:ref_model_mixup_alpha=0.6,
+[c9:0]:ref_model_sync_steps=512,
+[c9:0]:reference_free=False,
+[c9:0]:remove_unused_columns=True,
+[c9:0]:report_to=['tensorboard', 'wandb'],
+[c9:0]:restore_callback_states_from_checkpoint=False,
+[c9:0]:resume_from_checkpoint=None,
+[c9:0]:rpo_alpha=None,
+[c9:0]:run_name=None,
+[c9:0]:save_on_each_node=False,
+[c9:0]:save_only_model=False,
+[c9:0]:save_safetensors=True,
+[c9:0]:save_steps=400,
+[c9:0]:save_strategy=SaveStrategy.STEPS,
+[c9:0]:save_total_limit=20,
+[c9:0]:sdpo_detach_phi=True,
+[c9:0]:sdpo_enabled=False,
+[c9:0]:sdpo_kappa=1.0,
+[c9:0]:sdpo_lambda_r=0.4,
+[c9:0]:sdpo_lambda_w=0.6,
+[c9:0]:sdpo_lite_beta=1.0,
+[c9:0]:sdpo_lite_decay_retention_alpha=False,
+[c9:0]:sdpo_lite_enabled=False,
+[c9:0]:sdpo_lite_ref_ema_enabled=True,
+[c9:0]:sdpo_lite_ref_ema_tau=0.99,
+[c9:0]:sdpo_lite_retention_alpha=0.2,
+[c9:0]:sdpo_lite_retention_alpha_final=0.05,
+[c9:0]:sdpo_lite_warmup_steps=0,
+[c9:0]:sdpo_ref_ema_enabled=True,
+[c9:0]:sdpo_ref_ema_tau=0.99,
+[c9:0]:sdpo_warmup_steps=0,
+[c9:0]:seed=8,
+[c9:0]:skip_memory_metrics=True,
+[c9:0]:sync_ref_model=False,
+[c9:0]:tf32=None,
+[c9:0]:tools=None,
+[c9:0]:torch_compile=False,
+[c9:0]:torch_compile_backend=None,
+[c9:0]:torch_compile_mode=None,
+[c9:0]:torch_empty_cache_steps=None,
+[c9:0]:torchdynamo=None,
+[c9:0]:tpu_metrics_debug=False,
+[c9:0]:tpu_num_cores=None,
+[c9:0]:trackio_space_id=trackio,
+[c9:0]:truncation_mode=keep_end,
+[c9:0]:use_cpu=False,
+[c9:0]:use_legacy_prediction_loop=False,
+[c9:0]:use_liger_kernel=True,
+[c9:0]:use_liger_loss=False,
+[c9:0]:use_logits_to_keep=False,
+[c9:0]:use_mps_device=False,
+[c9:0]:use_weighting=False,
+[c9:0]:warmup_ratio=0.1,
+[c9:0]:warmup_steps=0,
+[c9:0]:weight_decay=0.0,
+[c9:0]:)
+[c9:0]:2026-04-23 08:31:45 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c9:0]:2026-04-23 08:31:45 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c9:0]:2026-04-23 08:31:47 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c9:0]:2026-04-23 08:31:47 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c9:0]:2026-04-23 08:31:54 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c9:0]:2026-04-23 08:31:55 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6a42404b5cff4cd0.arrow
+[c9:0]:2026-04-23 08:34:21 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1c44d1d73a418c19.arrow
+[c9:0]:c9:943808:943808 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:0]:c9:943808:943808 [0] NCCL INFO Bootstrap : Using ibp195s0.8002:10.24.7.35<0>
+[c9:0]:c9:943808:943808 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c9:0]:c9:943808:943808 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c9:0]:c9:943808:943808 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c9:2]:c9:943810:943810 [2] NCCL INFO cudaDriverVersion 13000
+[c9:2]:c9:943810:943810 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:2]:c9:943810:943810 [2] NCCL INFO Bootstrap : Using ibp195s0.8002:10.24.7.35<0>
+[c9:2]:c9:943810:943810 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c9:2]:c9:943810:943810 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c9:2]:c9:943810:943810 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c9:3]:c9:943811:943811 [3] NCCL INFO cudaDriverVersion 13000
+[c9:3]:c9:943811:943811 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:3]:c9:943811:943811 [3] NCCL INFO Bootstrap : Using ibp195s0.8002:10.24.7.35<0>
+[c9:3]:c9:943811:943811 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c9:3]:c9:943811:943811 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c9:3]:c9:943811:943811 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c9:0]:c9:943808:943808 [0] NCCL INFO cudaDriverVersion 13000
+[c9:0]:NCCL version 2.21.5+cuda12.4
+[c9:1]:c9:943809:943809 [1] NCCL INFO cudaDriverVersion 13000
+[c9:1]:c9:943809:943809 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:1]:c9:943809:943809 [1] NCCL INFO Bootstrap : Using ibp195s0.8002:10.24.7.35<0>
+[c9:1]:c9:943809:943809 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c9:1]:c9:943809:943809 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c9:1]:c9:943809:943809 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c9:2]:c9:943810:948369 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:3]:c9:943811:948368 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:0]:c9:943808:948366 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:1]:c9:943809:948367 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c9:2]:c9:943810:948369 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [RO]; OOB ibp195s0.8002:10.24.7.35<0>
+[c9:2]:c9:943810:948369 [2] NCCL INFO Using non-device net plugin version 0
+[c9:2]:c9:943810:948369 [2] NCCL INFO Using network IB
+[c9:3]:c9:943811:948368 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [RO]; OOB ibp195s0.8002:10.24.7.35<0>
+[c9:3]:c9:943811:948368 [3] NCCL INFO Using non-device net plugin version 0
+[c9:3]:c9:943811:948368 [3] NCCL INFO Using network IB
+[c9:0]:c9:943808:948366 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [RO]; OOB ibp195s0.8002:10.24.7.35<0>
+[c9:0]:c9:943808:948366 [0] NCCL INFO Using non-device net plugin version 0
+[c9:0]:c9:943808:948366 [0] NCCL INFO Using network IB
+[c9:1]:c9:943809:948367 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [RO]; OOB ibp195s0.8002:10.24.7.35<0>
+[c9:1]:c9:943809:948367 [1] NCCL INFO Using non-device net plugin version 0
+[c9:1]:c9:943809:948367 [1] NCCL INFO Using network IB
+[c9:2]:c9:943810:948369 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c9:3]:c9:943811:948368 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c9:0]:c9:943808:948366 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c9:1]:c9:943809:948367 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c9:1]:c9:943809:948367 [1] NCCL INFO ncclCommInitRank comm 0x13f68d70 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init START
+[c9:2]:c9:943810:948369 [2] NCCL INFO ncclCommInitRank comm 0xff50f50 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init START
+[c9:3]:c9:943811:948368 [3] NCCL INFO ncclCommInitRank comm 0x143af310 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init START
+[c9:0]:c9:943808:948366 [0] NCCL INFO ncclCommInitRank comm 0x22e16050 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init START
+[c9:3]:c9:943811:948368 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c9:3]:c9:943811:948368 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c9:0]:c9:943808:948366 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c9:1]:c9:943809:948367 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c9:2]:c9:943810:948369 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c87:0]:sdpo_lite_warmup_steps=0,
+[c87:0]:sdpo_ref_ema_enabled=True,
+[c87:0]:sdpo_ref_ema_tau=0.99,
+[c87:0]:sdpo_warmup_steps=0,
+[c87:0]:seed=8,
+[c87:0]:skip_memory_metrics=True,
+[c87:0]:sync_ref_model=False,
+[c87:0]:tf32=None,
+[c87:0]:tools=None,
+[c87:0]:torch_compile=False,
+[c87:0]:torch_compile_backend=None,
+[c87:0]:torch_compile_mode=None,
+[c87:0]:torch_empty_cache_steps=None,
+[c87:0]:torchdynamo=None,
+[c87:0]:tpu_metrics_debug=False,
+[c87:0]:tpu_num_cores=None,
+[c87:0]:trackio_space_id=trackio,
+[c87:0]:truncation_mode=keep_end,
+[c87:0]:use_cpu=False,
+[c87:0]:use_legacy_prediction_loop=False,
+[c87:0]:use_liger_kernel=True,
+[c87:0]:use_liger_loss=False,
+[c87:0]:use_logits_to_keep=False,
+[c87:0]:use_mps_device=False,
+[c87:0]:use_weighting=False,
+[c87:0]:warmup_ratio=0.1,
+[c87:0]:warmup_steps=0,
+[c87:0]:weight_decay=0.0,
+[c87:0]:)
+[c87:0]:2026-04-23 08:31:45 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c87:0]:2026-04-23 08:31:45 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c87:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c87:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO cudaDriverVersion 13000
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.90<0>
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c87:2]:c87:2817111:2817111 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO cudaDriverVersion 13000
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.90<0>
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c87:0]:c87:2817109:2817109 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO cudaDriverVersion 13000
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.90<0>
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c87:3]:c87:2817112:2817112 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO cudaDriverVersion 13000
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.90<0>
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c87:1]:c87:2817110:2817110 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.90<0>
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Using non-device net plugin version 0
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Using network IB
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.90<0>
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Using non-device net plugin version 0
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Using network IB
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.90<0>
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Using non-device net plugin version 0
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Using network IB
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.90<0>
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Using non-device net plugin version 0
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Using network IB
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO ncclCommInitRank comm 0x13e82970 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init START
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO ncclCommInitRank comm 0xcd364a0 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init START
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO ncclCommInitRank comm 0xec90cd0 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init START
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO ncclCommInitRank comm 0xe5d0c90 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init START
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO comm 0x13e82970 rank 14 nRanks 16 nNodes 4 localRanks 4 localRank 2 MNNVL 0
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Trees [0] 15/-1/-1->14->13 [1] 15/-1/-1->14->13 [2] 12/-1/-1->14->10 [3] 15/-1/-1->14->13 [4] 15/-1/-1->14->13 [5] 12/6/-1->14->-1 [6] 15/-1/-1->14->13 [7] 15/-1/-1->14->13 [8] 12/-1/-1->14->10 [9] 15/-1/-1->14->13 [10] 15/-1/-1->14->13
+[c63:0]:sdpo_lite_warmup_steps=0,
+[c63:0]:sdpo_ref_ema_enabled=True,
+[c63:0]:sdpo_ref_ema_tau=0.99,
+[c63:0]:sdpo_warmup_steps=0,
+[c63:0]:seed=8,
+[c63:0]:skip_memory_metrics=True,
+[c63:0]:sync_ref_model=False,
+[c63:0]:tf32=None,
+[c63:0]:tools=None,
+[c63:0]:torch_compile=False,
+[c63:0]:torch_compile_backend=None,
+[c63:0]:torch_compile_mode=None,
+[c63:0]:torch_empty_cache_steps=None,
+[c63:0]:torchdynamo=None,
+[c63:0]:tpu_metrics_debug=False,
+[c63:0]:tpu_num_cores=None,
+[c63:0]:trackio_space_id=trackio,
+[c63:0]:truncation_mode=keep_end,
+[c63:0]:use_cpu=False,
+[c63:0]:use_legacy_prediction_loop=False,
+[c63:0]:use_liger_kernel=True,
+[c63:0]:use_liger_loss=False,
+[c63:0]:use_logits_to_keep=False,
+[c63:0]:use_mps_device=False,
+[c63:0]:use_weighting=False,
+[c63:0]:warmup_ratio=0.1,
+[c63:0]:warmup_steps=0,
+[c63:0]:weight_decay=0.0,
+[c63:0]:)
+[c63:0]:2026-04-23 08:31:45 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c63:0]:2026-04-23 08:31:45 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c63:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c63:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO cudaDriverVersion 13000
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.250<0>
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c63:3]:c63:2311323:2311323 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO cudaDriverVersion 13000
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.250<0>
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c63:0]:c63:2311320:2311320 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO cudaDriverVersion 13000
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.250<0>
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c63:2]:c63:2311322:2311322 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO cudaDriverVersion 13000
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.250<0>
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c63:1]:c63:2311321:2311321 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.250<0>
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Using non-device net plugin version 0
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Using network IB
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.250<0>
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Using non-device net plugin version 0
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Using network IB
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.250<0>
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Using non-device net plugin version 0
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Using network IB
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.250<0>
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Using non-device net plugin version 0
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Using network IB
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO ncclCommInitRank comm 0xd0784a0 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init START
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO ncclCommInitRank comm 0xebd4cc0 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init START
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO ncclCommInitRank comm 0x1472b4c0 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init START
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO ncclCommInitRank comm 0x14b30890 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init START
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO comm 0xd0784a0 rank 8 nRanks 16 nNodes 4 localRanks 4 localRank 0 MNNVL 0
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Trees [0] 9/4/12->8->0 [1] -1/-1/-1->8->11 [2] 9/-1/-1->8->10 [3] 9/-1/-1->8->4 [4] -1/-1/-1->8->11 [5] 9/-1/-1->8->10 [6] 9/4/12->8->0 [7] -1/-1/-1->8->11 [8] 9/-1/-1->8->10 [9] 9/-1/-1->8->4 [10] -1/-1/-1->8->11
+[c32:0]:sdpo_lite_warmup_steps=0,
+[c32:0]:sdpo_ref_ema_enabled=True,
+[c32:0]:sdpo_ref_ema_tau=0.99,
+[c32:0]:sdpo_warmup_steps=0,
+[c32:0]:seed=8,
+[c32:0]:skip_memory_metrics=True,
+[c32:0]:sync_ref_model=False,
+[c32:0]:tf32=None,
+[c32:0]:tools=None,
+[c32:0]:torch_compile=False,
+[c32:0]:torch_compile_backend=None,
+[c32:0]:torch_compile_mode=None,
+[c32:0]:torch_empty_cache_steps=None,
+[c32:0]:torchdynamo=None,
+[c32:0]:tpu_metrics_debug=False,
+[c32:0]:tpu_num_cores=None,
+[c32:0]:trackio_space_id=trackio,
+[c32:0]:truncation_mode=keep_end,
+[c32:0]:use_cpu=False,
+[c32:0]:use_legacy_prediction_loop=False,
+[c32:0]:use_liger_kernel=True,
+[c32:0]:use_liger_loss=False,
+[c32:0]:use_logits_to_keep=False,
+[c32:0]:use_mps_device=False,
+[c32:0]:use_weighting=False,
+[c32:0]:warmup_ratio=0.1,
+[c32:0]:warmup_steps=0,
+[c32:0]:weight_decay=0.0,
+[c32:0]:)
+[c32:0]:2026-04-23 08:31:45 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c32:0]:2026-04-23 08:31:45 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c32:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c32:0]:2026-04-23 08:31:46 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO cudaDriverVersion 13000
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.126<0>
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c32:1]:c32:2677841:2677841 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO cudaDriverVersion 13000
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.126<0>
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c32:0]:c32:2677840:2677840 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO cudaDriverVersion 13000
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.126<0>
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c32:3]:c32:2677843:2677843 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO cudaDriverVersion 13000
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.7.126<0>
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c32:2]:c32:2677842:2677842 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.126<0>
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Using non-device net plugin version 0
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Using network IB
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.126<0>
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Using non-device net plugin version 0
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Using network IB
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.126<0>
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Using non-device net plugin version 0
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Using network IB
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.7.126<0>
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Using non-device net plugin version 0
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Using network IB
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO ncclCommInitRank comm 0xde6c960 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init START
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO ncclCommInitRank comm 0xdbe1b30 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init START
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO ncclCommInitRank comm 0x1548d520 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init START
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO ncclCommInitRank comm 0x14a307b0 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init START
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Setting affinity for GPU 3 to 0f,00000000
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO comm 0xde6c960 rank 5 nRanks 16 nNodes 4 localRanks 4 localRank 1 MNNVL 0
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->9 [2] 7/-1/-1->5->4 [3] 6/-1/-1->5->4 [4] 6/9/1->5->13 [5] 7/-1/-1->5->4 [6] 6/-1/-1->5->4 [7] 6/-1/-1->5->9 [8] 7/-1/-1->5->4 [9] 6/-1/-1->5->4 [10] 6/9/1->5->13
+[c9:2]:c9:943810:948369 [2] NCCL INFO comm 0xff50f50 rank 2 nRanks 16 nNodes 4 localRanks 4 localRank 2 MNNVL 0
+[c9:2]:c9:943810:948369 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c9:2]:c9:943810:948369 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 1/-1/-1->2->0 [3] 3/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 1/-1/-1->2->0 [6] 3/-1/-1->2->1 [7] 3/-1/-1->2->1 [8] 1/-1/-1->2->0 [9] 3/-1/-1->2->1 [10] 3/-1/-1->2->1
+[c9:2]:c9:943810:948369 [2] NCCL INFO P2P Chunksize set to 131072
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 04/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO comm 0x143af310 rank 3 nRanks 16 nNodes 4 localRanks 4 localRank 3 MNNVL 0
+[c9:3]:c9:943811:948368 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c9:3]:c9:943811:948368 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] 0/-1/-1->3->2 [2] 0/10/-1->3->-1 [3] -1/-1/-1->3->2 [4] 0/-1/-1->3->2 [5] 0/-1/-1->3->6 [6] -1/-1/-1->3->2 [7] 0/-1/-1->3->2 [8] 0/10/-1->3->-1 [9] -1/-1/-1->3->2 [10] 0/-1/-1->3->2
+[c9:3]:c9:943811:948368 [3] NCCL INFO P2P Chunksize set to 131072
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 03/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 06/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 09/0 : 3[3] -> 4[0] [send] via NET/IB/1(0)/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 02/0 : 15[3] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 05/0 : 15[3] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 08/0 : 15[3] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 02/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 05/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 08/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO comm 0x22e16050 rank 0 nRanks 16 nNodes 4 localRanks 4 localRank 0 MNNVL 0
+[c9:0]:c9:943808:948366 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 00/11 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 01/11 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 02/11 :    0   2   6   5   4   7  10   9   8  11  14  13  12  15   3   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 03/11 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 04/11 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 05/11 :    0   2   6   5   4   7  10   9   8  11  14  13  12  15   3   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 06/11 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 07/11 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 08/11 :    0   2   6   5   4   7  10   9   8  11  14  13  12  15   3   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 09/11 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 10/11 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+[c9:0]:c9:943808:948366 [0] NCCL INFO Trees [0] 1/8/-1->0->-1 [1] -1/-1/-1->0->3 [2] 2/-1/-1->0->3 [3] 1/-1/-1->0->4 [4] -1/-1/-1->0->3 [5] 2/-1/-1->0->3 [6] 1/8/-1->0->-1 [7] -1/-1/-1->0->3 [8] 2/-1/-1->0->3 [9] 1/-1/-1->0->4 [10] -1/-1/-1->0->3
+[c9:0]:c9:943808:948366 [0] NCCL INFO P2P Chunksize set to 131072
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 03/0 : 15[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 06/0 : 15[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 09/0 : 15[3] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 05/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 08/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 04/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 07/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 10/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO comm 0x13f68d70 rank 1 nRanks 16 nNodes 4 localRanks 4 localRank 1 MNNVL 0
+[c9:1]:c9:943809:948367 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c9:1]:c9:943809:948367 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/9/-1->1->-1 [2] -1/-1/-1->1->2 [3] 2/-1/-1->1->0 [4] 2/-1/-1->1->5 [5] -1/-1/-1->1->2 [6] 2/-1/-1->1->0 [7] 2/9/-1->1->-1 [8] -1/-1/-1->1->2 [9] 2/-1/-1->1->0 [10] 2/-1/-1->1->5
+[c9:1]:c9:943809:948367 [1] NCCL INFO P2P Chunksize set to 131072
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 09/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 04/0 : 14[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 07/0 : 14[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 10/0 : 14[2] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 07/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 10/0 : 2[2] -> 5[1] [send] via NET/IB/0(1)/GDRDMA
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 02/0 : 2[2] -> 6[2] [send] via NET/IB/2(3)/GDRDMA
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 05/0 : 2[2] -> 6[2] [send] via NET/IB/2(3)/GDRDMA
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 08/0 : 2[2] -> 6[2] [send] via NET/IB/2(3)/GDRDMA
+[c9:0]:c9:943808:948382 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c9:0]:c9:943808:948382 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO P2P Chunksize set to 131072
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 00/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 03/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 06/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 09/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 05/0 : 11[3] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 08/0 : 11[3] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [send] via NET/IB/0(13)/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 04/0 : 14[2] -> 1[1] [send] via NET/IB/0(13)/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 07/0 : 14[2] -> 1[1] [send] via NET/IB/0(13)/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 10/0 : 14[2] -> 1[1] [send] via NET/IB/0(13)/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 02/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 05/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 08/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO comm 0xcd364a0 rank 12 nRanks 16 nNodes 4 localRanks 4 localRank 0 MNNVL 0
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] -1/-1/-1->12->15 [2] 13/-1/-1->12->14 [3] 13/4/-1->12->-1 [4] -1/-1/-1->12->15 [5] 13/-1/-1->12->14 [6] 13/-1/-1->12->8 [7] -1/-1/-1->12->15 [8] 13/-1/-1->12->14 [9] 13/4/-1->12->-1 [10] -1/-1/-1->12->15
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO P2P Chunksize set to 131072
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 03/0 : 11[3] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 06/0 : 11[3] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 09/0 : 11[3] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 00/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 03/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 06/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 09/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 01/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 02/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 04/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 05/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 07/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 08/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 10/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c87:0]:c87:2817109:2821980 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO comm 0xec90cd0 rank 15 nRanks 16 nNodes 4 localRanks 4 localRank 3 MNNVL 0
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Trees [0] -1/-1/-1->15->14 [1] 12/-1/-1->15->14 [2] -1/-1/-1->15->13 [3] -1/-1/-1->15->14 [4] 12/-1/-1->15->14 [5] -1/-1/-1->15->13 [6] -1/-1/-1->15->14 [7] 12/-1/-1->15->14 [8] -1/-1/-1->15->13 [9] -1/-1/-1->15->14 [10] 12/-1/-1->15->14
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO P2P Chunksize set to 131072
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [send] via NET/IB/1(12)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 03/0 : 15[3] -> 0[0] [send] via NET/IB/1(12)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 06/0 : 15[3] -> 0[0] [send] via NET/IB/1(12)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 09/0 : 15[3] -> 0[0] [send] via NET/IB/1(12)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 02/0 : 15[3] -> 3[3] [send] via NET/IB/3(14)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 05/0 : 15[3] -> 3[3] [send] via NET/IB/3(14)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 08/0 : 15[3] -> 3[3] [send] via NET/IB/3(14)/GDRDMA
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 01/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 04/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 07/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 10/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO comm 0xe5d0c90 rank 13 nRanks 16 nNodes 4 localRanks 4 localRank 1 MNNVL 0
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Trees [0] 14/-1/-1->13->12 [1] 14/-1/-1->13->9 [2] 15/-1/-1->13->12 [3] 14/-1/-1->13->12 [4] 14/5/-1->13->-1 [5] 15/-1/-1->13->12 [6] 14/-1/-1->13->12 [7] 14/-1/-1->13->9 [8] 15/-1/-1->13->12 [9] 14/-1/-1->13->12 [10] 14/5/-1->13->-1
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO P2P Chunksize set to 131072
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 00/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 03/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 06/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 09/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 04/0 : 10[2] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 07/0 : 10[2] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 10/0 : 10[2] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 01/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 02/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 04/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 05/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 07/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 08/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 10/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:0]:c87:2817109:2821980 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c87:2]:c87:2817111:2821983 [2] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c87:2]:c87:2817111:2821983 [2] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c87:1]:c87:2817110:2821977 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c87:1]:c87:2817110:2821977 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Connected all rings
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 01/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 04/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 07/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 10/0 : 14[2] -> 15[3] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 08/0 : 10[2] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 05/0 : 6[2] -> 14[2] [receive] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 05/0 : 14[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO P2P Chunksize set to 131072
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 03/0 : 7[3] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 7[3] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 09/0 : 7[3] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 03/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 09/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 01/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 02/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 04/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 05/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 07/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 08/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 10/0 : 8[0] -> 11[3] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO comm 0xebd4cc0 rank 11 nRanks 16 nNodes 4 localRanks 4 localRank 3 MNNVL 0
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] 8/-1/-1->11->10 [2] -1/-1/-1->11->9 [3] -1/-1/-1->11->10 [4] 8/-1/-1->11->10 [5] -1/-1/-1->11->9 [6] -1/-1/-1->11->10 [7] 8/-1/-1->11->10 [8] -1/-1/-1->11->9 [9] -1/-1/-1->11->10 [10] 8/-1/-1->11->10
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO P2P Chunksize set to 131072
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [send] via NET/IB/1(8)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 03/0 : 11[3] -> 12[0] [send] via NET/IB/1(8)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 06/0 : 11[3] -> 12[0] [send] via NET/IB/1(8)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 09/0 : 11[3] -> 12[0] [send] via NET/IB/1(8)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [send] via NET/IB/3(10)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 05/0 : 11[3] -> 14[2] [send] via NET/IB/3(10)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 08/0 : 11[3] -> 14[2] [send] via NET/IB/3(10)/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 01/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 04/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 07/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 10/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO comm 0x1472b4c0 rank 10 nRanks 16 nNodes 4 localRanks 4 localRank 2 MNNVL 0
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 11/-1/-1->10->9 [2] 8/6/14->10->3 [3] 11/-1/-1->10->9 [4] 11/-1/-1->10->9 [5] 8/-1/-1->10->6 [6] 11/-1/-1->10->9 [7] 11/-1/-1->10->9 [8] 8/6/14->10->3 [9] 11/-1/-1->10->9 [10] 11/-1/-1->10->9
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO P2P Chunksize set to 131072
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 00/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 03/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 06/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 09/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 05/0 : 7[3] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 7[3] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [send] via NET/IB/0(9)/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 04/0 : 10[2] -> 13[1] [send] via NET/IB/0(9)/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 07/0 : 10[2] -> 13[1] [send] via NET/IB/0(9)/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 10/0 : 10[2] -> 13[1] [send] via NET/IB/0(9)/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO comm 0x14b30890 rank 9 nRanks 16 nNodes 4 localRanks 4 localRank 1 MNNVL 0
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Trees [0] 10/-1/-1->9->8 [1] 10/5/13->9->1 [2] 11/-1/-1->9->8 [3] 10/-1/-1->9->8 [4] 10/-1/-1->9->5 [5] 11/-1/-1->9->8 [6] 10/-1/-1->9->8 [7] 10/5/13->9->1 [8] 11/-1/-1->9->8 [9] 10/-1/-1->9->8 [10] 10/-1/-1->9->5
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO P2P Chunksize set to 131072
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 00/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 03/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 06/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 09/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 04/0 : 6[2] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 6[2] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 10/0 : 6[2] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 02/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 04/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 05/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 08/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 10/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:0]:c63:2311320:2316191 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c63:0]:c63:2311320:2316191 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 05/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2316187 [2] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c63:2]:c63:2311322:2316187 [2] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c63:1]:c63:2311321:2316189 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c63:1]:c63:2311321:2316189 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Connected all rings
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 02/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 05/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 08/0 : 8[0] -> 9[1] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 02/0 : 8[0] -> 10[2] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 05/0 : 8[0] -> 10[2] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 08/0 : 8[0] -> 10[2] via P2P/CUMEM
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 4[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 03/0 : 4[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 4[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 09/0 : 4[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO P2P Chunksize set to 131072
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 00/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 03/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 06/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 09/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 07/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 2[2] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 01/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 02/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 05/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 07/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 08/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO comm 0x1548d520 rank 7 nRanks 16 nNodes 4 localRanks 4 localRank 3 MNNVL 0
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] 4/-1/-1->7->6 [2] -1/-1/-1->7->5 [3] -1/-1/-1->7->6 [4] 4/-1/-1->7->6 [5] -1/-1/-1->7->5 [6] -1/-1/-1->7->6 [7] 4/-1/-1->7->6 [8] -1/-1/-1->7->5 [9] -1/-1/-1->7->6 [10] 4/-1/-1->7->6
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO P2P Chunksize set to 131072
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [send] via NET/IB/1(4)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 03/0 : 7[3] -> 8[0] [send] via NET/IB/1(4)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 06/0 : 7[3] -> 8[0] [send] via NET/IB/1(4)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 09/0 : 7[3] -> 8[0] [send] via NET/IB/1(4)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [send] via NET/IB/3(6)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 05/0 : 7[3] -> 10[2] [send] via NET/IB/3(6)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 08/0 : 7[3] -> 10[2] [send] via NET/IB/3(6)/GDRDMA
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 01/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 04/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 07/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 10/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO comm 0xdbe1b30 rank 4 nRanks 16 nNodes 4 localRanks 4 localRank 0 MNNVL 0
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Trees [0] 5/-1/-1->4->8 [1] -1/-1/-1->4->7 [2] 5/-1/-1->4->6 [3] 5/8/0->4->12 [4] -1/-1/-1->4->7 [5] 5/-1/-1->4->6 [6] 5/-1/-1->4->8 [7] -1/-1/-1->4->7 [8] 5/-1/-1->4->6 [9] 5/8/0->4->12 [10] -1/-1/-1->4->7
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO P2P Chunksize set to 131072
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 06/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 3[3] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 00/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 06/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 01/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 02/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 04/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 05/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 07/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 08/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 10/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c32:0]:c32:2677840:2682698 [0] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO comm 0x14a307b0 rank 6 nRanks 16 nNodes 4 localRanks 4 localRank 2 MNNVL 0
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 4/-1/-1->6->10 [3] 7/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 4/10/3->6->14 [6] 7/-1/-1->6->5 [7] 7/-1/-1->6->5 [8] 4/-1/-1->6->10 [9] 7/-1/-1->6->5 [10] 7/-1/-1->6->5
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO P2P Chunksize set to 131072
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 00/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 03/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 06/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 09/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [send] via NET/IB/0(5)/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 04/0 : 6[2] -> 9[1] [send] via NET/IB/0(5)/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 07/0 : 6[2] -> 9[1] [send] via NET/IB/0(5)/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 10/0 : 6[2] -> 9[1] [send] via NET/IB/0(5)/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 02/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 08/0 : 2[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 02/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 08/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682698 [0] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c32:1]:c32:2677841:2682702 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c32:1]:c32:2677841:2682702 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c32:2]:c32:2677842:2682700 [2] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c32:2]:c32:2677842:2682700 [2] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Connected all rings
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 01/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 07/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 5[1] -> 6[2] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 02/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 05/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 08/0 : 5[1] -> 7[3] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 1[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 1[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 01/0 : 5[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 5[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 07/0 : 5[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 8[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 0[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 8[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 12[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 00/0 : 8[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 03/0 : 8[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 06/0 : 8[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Channel 09/0 : 8[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Connected all rings
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 01/0 : 11[3] -> 8[0] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 04/0 : 11[3] -> 8[0] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 07/0 : 11[3] -> 8[0] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 10/0 : 11[3] -> 8[0] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 02/0 : 11[3] -> 9[1] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 05/0 : 11[3] -> 9[1] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 08/0 : 11[3] -> 9[1] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 00/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 03/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 06/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Channel 09/0 : 11[3] -> 10[2] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Connected all rings
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 01/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 04/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 07/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 10/0 : 10[2] -> 11[3] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 6[2] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 05/0 : 6[2] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 6[2] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 10[2] -> 14[2] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 3[3] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 3[3] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 10[2] -> 3[3] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 10[2] -> 3[3] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 14[2] -> 10[2] [receive] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 10[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 05/0 : 10[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 10[2] -> 6[2] [send] via NET/IB/3/GDRDMA
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 02/0 : 10[2] -> 8[0] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 05/0 : 10[2] -> 8[0] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 08/0 : 10[2] -> 8[0] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 00/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 01/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 03/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 04/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 06/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 07/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 09/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Channel 10/0 : 10[2] -> 9[1] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Connected all rings
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 04/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 10/0 : 9[1] -> 10[2] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 02/0 : 9[1] -> 11[3] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 05/0 : 9[1] -> 11[3] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 08/0 : 9[1] -> 11[3] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 5[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 04/0 : 5[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 5[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 10/0 : 5[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 9[1] -> 13[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 9[1] -> 13[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 1[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 1[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 9[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 9[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 13[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 13[1] -> 9[1] [receive] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 01/0 : 9[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 04/0 : 9[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 07/0 : 9[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 10/0 : 9[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 00/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 03/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 06/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Channel 09/0 : 9[1] -> 8[0] via P2P/CUMEM
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO Connected all trees
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO Connected all trees
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO Connected all trees
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c9:1]:c9:943809:948388 [1] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c9:1]:c9:943809:948388 [1] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c9:3]:c9:943811:948384 [3] NCCL INFO NCCL_IB_PKEY set by environment to 2.
+[c9:3]:c9:943811:948384 [3] NCCL INFO NCCL_IB_RETRY_CNT set by environment to 10.
+[c9:2]:c9:943810:948369 [2] NCCL INFO Connected all rings
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 07/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 02/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 05/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 08/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Connected all rings
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 05/0 : 3[3] -> 6[2] [send] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 02/0 : 3[3] -> 10[2] [send] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 08/0 : 3[3] -> 10[2] [send] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 02/0 : 10[2] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 08/0 : 10[2] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 05/0 : 6[2] -> 3[3] [receive] via NET/IB/2/GDRDMA
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 04/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 05/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 07/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 08/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 10/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Connected all rings
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 02/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 08/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 03/0 : 0[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 09/0 : 0[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 06/0 : 8[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 06/0 : 0[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 03/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:0]:c9:943808:948366 [0] NCCL INFO Channel 09/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Connected all rings
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 08/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 04/0 : 1[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 10/0 : 1[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 01/0 : 9[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 07/0 : 9[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 01/0 : 1[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 07/0 : 1[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 04/0 : 5[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 10/0 : 5[1] -> 1[1] [receive] via NET/IB/0/GDRDMA
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:1]:c9:943809:948367 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 08/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:2]:c9:943810:948369 [2] NCCL INFO Channel 10/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c9:3]:c9:943811:948368 [3] NCCL INFO Connected all trees
+[c9:3]:c9:943811:948368 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c9:3]:c9:943811:948368 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c9:0]:c9:943808:948366 [0] NCCL INFO Connected all trees
+[c9:0]:c9:943808:948366 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c9:0]:c9:943808:948366 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c9:1]:c9:943809:948367 [1] NCCL INFO Connected all trees
+[c9:1]:c9:943809:948367 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c9:1]:c9:943809:948367 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c9:2]:c9:943810:948369 [2] NCCL INFO Connected all trees
+[c9:2]:c9:943810:948369 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c9:2]:c9:943810:948369 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c9:2]:c9:943810:948369 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c9:2]:c9:943810:948369 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c9:2]:c9:943810:948369 [2] NCCL INFO ncclCommInitRank comm 0xff50f50 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c9:3]:c9:943811:948368 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c9:3]:c9:943811:948368 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c9:3]:c9:943811:948368 [3] NCCL INFO ncclCommInitRank comm 0x143af310 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c9:0]:c9:943808:948366 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 5[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 13[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 13[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 5[1] -> 13[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 5[1] -> 13[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 01/0 : 9[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 9[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 07/0 : 9[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 9[1] -> 5[1] [receive] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 04/0 : 5[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 10/0 : 5[1] -> 1[1] [send] via NET/IB/0/GDRDMA
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 00/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 03/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 06/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Channel 09/0 : 5[1] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Connected all rings
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 01/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 04/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 07/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 10/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 02/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 05/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 08/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 03/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 06/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Channel 09/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Connected all rings
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 02/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 05/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 08/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 02/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 05/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 08/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 00/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 06/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 12[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 12[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 4[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 4[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 00/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 06/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 03/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Channel 09/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Connected all rings
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 01/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 04/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 07/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 10/0 : 6[2] -> 7[3] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 3[3] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 02/0 : 6[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 6[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 08/0 : 6[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 14[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 6[2] -> 14[2] [send] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 02/0 : 10[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 10[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 08/0 : 10[2] -> 6[2] [receive] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 6[2] -> 3[3] [send] via NET/IB/3/GDRDMA
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 02/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 05/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 08/0 : 6[2] -> 4[0] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 00/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 01/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 03/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 04/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 06/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 07/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 09/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Channel 10/0 : 6[2] -> 5[1] via P2P/CUMEM
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO Connected all trees
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO Connected all trees
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO Connected all trees
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO Connected all trees
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 08/0 : 14[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 02/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 05/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 08/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 00/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 01/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 03/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 04/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 06/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 07/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 09/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Channel 10/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Connected all rings
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 01/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 04/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 07/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 10/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 02/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 05/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 08/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 00/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 03/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 06/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Channel 09/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Connected all rings
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 02/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 05/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 08/0 : 12[0] -> 13[1] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 02/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 05/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 08/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 06/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 03/0 : 4[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 09/0 : 4[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 03/0 : 12[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 09/0 : 12[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Channel 06/0 : 12[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Connected all rings
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 01/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 04/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 07/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 10/0 : 13[1] -> 14[2] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 02/0 : 13[1] -> 15[3] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 05/0 : 13[1] -> 15[3] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 08/0 : 13[1] -> 15[3] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 01/0 : 9[1] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 07/0 : 9[1] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 04/0 : 5[1] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 10/0 : 5[1] -> 13[1] [receive] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 04/0 : 13[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 10/0 : 13[1] -> 5[1] [send] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 01/0 : 13[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 07/0 : 13[1] -> 9[1] [send] via NET/IB/0/GDRDMA
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 00/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 03/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 06/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Channel 09/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO Connected all trees
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO Connected all trees
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO Connected all trees
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO Connected all trees
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c87:2]:c87:2817111:2821959 [2] NCCL INFO ncclCommInitRank comm 0x13e82970 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c87:3]:c87:2817112:2821958 [3] NCCL INFO ncclCommInitRank comm 0xec90cd0 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c87:0]:c87:2817109:2821960 [0] NCCL INFO ncclCommInitRank comm 0xcd364a0 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c87:1]:c87:2817110:2821957 [1] NCCL INFO ncclCommInitRank comm 0xe5d0c90 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c87:0]:2026-04-23 08:46:22 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c87:0]:2026-04-23 08:46:28 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6a42404b5cff4cd0_*_of_00001.arrow
+[c87:0]:2026-04-23 08:46:37 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1c44d1d73a418c19_*_of_00001.arrow
+[c87:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c87:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-80e6f953f367253d_*_of_00001.arrow
+[c87:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-d897d0345613e490_*_of_00001.arrow
+[c87:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c87:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c87:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c87:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c87:0]:2026-04-23 08:48:29 - INFO - __main__ - *** Train ***
+[c87:3]:c87:2817112:2821979 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+[c87:0]:c87:2817109:2821980 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+[c87:2]:c87:2817111:2821983 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+[c87:1]:c87:2817110:2821977 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+[c87:3]:c87:2817112:2821979 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+[c87:3]:c87:2817112:2821979 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+[c87:2]:c87:2817111:2821983 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c32:1]:c32:2677841:2682679 [1] NCCL INFO ncclCommInitRank comm 0xde6c960 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c32:3]:c32:2677843:2682680 [3] NCCL INFO ncclCommInitRank comm 0x1548d520 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c32:0]:c32:2677840:2682677 [0] NCCL INFO ncclCommInitRank comm 0xdbe1b30 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c32:2]:c32:2677842:2682678 [2] NCCL INFO ncclCommInitRank comm 0x14a307b0 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c32:0]:2026-04-23 08:46:22 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c32:0]:2026-04-23 08:46:28 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6a42404b5cff4cd0_*_of_00001.arrow
+[c32:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1c44d1d73a418c19_*_of_00001.arrow
+[c32:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c32:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-80e6f953f367253d_*_of_00001.arrow
+[c32:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-d897d0345613e490_*_of_00001.arrow
+[c32:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c32:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c32:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c32:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c32:0]:2026-04-23 08:48:29 - INFO - __main__ - *** Train ***
+[c32:0]:c32:2677840:2682698 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+[c32:2]:c32:2677842:2682700 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+[c32:1]:c32:2677841:2682702 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+[c32:3]:c32:2677843:2682704 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+[c9:0]:c9:943808:948366 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c9:0]:c9:943808:948366 [0] NCCL INFO ncclCommInitRank comm 0x22e16050 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c9:1]:c9:943809:948367 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c9:1]:c9:943809:948367 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c9:1]:c9:943809:948367 [1] NCCL INFO ncclCommInitRank comm 0x13f68d70 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c9:0]:2026-04-23 08:46:15 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c9:0]:2026-04-23 08:46:15 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-80e6f953f367253d.arrow
+[c9:0]:2026-04-23 08:46:16 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-d897d0345613e490.arrow
+[c9:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c9:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c9:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c9:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c9:0]:2026-04-23 08:48:29 - INFO - __main__ - *** Train ***
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO Connected all trees
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c63:1]:c63:2311321:2315885 [1] NCCL INFO ncclCommInitRank comm 0x14b30890 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 26000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c63:3]:c63:2311323:2315887 [3] NCCL INFO ncclCommInitRank comm 0xebd4cc0 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c63:0]:c63:2311320:2315886 [0] NCCL INFO ncclCommInitRank comm 0xd0784a0 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c63:2]:c63:2311322:2315888 [2] NCCL INFO ncclCommInitRank comm 0x1472b4c0 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId a6000 commId 0x49141f78fa127fd0 - Init COMPLETE
+[c63:0]:2026-04-23 08:46:22 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c63:0]:2026-04-23 08:46:28 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6a42404b5cff4cd0_*_of_00001.arrow
+[c63:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-1c44d1d73a418c19_*_of_00001.arrow
+[c63:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c63:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-80e6f953f367253d_*_of_00001.arrow
+[c63:0]:2026-04-23 08:46:38 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-d897d0345613e490_*_of_00001.arrow
+[c63:3]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c63:1]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c63:2]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c63:0]:Warning: The cache directory for DeepSpeed Triton autotune, /home/hama901h/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[c63:0]:2026-04-23 08:48:29 - INFO - __main__ - *** Train ***
+[c63:3]:c63:2311323:2316185 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+[c63:1]:c63:2311321:2316189 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+[c63:2]:c63:2311322:2316187 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+[c63:2]:c63:2311322:2316187 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+[c63:3]:c63:2311323:2316185 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+[c63:3]:c63:2311323:2316185 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+END TIME: Thu Apr 23 09:11:46 CEST 2026
+END 3404819: Thu Apr 23 09:11:46 CEST 2026
