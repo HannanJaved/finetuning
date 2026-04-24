@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=14B_olmo_LR1e7_Beta0.1_FSDP
-#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO/SFT-LR3e-5/BayesOpt-FSDP/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO/SFT-LR3e-5/BayesOpt-FSDP/%x_%j.err
+#SBATCH --job-name=Qwen3-14B-DPO-BO-t001
+#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.err
 #SBATCH --nodes=8
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
@@ -12,29 +12,26 @@
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load release/24.10
-module load CUDA/12.4.0
+module load release/28.10
+module load CUDA/12.8.0
 source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
-export TRITON_CACHE_DIR="/tmp/$USER/triton/$SLURM_JOB_ID"
-export XDG_CACHE_HOME="/tmp/$USER/xdg-cache/$SLURM_JOB_ID"
-mkdir -p "$TRITON_CACHE_DIR" "$XDG_CACHE_HOME"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
 # try limited membership instead of full
 export NCCL_IB_PKEY=0x2
 
-export NCCL_NSOCKS_PERTHREAD=4
+export NCCL_NSOCKS_PERTHREAD=8
 export NCCL_SOCKET_NTHREADS=2
 export NCCL_MIN_CHANNELS=32
 export NCCL_DEBUG=INFO
 export NCCL_IB_RETRY_CNT=10
 export NCCL_MIN_NCHANNELS=11
-export NCCL_TREE_THRESHOLD=4294967296
+export NCCL_TREE_THRESHOLD=8298967296
 export TORCH_DISTRIBUTED_DEBUG=INFO
 export TORCH_DISTRIBUTED_TIMEOUT=300
 export TORCHELASTIC_MAX_FAILED_CONNECTIONS=60
@@ -55,7 +52,7 @@ nodes_array=($nodes)
 head_node=${nodes_array[0]}
 
 export RDZV_HOST=$head_node
-export RDZV_PORT=29400
+export RDZV_PORT=29800
 
 echo "head_node=$head_node"
 
@@ -66,11 +63,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-14B-SFT-LR1e-6-DPO-Beta0.1-LR1e-7
+export WANDB_NAME=Qwen3-14B-DPO-BO-t001
 
 cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/14B/DPO/SFT-Lr3e-5/Bayes-opt-fsdp/dpo_beta0.1_LR.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/14B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/001/config.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
