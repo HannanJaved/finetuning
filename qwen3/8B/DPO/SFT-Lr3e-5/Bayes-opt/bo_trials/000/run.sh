@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=8B_olmo_LR1e7_Beta0.1_FSDP
-#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO/SFT-LR3e-5/BayesOpt-FSDP/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO/SFT-LR3e-5/BayesOpt-FSDP/%x_%j.err
+#SBATCH --job-name=Qwen3-8B-DPO-BO-t000
+#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO/SFT-LR3e-5/BayesOpt/%x_%j.err
 #SBATCH --nodes=8
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
+#SBATCH --mem=0
 #SBATCH --time=08:00:00
 #SBATCH --partition=capella
 
@@ -19,10 +19,6 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
-
-export TRITON_CACHE_DIR="/tmp/$USER/triton/$SLURM_JOB_ID"
-export XDG_CACHE_HOME="/tmp/$USER/xdg-cache/$SLURM_JOB_ID"
-mkdir -p "$TRITON_CACHE_DIR" "$XDG_CACHE_HOME"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
@@ -65,13 +61,12 @@ NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
 echo NPROC_PER_NODE=$NPROC_PER_NODE
 
 # Wandb settings
-export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-8B-SFT-LR1e-6-DPO-Beta0.1-LR1e-7
+export WANDB_NAME=Qwen3-8B-DPO-BO-t000
 
 cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/8B/DPO/SFT-Lr3e-5/Bayes-opt-fsdp/dpo_beta0.1_LR.yaml
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/8B/DPO/SFT-Lr3e-5/Bayes-opt/bo_trials/000/config.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE

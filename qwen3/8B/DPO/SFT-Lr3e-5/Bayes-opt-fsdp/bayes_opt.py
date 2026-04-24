@@ -164,7 +164,7 @@ def objective(trial: optuna.Trial) -> float:
 
     trial_dir = SCRIPT_DIR / "bo_trials" / f"{trial.number:03d}"
     trial_dir.mkdir(parents=True, exist_ok=True)
-    run_name = f"Qwen3-8B-DPO-BO-FSDP-t{trial.number:03d}"
+    run_name = f"Qwen3-8B-DPO-BO-t{trial.number:03d}"
 
     config_path = write_config(trial_dir, lr, beta)
     job_script = write_job_script(trial_dir, config_path, run_name)
