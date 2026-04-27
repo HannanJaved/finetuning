@@ -1,0 +1,824 @@
+JOB NAME qwen3_14B_dpo_bo_smoketest
+head_node=c120
+NPROC_PER_NODE=4
+JOBNAME qwen3_14B_dpo_bo_smoketest
+CONFIG /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/14B/DPO/SFT-Lr3e-5/Bayes-opt-fsdp-smoketest/bo_trials/000/config.yaml
+/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook
+[c120:0]:c120:335333:335333 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:0]:c120:335333:335333 [0] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.222<0>
+[c120:0]:c120:335333:335333 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c120:0]:c120:335333:335333 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c120:0]:c120:335333:335333 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+[c120:0]:c120:335333:335333 [0] NCCL INFO cudaDriverVersion 13000
+[c120:0]:NCCL version 2.21.5+cuda12.4
+[c120:0]:c120:335333:335818 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:0]:c120:335333:335818 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.222<0>
+[c120:0]:c120:335333:335818 [0] NCCL INFO Using non-device net plugin version 0
+[c120:0]:c120:335333:335818 [0] NCCL INFO Using network IB
+[c120:2]:c120:335335:335335 [2] NCCL INFO cudaDriverVersion 13000
+[c120:2]:c120:335335:335335 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:2]:c120:335335:335335 [2] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.222<0>
+[c120:2]:c120:335335:335335 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c120:2]:c120:335335:335335 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c120:2]:c120:335335:335335 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+[c120:3]:c120:335336:335336 [3] NCCL INFO cudaDriverVersion 13000
+[c120:3]:c120:335336:335336 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:3]:c120:335336:335336 [3] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.222<0>
+[c120:3]:c120:335336:335336 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c120:3]:c120:335336:335336 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c120:3]:c120:335336:335336 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+[c120:1]:c120:335334:335334 [1] NCCL INFO cudaDriverVersion 13000
+[c120:1]:c120:335334:335334 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:1]:c120:335334:335334 [1] NCCL INFO Bootstrap : Using ibp163s0.8002:10.24.8.222<0>
+[c120:1]:c120:335334:335334 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+[c120:1]:c120:335334:335334 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+[c120:1]:c120:335334:335334 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+[c120:0]:c120:335333:335818 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c120:2]:c120:335335:335827 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:2]:c120:335335:335827 [2] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.222<0>
+[c120:2]:c120:335335:335827 [2] NCCL INFO Using non-device net plugin version 0
+[c120:2]:c120:335335:335827 [2] NCCL INFO Using network IB
+[c120:3]:c120:335336:335828 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:3]:c120:335336:335828 [3] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.222<0>
+[c120:3]:c120:335336:335828 [3] NCCL INFO Using non-device net plugin version 0
+[c120:3]:c120:335336:335828 [3] NCCL INFO Using network IB
+[c120:1]:c120:335334:335829 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002
+[c120:1]:c120:335334:335829 [1] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB [1]mlx5_3:1/IB [2]mlx5_4:1/IB [3]mlx5_5:1/IB [RO]; OOB ibp163s0.8002:10.24.8.222<0>
+[c120:1]:c120:335334:335829 [1] NCCL INFO Using non-device net plugin version 0
+[c120:1]:c120:335334:335829 [1] NCCL INFO Using network IB
+[c120:2]:c120:335335:335827 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c120:1]:c120:335334:335829 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c120:2]:c120:335335:335827 [2] NCCL INFO ncclCommInitRank comm 0xd7923d0 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId a6000 commId 0xa63dd23eeca7136 - Init START
+[c120:3]:c120:335336:335828 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c120:3]:c120:335336:335828 [3] NCCL INFO ncclCommInitRank comm 0xd7acbb0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c6000 commId 0xa63dd23eeca7136 - Init START
+[c120:0]:c120:335333:335818 [0] NCCL INFO ncclCommInitRank comm 0xdd2a9f0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 6000 commId 0xa63dd23eeca7136 - Init START
+[c120:1]:c120:335334:335829 [1] NCCL INFO ncclCommInitRank comm 0xeab4370 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 26000 commId 0xa63dd23eeca7136 - Init START
+[c120:1]:c120:335334:335829 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c120:3]:c120:335336:335828 [3] NCCL INFO Setting affinity for GPU 3 to 03,00000000
+[c120:3]:c120:335336:335828 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c120:2]:c120:335335:335827 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c120:0]:c120:335333:335818 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c120:1]:c120:335334:335829 [1] NCCL INFO comm 0xeab4370 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+[c120:1]:c120:335334:335829 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c120:1]:c120:335334:335829 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0 [4] 3/-1/-1->1->2 [5] 3/-1/-1->1->2 [6] 3/-1/-1->1->2 [7] 3/-1/-1->1->2 [8] 0/-1/-1->1->-1 [9] 0/-1/-1->1->-1 [10] 0/-1/-1->1->-1 [11] 0/-1/-1->1->-1 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 2/-1/-1->1->0 [15] 2/-1/-1->1->0 [16] 3/-1/-1->1->2 [17] 3/-1/-1->1->2 [18] 3/-1/-1->1->2 [19] 3/-1/-1->1->2 [20] 0/-1/-1->1->-1 [21] 0/-1/-1->1->-1 [22] 0/-1/-1->1->-1 [23] 0/-1/-1->1->-1
+[c120:1]:c120:335334:335829 [1] NCCL INFO P2P Chunksize set to 524288
+[c120:3]:c120:335336:335828 [3] NCCL INFO comm 0xd7acbb0 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+[c120:3]:c120:335336:335828 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c120:3]:c120:335336:335828 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2 [4] -1/-1/-1->3->1 [5] -1/-1/-1->3->1 [6] -1/-1/-1->3->1 [7] -1/-1/-1->3->1 [8] 2/-1/-1->3->0 [9] 2/-1/-1->3->0 [10] 2/-1/-1->3->0 [11] 2/-1/-1->3->0 [12] -1/-1/-1->3->2 [13] -1/-1/-1->3->2 [14] -1/-1/-1->3->2 [15] -1/-1/-1->3->2 [16] -1/-1/-1->3->1 [17] -1/-1/-1->3->1 [18] -1/-1/-1->3->1 [19] -1/-1/-1->3->1 [20] 2/-1/-1->3->0 [21] 2/-1/-1->3->0 [22] 2/-1/-1->3->0 [23] 2/-1/-1->3->0
+[c120:3]:c120:335336:335828 [3] NCCL INFO P2P Chunksize set to 524288
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 06/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO comm 0xd7923d0 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+[c120:2]:c120:335335:335827 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c120:2]:c120:335335:335827 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1 [4] 1/-1/-1->2->0 [5] 1/-1/-1->2->0 [6] 1/-1/-1->2->0 [7] 1/-1/-1->2->0 [8] -1/-1/-1->2->3 [9] -1/-1/-1->2->3 [10] -1/-1/-1->2->3 [11] -1/-1/-1->2->3 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] 3/-1/-1->2->1 [15] 3/-1/-1->2->1 [16] 1/-1/-1->2->0 [17] 1/-1/-1->2->0 [18] 1/-1/-1->2->0 [19] 1/-1/-1->2->0 [20] -1/-1/-1->2->3 [21] -1/-1/-1->2->3 [22] -1/-1/-1->2->3 [23] -1/-1/-1->2->3
+[c120:2]:c120:335335:335827 [2] NCCL INFO P2P Chunksize set to 524288
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO comm 0xdd2a9f0 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+[c120:0]:c120:335333:335818 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 11.
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 00/24 :    0   1   2   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 01/24 :    0   1   3   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 02/24 :    0   2   3   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 03/24 :    0   2   1   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 04/24 :    0   3   1   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 05/24 :    0   3   2   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 06/24 :    0   1   2   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 07/24 :    0   1   3   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 08/24 :    0   2   3   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 09/24 :    0   2   1   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 10/24 :    0   3   1   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 11/24 :    0   3   2   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 12/24 :    0   1   2   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 13/24 :    0   1   3   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 14/24 :    0   2   3   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 15/24 :    0   2   1   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 16/24 :    0   3   1   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 17/24 :    0   3   2   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 18/24 :    0   1   2   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 19/24 :    0   1   3   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 20/24 :    0   2   3   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 21/24 :    0   2   1   3
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 22/24 :    0   3   1   2
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 23/24 :    0   3   2   1
+[c120:0]:c120:335333:335818 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 2/-1/-1->0->-1 [5] 2/-1/-1->0->-1 [6] 2/-1/-1->0->-1 [7] 2/-1/-1->0->-1 [8] 3/-1/-1->0->1 [9] 3/-1/-1->0->1 [10] 3/-1/-1->0->1 [11] 3/-1/-1->0->1 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 1/-1/-1->0->-1 [15] 1/-1/-1->0->-1 [16] 2/-1/-1->0->-1 [17] 2/-1/-1->0->-1 [18] 2/-1/-1->0->-1 [19] 2/-1/-1->0->-1 [20] 3/-1/-1->0->1 [21] 3/-1/-1->0->1 [22] 3/-1/-1->0->1 [23] 3/-1/-1->0->1
+[c120:0]:c120:335333:335818 [0] NCCL INFO P2P Chunksize set to 524288
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 12/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 16/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 18/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 22/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 09/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 12/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 15/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 18/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 21/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 12/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 14/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 18/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 20/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 01/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 04/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 07/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 10/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 13/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 16/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 19/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 22/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 12/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 13/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 18/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 19/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 09/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 13/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 15/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 19/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 21/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 11/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 14/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 17/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 20/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 23/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 02/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 04/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 08/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 10/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 14/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 16/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 20/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 22/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 11/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 13/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 03/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 08/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 09/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 14/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 15/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 17/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 19/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 23/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 11/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 15/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 17/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 21/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 23/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 20/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 21/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 04/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 10/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 11/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 16/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 17/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 22/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 23/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Connected all rings
+[c120:0]:c120:335333:335818 [0] NCCL INFO Connected all rings
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Connected all rings
+[c120:2]:c120:335335:335827 [2] NCCL INFO Connected all rings
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 11/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 13/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 15/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 21/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 22/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 23/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 13/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 14/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 15/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 17/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 19/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 11/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 14/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 15/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 20/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 21/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 04/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 06/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 16/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 17/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 18/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 22/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 23/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 08/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 10/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 11/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 20/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 22/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 23/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 05/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 06/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 17/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 18/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 05/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 07/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 16/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 17/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 18/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 19/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 05/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 06/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 07/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 17/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 18/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 19/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 08/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 09/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 20/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Channel 21/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 12/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 13/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 12/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 13/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 15/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 21/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:335829 [1] NCCL INFO Channel 22/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 12/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 14/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 15/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 20/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 21/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:335828 [3] NCCL INFO Channel 22/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 14/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 16/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 18/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:335827 [2] NCCL INFO Channel 19/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:335818 [0] NCCL INFO Connected all trees
+[c120:0]:c120:335333:335818 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+[c120:0]:c120:335333:335818 [0] NCCL INFO 24 coll channels, 24 collnet channels, 0 nvls channels, 32 p2p channels, 16 p2p channels per peer
+[c120:2]:c120:335335:335827 [2] NCCL INFO Connected all trees
+[c120:2]:c120:335335:335827 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+[c120:2]:c120:335335:335827 [2] NCCL INFO 24 coll channels, 24 collnet channels, 0 nvls channels, 32 p2p channels, 16 p2p channels per peer
+[c120:1]:c120:335334:335829 [1] NCCL INFO Connected all trees
+[c120:1]:c120:335334:335829 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+[c120:1]:c120:335334:335829 [1] NCCL INFO 24 coll channels, 24 collnet channels, 0 nvls channels, 32 p2p channels, 16 p2p channels per peer
+[c120:0]:c120:335333:335818 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c120:0]:c120:335333:335818 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c120:0]:c120:335333:335818 [0] NCCL INFO ncclCommInitRank comm 0xdd2a9f0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 6000 commId 0xa63dd23eeca7136 - Init COMPLETE
+[c120:3]:c120:335336:335828 [3] NCCL INFO Connected all trees
+[c120:3]:c120:335336:335828 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+[c120:3]:c120:335336:335828 [3] NCCL INFO 24 coll channels, 24 collnet channels, 0 nvls channels, 32 p2p channels, 16 p2p channels per peer
+[c120:3]:c120:335336:335828 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c120:3]:c120:335336:335828 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c120:3]:c120:335336:335828 [3] NCCL INFO ncclCommInitRank comm 0xd7acbb0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c6000 commId 0xa63dd23eeca7136 - Init COMPLETE
+[c120:2]:c120:335335:335827 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c120:2]:c120:335335:335827 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c120:2]:c120:335335:335827 [2] NCCL INFO ncclCommInitRank comm 0xd7923d0 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId a6000 commId 0xa63dd23eeca7136 - Init COMPLETE
+[c120:1]:c120:335334:335829 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+[c120:1]:c120:335334:335829 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+[c120:1]:c120:335334:335829 [1] NCCL INFO ncclCommInitRank comm 0xeab4370 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 26000 commId 0xa63dd23eeca7136 - Init COMPLETE
+[c120:0]:2026-04-24 17:52:40 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/', model_revision='main', dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_target_parameters=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, use_dora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, torch_dtype='bfloat16')
+[c120:0]:2026-04-24 17:52:40 - INFO - __main__ - Script parameters ScriptArguments(dataset_name='allenai/Dolci-Instruct-DPO', dataset_config=None, dataset_train_split='train', dataset_test_split='test', dataset_streaming=False, gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, dataset_mixture=None, dataset_test_split_size=0.005, dataset_test_split_seed=42, ref_model_name_or_path=None)
+[c120:0]:2026-04-24 17:52:40 - INFO - __main__ - Training parameters DPOConfig(
+[c120:0]:_n_gpu=1,
+[c120:0]:accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+[c120:0]:adafactor=False,
+[c120:0]:adam_beta1=0.9,
+[c120:0]:adam_beta2=0.999,
+[c120:0]:adam_epsilon=1e-08,
+[c120:0]:apdo_alpha=0.5,
+[c120:0]:apdo_beta0=0.1,
+[c120:0]:apdo_enabled=False,
+[c120:0]:apdo_gamma=0.5,
+[c120:0]:apdo_lambda_r=0.4,
+[c120:0]:apdo_lambda_w=0.6,
+[c120:0]:apdo_max_beta=0.1,
+[c120:0]:apdo_min_beta=0.0,
+[c120:0]:apdo_ref_ema_enabled=True,
+[c120:0]:apdo_ref_ema_tau=0.99,
+[c120:0]:apdo_similarity_mix=0.5,
+[c120:0]:apdo_warmup_steps=0,
+[c120:0]:auto_find_batch_size=False,
+[c120:0]:average_tokens_across_devices=True,
+[c120:0]:base_model_attribute_name=model,
+[c120:0]:batch_eval_metrics=False,
+[c120:0]:beta=0.8651299071518214,
+[c120:0]:bf16=True,
+[c120:0]:bf16_full_eval=False,
+[c120:0]:chat_template=None,
+[c120:0]:data_seed=None,
+[c120:0]:dataloader_drop_last=False,
+[c120:0]:dataloader_num_workers=0,
+[c120:0]:dataloader_persistent_workers=False,
+[c120:0]:dataloader_pin_memory=True,
+[c120:0]:dataloader_prefetch_factor=None,
+[c120:0]:dataset_num_proc=None,
+[c120:0]:ddp_backend=None,
+[c120:0]:ddp_broadcast_buffers=None,
+[c120:0]:ddp_bucket_cap_mb=None,
+[c120:0]:ddp_find_unused_parameters=None,
+[c120:0]:ddp_timeout=1800,
+[c120:0]:debug=[],
+[c120:0]:deepspeed=None,
+[c120:0]:disable_dropout=True,
+[c120:0]:disable_tqdm=False,
+[c120:0]:discopop_tau=0.05,
+[c120:0]:do_eval=True,
+[c120:0]:do_predict=False,
+[c120:0]:do_train=True,
+[c120:0]:emdpo_decay_disable_length_norm=True,
+[c120:0]:emdpo_decay_eps_max=0.3,
+[c120:0]:emdpo_decay_eps_min=0.1,
+[c120:0]:emdpo_decay_total_steps=0,
+[c120:0]:emdpo_detach_weights=True,
+[c120:0]:emdpo_enabled=False,
+[c120:0]:emdpo_length_scale=0.25,
+[c120:0]:emdpo_lite_detach_weights=True,
+[c120:0]:emdpo_lite_enabled=False,
+[c120:0]:emdpo_lite_length_lr_enabled=True,
+[c120:0]:emdpo_lite_length_lr_interval=50,
+[c120:0]:emdpo_lite_margin_clip=5.0,
+[c120:0]:emdpo_lite_max_weight=1.0,
+[c120:0]:emdpo_lite_min_weight=0.2,
+[c120:0]:emdpo_lite_noise_eps=0.1,
+[c120:0]:emdpo_lite_policy_scale=0.0,
+[c120:0]:emdpo_lite_ref_scale=1.0,
+[c120:0]:emdpo_lite_warmup_steps=0,
+[c120:0]:emdpo_margin_clip=5.0,
+[c120:0]:emdpo_max_weight=1.0,
+[c120:0]:emdpo_min_weight=0.2,
+[c120:0]:emdpo_noise_eps=0.1,
+[c120:0]:emdpo_policy_scale=1.0,
+[c120:0]:emdpo_ref_scale=2.0,
+[c120:0]:emdpo_v2_norm_eps=1e-06,
+[c120:0]:emdpo_v2_policy_ramp_ratio=0.1,
+[c120:0]:emdpo_v2_policy_ramp_steps=0,
+[c120:0]:emdpo_v2_policy_warmup_ratio=0.05,
+[c120:0]:emdpo_v2_policy_warmup_steps=0,
+[c120:0]:emdpo_warmup_steps=0,
+[c120:0]:eval_accumulation_steps=None,
+[c120:0]:eval_delay=0,
+[c120:0]:eval_do_concat_batches=True,
+[c120:0]:eval_on_start=False,
+[c120:0]:eval_steps=5,
+[c120:0]:eval_strategy=IntervalStrategy.STEPS,
+[c120:0]:eval_use_gather_object=False,
+[c120:0]:f_alpha_divergence_coef=1.0,
+[c120:0]:f_divergence_type=FDivergenceType.REVERSE_KL,
+[c120:0]:force_use_ref_model=False,
+[c120:0]:fp16=False,
+[c120:0]:fp16_backend=auto,
+[c120:0]:fp16_full_eval=False,
+[c120:0]:fp16_opt_level=O1,
+[c120:0]:fsdp=[],
+[c120:0]:fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+[c120:0]:fsdp_min_num_params=0,
+[c120:0]:fsdp_transformer_layer_cls_to_wrap=None,
+[c120:0]:full_determinism=False,
+[c120:0]:generate_during_eval=False,
+[c120:0]:gradient_accumulation_steps=32,
+[c120:0]:gradient_checkpointing=True,
+[c120:0]:gradient_checkpointing_kwargs={'use_reentrant': False},
+[c120:0]:greater_is_better=None,
+[c120:0]:group_by_length=False,
+[c120:0]:half_precision_backend=auto,
+[c120:0]:hub_always_push=False,
+[c120:0]:hub_model_id=None,
+[c120:0]:hub_private_repo=None,
+[c120:0]:hub_revision=None,
+[c120:0]:hub_strategy=HubStrategy.EVERY_SAVE,
+[c120:0]:hub_token=<HUB_TOKEN>,
+[c120:0]:ignore_data_skip=False,
+[c120:0]:include_for_metrics=[],
+[c120:0]:include_inputs_for_metrics=False,
+[c120:0]:include_num_input_tokens_seen=no,
+[c120:0]:include_tokens_per_second=False,
+[c120:0]:jit_mode_eval=False,
+[c120:0]:label_names=None,
+[c120:0]:label_pad_token_id=-100,
+[c120:0]:label_smoothing=0.0,
+[c120:0]:label_smoothing_factor=0.0,
+[c120:0]:ld_alpha=None,
+[c120:0]:learning_rate=3.0474062663500436e-05,
+[c120:0]:length_column_name=length,
+[c120:0]:length_norm_exponent=1.0,
+[c120:0]:length_norm_min_tokens=1.0,
+[c120:0]:length_normalize_logps=False,
+[c120:0]:liger_kernel_config=None,
+[c120:0]:load_best_model_at_end=False,
+[c120:0]:local_rank=0,
+[c120:0]:log_level=info,
+[c120:0]:log_level_replica=warning,
+[c120:0]:log_on_each_node=True,
+[c120:0]:logging_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep-fsdp/smoketest/Qwen3-14B-DPO-BO-FSDP-smoketest-trial000-b0.8651-lr3.05e-05/runs/Apr24_17-52-31_c120,
+[c120:0]:logging_first_step=False,
+[c120:0]:logging_nan_inf_filter=True,
+[c120:0]:logging_steps=1,
+[c120:0]:logging_strategy=IntervalStrategy.STEPS,
+[c120:0]:loss_type=sigmoid,
+[c120:0]:loss_weights=None,
+[c120:0]:lr_scheduler_kwargs={},
+[c120:0]:lr_scheduler_type=SchedulerType.LINEAR,
+[c120:0]:max_completion_length=None,
+[c120:0]:max_grad_norm=1.0,
+[c120:0]:max_length=1024,
+[c120:0]:max_prompt_length=512,
+[c120:0]:max_steps=10,
+[c120:0]:metric_for_best_model=None,
+[c120:0]:model_adapter_name=None,
+[c120:0]:model_init_kwargs=None,
+[c120:0]:mp_parameters=,
+[c120:0]:neftune_noise_alpha=None,
+[c120:0]:no_cuda=False,
+[c120:0]:num_train_epochs=3.0,
+[c120:0]:optim=OptimizerNames.ADAMW_TORCH,
+[c120:0]:optim_args=None,
+[c120:0]:optim_target_modules=None,
+[c120:0]:output_dir=/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep-fsdp/smoketest/Qwen3-14B-DPO-BO-FSDP-smoketest-trial000-b0.8651-lr3.05e-05/,
+[c120:0]:overwrite_output_dir=True,
+[c120:0]:pad_token=<PAD_TOKEN>,
+[c120:0]:padding_free=False,
+[c120:0]:padding_value=None,
+[c120:0]:parallelism_config=None,
+[c120:0]:past_index=-1,
+[c120:0]:per_device_eval_batch_size=1,
+[c120:0]:per_device_train_batch_size=1,
+[c120:0]:precompute_ref_batch_size=None,
+[c120:0]:precompute_ref_log_probs=False,
+[c120:0]:prediction_loss_only=False,
+[c120:0]:project=huggingface,
+[c120:0]:push_to_hub=False,
+[c120:0]:push_to_hub_model_id=None,
+[c120:0]:push_to_hub_organization=None,
+[c120:0]:push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+[c120:0]:ray_scope=last,
+[c120:0]:ref_adapter_name=None,
+[c120:0]:ref_model_init_kwargs=None,
+[c120:0]:ref_model_mixup_alpha=0.6,
+[c120:0]:ref_model_sync_steps=512,
+[c120:0]:reference_free=False,
+[c120:0]:remove_unused_columns=True,
+[c120:0]:report_to=['tensorboard', 'wandb'],
+[c120:0]:restore_callback_states_from_checkpoint=False,
+[c120:0]:resume_from_checkpoint=None,
+[c120:0]:rpo_alpha=None,
+[c120:0]:run_name=None,
+[c120:0]:save_on_each_node=False,
+[c120:0]:save_only_model=False,
+[c120:0]:save_safetensors=True,
+[c120:0]:save_steps=500,
+[c120:0]:save_strategy=SaveStrategy.NO,
+[c120:0]:save_total_limit=None,
+[c120:0]:sdpo_detach_phi=True,
+[c120:0]:sdpo_enabled=False,
+[c120:0]:sdpo_kappa=1.0,
+[c120:0]:sdpo_lambda_r=0.4,
+[c120:0]:sdpo_lambda_w=0.6,
+[c120:0]:sdpo_lite_beta=1.0,
+[c120:0]:sdpo_lite_decay_retention_alpha=False,
+[c120:0]:sdpo_lite_enabled=False,
+[c120:0]:sdpo_lite_ref_ema_enabled=True,
+[c120:0]:sdpo_lite_ref_ema_tau=0.99,
+[c120:0]:sdpo_lite_retention_alpha=0.2,
+[c120:0]:sdpo_lite_retention_alpha_final=0.05,
+[c120:0]:sdpo_lite_warmup_steps=0,
+[c120:0]:sdpo_ref_ema_enabled=True,
+[c120:0]:sdpo_ref_ema_tau=0.99,
+[c120:0]:sdpo_warmup_steps=0,
+[c120:0]:seed=8,
+[c120:0]:skip_memory_metrics=True,
+[c120:0]:sync_ref_model=False,
+[c120:0]:tf32=None,
+[c120:0]:tools=None,
+[c120:0]:torch_compile=False,
+[c120:0]:torch_compile_backend=None,
+[c120:0]:torch_compile_mode=None,
+[c120:0]:torch_empty_cache_steps=None,
+[c120:0]:torchdynamo=None,
+[c120:0]:tpu_metrics_debug=False,
+[c120:0]:tpu_num_cores=None,
+[c120:0]:trackio_space_id=trackio,
+[c120:0]:truncation_mode=keep_end,
+[c120:0]:use_cpu=False,
+[c120:0]:use_legacy_prediction_loop=False,
+[c120:0]:use_liger_kernel=True,
+[c120:0]:use_liger_loss=False,
+[c120:0]:use_logits_to_keep=False,
+[c120:0]:use_mps_device=False,
+[c120:0]:use_weighting=False,
+[c120:0]:warmup_ratio=0.1,
+[c120:0]:warmup_steps=0,
+[c120:0]:weight_decay=0.0,
+[c120:0]:)
+[c120:0]:2026-04-24 17:54:03 - INFO - datasets.builder - Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c120:0]:2026-04-24 17:54:03 - INFO - datasets.arrow_dataset - Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c120:0]:2026-04-24 17:54:03 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:03 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:11 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:18 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-116cd3305e532c08_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:29 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-c5e4e60b02577b26_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:29 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:29 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-5f9470a5dcf50df9_*_of_00001.arrow
+[c120:0]:2026-04-24 17:54:29 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-fdbc3ea94aee14b5_*_of_00001.arrow
+[c120:3]:c120:335336:336519 [3] NCCL INFO Using non-device net plugin version 0
+[c120:3]:c120:335336:336519 [3] NCCL INFO Using network IB
+[c120:3]:c120:335336:336519 [3] NCCL INFO DMA-BUF is available on GPU device 3
+[c120:3]:c120:335336:336519 [3] NCCL INFO bootstrapSplit: comm 0x37a608b0 parent 0xd7acbb0 rank 3 nranks 4 color 116666945 key 3 prev 2 next 0 - DONE
+[c120:3]:c120:335336:336519 [3] NCCL INFO ncclCommSplit comm 0x37a608b0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c6000 parent 0xd7acbb0 color 116666945 key 3 commId 0x4922efb54f7bb6ed - Init START
+[c120:2]:c120:335335:336525 [2] NCCL INFO Using non-device net plugin version 0
+[c120:2]:c120:335335:336525 [2] NCCL INFO Using network IB
+[c120:2]:c120:335335:336525 [2] NCCL INFO DMA-BUF is available on GPU device 2
+[c120:2]:c120:335335:336525 [2] NCCL INFO bootstrapSplit: comm 0x37a1d820 parent 0xd7923d0 rank 2 nranks 4 color 116666945 key 2 prev 1 next 3 - DONE
+[c120:2]:c120:335335:336525 [2] NCCL INFO ncclCommSplit comm 0x37a1d820 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId a6000 parent 0xd7923d0 color 116666945 key 2 commId 0x4922efb54f7bb6ed - Init START
+[c120:0]:c120:335333:336523 [0] NCCL INFO Using non-device net plugin version 0
+[c120:0]:c120:335333:336523 [0] NCCL INFO Using network IB
+[c120:0]:c120:335333:336523 [0] NCCL INFO DMA-BUF is available on GPU device 0
+[c120:0]:c120:335333:336523 [0] NCCL INFO bootstrapSplit: comm 0x384d1d30 parent 0xdd2a9f0 rank 0 nranks 4 color 116666945 key 0 prev 3 next 1 - DONE
+[c120:0]:c120:335333:336523 [0] NCCL INFO ncclCommSplit comm 0x384d1d30 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 6000 parent 0xdd2a9f0 color 116666945 key 0 commId 0x4922efb54f7bb6ed - Init START
+[c120:1]:c120:335334:336526 [1] NCCL INFO Using non-device net plugin version 0
+[c120:1]:c120:335334:336526 [1] NCCL INFO Using network IB
+[c120:1]:c120:335334:336526 [1] NCCL INFO DMA-BUF is available on GPU device 1
+[c120:1]:c120:335334:336526 [1] NCCL INFO bootstrapSplit: comm 0x38d8a240 parent 0xeab4370 rank 1 nranks 4 color 116666945 key 1 prev 0 next 2 - DONE
+[c120:1]:c120:335334:336526 [1] NCCL INFO ncclCommSplit comm 0x38d8a240 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 26000 parent 0xeab4370 color 116666945 key 1 commId 0x4922efb54f7bb6ed - Init START
+[c120:3]:c120:335336:336519 [3] NCCL INFO Setting affinity for GPU 3 to 03,00000000
+[c120:3]:c120:335336:336519 [3] NCCL INFO NVLS multicast support is not available on dev 3
+[c120:3]:c120:335336:336519 [3] NCCL INFO comm 0x37a608b0 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+[c120:3]:c120:335336:336519 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2 [4] -1/-1/-1->3->1 [5] -1/-1/-1->3->1 [6] -1/-1/-1->3->1 [7] -1/-1/-1->3->1 [8] 2/-1/-1->3->0 [9] 2/-1/-1->3->0 [10] 2/-1/-1->3->0 [11] 2/-1/-1->3->0 [12] -1/-1/-1->3->2 [13] -1/-1/-1->3->2 [14] -1/-1/-1->3->2 [15] -1/-1/-1->3->2 [16] -1/-1/-1->3->1 [17] -1/-1/-1->3->1 [18] -1/-1/-1->3->1 [19] -1/-1/-1->3->1 [20] 2/-1/-1->3->0 [21] 2/-1/-1->3->0 [22] 2/-1/-1->3->0 [23] 2/-1/-1->3->0
+[c120:3]:c120:335336:336519 [3] NCCL INFO P2P Chunksize set to 524288
+[c120:2]:c120:335335:336525 [2] NCCL INFO NVLS multicast support is not available on dev 2
+[c120:2]:c120:335335:336525 [2] NCCL INFO comm 0x37a1d820 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+[c120:2]:c120:335335:336525 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1 [4] 1/-1/-1->2->0 [5] 1/-1/-1->2->0 [6] 1/-1/-1->2->0 [7] 1/-1/-1->2->0 [8] -1/-1/-1->2->3 [9] -1/-1/-1->2->3 [10] -1/-1/-1->2->3 [11] -1/-1/-1->2->3 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] 3/-1/-1->2->1 [15] 3/-1/-1->2->1 [16] 1/-1/-1->2->0 [17] 1/-1/-1->2->0 [18] 1/-1/-1->2->0 [19] 1/-1/-1->2->0 [20] -1/-1/-1->2->3 [21] -1/-1/-1->2->3 [22] -1/-1/-1->2->3 [23] -1/-1/-1->2->3
+[c120:2]:c120:335335:336525 [2] NCCL INFO P2P Chunksize set to 524288
+[c120:0]:c120:335333:336523 [0] NCCL INFO NVLS multicast support is not available on dev 0
+[c120:0]:c120:335333:336523 [0] NCCL INFO comm 0x384d1d30 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 00/24 :    0   1   2   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 01/24 :    0   1   3   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 02/24 :    0   2   3   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 03/24 :    0   2   1   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 04/24 :    0   3   1   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 05/24 :    0   3   2   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 06/24 :    0   1   2   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 07/24 :    0   1   3   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 08/24 :    0   2   3   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 09/24 :    0   2   1   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 10/24 :    0   3   1   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 11/24 :    0   3   2   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 12/24 :    0   1   2   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 13/24 :    0   1   3   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 14/24 :    0   2   3   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 15/24 :    0   2   1   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 16/24 :    0   3   1   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 17/24 :    0   3   2   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 18/24 :    0   1   2   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 19/24 :    0   1   3   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 20/24 :    0   2   3   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 21/24 :    0   2   1   3
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 22/24 :    0   3   1   2
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 23/24 :    0   3   2   1
+[c120:0]:c120:335333:336523 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 2/-1/-1->0->-1 [5] 2/-1/-1->0->-1 [6] 2/-1/-1->0->-1 [7] 2/-1/-1->0->-1 [8] 3/-1/-1->0->1 [9] 3/-1/-1->0->1 [10] 3/-1/-1->0->1 [11] 3/-1/-1->0->1 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 1/-1/-1->0->-1 [15] 1/-1/-1->0->-1 [16] 2/-1/-1->0->-1 [17] 2/-1/-1->0->-1 [18] 2/-1/-1->0->-1 [19] 2/-1/-1->0->-1 [20] 3/-1/-1->0->1 [21] 3/-1/-1->0->1 [22] 3/-1/-1->0->1 [23] 3/-1/-1->0->1
+[c120:0]:c120:335333:336523 [0] NCCL INFO P2P Chunksize set to 524288
+[c120:1]:c120:335334:336526 [1] NCCL INFO NVLS multicast support is not available on dev 1
+[c120:1]:c120:335334:336526 [1] NCCL INFO comm 0x38d8a240 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+[c120:1]:c120:335334:336526 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0 [4] 3/-1/-1->1->2 [5] 3/-1/-1->1->2 [6] 3/-1/-1->1->2 [7] 3/-1/-1->1->2 [8] 0/-1/-1->1->-1 [9] 0/-1/-1->1->-1 [10] 0/-1/-1->1->-1 [11] 0/-1/-1->1->-1 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 2/-1/-1->1->0 [15] 2/-1/-1->1->0 [16] 3/-1/-1->1->2 [17] 3/-1/-1->1->2 [18] 3/-1/-1->1->2 [19] 3/-1/-1->1->2 [20] 0/-1/-1->1->-1 [21] 0/-1/-1->1->-1 [22] 0/-1/-1->1->-1 [23] 0/-1/-1->1->-1
+[c120:1]:c120:335334:336526 [1] NCCL INFO P2P Chunksize set to 524288
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 12/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 13/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 18/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 19/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 12/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 16/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 18/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 22/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 06/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 09/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 12/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 15/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 18/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 21/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 12/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 14/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 18/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 20/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 03/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 08/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 09/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 14/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 15/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 20/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 21/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 09/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 13/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 15/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 19/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 21/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 02/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 04/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 08/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 01/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 04/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 07/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 10/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 13/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 16/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 19/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 22/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 10/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 14/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 16/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 20/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 22/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 04/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 10/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 11/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 16/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 17/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 22/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 23/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 11/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 13/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 17/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 19/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 11/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 15/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 17/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 21/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 23/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 11/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 14/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 17/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 20/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 23/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 23/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Connected all rings
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 08/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 10/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 11/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 20/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 22/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 23/0 : 3[3] -> 0[0] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 05/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 06/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 07/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 17/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 18/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 19/0 : 3[3] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Connected all rings
+[c120:2]:c120:335335:336525 [2] NCCL INFO Connected all rings
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 11/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 13/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 15/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 21/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 22/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 23/0 : 2[2] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Connected all rings
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 11/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 14/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 15/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 20/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 21/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 22/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 23/0 : 0[0] -> 1[1] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 13/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 14/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 15/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 17/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 19/0 : 1[1] -> 2[2] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 04/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 06/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 16/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 17/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 18/0 : 1[1] -> 3[3] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 12/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 13/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 15/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 21/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:1]:c120:335334:336526 [1] NCCL INFO Channel 22/0 : 1[1] -> 0[0] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 05/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 07/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 16/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 17/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 18/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 19/0 : 0[0] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 12/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 14/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 15/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 20/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 21/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:3]:c120:335336:336519 [3] NCCL INFO Channel 22/0 : 3[3] -> 2[2] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 05/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 06/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 17/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 18/0 : 2[2] -> 0[0] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 08/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 09/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 20/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:0]:c120:335333:336523 [0] NCCL INFO Channel 21/0 : 0[0] -> 3[3] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 12/0 : 2[2] -> 1[1] via P2P/CUMEM
+[c120:2]:c120:335335:336525 [2] NCCL INFO Channel 13/0 : 2[2] -> 1[1] via P2P/CUMEM

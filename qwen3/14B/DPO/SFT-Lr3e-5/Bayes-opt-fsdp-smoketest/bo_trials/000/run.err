@@ -1,0 +1,335 @@
+Module CUDA/12.4.0 unloaded.
+Module CUDA/12.4.0 loaded.
+Module CUDA/12.4.0 unloaded.
+Module CUDA/12.4.0 loaded.
+[c120:0]:[INFO|configuration_utils.py:763] 2026-04-24 17:52:40,463 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/config.json
+[c120:0]:[WARNING|logging.py:328] 2026-04-24 17:52:40,485 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c120:0]:[INFO|configuration_utils.py:839] 2026-04-24 17:52:40,486 >> Model config Qwen3Config {
+[c120:0]:  "architectures": [
+[c120:0]:    "Qwen3ForCausalLM"
+[c120:0]:  ],
+[c120:0]:  "attention_bias": false,
+[c120:0]:  "attention_dropout": 0.0,
+[c120:0]:  "dtype": "bfloat16",
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "head_dim": 128,
+[c120:0]:  "hidden_act": "silu",
+[c120:0]:  "hidden_size": 5120,
+[c120:0]:  "initializer_range": 0.02,
+[c120:0]:  "intermediate_size": 17408,
+[c120:0]:  "layer_types": [
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention"
+[c120:0]:  ],
+[c120:0]:  "max_position_embeddings": 32768,
+[c120:0]:  "max_window_layers": 40,
+[c120:0]:  "model_type": "qwen3",
+[c120:0]:  "num_attention_heads": 40,
+[c120:0]:  "num_hidden_layers": 40,
+[c120:0]:  "num_key_value_heads": 8,
+[c120:0]:  "pad_token_id": 151643,
+[c120:0]:  "rms_norm_eps": 1e-06,
+[c120:0]:  "rope_scaling": null,
+[c120:0]:  "rope_theta": 1000000,
+[c120:0]:  "sliding_window": null,
+[c120:0]:  "tie_word_embeddings": false,
+[c120:0]:  "transformers_version": "4.57.0",
+[c120:0]:  "use_cache": false,
+[c120:0]:  "use_sliding_window": false,
+[c120:0]:  "vocab_size": 151936
+[c120:0]:}
+[c120:0]:
+[c120:0]:[INFO|modeling_utils.py:1173] 2026-04-24 17:52:40,492 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/model.safetensors.index.json
+[c120:0]:[INFO|modeling_utils.py:2345] 2026-04-24 17:52:40,494 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c120:0]:[INFO|modeling_utils.py:4377] 2026-04-24 17:52:40,494 >> Detected DeepSpeed ZeRO-3: activating zero.init() for this model
+[c120:1]:[WARNING|logging.py:328] 2026-04-24 17:52:40,486 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c120:2]:[WARNING|logging.py:328] 2026-04-24 17:52:40,487 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c120:3]:[WARNING|logging.py:328] 2026-04-24 17:52:40,486 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[c120:0]:[INFO|configuration_utils.py:986] 2026-04-24 17:52:40,591 >> Generate config GenerationConfig {
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "pad_token_id": 151643,
+[c120:0]:  "use_cache": false
+[c120:0]:}
+[c120:0]:
+[c120:0]:
+[c120:0]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:1]:
+[c120:1]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:2]:
+[c120:2]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:3]:
+[c120:3]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:3]:
+[c120:3]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:00<00:01,  3.06it/s][c120:1]:
+[c120:2]:
+[c120:1]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:00<00:01,  3.08it/s][c120:2]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:00<00:01,  3.06it/s][c120:3]:
+[c120:3]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:00<00:01,  3.80it/s][c120:1]:
+[c120:1]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:00<00:01,  3.82it/s][c120:2]:
+[c120:2]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:00<00:01,  3.80it/s][c120:3]:
+[c120:3]:Loading checkpoint shards:  50%|█████     | 3/6 [00:05<00:06,  2.20s/it][c120:2]:
+[c120:2]:Loading checkpoint shards:  50%|█████     | 3/6 [00:05<00:06,  2.20s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  50%|█████     | 3/6 [00:05<00:06,  2.20s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:05<00:26,  5.30s/it][c120:1]:
+[c120:2]:
+[c120:1]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:10<00:07,  3.65s/it][c120:2]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:10<00:07,  3.65s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:10<00:07,  3.65s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:11<00:22,  5.70s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:17<00:04,  4.54s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:17<00:04,  4.54s/it][c120:2]:
+[c120:2]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:17<00:04,  4.54s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  50%|█████     | 3/6 [00:17<00:17,  5.84s/it][c120:3]:
+[c120:3]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  4.19s/it]
+[c120:3]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  3.42s/it]
+[c120:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:06,157 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:1]:
+[c120:1]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  4.19s/it]
+[c120:1]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  3.42s/it]
+[c120:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:06,157 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:2]:
+[c120:2]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  4.19s/it]
+[c120:2]:Loading checkpoint shards: 100%|██████████| 6/6 [00:20<00:00,  3.42s/it]
+[c120:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:06,157 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:0]:
+[c120:0]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:22<00:11,  5.72s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:1]:
+[c120:2]:
+[c120:1]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:2]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:0]:
+[c120:0]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:28<00:05,  5.74s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:04<00:23,  4.70s/it][c120:1]:
+[c120:2]:
+[c120:1]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:04<00:23,  4.70s/it][c120:2]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:04<00:23,  4.70s/it][c120:0]:
+[c120:0]:Loading checkpoint shards: 100%|██████████| 6/6 [00:34<00:00,  5.68s/it]
+[c120:0]:Loading checkpoint shards: 100%|██████████| 6/6 [00:34<00:00,  5.70s/it]
+[c120:0]:[INFO|configuration_utils.py:939] 2026-04-24 17:53:19,784 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/generation_config.json
+[c120:0]:[INFO|configuration_utils.py:986] 2026-04-24 17:53:19,785 >> Generate config GenerationConfig {
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "max_new_tokens": 2048,
+[c120:0]:  "pad_token_id": 151643
+[c120:0]:}
+[c120:0]:
+[c120:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:19,785 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:0]:[INFO|dynamic_module_utils.py:423] 2026-04-24 17:53:19,785 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/.
+[c120:0]:[INFO|configuration_utils.py:763] 2026-04-24 17:53:19,787 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/config.json
+[c120:0]:[INFO|configuration_utils.py:839] 2026-04-24 17:53:19,787 >> Model config Qwen3Config {
+[c120:0]:  "architectures": [
+[c120:0]:    "Qwen3ForCausalLM"
+[c120:0]:  ],
+[c120:0]:  "attention_bias": false,
+[c120:0]:  "attention_dropout": 0.0,
+[c120:0]:  "dtype": "bfloat16",
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "head_dim": 128,
+[c120:0]:  "hidden_act": "silu",
+[c120:0]:  "hidden_size": 5120,
+[c120:0]:  "initializer_range": 0.02,
+[c120:0]:  "intermediate_size": 17408,
+[c120:0]:  "layer_types": [
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention",
+[c120:0]:    "full_attention"
+[c120:0]:  ],
+[c120:0]:  "max_position_embeddings": 32768,
+[c120:0]:  "max_window_layers": 40,
+[c120:0]:  "model_type": "qwen3",
+[c120:0]:  "num_attention_heads": 40,
+[c120:0]:  "num_hidden_layers": 40,
+[c120:0]:  "num_key_value_heads": 8,
+[c120:0]:  "pad_token_id": 151643,
+[c120:0]:  "rms_norm_eps": 1e-06,
+[c120:0]:  "rope_scaling": null,
+[c120:0]:  "rope_theta": 1000000,
+[c120:0]:  "sliding_window": null,
+[c120:0]:  "tie_word_embeddings": false,
+[c120:0]:  "transformers_version": "4.57.0",
+[c120:0]:  "use_cache": false,
+[c120:0]:  "use_sliding_window": false,
+[c120:0]:  "vocab_size": 151936
+[c120:0]:}
+[c120:0]:
+[c120:0]:[INFO|modeling_utils.py:1173] 2026-04-24 17:53:19,788 >> loading weights file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/model.safetensors.index.json
+[c120:0]:[INFO|modeling_utils.py:2345] 2026-04-24 17:53:19,788 >> Instantiating Qwen3ForCausalLM model under default dtype torch.bfloat16.
+[c120:0]:[INFO|modeling_utils.py:4377] 2026-04-24 17:53:19,788 >> Detected DeepSpeed ZeRO-3: activating zero.init() for this model
+[c120:0]:[INFO|configuration_utils.py:986] 2026-04-24 17:53:19,806 >> Generate config GenerationConfig {
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "pad_token_id": 151643,
+[c120:0]:  "use_cache": false
+[c120:0]:}
+[c120:0]:
+[c120:3]:
+[c120:3]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:06<00:12,  3.16s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s][c120:2]:
+[c120:2]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:06<00:12,  3.16s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:06<00:12,  3.16s/it][c120:2]:
+[c120:2]:Loading checkpoint shards:  50%|█████     | 3/6 [00:10<00:10,  3.38s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  50%|█████     | 3/6 [00:10<00:10,  3.38s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  50%|█████     | 3/6 [00:10<00:10,  3.38s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  17%|█▋        | 1/6 [00:03<00:18,  3.78s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:13<00:06,  3.07s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:13<00:06,  3.07s/it][c120:2]:
+[c120:2]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:13<00:06,  3.07s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  33%|███▎      | 2/6 [00:06<00:12,  3.14s/it][c120:2]:
+[c120:2]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:30<00:08,  8.40s/it][c120:1]:
+[c120:1]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:30<00:08,  8.40s/it][c120:3]:
+[c120:3]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:30<00:08,  8.40s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  50%|█████     | 3/6 [00:24<00:29,  9.79s/it][c120:2]:
+[c120:2]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  6.32s/it]
+[c120:2]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  5.52s/it]
+[c120:2]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:46,255 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:1]:
+[c120:1]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  6.32s/it]
+[c120:1]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  5.52s/it]
+[c120:1]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:46,255 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:3]:
+[c120:3]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  6.32s/it]
+[c120:3]:Loading checkpoint shards: 100%|██████████| 6/6 [00:33<00:00,  5.52s/it]
+[c120:3]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:53:46,255 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:0]:
+[c120:0]:Loading checkpoint shards:  67%|██████▋   | 4/6 [00:28<00:15,  7.67s/it][c120:0]:
+[c120:0]:Loading checkpoint shards:  83%|████████▎ | 5/6 [00:31<00:05,  5.77s/it][c120:0]:
+[c120:0]:Loading checkpoint shards: 100%|██████████| 6/6 [00:40<00:00,  7.17s/it]
+[c120:0]:Loading checkpoint shards: 100%|██████████| 6/6 [00:40<00:00,  6.82s/it]
+[c120:0]:[INFO|configuration_utils.py:939] 2026-04-24 17:54:00,831 >> loading configuration file /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/generation_config.json
+[c120:0]:[INFO|configuration_utils.py:986] 2026-04-24 17:54:00,831 >> Generate config GenerationConfig {
+[c120:0]:  "eos_token_id": 151643,
+[c120:0]:  "max_new_tokens": 2048,
+[c120:0]:  "pad_token_id": 151643
+[c120:0]:}
+[c120:0]:
+[c120:0]:[WARNING|dynamic_module_utils.py:77] 2026-04-24 17:54:00,831 >> The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+[c120:0]:[INFO|dynamic_module_utils.py:423] 2026-04-24 17:54:00,831 >> Could not locate the custom_generate/generate.py inside /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-14B-Base/SFT-sweep/Qwen3-14B-SFT-LR3e-5/.
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file vocab.json
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file merges.txt
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file tokenizer.json
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file added_tokens.json
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file special_tokens_map.json
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file tokenizer_config.json
+[c120:0]:[INFO|tokenization_utils_base.py:2093] 2026-04-24 17:54:00,844 >> loading file chat_template.jinja
+[c120:0]:[INFO|tokenization_utils_base.py:2364] 2026-04-24 17:54:01,059 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[c120:0]:Found cached dataset dolci-instruct-dpo (/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019)
+[c120:0]:Loading cached split indices for dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-47c36bd741441140.arrow and /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-0567c25e1af899d7.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-6ecb2c55bb5a70e2_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-a1cb16080357e024_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ee14669b6eaf1ae1_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-116cd3305e532c08_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-c5e4e60b02577b26_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-ff523fa75cc41f20_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-5f9470a5dcf50df9_*_of_00001.arrow
+[c120:0]:Loading cached processed dataset at /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache/allenai___dolci-instruct-dpo/default/0.0.0/aed155cf32e809b590490b6c3577ee4b0d0a5019/cache-fdbc3ea94aee14b5_*_of_00001.arrow
+[c120:0]:[INFO|trainer.py:699] 2026-04-24 17:54:35,357 >> max_steps is given, it will override any value given in num_train_epochs
+[c120:0]:[INFO|trainer.py:749] 2026-04-24 17:54:35,357 >> Using auto half precision backend
+[c120:0]:[INFO|trainer.py:1012] 2026-04-24 17:54:37,945 >> The following columns in the Training set don't have a corresponding argument in `Qwen3ForCausalLM.forward` and have been ignored: chosen_model, prompt, rejected_model, prompt_id, preference_type. If chosen_model, prompt, rejected_model, prompt_id, preference_type are not expected by `Qwen3ForCausalLM.forward`,  you can safely ignore this message.
+[c120:0]:[INFO|trainer.py:2519] 2026-04-24 17:54:43,280 >> ***** Running training *****
+[c120:0]:[INFO|trainer.py:2520] 2026-04-24 17:54:43,280 >>   Num examples = 258,622
+[c120:0]:[INFO|trainer.py:2521] 2026-04-24 17:54:43,280 >>   Num Epochs = 1
+[c120:0]:[INFO|trainer.py:2522] 2026-04-24 17:54:43,280 >>   Instantaneous batch size per device = 1
+[c120:0]:[INFO|trainer.py:2525] 2026-04-24 17:54:43,280 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[c120:0]:[INFO|trainer.py:2526] 2026-04-24 17:54:43,280 >>   Gradient Accumulation steps = 32
+[c120:0]:[INFO|trainer.py:2527] 2026-04-24 17:54:43,280 >>   Total optimization steps = 10
+[c120:0]:[INFO|trainer.py:2528] 2026-04-24 17:54:43,281 >>   Number of trainable parameters = 14,768,307,200
+[c120:0]:[INFO|integration_utils.py:867] 2026-04-24 17:54:43,289 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+[c120:0]:wandb: Currently logged in as: hannanm (openeurollm-project) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[c120:0]:wandb: setting up run gxnqxyr7
+[c120:0]:wandb: Tracking run with wandb version 0.23.0
+[c120:0]:wandb: Run data is saved locally in /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/wandb/run-20260424_175444-gxnqxyr7
+[c120:0]:wandb: Run `wandb offline` to turn off syncing.
+[c120:0]:wandb: Syncing run Qwen3-14B-DPO-BO-FSDP-smoketest-t000
+[c120:0]:wandb: ⭐️ View project at https://wandb.ai/openeurollm-project/instruction-tuning
+[c120:0]:wandb: 🚀 View run at https://wandb.ai/openeurollm-project/instruction-tuning/runs/gxnqxyr7
+[c120:0]:wandb: Detected [huggingface_hub.inference, openai] in use.
+[c120:0]:wandb: Use W&B Weave for improved LLM call tracing. Install Weave with `pip install weave` then add `import weave` to the top of your script.
+[c120:0]:wandb: For more information, check out the docs at: https://weave-docs.wandb.ai/
+[c120:0]:
+[c120:0]:  0%|          | 0/10 [00:00<?, ?it/s][c120:0]:
+[c120:0]: 10%|█         | 1/10 [01:11<10:45, 71.72s/it][c120:0]:
+[c120:0]:                                              
+[c120:0]:
+[c120:0]: 10%|█         | 1/10 [01:11<10:45, 71.72s/it][c120:0]:
+[c120:0]: 20%|██        | 2/10 [01:44<06:29, 48.64s/it]
+[c120:0]:                                              
+[c120:0]:
+[c120:0]: 20%|██        | 2/10 [01:44<06:29, 48.64s/it][c120:0]:
+[c120:0]: 30%|███       | 3/10 [02:18<04:53, 41.87s/it][c120:0]:
+[c120:0]:                                              
+[c120:0]:
+[c120:0]: 30%|███       | 3/10 [02:18<04:53, 41.87s/it][c120:0]:
+[c120:0]: 40%|████      | 4/10 [02:51<03:51, 38.55s/it]
+[c120:0]:                                              
+[c120:0]:
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 3420727.0 ON c120 CANCELLED AT 2026-04-24T17:58:17 ***
+[c120:0]: 40%|████      | 4/10 [02:51<03:51, 38.55s/it]W0424 17:58:17.058000 334660 torch/distributed/elastic/agent/server/api.py:704] Received 15 death signal, shutting down workers
+W0424 17:58:17.059000 334660 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 335333 closing signal SIGTERM
+W0424 17:58:17.061000 334660 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 335334 closing signal SIGTERM
+W0424 17:58:17.061000 334660 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 335335 closing signal SIGTERM
+W0424 17:58:17.061000 334660 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 335336 closing signal SIGTERM
