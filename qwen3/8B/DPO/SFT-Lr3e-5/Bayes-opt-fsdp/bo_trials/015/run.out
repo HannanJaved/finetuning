@@ -5254,3 +5254,333 @@ CONFIG /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen
 [c23:0]:{'eval_loss': 0.19163672626018524, 'eval_runtime': 25.6407, 'eval_samples_per_second': 50.701, 'eval_steps_per_second': 1.599, 'eval_rewards/chosen': 1.6463414430618286, 'eval_rewards/rejected': -4.087271213531494, 'eval_rewards/accuracies': 0.9256097674369812, 'eval_rewards/margins': 5.732850551605225, 'eval_logps/chosen': -400.43902587890625, 'eval_logps/rejected': -358.2682800292969, 'eval_logits/chosen': -2.9314024448394775, 'eval_logits/rejected': -2.642911672592163, 'epoch': 0.1}
 [c23:0]:{'loss': 0.2805, 'grad_norm': 12.944844312607529, 'learning_rate': 4.278909483844585e-06, 'rewards/chosen': 0.917008638381958, 'rewards/rejected': -6.839739799499512, 'rewards/accuracies': 0.9221093654632568, 'rewards/margins': 7.753828048706055, 'logps/chosen': -401.6050109863281, 'logps/rejected': -527.5574951171875, 'logits/chosen': -2.9861719608306885, 'logits/rejected': -2.683906316757202, 'epoch': 0.15}
 [c23:0]:{'eval_loss': 0.1580367535352707, 'eval_runtime': 25.4588, 'eval_samples_per_second': 51.063, 'eval_steps_per_second': 1.61, 'eval_rewards/chosen': 0.292215496301651, 'eval_rewards/rejected': -6.556402206420898, 'eval_rewards/accuracies': 0.9286585450172424, 'eval_rewards/margins': 6.844511985778809, 'eval_logps/chosen': -410.8292541503906, 'eval_logps/rejected': -377.2926940917969, 'eval_logits/chosen': -3.0472559928894043, 'eval_logits/rejected': -2.753429889678955, 'epoch': 0.15}
+[c23:0]:{'loss': 0.1758, 'grad_norm': 11.535761362320553, 'learning_rate': 4.030424612541182e-06, 'rewards/chosen': 0.7032625079154968, 'rewards/rejected': -9.057421684265137, 'rewards/accuracies': 0.9305468797683716, 'rewards/margins': 9.755859375, 'logps/chosen': -407.7325134277344, 'logps/rejected': -520.157470703125, 'logits/chosen': -3.048476457595825, 'logits/rejected': -2.7425780296325684, 'epoch': 0.2}
+[c23:0]:{'eval_loss': 0.16757337749004364, 'eval_runtime': 25.9314, 'eval_samples_per_second': 50.132, 'eval_steps_per_second': 1.581, 'eval_rewards/chosen': 0.5175461173057556, 'eval_rewards/rejected': -6.964176654815674, 'eval_rewards/accuracies': 0.930487871170044, 'eval_rewards/margins': 7.480183124542236, 'eval_logps/chosen': -409.1707458496094, 'eval_logps/rejected': -380.5365905761719, 'eval_logits/chosen': -3.0876524448394775, 'eval_logits/rejected': -2.7820122241973877, 'epoch': 0.2}
+[c23:0]:{'loss': 0.2031, 'grad_norm': 10.73762755484942, 'learning_rate': 3.78193974123778e-06, 'rewards/chosen': 0.8515769243240356, 'rewards/rejected': -10.162343978881836, 'rewards/accuracies': 0.9298437237739563, 'rewards/margins': 11.0122652053833, 'logps/chosen': -422.6449890136719, 'logps/rejected': -527.6925048828125, 'logits/chosen': -3.0040624141693115, 'logits/rejected': -2.6977734565734863, 'epoch': 0.25}
+[c23:0]:{'eval_loss': 0.17177051305770874, 'eval_runtime': 25.6307, 'eval_samples_per_second': 50.72, 'eval_steps_per_second': 1.6, 'eval_rewards/chosen': 0.2838926613330841, 'eval_rewards/rejected': -7.34375, 'eval_rewards/accuracies': 0.9263719916343689, 'eval_rewards/margins': 7.625761985778809, 'eval_logps/chosen': -410.68292236328125, 'eval_logps/rejected': -383.4146423339844, 'eval_logits/chosen': -2.948551893234253, 'eval_logits/rejected': -2.6512956619262695, 'epoch': 0.25}
+[c23:0]:{'loss': 0.4725, 'grad_norm': 16.762197574431966, 'learning_rate': 3.5334548699343784e-06, 'rewards/chosen': -0.529502809047699, 'rewards/rejected': -9.459765434265137, 'rewards/accuracies': 0.9306250214576721, 'rewards/margins': 8.926094055175781, 'logps/chosen': -422.20001220703125, 'logps/rejected': -513.0449829101562, 'logits/chosen': -2.9317188262939453, 'logits/rejected': -2.6446094512939453, 'epoch': 0.3}
+[c23:0]:{'eval_loss': 0.1646323800086975, 'eval_runtime': 25.9827, 'eval_samples_per_second': 50.033, 'eval_steps_per_second': 1.578, 'eval_rewards/chosen': -0.7909084558486938, 'eval_rewards/rejected': -8.144054412841797, 'eval_rewards/accuracies': 0.9286585450172424, 'eval_rewards/margins': 7.349085330963135, 'eval_logps/chosen': -419.2682800292969, 'eval_logps/rejected': -389.6097412109375, 'eval_logits/chosen': -2.9916157722473145, 'eval_logits/rejected': -2.679497003555298, 'epoch': 0.3}
+[c23:0]:{'loss': 0.3976, 'grad_norm': 11.799941088044015, 'learning_rate': 3.2849699986309757e-06, 'rewards/chosen': -1.145032525062561, 'rewards/rejected': -13.3119535446167, 'rewards/accuracies': 0.9329687356948853, 'rewards/margins': 12.164531707763672, 'logps/chosen': -430.7799987792969, 'logps/rejected': -628.2474975585938, 'logits/chosen': -3.0194530487060547, 'logits/rejected': -2.6942577362060547, 'epoch': 0.35}
+[c23:0]:{'eval_loss': 0.16929025948047638, 'eval_runtime': 25.4604, 'eval_samples_per_second': 51.06, 'eval_steps_per_second': 1.61, 'eval_rewards/chosen': -0.6992068290710449, 'eval_rewards/rejected': -9.669207572937012, 'eval_rewards/accuracies': 0.9324695467948914, 'eval_rewards/margins': 8.967226028442383, 'eval_logps/chosen': -418.5853576660156, 'eval_logps/rejected': -401.56097412109375, 'eval_logits/chosen': -3.035823106765747, 'eval_logits/rejected': -2.7252285480499268, 'epoch': 0.35}
+[c23:0]:{'loss': 0.2704, 'grad_norm': 14.616326713929627, 'learning_rate': 3.0364851273275735e-06, 'rewards/chosen': -1.7999365329742432, 'rewards/rejected': -11.734140396118164, 'rewards/accuracies': 0.9350781440734863, 'rewards/margins': 9.931562423706055, 'logps/chosen': -455.4750061035156, 'logps/rejected': -503.87249755859375, 'logits/chosen': -3.0058202743530273, 'logits/rejected': -2.7001171112060547, 'epoch': 0.4}
+[c23:0]:{'eval_loss': 0.1324383020401001, 'eval_runtime': 25.8532, 'eval_samples_per_second': 50.284, 'eval_steps_per_second': 1.586, 'eval_rewards/chosen': -2.0570216178894043, 'eval_rewards/rejected': -11.153963088989258, 'eval_rewards/accuracies': 0.9385671019554138, 'eval_rewards/margins': 9.099085807800293, 'eval_logps/chosen': -428.92681884765625, 'eval_logps/rejected': -412.92681884765625, 'eval_logits/chosen': -2.995426893234253, 'eval_logits/rejected': -2.671875, 'epoch': 0.4}
+[c23:0]:{'loss': 0.8032, 'grad_norm': 11.577755721300955, 'learning_rate': 2.7880002560241717e-06, 'rewards/chosen': -1.2228431701660156, 'rewards/rejected': -10.939531326293945, 'rewards/accuracies': 0.9325000047683716, 'rewards/margins': 9.718125343322754, 'logps/chosen': -437.322509765625, 'logps/rejected': -587.8699951171875, 'logits/chosen': -2.993359327316284, 'logits/rejected': -2.6696484088897705, 'epoch': 0.45}
+[c23:0]:{'eval_loss': 0.13898365199565887, 'eval_runtime': 26.0117, 'eval_samples_per_second': 49.978, 'eval_steps_per_second': 1.576, 'eval_rewards/chosen': -0.7817561626434326, 'eval_rewards/rejected': -9.147103309631348, 'eval_rewards/accuracies': 0.9365854263305664, 'eval_rewards/margins': 8.363567352294922, 'eval_logps/chosen': -419.2682800292969, 'eval_logps/rejected': -397.2195129394531, 'eval_logits/chosen': -3.0160059928894043, 'eval_logits/rejected': -2.6871190071105957, 'epoch': 0.45}
+[c23:0]:{'loss': 0.6123, 'grad_norm': 5280.351994910222, 'learning_rate': 2.5395153847207695e-06, 'rewards/chosen': -1.1198339462280273, 'rewards/rejected': -12.429609298706055, 'rewards/accuracies': 0.9321093559265137, 'rewards/margins': 11.314570426940918, 'logps/chosen': -467.29998779296875, 'logps/rejected': -583.3400268554688, 'logits/chosen': -3.013476610183716, 'logits/rejected': -2.6950390338897705, 'epoch': 0.49}
+[c23:0]:{'eval_loss': 0.15565797686576843, 'eval_runtime': 25.5332, 'eval_samples_per_second': 50.914, 'eval_steps_per_second': 1.606, 'eval_rewards/chosen': -1.3062595129013062, 'eval_rewards/rejected': -9.97942066192627, 'eval_rewards/accuracies': 0.9358232021331787, 'eval_rewards/margins': 8.66996955871582, 'eval_logps/chosen': -423.0975646972656, 'eval_logps/rejected': -403.9024353027344, 'eval_logits/chosen': -3.0217225551605225, 'eval_logits/rejected': -2.697408437728882, 'epoch': 0.49}
+[c23:0]:{'loss': 0.2112, 'grad_norm': 7.196980915811159, 'learning_rate': 2.2910305134173672e-06, 'rewards/chosen': -0.3563627600669861, 'rewards/rejected': -10.91617202758789, 'rewards/accuracies': 0.9354687333106995, 'rewards/margins': 10.561406135559082, 'logps/chosen': -451.9125061035156, 'logps/rejected': -516.0974731445312, 'logits/chosen': -2.968437433242798, 'logits/rejected': -2.6466405391693115, 'epoch': 0.54}
+[c23:0]:{'eval_loss': 0.14197316765785217, 'eval_runtime': 25.4473, 'eval_samples_per_second': 51.086, 'eval_steps_per_second': 1.611, 'eval_rewards/chosen': -0.2784096300601959, 'eval_rewards/rejected': -8.26067066192627, 'eval_rewards/accuracies': 0.941615879535675, 'eval_rewards/margins': 7.977896213531494, 'eval_logps/chosen': -415.1707458496094, 'eval_logps/rejected': -390.5365905761719, 'eval_logits/chosen': -2.9054877758026123, 'eval_logits/rejected': -2.5853657722473145, 'epoch': 0.54}
+[c23:0]:{'loss': 0.4991, 'grad_norm': 10.932678542970516, 'learning_rate': 2.0425456421139654e-06, 'rewards/chosen': -0.5362428426742554, 'rewards/rejected': -9.401249885559082, 'rewards/accuracies': 0.9371874928474426, 'rewards/margins': 8.866991996765137, 'logps/chosen': -477.5174865722656, 'logps/rejected': -491.37750244140625, 'logits/chosen': -2.928515672683716, 'logits/rejected': -2.6119141578674316, 'epoch': 0.59}
+[c23:0]:{'eval_loss': 0.13622690737247467, 'eval_runtime': 25.4325, 'eval_samples_per_second': 51.116, 'eval_steps_per_second': 1.612, 'eval_rewards/chosen': -0.5112751126289368, 'eval_rewards/rejected': -9.27820110321045, 'eval_rewards/accuracies': 0.9400914907455444, 'eval_rewards/margins': 8.772103309631348, 'eval_logps/chosen': -417.243896484375, 'eval_logps/rejected': -398.3902587890625, 'eval_logits/chosen': -2.9435975551605225, 'eval_logits/rejected': -2.6189024448394775, 'epoch': 0.59}
+[c23:0]:{'loss': 0.1551, 'grad_norm': 8.209061214413271, 'learning_rate': 1.7940607708105632e-06, 'rewards/chosen': -1.3396821022033691, 'rewards/rejected': -10.527968406677246, 'rewards/accuracies': 0.9362499713897705, 'rewards/margins': 9.1899995803833, 'logps/chosen': -428.20001220703125, 'logps/rejected': -543.3375244140625, 'logits/chosen': -2.905937433242798, 'logits/rejected': -2.589296817779541, 'epoch': 0.64}
+[c23:0]:{'eval_loss': 0.13229456543922424, 'eval_runtime': 25.8223, 'eval_samples_per_second': 50.344, 'eval_steps_per_second': 1.588, 'eval_rewards/chosen': -1.8611613512039185, 'eval_rewards/rejected': -9.890243530273438, 'eval_rewards/accuracies': 0.9385671019554138, 'eval_rewards/margins': 8.025914192199707, 'eval_logps/chosen': -427.48779296875, 'eval_logps/rejected': -403.1219482421875, 'eval_logits/chosen': -2.9493141174316406, 'eval_logits/rejected': -2.634908437728882, 'epoch': 0.64}
+[c23:0]:{'loss': 0.155, 'grad_norm': 15.080938305967882, 'learning_rate': 1.5455758995071612e-06, 'rewards/chosen': -1.5317920446395874, 'rewards/rejected': -10.960468292236328, 'rewards/accuracies': 0.9344531297683716, 'rewards/margins': 9.427656173706055, 'logps/chosen': -441.62750244140625, 'logps/rejected': -522.0374755859375, 'logits/chosen': -2.9640233516693115, 'logits/rejected': -2.648124933242798, 'epoch': 0.69}
+[c23:0]:{'eval_loss': 0.14273422956466675, 'eval_runtime': 25.8185, 'eval_samples_per_second': 50.351, 'eval_steps_per_second': 1.588, 'eval_rewards/chosen': -1.437511920928955, 'eval_rewards/rejected': -9.963414192199707, 'eval_rewards/accuracies': 0.9378048777580261, 'eval_rewards/margins': 8.523628234863281, 'eval_logps/chosen': -424.2926940917969, 'eval_logps/rejected': -403.56097412109375, 'eval_logits/chosen': -2.9737043380737305, 'eval_logits/rejected': -2.6455793380737305, 'epoch': 0.69}
+[c23:0]:{'loss': 0.2003, 'grad_norm': 13.381163700703551, 'learning_rate': 1.297091028203759e-06, 'rewards/chosen': -1.3357995748519897, 'rewards/rejected': -9.939062118530273, 'rewards/accuracies': 0.934374988079071, 'rewards/margins': 8.604296684265137, 'logps/chosen': -425.05499267578125, 'logps/rejected': -447.2099914550781, 'logits/chosen': -2.971250057220459, 'logits/rejected': -2.6410155296325684, 'epoch': 0.74}
+[c23:0]:{'eval_loss': 0.13670845329761505, 'eval_runtime': 26.0954, 'eval_samples_per_second': 49.817, 'eval_steps_per_second': 1.571, 'eval_rewards/chosen': -1.5933213233947754, 'eval_rewards/rejected': -9.766768455505371, 'eval_rewards/accuracies': 0.9408536553382874, 'eval_rewards/margins': 8.169207572937012, 'eval_logps/chosen': -425.4146423339844, 'eval_logps/rejected': -402.1463317871094, 'eval_logits/chosen': -2.9645578861236572, 'eval_logits/rejected': -2.63376522064209, 'epoch': 0.74}
+[c23:0]:{'loss': 0.1556, 'grad_norm': 10.336066321851252, 'learning_rate': 1.048606156900357e-06, 'rewards/chosen': -1.945078730583191, 'rewards/rejected': -12.34164047241211, 'rewards/accuracies': 0.9418749809265137, 'rewards/margins': 10.395195007324219, 'logps/chosen': -431.0450134277344, 'logps/rejected': -608.427490234375, 'logits/chosen': -2.9541015625, 'logits/rejected': -2.620351552963257, 'epoch': 0.79}
+[c23:0]:{'eval_loss': 0.12048672884702682, 'eval_runtime': 25.4444, 'eval_samples_per_second': 51.092, 'eval_steps_per_second': 1.611, 'eval_rewards/chosen': -2.1148533821105957, 'eval_rewards/rejected': -10.259146690368652, 'eval_rewards/accuracies': 0.9385671019554138, 'eval_rewards/margins': 8.14939022064209, 'eval_logps/chosen': -429.3414611816406, 'eval_logps/rejected': -405.95123291015625, 'eval_logits/chosen': -2.971798896789551, 'eval_logits/rejected': -2.6432926654815674, 'epoch': 0.79}
+[c23:0]:{'loss': 0.1907, 'grad_norm': 7.61037745438714, 'learning_rate': 8.001212855969547e-07, 'rewards/chosen': -1.9805517196655273, 'rewards/rejected': -10.699609756469727, 'rewards/accuracies': 0.9413281083106995, 'rewards/margins': 8.718125343322754, 'logps/chosen': -456.9525146484375, 'logps/rejected': -437.2149963378906, 'logits/chosen': -2.935742139816284, 'logits/rejected': -2.6220703125, 'epoch': 0.84}
+[c23:0]:{'eval_loss': 0.12326747924089432, 'eval_runtime': 26.1486, 'eval_samples_per_second': 49.716, 'eval_steps_per_second': 1.568, 'eval_rewards/chosen': -1.6512004137039185, 'eval_rewards/rejected': -10.02743911743164, 'eval_rewards/accuracies': 0.9393292665481567, 'eval_rewards/margins': 8.37804889678955, 'eval_logps/chosen': -425.8536682128906, 'eval_logps/rejected': -404.243896484375, 'eval_logits/chosen': -2.9123475551605225, 'eval_logits/rejected': -2.5785059928894043, 'epoch': 0.84}
+[c23:0]:{'loss': 0.1464, 'grad_norm': 11.584250062966559, 'learning_rate': 5.516364142935527e-07, 'rewards/chosen': -0.8995184302330017, 'rewards/rejected': -10.7466402053833, 'rewards/accuracies': 0.9385156035423279, 'rewards/margins': 9.844219207763672, 'logps/chosen': -438.37750244140625, 'logps/rejected': -490.447509765625, 'logits/chosen': -2.924062490463257, 'logits/rejected': -2.595078229904175, 'epoch': 0.89}
+[c23:0]:{'eval_loss': 0.12126629054546356, 'eval_runtime': 26.152, 'eval_samples_per_second': 49.709, 'eval_steps_per_second': 1.568, 'eval_rewards/chosen': -1.4916634559631348, 'eval_rewards/rejected': -9.921493530273438, 'eval_rewards/accuracies': 0.9408536553382874, 'eval_rewards/margins': 8.425304412841797, 'eval_logps/chosen': -424.43902587890625, 'eval_logps/rejected': -403.4634094238281, 'eval_logits/chosen': -2.9439785480499268, 'eval_logits/rejected': -2.6101372241973877, 'epoch': 0.89}
+[c23:0]:{'loss': 0.5467, 'grad_norm': 15.404049858917283, 'learning_rate': 3.031515429901506e-07, 'rewards/chosen': -1.428861141204834, 'rewards/rejected': -12.383574485778809, 'rewards/accuracies': 0.942187488079071, 'rewards/margins': 10.956933975219727, 'logps/chosen': -432.5425109863281, 'logps/rejected': -691.7874755859375, 'logits/chosen': -2.930898427963257, 'logits/rejected': -2.603867292404175, 'epoch': 0.94}
+[c23:0]:{'eval_loss': 0.12219240516424179, 'eval_runtime': 25.5073, 'eval_samples_per_second': 50.966, 'eval_steps_per_second': 1.607, 'eval_rewards/chosen': -1.711342453956604, 'eval_rewards/rejected': -10.243902206420898, 'eval_rewards/accuracies': 0.941615879535675, 'eval_rewards/margins': 8.536585807800293, 'eval_logps/chosen': -426.48779296875, 'eval_logps/rejected': -406.0975646972656, 'eval_logits/chosen': -2.9375, 'eval_logits/rejected': -2.605945110321045, 'epoch': 0.94}
+[c23:0]:{'loss': 0.9555, 'grad_norm': 11.889747228779246, 'learning_rate': 5.4666671686748466e-08, 'rewards/chosen': -2.169142246246338, 'rewards/rejected': -10.372265815734863, 'rewards/accuracies': 0.9403906464576721, 'rewards/margins': 8.205078125, 'logps/chosen': -453.1424865722656, 'logps/rejected': -483.8699951171875, 'logits/chosen': -2.9235546588897705, 'logits/rejected': -2.592578172683716, 'epoch': 0.99}
+[c23:0]:{'eval_loss': 0.12180063128471375, 'eval_runtime': 25.9932, 'eval_samples_per_second': 50.013, 'eval_steps_per_second': 1.577, 'eval_rewards/chosen': -1.7275629043579102, 'eval_rewards/rejected': -10.269054412841797, 'eval_rewards/accuracies': 0.9400914907455444, 'eval_rewards/margins': 8.545731544494629, 'eval_logps/chosen': -426.5365905761719, 'eval_logps/rejected': -406.0975646972656, 'eval_logits/chosen': -2.92873477935791, 'eval_logits/rejected': -2.5964176654815674, 'epoch': 0.99}
+[c23:0]:{'train_runtime': 18384.0901, 'train_samples_per_second': 14.068, 'train_steps_per_second': 0.11, 'train_loss': 0.3589350006947241, 'epoch': 1.0}
+[c23:0]:***** train metrics *****
+[c23:0]:  epoch                    =        1.0
+[c23:0]:  total_flos               =        0GF
+[c23:0]:  train_loss               =     0.3589
+[c23:0]:  train_runtime            = 5:06:24.09
+[c23:0]:  train_samples            =     258622
+[c23:0]:  train_samples_per_second =     14.068
+[c23:0]:  train_steps_per_second   =       0.11
+[c23:0]:***** eval metrics *****
+[c23:0]:  epoch                   =        1.0
+[c23:0]:  eval_logits/chosen      =    -2.9276
+[c23:0]:  eval_logits/rejected    =    -2.5964
+[c23:0]:  eval_logps/chosen       =  -426.4878
+[c23:0]:  eval_logps/rejected     =  -405.9024
+[c23:0]:  eval_loss               =     0.1215
+[c23:0]:  eval_rewards/accuracies =     0.9401
+[c29:1]:c29:3188673:3190234 [1] NCCL INFO ncclCommSplit comm 0x3891e2e0 rank 9 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xe7457f0 color 698429859 key 9 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c29:3]:c29:3188675:3190242 [3] NCCL INFO ncclCommSplit comm 0x38fa47e0 rank 11 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xee37ef0 color 698429859 key 11 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c29:0]:c29:3188672:3190243 [0] NCCL INFO ncclCommSplit comm 0x3754f150 rank 8 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xce48b00 color 698429859 key 8 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c29:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO Channel 08/0 : 18[2] -> 17[1] via P2P/CUMEM
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO Channel 09/0 : 18[2] -> 17[1] via P2P/CUMEM
+[c105:3]:c105:3792050:3793620 [3] NCCL INFO Connected all trees
+[c105:3]:c105:3792050:3793620 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c105:3]:c105:3792050:3793620 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c105:1]:c105:3792048:3793614 [1] NCCL INFO Connected all trees
+[c105:1]:c105:3792048:3793614 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c105:1]:c105:3792048:3793614 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO Connected all trees
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 07/0 : 7[3] -> 15[3] [send] via NET/IB/2/GDRDMA
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 03/0 : 11[3] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 07/0 : 11[3] -> 7[3] [receive] via NET/IB/2/GDRDMA
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [send] via NET/IB/2/GDRDMA
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 01/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 03/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 05/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 07/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 09/0 : 7[3] -> 4[0] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 02/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 06/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 10/0 : 7[3] -> 5[1] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 04/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c28:3]:c28:925165:926736 [3] NCCL INFO Channel 08/0 : 7[3] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Connected all rings
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 02/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 06/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 10/0 : 4[0] -> 5[1] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 02/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 03/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 06/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 07/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 10/0 : 4[0] -> 6[2] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 03/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 07/0 : 4[0] -> 7[3] via P2P/CUMEM
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 00/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 08/0 : 4[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 00/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 08/0 : 8[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+[c28:0]:c28:925162:926732 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [send] via NET/IB/1/GDRDMA
+[c28:2]:c28:925164:926731 [2] NCCL INFO Connected all trees
+[c28:2]:c28:925164:926731 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c28:2]:c28:925164:926731 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c28:1]:c28:925163:926739 [1] NCCL INFO Connected all trees
+[c28:1]:c28:925163:926739 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c28:1]:c28:925163:926739 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c28:3]:c28:925165:926736 [3] NCCL INFO Connected all trees
+[c28:3]:c28:925165:926736 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c28:3]:c28:925165:926736 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c105:0]:c105:3792047:3793612 [0] NCCL INFO Connected all trees
+[c105:0]:c105:3792047:3793612 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c105:0]:c105:3792047:3793612 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c105:0]:c105:3792047:3793612 [0] NCCL INFO ncclCommSplit comm 0x38bf3f30 rank 16 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xe431e80 color 698429859 key 16 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c105:3]:c105:3792050:3793620 [3] NCCL INFO ncclCommSplit comm 0x38b5dde0 rank 19 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xe8ec680 color 698429859 key 19 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c28:0]:c28:925162:926732 [0] NCCL INFO Connected all trees
+[c28:0]:c28:925162:926732 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c28:0]:c28:925162:926732 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c28:2]:c28:925164:926731 [2] NCCL INFO ncclCommSplit comm 0x37ae7c70 rank 6 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xd90f790 color 698429859 key 6 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c28:1]:c28:925163:926739 [1] NCCL INFO ncclCommSplit comm 0x37456660 rank 5 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xd1f8d00 color 698429859 key 5 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c28:3]:c28:925165:926736 [3] NCCL INFO ncclCommSplit comm 0x37c3a6c0 rank 7 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xda76530 color 698429859 key 7 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c105:1]:c105:3792048:3793614 [1] NCCL INFO ncclCommSplit comm 0x38e4efc0 rank 17 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xebf1790 color 698429859 key 17 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c105:2]:c105:3792049:3793617 [2] NCCL INFO ncclCommSplit comm 0x38be6de0 rank 18 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xe9eada0 color 698429859 key 18 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c105:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c28:0]:c28:925162:926732 [0] NCCL INFO ncclCommSplit comm 0x37572560 rank 4 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xcdcb920 color 698429859 key 4 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c28:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 01/0 : 21[1] -> 25[1] [send] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 05/0 : 21[1] -> 25[1] [send] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 09/0 : 21[1] -> 25[1] [send] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 05/0 : 13[1] -> 21[1] [receive] via NET/IB/0/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Connected all rings
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 19[3] -> 23[3] [receive] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 03/0 : 23[3] -> 27[3] [send] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 23[3] -> 27[3] [send] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 15[3] -> 23[3] [receive] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 23[3] -> 15[3] [send] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 03/0 : 27[3] -> 23[3] [receive] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 27[3] -> 23[3] [receive] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 23[3] -> 19[3] [send] via NET/IB/2/GDRDMA
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 01/0 : 23[3] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 03/0 : 23[3] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 05/0 : 23[3] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 07/0 : 23[3] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 09/0 : 23[3] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 02/0 : 23[3] -> 21[1] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 06/0 : 23[3] -> 21[1] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 10/0 : 23[3] -> 21[1] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 00/0 : 23[3] -> 22[2] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 04/0 : 23[3] -> 22[2] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Channel 08/0 : 23[3] -> 22[2] via P2P/CUMEM
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 16[0] -> 20[0] [receive] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 00/0 : 20[0] -> 24[0] [send] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 20[0] -> 24[0] [send] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 08/0 : 20[0] -> 24[0] [send] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 12[0] -> 20[0] [receive] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 20[0] -> 12[0] [send] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 00/0 : 24[0] -> 20[0] [receive] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 24[0] -> 20[0] [receive] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 08/0 : 24[0] -> 20[0] [receive] via NET/IB/1/GDRDMA
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Channel 04/0 : 20[0] -> 16[0] [send] via NET/IB/1/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 18[2] -> 22[2] [receive] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 02/0 : 22[2] -> 26[2] [send] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 22[2] -> 26[2] [send] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 10/0 : 22[2] -> 26[2] [send] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 14[2] -> 22[2] [receive] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 22[2] -> 14[2] [send] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 02/0 : 26[2] -> 22[2] [receive] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 26[2] -> 22[2] [receive] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 10/0 : 26[2] -> 22[2] [receive] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 22[2] -> 18[2] [send] via NET/IB/3/GDRDMA
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 02/0 : 22[2] -> 20[0] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 03/0 : 22[2] -> 20[0] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 06/0 : 22[2] -> 20[0] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 07/0 : 22[2] -> 20[0] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 10/0 : 22[2] -> 20[0] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 00/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 01/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 04/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 05/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 08/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Channel 09/0 : 22[2] -> 21[1] via P2P/CUMEM
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 05/0 : 21[1] -> 13[1] [send] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 01/0 : 25[1] -> 21[1] [receive] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 05/0 : 25[1] -> 21[1] [receive] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 09/0 : 25[1] -> 21[1] [receive] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 05/0 : 21[1] -> 17[1] [send] via NET/IB/0/GDRDMA
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 00/0 : 21[1] -> 20[0] via P2P/CUMEM
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 04/0 : 21[1] -> 20[0] via P2P/CUMEM
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Channel 08/0 : 21[1] -> 20[0] via P2P/CUMEM
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO Connected all trees
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO Connected all trees
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO Connected all trees
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO Connected all trees
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c126:3]:c126:2050612:2052171 [3] NCCL INFO ncclCommSplit comm 0x391d1b60 rank 23 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xef9bf90 color 698429859 key 23 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c126:2]:c126:2050611:2052179 [2] NCCL INFO ncclCommSplit comm 0x37635500 rank 22 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xd450d10 color 698429859 key 22 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c126:0]:c126:2050609:2052175 [0] NCCL INFO ncclCommSplit comm 0x372a7ad0 rank 20 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xcb41a60 color 698429859 key 20 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c126:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c126:1]:c126:2050610:2052174 [1] NCCL INFO ncclCommSplit comm 0x3858b010 rank 21 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xe3bc5a0 color 698429859 key 21 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 03/0 : 31[3] -> 27[3] [send] via NET/IB/2/GDRDMA
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 01/0 : 31[3] -> 28[0] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 03/0 : 31[3] -> 28[0] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 05/0 : 31[3] -> 28[0] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 07/0 : 31[3] -> 28[0] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 09/0 : 31[3] -> 28[0] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 02/0 : 31[3] -> 29[1] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 06/0 : 31[3] -> 29[1] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 10/0 : 31[3] -> 29[1] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 00/0 : 31[3] -> 30[2] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 04/0 : 31[3] -> 30[2] via P2P/CUMEM
+[c144:3]:c144:81857:83418 [3] NCCL INFO Channel 08/0 : 31[3] -> 30[2] via P2P/CUMEM
+[c144:1]:c144:81855:83423 [1] NCCL INFO Connected all trees
+[c144:1]:c144:81855:83423 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c144:1]:c144:81855:83423 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c144:1]:c144:81855:83423 [1] NCCL INFO ncclCommSplit comm 0x3822bf10 rank 29 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xe125280 color 698429859 key 29 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c144:0]:c144:81854:83426 [0] NCCL INFO Connected all trees
+[c144:0]:c144:81854:83426 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c144:0]:c144:81854:83426 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c144:0]:c144:81854:83426 [0] NCCL INFO ncclCommSplit comm 0x38c50770 rank 28 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xe5a02c0 color 698429859 key 28 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c144:2]:c144:81856:83419 [2] NCCL INFO Connected all trees
+[c144:2]:c144:81856:83419 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c144:2]:c144:81856:83419 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c144:2]:c144:81856:83419 [2] NCCL INFO ncclCommSplit comm 0x37cd3790 rank 30 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xda2c210 color 698429859 key 30 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c144:3]:c144:81857:83418 [3] NCCL INFO Connected all trees
+[c144:3]:c144:81857:83418 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c144:3]:c144:81857:83418 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c144:3]:c144:81857:83418 [3] NCCL INFO ncclCommSplit comm 0x39059e60 rank 31 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xedf7110 color 698429859 key 31 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c144:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 02/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 03/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 06/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 07/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 10/0 : 12[0] -> 14[2] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 03/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 07/0 : 12[0] -> 15[3] via P2P/CUMEM
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 08/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 12[0] -> 20[0] [send] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 28[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 12[0] -> 28[0] [send] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 20[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [send] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Channel 08/0 : 12[0] -> 8[0] [send] via NET/IB/1/GDRDMA
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 10/0 : 14[2] -> 10[2] [send] via NET/IB/3/GDRDMA
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 02/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 03/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 06/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 07/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 10/0 : 14[2] -> 12[0] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 00/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 01/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 04/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 05/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 08/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Channel 09/0 : 14[2] -> 13[1] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 07/0 : 31[3] -> 15[3] [receive] via NET/IB/2/GDRDMA
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 07/0 : 15[3] -> 31[3] [send] via NET/IB/2/GDRDMA
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 07/0 : 23[3] -> 15[3] [receive] via NET/IB/2/GDRDMA
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [send] via NET/IB/2/GDRDMA
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 03/0 : 15[3] -> 11[3] [send] via NET/IB/2/GDRDMA
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 01/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 03/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 05/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 07/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 09/0 : 15[3] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 02/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 06/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 10/0 : 15[3] -> 13[1] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 00/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 04/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Channel 08/0 : 15[3] -> 14[2] via P2P/CUMEM
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO Channel 00/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO Channel 04/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO Channel 08/0 : 13[1] -> 12[0] via P2P/CUMEM
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO Connected all trees
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO Connected all trees
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO Connected all trees
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c96:1]:c96:3219457:3221028 [1] NCCL INFO ncclCommSplit comm 0x385259f0 rank 13 nranks 32 cudaDev 1 nvmlDev 1 busId 26000 parent 0xe3918b0 color 698429859 key 13 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO Connected all trees
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c96:0]:c96:3219456:3221022 [0] NCCL INFO ncclCommSplit comm 0x37b719e0 rank 12 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xd3a6800 color 698429859 key 12 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c96:2]:c96:3219458:3221024 [2] NCCL INFO ncclCommSplit comm 0x37be1e50 rank 14 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xda623a0 color 698429859 key 14 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c96:3]:c96:3219459:3221023 [3] NCCL INFO ncclCommSplit comm 0x3787ada0 rank 15 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xd60a2a0 color 698429859 key 15 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c96:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c132:3]:c132:776859:778150 [3] NCCL INFO ncclCommSplit comm 0x379d6790 rank 27 nranks 32 cudaDev 3 nvmlDev 3 busId c6000 parent 0xd89aa60 color 698429859 key 27 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c132:0]:c132:776856:778159 [0] NCCL INFO Connected all trees
+[c132:0]:c132:776856:778159 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c132:0]:c132:776856:778159 [0] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c132:0]:c132:776856:778159 [0] NCCL INFO ncclCommSplit comm 0x37d22ec0 rank 24 nranks 32 cudaDev 0 nvmlDev 0 busId 6000 parent 0xd510540 color 698429859 key 24 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c132:2]:c132:776858:778156 [2] NCCL INFO Connected all trees
+[c132:2]:c132:776858:778156 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+[c132:2]:c132:776858:778156 [2] NCCL INFO 11 coll channels, 11 collnet channels, 0 nvls channels, 16 p2p channels, 1 p2p channels per peer
+[c132:2]:c132:776858:778156 [2] NCCL INFO ncclCommSplit comm 0x38354100 rank 26 nranks 32 cudaDev 2 nvmlDev 2 busId a6000 parent 0xe0ff1f0 color 698429859 key 26 commId 0xe86ae2211f499cb9 - Init COMPLETE
+[c132:0]:2026-04-27 11:37:39 - INFO - __main__ - *** Train ***
+[c23:0]:  eval_rewards/chosen     =    -1.7116
+[c23:0]:  eval_rewards/margins    =     8.5427
+[c23:0]:  eval_rewards/rejected   =   -10.2576
+[c23:0]:  eval_runtime            = 0:00:25.49
+[c23:0]:  eval_samples_per_second =     50.996
+[c23:0]:  eval_steps_per_second   =      1.608
+[c23:0]:c23:682638:684223 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+[c23:0]:c23:682638:683480 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+[c23:0]:c23:682638:684223 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+[c23:0]:c23:682638:683480 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+[c23:0]:c23:682638:684223 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+[c23:0]:c23:682638:683480 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+[c23:0]:[1;34mwandb[0m: 
+[c23:0]:[1;34mwandb[0m: 🚀 View run [33mQwen3-8B-DPO-BO-t015[0m at: [34mhttps://wandb.ai/openeurollm-project/instruction-tuning/runs/jn8on8zx[0m
+[c23:0]:[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260427_113748-jn8on8zx/logs[0m
+END TIME: Mon Apr 27 16:45:17 CEST 2026
+END 3420684: Mon Apr 27 16:45:17 CEST 2026
