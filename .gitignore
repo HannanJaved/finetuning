@@ -25,3 +25,5 @@ qwen3/entropy/entropy_plot*
 *.png
 *.jsonl
 *.csv
+*.out
+*.err
