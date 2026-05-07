@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, PreTrainedTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, PreTrainedTokenizer, AutoConfig
 
 from trl import ModelConfig, get_kbit_device_map, get_quantization_config
 
@@ -40,15 +40,31 @@ def get_model(model_args: ModelConfig, training_args: SFTConfig) -> AutoModelFor
         model_args.torch_dtype if model_args.torch_dtype in ["auto", None] else getattr(torch, model_args.torch_dtype)
     )
     quantization_config = get_quantization_config(model_args)
+
+    # Load the model config so we can set attributes (like use_cache) that
+    # some custom model classes expect to find on the config object instead
+    # of being passed as a kwarg to __init__.
+    config = AutoConfig.from_pretrained(
+        model_args.model_name_or_path,
+        revision=model_args.model_revision,
+        trust_remote_code=model_args.trust_remote_code,
+    )
+
+    # Some model implementations (e.g. custom Gemma3 in this environment)
+    # don't accept `use_cache` as an __init__ kwarg. Set it on the config
+    # instead to control caching behaviour during generation/training.
+    config.use_cache = False if training_args.gradient_checkpointing else True
+
     model_kwargs = dict(
         revision=model_args.model_revision,
         trust_remote_code=model_args.trust_remote_code,
         attn_implementation=model_args.attn_implementation,
         torch_dtype=torch_dtype,
-        use_cache=False if training_args.gradient_checkpointing else True,
+        config=config,
         device_map=get_kbit_device_map() if quantization_config is not None else None,
         quantization_config=quantization_config,
     )
+
     model = AutoModelForCausalLM.from_pretrained(
         model_args.model_name_or_path,
         **model_kwargs,
