@@ -18,8 +18,11 @@ source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
 export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
-export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+
+export TRITON_CACHE_DIR="/tmp/$USER/triton/$SLURM_JOB_ID"
+export XDG_CACHE_HOME="/tmp/$USER/xdg-cache/$SLURM_JOB_ID"
+mkdir -p "$TRITON_CACHE_DIR" "$XDG_CACHE_HOME"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
@@ -66,7 +69,7 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 export WANDB_NAME=Qwen3-8B-SFT-LR5e-4-DPO-Squeezing_effect
 
-cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
+cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook
 ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/zero3.yaml
 CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/8B/DPO/SFT-Lr5e-4/squeezing_effect.yaml
 

@@ -35,5 +35,4 @@ save_total_limit: 20
 seed: 8
 warmup_ratio: 0.1
 length_normalize_logps: false
-eval_strategy: steps
-eval_steps: 100
+do_eval: false
