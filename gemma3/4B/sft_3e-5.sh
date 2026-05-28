@@ -5,24 +5,26 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=6
 #SBATCH --mem=64G
 #SBATCH --time=2-00:00:00
 #SBATCH --partition=capella
 
+set -euo pipefail
+
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load CUDA
-source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
+module load CUDA/12.6.0
+VENV=/data/horse/ws/hama901h-BFTranslation/venv-post-training
+export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/targets/x86_64-linux/lib:/data/horse/ws/hama901h-BFTranslation/libffi-install/lib64:${LD_LIBRARY_PATH:-}
+source "$VENV/bin/activate"
 
 export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 source /data/cat/ws/hama901h-Post-training/cache.sh
-export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
-# try limited membership instead of full
 export NCCL_IB_PKEY=0x2
 
 export NCCL_NSOCKS_PERTHREAD=4
@@ -39,7 +41,7 @@ export TORCH_DISTRIBUTED_HEARTBEAT_TIMEOUT=300
 export TORCH_DISTRIBUTED_COODINATOR_TIMEOUT=300
 export OMP_NUM_THREADS=18
 
-#Distributed variables
+# Distributed variables
 export MASTER_PORT=$(shuf -i 20000-29999 -n 1)
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
@@ -65,34 +67,35 @@ export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 export WANDB_NAME=Gemma3-4B-SFT-LR3e-5
 
-cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/4B/config_olmo3_sft_3e-5.yaml
+cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/post-training
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/4B/sft_3e-5.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
-#LAUNCHERS
-export CMD="scripts/sft.py --config $CONFIG_FILE"
+CMD="scripts/train.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
     --kill-on-bad-exit=1 \
     "
 
-export ACC_LAUNCHER="accelerate launch \
+ACCELERATE_BIN="$VENV/bin/accelerate"
+ACC_LAUNCHER="$ACCELERATE_BIN launch \
     --rdzv_conf \"rdzv_backend=c10d,rdzv_endpoint=$MASTER_ADDR:$MASTER_PORT\" \
-    --config_file $ACCELERATE_CONFIG_FILE \
     --num_machines $SLURM_NNODES \
     --num_processes $WORLD_SIZE \
     --main_process_ip $MASTER_ADDR \
     --main_process_port $MASTER_PORT \
     --machine_rank \$SLURM_PROCID \
     --role \$(hostname -s|tr -dc '0-9'): \
+    --mixed_precision bf16 \
+    --dynamo_backend inductor \
+    --use_deepspeed \
+    --deepspeed_multinode_launcher standard \
     --tee 3 \
     "
-
 
 srun $SRUN_ARGS --jobid $SLURM_JOB_ID bash -c "$ACC_LAUNCHER --role \$SLURMD_NODENAME: $CMD"
 

@@ -1,0 +1,86 @@
+# ============================================================================
+# Gemma3 270m SFT configuration (matches finetuning/gemma3/270m/config_olmo3_sft_3e-5.yaml)
+# ============================================================================
+
+method: sft
+backend: trl
+run_name: "gemma-3-270m-pt-SFT-LR3e-5"
+offline: false
+
+# Run directly on bare metal (no container).
+container: null
+
+# -- Model -------------------------------------------------------------------
+model:
+  name_or_path: "/data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-270m"
+  attn_implementation: "flash_attention_2"
+  dtype: "bfloat16"
+
+# -- Training hyper-parameters -----------------------------------------------
+training:
+  max_steps: null
+  num_train_epochs: 2
+  learning_rate: 3.0e-5
+  effective_batch_size: 128                # 1 * 16 * 8 (per_device * grad_accum * world_size)
+  per_device_train_batch_size: 1
+  warmup_steps: 0.03                       # ratio of total steps
+  lr_scheduler_type: "linear"
+  lr_scheduler_kwargs: null
+  gradient_checkpointing: true
+  gradient_checkpointing_kwargs:
+    use_reentrant: false
+  bf16: true
+  seed: 42
+  use_liger_kernel: true
+
+# -- SFT method parameters ---------------------------------------------------
+sft:
+  max_seq_length: 4096
+  packing: true
+  dataset_num_proc: null
+
+# -- Checkpointing -----------------------------------------------------------
+checkpointing:
+  save_strategy: "steps"
+  save_steps: 2000
+  save_total_limit: 5000
+  inference_checkpoint_steps: null
+
+# -- Data mix ----------------------------------------------------------------
+data:
+  chat_template: "olmo3-instruct-sft"
+  num_proc: null
+  seed: 42
+  datasets:
+    - name: "dolci-instruct-sft"
+      path: "allenai/Dolci-Instruct-SFT"
+      split: "train"
+      weight: 1.0
+      transform: "dolci_instruct_sft"
+
+# -- DeepSpeed ---------------------------------------------------------------
+deepspeed:
+  config_path: "configs/deepspeed/zero3.yaml"
+
+# -- Logging & tracking ------------------------------------------------------
+logging:
+  report_to:
+    - "wandb"
+  wandb_project: "instruction-tuning"
+  logging_steps: 100
+  include_num_input_tokens_seen: "non_padding"
+
+# -- SLURM -------------------------------------------------------------------
+slurm:
+  partition: "capella"
+  num_nodes: 2
+  gpus_per_node: 4
+  cpus_per_task: 8
+  mem: "64G"
+  wall_time: "2-00:00:00"
+  job_name: "Gemma3-270m-SFT-LR3e-5"
+
+# -- Output paths -------------------------------------------------------------
+paths:
+  output_base: "/data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-270m/SFT-sweep"
+  debug_base: "/data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-270m/SFT-sweep/debug"

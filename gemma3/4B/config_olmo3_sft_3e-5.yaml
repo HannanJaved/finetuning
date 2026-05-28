@@ -47,6 +47,7 @@ remove_unused_columns: true
 # - tensorboard
 save_strategy: "steps"
 save_steps: 2000
-save_total_limit: 100
+save_total_limit: 5000
 seed: 42
 warmup_ratio: 0.03
+ddp_find_unused_parameters: true
