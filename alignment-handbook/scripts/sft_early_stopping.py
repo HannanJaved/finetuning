@@ -45,7 +45,7 @@ from transformers import set_seed, EarlyStoppingCallback
 from transformers.trainer_utils import get_last_checkpoint
 
 from src.alignment import ScriptArguments, SFTConfig, get_dataset, get_model, get_tokenizer
-from trl import ModelConfig, SFTTrainer, TrlParser, get_peft_config, setup_chat_format
+from trl import ModelConfig, SFTTrainer, TrlParser, get_peft_config
 
 
 ## Fix timeout issue for long preproc times
@@ -58,6 +58,18 @@ def patched_init(*args, **kwargs):
     return orig_init(*args, **kwargs)
 
 torch.distributed.init_process_group = patched_init
+## end fix
+
+## Fix checkpoint resume with PyTorch >=2.6 loading legacy rng_state pickles
+_orig_torch_load = torch.load
+
+def _torch_load_with_legacy_rng_support(*args, **kwargs):
+    f = args[0] if args else kwargs.get("f")
+    if isinstance(f, (str, os.PathLike)) and os.path.basename(f).startswith("rng_state"):
+        kwargs.setdefault("weights_only", False)
+    return _orig_torch_load(*args, **kwargs)
+
+torch.load = _torch_load_with_legacy_rng_support
 ## end fix
 
 logger = logging.getLogger(__name__)
@@ -134,10 +146,6 @@ def main(script_args, training_args, model_args):
     ############
     logger.info("*** Loading model ***")
     model = get_model(model_args, training_args)
-
-    if tokenizer.chat_template is None:
-        logger.info("No chat template provided, using ChatML.")
-        model, tokenizer = setup_chat_format(model, tokenizer, format="chatml")
 
     ############################
     # Setup early stopping

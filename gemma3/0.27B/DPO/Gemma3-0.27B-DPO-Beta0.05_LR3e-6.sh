@@ -1,30 +1,29 @@
 #!/bin/bash
-#SBATCH --job-name=Gemma3-4B-SFT-LR3e-5
-#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.out
-#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.err
+#SBATCH --job-name=Gemma3-0.27B-DPO-Beta0.05_LR3e-6
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/0.27B/DPO/SFT-LR1e-7/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/0.27B/DPO/SFT-LR1e-7/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=6
-#SBATCH --mem=64G
-#SBATCH --time=2-00:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
-
-set -euo pipefail
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
-module load CUDA/12.6.0
-VENV=/data/horse/ws/hama901h-BFTranslation/venv-post-training
-export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/targets/x86_64-linux/lib:/data/horse/ws/hama901h-BFTranslation/libffi-install/lib64:${LD_LIBRARY_PATH:-}
-source "$VENV/bin/activate"
+module load release/24.10
+module load CUDA/12.4.0
+source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
-export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-source /data/cat/ws/hama901h-Post-training/cache.sh
+export HF_HOME="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
+export HF_DATASETS_CACHE="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
+export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+export PYTHONPATH="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
+# try limited membership instead of full
 export NCCL_IB_PKEY=0x2
 
 export NCCL_NSOCKS_PERTHREAD=4
@@ -41,7 +40,7 @@ export TORCH_DISTRIBUTED_HEARTBEAT_TIMEOUT=300
 export TORCH_DISTRIBUTED_COODINATOR_TIMEOUT=300
 export OMP_NUM_THREADS=18
 
-# Distributed variables
+#Distributed variables
 export MASTER_PORT=$(shuf -i 20000-29999 -n 1)
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
@@ -65,37 +64,36 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Gemma3-4B-SFT-LR3e-5
+export WANDB_NAME=Gemma3-0.27B-DPO-Beta0.05_LR3e-6
 
-cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/post-training
-CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/4B/sft_3e-5.yaml
+cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/0.27B/DPO/dpo_beta0.05_LR3e-6.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
-CMD="scripts/train.py --config $CONFIG_FILE"
+#LAUNCHERS
+export CMD="scripts/dpo.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
     --kill-on-bad-exit=1 \
     "
 
-ACCELERATE_BIN="$VENV/bin/accelerate"
-ACC_LAUNCHER="$ACCELERATE_BIN launch \
+export ACC_LAUNCHER="accelerate launch \
     --rdzv_conf \"rdzv_backend=c10d,rdzv_endpoint=$MASTER_ADDR:$MASTER_PORT\" \
+    --config_file $ACCELERATE_CONFIG_FILE \
     --num_machines $SLURM_NNODES \
     --num_processes $WORLD_SIZE \
     --main_process_ip $MASTER_ADDR \
     --main_process_port $MASTER_PORT \
     --machine_rank \$SLURM_PROCID \
     --role \$(hostname -s|tr -dc '0-9'): \
-    --mixed_precision bf16 \
-    --dynamo_backend inductor \
-    --use_deepspeed \
-    --deepspeed_multinode_launcher standard \
     --tee 3 \
     "
+
 
 srun $SRUN_ARGS --jobid $SLURM_JOB_ID bash -c "$ACC_LAUNCHER --role \$SLURMD_NODENAME: $CMD"
 

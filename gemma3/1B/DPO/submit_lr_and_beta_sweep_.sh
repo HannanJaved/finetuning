@@ -19,7 +19,7 @@ if [ ! -f "${CONFIG_TEMPLATE}" ]; then
 fi
 
 # LRs and betas to sweep (as requested)
-LRS=(1e-5 7e-6 5e-6 3e-6 1e-6)
+LRS=(1e-5 5e-6 3e-6 1e-6)
 BETAS=(0.01 0.05 0.1 0.3)
 
 # Parse options
@@ -62,7 +62,7 @@ for lr in "${LRS[@]}"; do
   for beta in "${BETAS[@]}"; do
     # Name each job/config uniquely
     # replace dots in beta for safer filenames if needed (0.05 -> 0.05)
-    job_name="Qwen3-0.6B-DPO-SFT_1e-5-Beta${beta}_LR${lr}"
+    job_name="Gemma3-1B-DPO-Beta${beta}_LR${lr}"
     config_path="${SCRIPT_DIR}/dpo_beta${beta}_LR${lr}.yaml"
     job_path="${SCRIPT_DIR}/${job_name}.sh"
 
@@ -70,7 +70,7 @@ for lr in "${LRS[@]}"; do
     sed \
       -e "s/^learning_rate: .*/learning_rate: ${lr}/" \
       -e "s/^beta: .*/beta: ${beta}/" \
-      -e "s#^output_dir: .*#output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-0.6B-Base/SFT-sweep/${job_name}/#" \
+      -e "s#^output_dir: .*#output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-1b-pt/SFT-sweep/gemma-3-1b-pt-SFT-LR3e-5/DPO/Beta${beta}_LR${lr}/#" \
       "${CONFIG_TEMPLATE}" > "${config_path}"
 
     # Create job script from template. Prefer replacing an existing WANDB_NAME

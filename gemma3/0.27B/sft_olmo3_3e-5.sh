@@ -1,24 +1,24 @@
 #!/bin/bash
-#SBATCH --job-name=Gemma3-4B-SFT-LR3e-5
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.err
+#SBATCH --job-name=Gemma3-270m-SFT-LR3e-5
+#SBATCH --output=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.out
+#SBATCH --error=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=08:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
 module load CUDA
-source /data/horse/ws/hama901h-BFTranslation/venv-post-training/bin/activate
+source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
 
-export HF_HOME="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-export HF_DATASETS_CACHE="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-source /data/horse/ws/hama901h-Post-training/cache.sh
-export PYTHONPATH="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-post-training/lib/python3.11/site-packages"
+export HF_HOME="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
+export HF_DATASETS_CACHE="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
+source /data/cat/ws/hama901h-Post-training/cache.sh
+export PYTHONPATH="/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
@@ -63,11 +63,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Gemma3-4B-SFT-LR3e-5
+export WANDB_NAME=Gemma3-270m-SFT-LR3e-5
 
-cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/4B/config_olmo3_sft_3e-5.yaml
+cd /data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
+ACCELERATE_CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/cat/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/gemma3/0.27B/config_olmo3_sft_3e-5.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE

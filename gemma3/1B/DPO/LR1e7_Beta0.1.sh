@@ -1,17 +1,18 @@
 #!/bin/bash
-#SBATCH --job-name=Gemma3-4B-SFT-LR3e-5
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/%x_%j.err
+#SBATCH --job-name=Gemma3-1B-DPO-Beta0.1_LR1e-7
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/1B/DPO/SFT-LR1e-7/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Gemma3/1B/DPO/SFT-LR1e-7/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
-#SBATCH --time=08:00:00
+#SBATCH --mem=32G
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
+# module load release/24.10
 module load CUDA
 source /data/horse/ws/hama901h-BFTranslation/venv-post-training/bin/activate
 
@@ -63,7 +64,7 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Gemma3-4B-SFT-LR3e-5
+export WANDB_NAME=Gemma3-1B-DPO-Beta0.1_LR1e7
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
@@ -74,7 +75,7 @@ echo "CONFIG" $CONFIG_FILE
 pwd -P
 
 #LAUNCHERS
-export CMD="scripts/sft.py --config $CONFIG_FILE"
+export CMD="scripts/dpo.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
