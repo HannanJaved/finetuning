@@ -1,0 +1,25 @@
+# Model arguments
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-270m/SFT-sweep/gemma-3-270m-SFT-LR3e-5/DPO/Beta0.01_LR3e-6
+ref_model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-270m/SFT-sweep/gemma-3-270m-SFT-LR3e-5/
+torch_dtype: bfloat16
+
+use_liger_kernel: true
+attn_implementation: flash_attention_2
+
+dataset_name:
+  allenai/Dolci-Instruct-DPO
+
+# DPOTrainer arguments
+bf16: true
+beta: 0.01
+do_eval: true
+do_train: false
+log_level: info
+max_length: 4096
+max_prompt_length: 512
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/evaluation_results/validation_loss/Gemma3-270m/Beta0.01_LR3e-6
+per_device_eval_batch_size: 1
+seed: 8
+length_normalize_logps: false
+dataset_test_split_size: 0.005
