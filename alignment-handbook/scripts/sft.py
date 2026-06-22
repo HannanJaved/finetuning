@@ -60,6 +60,10 @@ def patched_init(*args, **kwargs):
 torch.distributed.init_process_group = patched_init
 ## end fix
 
+## Disable cuDNN SDPA backend — it fails on some GPU configurations with Gemma3
+torch.backends.cuda.enable_cudnn_sdp(False)
+## end fix
+
 ## Fix checkpoint resume with PyTorch >=2.6 loading legacy rng_state pickles
 _orig_torch_load = torch.load
 
