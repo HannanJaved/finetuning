@@ -10,16 +10,14 @@
 #SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 
-echo "JOB NAME" $SLURM_JOB_NAME
-
-module load release/24.10
-module load CUDA/12.4.0
-source /data/horse/ws/hama901h-BFTranslation/venv-TRL/bin/activate
+# module load release/24.10
+module load CUDA
+source /data/horse/ws/hama901h-BFTranslation/venv-post-training/bin/activate
 
 export HF_HOME="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
 export HF_DATASETS_CACHE="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache"
-export PYTHONPATH="/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
-export PYTHONPATH="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-TRL/lib/python3.11/site-packages"
+source /data/horse/ws/hama901h-Post-training/cache.sh
+export PYTHONPATH="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-post-training/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
 export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
