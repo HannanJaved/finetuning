@@ -1,0 +1,34 @@
+# Short throughput pilot for strategy comparison (DDP / ZeRO-2 / FSDP).
+# Same model/data as production; only training length and output dir differ.
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/.cache/hub/models--openeurollm--datamix-9b-80-20/snapshots/66c3229e708857a0bc54070131d4b1762d4f5279
+torch_dtype: bfloat16
+attn_implementation: flash_attention_2
+
+chat_template: "{%- set has_system = messages|selectattr('role', 'equalto', 'system')|list|length > 0 -%}{%- if not has_system -%}{{- '<|im_start|>system\nYou are a helpful function-calling AI assistant. ' -}}{%- if tools is none -%}{{- 'You do not currently have access to any functions. <functions></functions><|im_end|>\n' -}}{%- else -%}{{- 'You are provided with function signatures within <functions></functions> XML tags. You may call one or more functions to assist with the user query. Output any function calls within <function_calls></function_calls> XML tags. Do not make assumptions about what values to plug into functions.' -}}{{- '<functions>' -}}{{- tools | tojson -}}{{- '</functions><|im_end|>\n' -}}{%- endif -%}{%- endif -%}{%- for message in messages -%}{%- if message['role'] == 'system' -%}{{- '<|im_start|>system\n' + message['content'] -}}{%- if tools is not none -%}{{- '<functions>' -}}{{- tools | tojson -}}{{- '</functions>' -}}{%- elif message.get('functions', none) is not none -%}{{- ' <functions>' + message['functions'] + '</functions>' -}}{%- endif -%}{{- '<|im_end|>\n' -}}{%- elif message['role'] == 'user' -%}{{- '<|im_start|>user\n' + message['content'] + '<|im_end|>\n' -}}{%- elif message['role'] == 'assistant' -%}{{- '<|im_start|>assistant\n' -}}{%- if message.get('content', none) is not none -%}{{- message['content'] -}}{%- endif -%}{%- if message.get('function_calls', none) is not none -%}{{- '<function_calls>' + message['function_calls'] + '</function_calls>' -}}{% elif message.get('tool_calls', none) is not none %}{{- '<function_calls>' -}}{%- for tool_call in message['tool_calls'] %}{%- if tool_call is mapping and tool_call.get('function', none) is not none %}{%- set args = tool_call['function']['arguments'] -%}{%- set ns = namespace(arguments_list=[]) -%}{%- for key, value in args.items() -%}{%- set ns.arguments_list = ns.arguments_list + [key ~ '=' ~ (value | tojson)] -%}{%- endfor -%}{%- set arguments = ns.arguments_list | join(', ') -%}{{- tool_call['function']['name'] + '(' + arguments + ')' -}}{%- if not loop.last -%}{{ '\n' }}{%- endif -%}{% else %}{{- tool_call -}}{%- endif %}{%- endfor %}{{- '</function_calls>' -}}{%- endif -%}{%- if not loop.last -%}{{- '<|im_end|>' + '\n' -}}{%- else -%}{{- eos_token -}}{%- endif -%}{%- elif message['role'] == 'environment' -%}{{- '<|im_start|>environment\n' + message['content'] + '<|im_end|>\n' -}}{%- elif message['role'] == 'tool' -%}{{- '<|im_start|>environment\n' + message['content'] + '<|im_end|>\n' -}}{%- endif -%}{%- if loop.last and add_generation_prompt -%}{{- '<|im_start|>assistant\n' -}}{%- endif -%}{%- endfor -%}"
+
+dataset_name:
+  allenai/Dolci-Instruct-SFT
+
+bf16: true
+eval_strategy: 'no'
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 3e-5
+log_level: info
+logging_steps: 5
+logging_strategy: steps
+lr_scheduler_type: linear
+max_length: 2048
+max_steps: 30
+num_train_epochs: 1
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/datamix-80-20-9B/SFT/pilot/zero3/
+overwrite_output_dir: true
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+remove_unused_columns: true
+save_strategy: "no"
+seed: 42
+warmup_ratio: 0.03
+ddp_find_unused_parameters: false
