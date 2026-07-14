@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=Qwen3-8B-SFT-LR3e-5_AO
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/%x_%j.err
+#SBATCH --job-name=Qwen3-1.7B-SFT-LR3e-5_AO
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/1.7B/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/1.7B/%x_%j.err
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=0
-#SBATCH --time=08:00:00
+#SBATCH --mem=64G
+#SBATCH --time=2-00:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 
@@ -63,11 +63,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-8B-SFT-LR3e-5-AO
+export WANDB_NAME=Qwen3-1.7B-SFT-LR3e-5-AO
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/datamix-80-20-9B/zero2.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/8B/config_olmo3_sft_3e-5_AO.yaml
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/1.7B/config_olmo3_sft_3e-5_AO.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
