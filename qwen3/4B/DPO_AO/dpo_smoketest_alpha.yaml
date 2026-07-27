@@ -1,0 +1,39 @@
+# Smoke-test config for DPO_AO on alpha (A100) partition.
+# Runs only a handful of steps to verify load, memory, and training loop.
+
+# Model arguments
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/Assistant-Only/
+torch_dtype: bfloat16
+
+use_liger_kernel: true
+attn_implementation: flash_attention_2
+
+dataset_name:
+  allenai/Dolci-Instruct-DPO
+
+# DPOTrainer arguments
+dataset_num_proc: 4
+bf16: true
+beta: 0.01
+do_eval: false
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+learning_rate: 1e-6
+log_level: info
+logging_steps: 1
+lr_scheduler_type: linear
+max_length: 4096
+max_prompt_length: 512
+max_steps: 10
+num_train_epochs: 1
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-AO-smoketest-alpha/
+overwrite_output_dir: true
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+save_strategy: "no"
+seed: 8
+warmup_ratio: 0.0
+length_normalize_logps: false
