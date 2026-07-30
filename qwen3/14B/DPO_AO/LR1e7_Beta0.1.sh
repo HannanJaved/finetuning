@@ -1,16 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=Qwen3-14B-SFT-LR3e-5_AO
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/%x_%j.err
-#SBATCH --nodes=4
+#SBATCH --job-name=DPO-LR1e7-Beta0.1-Qwen3-14B-SFT-LR3e-5-AO
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO-AO-DDP/SFT-LR3e-5/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO-AO-DDP/SFT-LR3e-5/%x_%j.err
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=14
 #SBATCH --mem=0
-#SBATCH --time=7-00:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --partition=capella
-#SBATCH --exclusive
-#SBATCH --requeue
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
@@ -64,18 +62,18 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=Qwen3-14B-SFT-LR3e-5-AO
+export WANDB_NAME=DPO-LR1e7-Beta0.1-Qwen3-14B-SFT-LR3e-5-AO
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/zero3.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/14B/config_olmo3_sft_3e-5_AO.yaml
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/zero3.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/14B/DPO_AO/dpo_beta0.1_LR.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
 #LAUNCHERS
-export CMD="scripts/sft.py --config $CONFIG_FILE"
+export CMD="scripts/dpo.py --config $CONFIG_FILE"
 
 SRUN_ARGS=" \
     --wait=60 \
