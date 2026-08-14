@@ -18,7 +18,8 @@ if [ ! -f "${CONFIG_TEMPLATE}" ]; then
 fi
 
 # LRs and betas to sweep (as requested)
-LRS=(1e-6 2e-6 4e-6)
+# LRS=(1e-6 2e-6 4e-6)
+LRS=(8e-7 4e-7)
 BETAS=(0.01 0.02 0.04)
 
 # Parse options
