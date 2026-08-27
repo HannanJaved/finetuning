@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=DPO-LR1e7-Beta0.1-Qwen3-14B-SFT-LR3e-5-AO
+#SBATCH --job-name=neura_search_DPO-LR1e7-Beta0.1-Qwen3-14B-SFT-LR3e-5-AO
 #SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO-AO-DDP/SFT-LR3e-5/%x_%j.out
 #SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/14B/DPO-AO-DDP/SFT-LR3e-5/%x_%j.err
 #SBATCH --nodes=2
@@ -9,6 +9,7 @@
 #SBATCH --mem=0
 #SBATCH --time=3-00:00:00
 #SBATCH --partition=capella
+#SBATCH --account=p_neurasearch
 
 echo "JOB NAME" $SLURM_JOB_NAME
 

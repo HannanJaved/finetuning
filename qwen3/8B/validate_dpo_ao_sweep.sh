@@ -7,9 +7,9 @@
 #SBATCH --gres=gpu:2
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --time=02:00:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=capella
-#SBATCH --array=0-8
+#SBATCH --array=0-5
 
 set -euo pipefail
 
@@ -65,8 +65,8 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
 
-# Grid: 3 LRs x 3 betas = 9 combinations (array index 0-8)
-LRS=(1e-6 2e-6 4e-6)
+# Grid: 2 LRs x 3 betas = 6 combinations (array index 0-5)
+LRS=(4e-7 8e-7)
 BETAS=(0.01 0.02 0.04)
 
 LR_IDX=$((SLURM_ARRAY_TASK_ID / 3))
