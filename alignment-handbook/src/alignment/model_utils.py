@@ -20,6 +20,49 @@ from trl import ModelConfig, get_kbit_device_map, get_quantization_config
 from .configs import SFTConfig
 
 
+def _patch_deepspeed_zero3_embedding_init() -> None:
+    """Work around a transformers/DeepSpeed ZeRO-3 incompatibility.
+
+    Under `deepspeed.zero.Init()` (entered by `from_pretrained` whenever ZeRO
+    stage 3 is active, regardless of accelerate's `zero3_init_flag`), a
+    module's `weight.data` is a partitioned local shard, not the full tensor.
+    `PreTrainedModel._init_weights`'s embedding branch does
+    `module.weight.data[module.padding_idx].zero_()` without gathering the
+    parameter first, so any model that sets `padding_idx` (e.g. Gemma3) hits
+    `IndexError: index 0 is out of bounds for dimension 0 with size 0` on
+    ranks whose local shard doesn't cover that row. Gather the parameter for
+    the duration of its init, per DeepSpeed's documented pattern for custom
+    weight init under ZeRO-3.
+    """
+    from transformers import modeling_utils
+    from transformers.integrations.deepspeed import is_deepspeed_zero3_enabled
+
+    if getattr(modeling_utils.PreTrainedModel._init_weights, "_zero3_embedding_patched", False):
+        return
+
+    original_init_weights = modeling_utils.PreTrainedModel._init_weights
+
+    def patched_init_weights(self, module):
+        if (
+            isinstance(module, torch.nn.Embedding)
+            and module.padding_idx is not None
+            and is_deepspeed_zero3_enabled()
+        ):
+            import deepspeed
+
+            with deepspeed.zero.GatheredParameters(module.weight, modifier_rank=0):
+                if deepspeed.comm.get_rank() == 0:
+                    original_init_weights(self, module)
+        else:
+            original_init_weights(self, module)
+
+    patched_init_weights._zero3_embedding_patched = True
+    modeling_utils.PreTrainedModel._init_weights = patched_init_weights
+
+
+_patch_deepspeed_zero3_embedding_init()
+
+
 def get_tokenizer(model_args: ModelConfig, training_args: SFTConfig) -> PreTrainedTokenizer:
     """Get the tokenizer for the model."""
     tokenizer = AutoTokenizer.from_pretrained(
@@ -49,6 +92,15 @@ def get_model(model_args: ModelConfig, training_args: SFTConfig) -> AutoModelFor
         revision=model_args.model_revision,
         trust_remote_code=model_args.trust_remote_code,
     )
+
+    # Gemma-3-4B-pt (and similar) ship as multimodal Gemma3Config
+    # (Gemma3ForConditionalGeneration). AutoModelForCausalLM then loads the
+    # VLM wrapper, and TRL DPO treats model_type "gemma3" as vision-only
+    # (process_row + processing_class.tokenizer), which breaks text-only DPO
+    # when we pass a plain tokenizer. Load the text backbone as
+    # Gemma3ForCausalLM instead so TRL uses tokenize_row.
+    if getattr(config, "model_type", None) == "gemma3" and hasattr(config, "text_config"):
+        config = config.text_config
 
     # Some model implementations (e.g. custom Gemma3 in this environment)
     # don't accept `use_cache` as an __init__ kwarg. Set it on the config
