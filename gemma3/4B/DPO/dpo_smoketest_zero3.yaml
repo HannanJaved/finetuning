@@ -1,0 +1,44 @@
+# Smoke test for the ZeRO-3 accelerate config (see zero3.yaml). Same per-step
+# memory footprint as the real sweep configs (batch size, seq length, grad
+# checkpointing) so it actually exercises the OOM fix, but capped to a few
+# steps on a small data slice so it finishes in minutes instead of days.
+
+# Model arguments
+model_name_or_path: /data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-4b-pt/SFT-sweep/gemma-3-4b-pt-SFT-LR3e-5/
+torch_dtype: bfloat16
+
+use_liger_kernel: true
+attn_implementation: flash_attention_2
+
+dataset_mixture:
+  datasets:
+    - id: allenai/Dolci-Instruct-DPO
+      split: "train[:256]"
+  seed: 0
+
+# DPOTrainer arguments
+bf16: true
+beta: 0.01
+do_eval: false
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+learning_rate: 5e-6
+log_level: info
+logging_steps: 1
+lr_scheduler_type: linear
+max_steps: 5
+max_length: 4096
+max_prompt_length: 512
+optim: adamw_torch
+output_dir: /data/horse/ws/hama901h-BFTranslation/checkpoints/Gemma3/gemma-3-4b-pt/SFT-sweep/gemma-3-4b-pt-SFT-LR3e-5/DPO/_smoketest_zero3/
+overwrite_output_dir: true
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 2
+gradient_checkpointing: true
+ddp_find_unused_parameters: true
+save_strategy: "no"
+seed: 8
+warmup_ratio: 0.1
+length_normalize_logps: false
+report_to: []
