@@ -19,8 +19,13 @@ fi
 
 # LRs and betas to sweep (as requested)
 # LRS=(1e-6 2e-6 4e-6)
-LRS=(8e-7 4e-7)
-BETAS=(0.01 0.02 0.04)
+# LRS=(8e-7 4e-7)
+# Grid diagnostic (lr_vs_zall_by_scale plots) showed 14B's Z-All score
+# monotonically decreasing toward the grid floor (4e-7) -- best point sits
+# at the untested edge, not an interior optimum. Probing further below.
+LRS=(1e-7 8e-8)
+# BETAS=(0.01 0.02 0.04)
+BETAS=(0.01)  # beta is grid-floor-pinned almost everywhere on this grid already
 
 # Parse options
 DRY_RUN=0
