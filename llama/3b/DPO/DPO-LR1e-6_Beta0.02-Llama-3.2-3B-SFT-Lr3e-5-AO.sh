@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14
 #SBATCH --mem=0
-#SBATCH --time=12:00:00
+#SBATCH --time=06:00:00
 #SBATCH --partition=capella
 #SBATCH --exclusive
 # To start this job only after another one finishes (e.g. the matching SFT
