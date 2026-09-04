@@ -18,8 +18,13 @@ if [ ! -f "${CONFIG_TEMPLATE}" ]; then
 fi
 
 # LRs and betas to sweep (as requested)
-LRS=(1e-6 2e-6 4e-6)
-BETAS=(0.01 0.02 0.04)
+# LRS=(1e-6 2e-6 4e-6)
+# Grid diagnostic (lr_vs_zall_by_scale plots) showed 1.7B's Z-All score
+# rising toward the grid ceiling (4e-6) -- best point sits at the untested
+# edge, not an interior optimum. Probing one step higher.
+LRS=(8e-6)
+# BETAS=(0.01 0.02 0.04)
+BETAS=(0.01)  # beta is grid-floor-pinned almost everywhere on this grid already
 
 # Parse options
 DRY_RUN=0
