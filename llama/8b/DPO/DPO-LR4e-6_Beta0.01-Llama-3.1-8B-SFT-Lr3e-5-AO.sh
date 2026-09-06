@@ -6,14 +6,13 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14
-#SBATCH --mem=0
-#SBATCH --time=12:00:00
+#SBATCH --mem=128G
+#SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
 #SBATCH --account=p_neurasearch
 #SBATCH --exclusive
 # To start this job only after another one finishes (e.g. the matching SFT
 # job), uncomment the line below (remove one '#') and set the job ID:
-#SBATCH --dependency=afterok:3996335
 
 echo "JOB NAME" $SLURM_JOB_NAME
 

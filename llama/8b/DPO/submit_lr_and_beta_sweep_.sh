@@ -80,7 +80,7 @@ for lr in "${LRS[@]}"; do
     sed \
       -e "s/^learning_rate: .*/learning_rate: ${lr}/" \
       -e "s/^beta: .*/beta: ${beta}/" \
-      -e "s#^output_dir: .*#output_dir: /data/cat/ws/hama901h-judge-checkpoint/checkpoints/Llama-3.1-8B/SFT-Lr3e-5-AO/${job_name}/#" \
+      -e "s#^output_dir: .*#output_dir: /data/horse/ws/hama901h-Post-training/checkpoints/Llama-3.1-8B/SFT-Lr3e-5-AO/${job_name}/#" \
       "${CONFIG_TEMPLATE}" > "${config_path}"
 
     # Create job script from template. Prefer replacing an existing WANDB_NAME
