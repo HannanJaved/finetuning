@@ -65,7 +65,7 @@ export WANDB_MODE=disabled
 export WANDB_NAME=smoketest-DPO-UltraFeedback-Qwen3-4B-alpha
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/datamix-80-20-9B/zero2.yaml
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/zero3.yaml
 CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.01_LR1e-6.yaml
 SMOKETEST_OUTPUT_DIR=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache/smoketest-outputs/DPO-UltraFeedback-Qwen3-4B-alpha
 

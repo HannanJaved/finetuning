@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=DPO-LR4e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.err
+#SBATCH --job-name=smoketest-DPO-UltraFeedback-Qwen3-4B-alpha
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/smoketest-alpha/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/smoketest-alpha/%x_%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=14
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=06:00:00
+#SBATCH --time=00:20:00
 #SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
@@ -59,21 +59,31 @@ NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
 
 echo NPROC_PER_NODE=$NPROC_PER_NODE
 
-# Wandb settings
-export WANDB_PROJECT=instruction-tuning
-export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=DPO-LR4e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
+# Wandb settings - smoke test only, don't pollute the real project
+export WANDB_MODE=disabled
+export WANDB_NAME=smoketest-DPO-UltraFeedback-Qwen3-4B-capella
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.04_LR4e-6.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.01_LR1e-6.yaml
+SMOKETEST_OUTPUT_DIR=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache/smoketest-outputs/DPO-UltraFeedback-Qwen3-4B-capella
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
+# Same config as the real sweep (same model, dataset, batch size, max_length, etc.) but
+# capped to a handful of steps, redirected to a scratch output dir, and with saving/eval/
+# reporting disabled - this only exists to check the job starts, loads the model+dataset,
+# and gets through a few train steps without hitting GPU OOM on the alpha A100 40GB nodes.
 #LAUNCHERS
-export CMD="scripts/dpo.py --config $CONFIG_FILE"
+export CMD="scripts/dpo.py --config $CONFIG_FILE \
+    --max_steps 5 \
+    --save_strategy no \
+    --logging_steps 1 \
+    --report_to none \
+    --output_dir $SMOKETEST_OUTPUT_DIR \
+    --overwrite_output_dir"
 
 SRUN_ARGS=" \
     --wait=60 \

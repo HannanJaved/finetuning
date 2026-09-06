@@ -1,14 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=DPO-LR4e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
-#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.out
-#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.err
+#SBATCH --job-name=smoketest-DPO-UltraFeedback-Qwen3-4B-alpha-1node
+#SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/smoketest-alpha/%x_%j.out
+#SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/smoketest-alpha/%x_%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=14
+#SBATCH --gres=gpu:8
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=06:00:00
-#SBATCH --partition=capella
+#SBATCH --time=00:20:00
+#SBATCH --partition=alpha
+#SBATCH --exclusive
+#SBATCH --account=p_neurasearch
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
@@ -59,21 +61,33 @@ NPROC_PER_NODE=$(nvidia-smi -L | wc -l)
 
 echo NPROC_PER_NODE=$NPROC_PER_NODE
 
-# Wandb settings
-export WANDB_PROJECT=instruction-tuning
-export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=DPO-LR4e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
+# Wandb settings - smoke test only, don't pollute the real project
+export WANDB_MODE=disabled
+export WANDB_NAME=smoketest-DPO-UltraFeedback-Qwen3-4B-alpha-1node
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.04_LR4e-6.yaml
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/zero3.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.01_LR1e-6.yaml
+SMOKETEST_OUTPUT_DIR=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.cache/smoketest-outputs/DPO-UltraFeedback-Qwen3-4B-alpha-1node
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
 pwd -P
 
+# Same as smoketest_alpha.sh but on a single exclusive alpha node (8 GPUs, world_size=8
+# instead of 16). gradient_accumulation_steps is doubled to 16 (from the config's 8) so
+# the global batch size stays 128 (1 x 16 x 8) despite the smaller world size - this is
+# to check whether a single node still fits in memory, since ZeRO-3 shards params,
+# gradients, and optimizer state across fewer ranks here than the real 2-node sweep.
 #LAUNCHERS
-export CMD="scripts/dpo.py --config $CONFIG_FILE"
+export CMD="scripts/dpo.py --config $CONFIG_FILE \
+    --gradient_accumulation_steps 16 \
+    --max_steps 5 \
+    --save_strategy no \
+    --logging_steps 1 \
+    --report_to none \
+    --output_dir $SMOKETEST_OUTPUT_DIR \
+    --overwrite_output_dir"
 
 SRUN_ARGS=" \
     --wait=60 \

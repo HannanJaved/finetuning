@@ -2,14 +2,13 @@
 #SBATCH --job-name=DPO-LR4e-6_Beta0.02-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
 #SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.out
 #SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.err
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:8
-#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:4
+#SBATCH --cpus-per-task=14
 #SBATCH --mem=64G
 #SBATCH --time=06:00:00
-#SBATCH --partition=alpha
-#SBATCH --exclusive
+#SBATCH --partition=capella
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
@@ -66,7 +65,7 @@ export WANDB_ENTITY=openeurollm-project
 export WANDB_NAME=DPO-LR4e-6_Beta0.02-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
-ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/datamix-80-20-9B/zero2.yaml
+ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
 CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.02_LR4e-6.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
