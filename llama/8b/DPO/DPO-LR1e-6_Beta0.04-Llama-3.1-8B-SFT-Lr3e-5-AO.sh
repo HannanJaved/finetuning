@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=14
 #SBATCH --mem=128G
-#SBATCH --time=1-00:00:00
+#SBATCH --time=14:00:00
 #SBATCH --partition=capella
 #SBATCH --account=p_neurasearch
 #SBATCH --exclusive
