@@ -9,7 +9,7 @@
 #SBATCH --mem=128G
 #SBATCH --time=16:00:00
 #SBATCH --partition=capella
-#SBATCH --exclude=c99,c13,c108
+#SBATCH --account=p_neurasearch
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
