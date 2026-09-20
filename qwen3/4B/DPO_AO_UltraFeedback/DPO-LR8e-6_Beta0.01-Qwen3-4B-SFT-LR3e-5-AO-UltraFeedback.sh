@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=DPO-LR1e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
+#SBATCH --job-name=DPO-LR8e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
 #SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.out
 #SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/4B/DPO-AO-UltraFeedback-DDP/SFT-LR3e-5/%x_%j.err
 #SBATCH --nodes=1
@@ -63,11 +63,11 @@ echo NPROC_PER_NODE=$NPROC_PER_NODE
 # Wandb settings
 export WANDB_PROJECT=instruction-tuning
 export WANDB_ENTITY=openeurollm-project
-export WANDB_NAME=DPO-LR1e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
+export WANDB_NAME=DPO-LR8e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO-UltraFeedback
 
 cd /data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/
 ACCELERATE_CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/recipes/accelerate_configs/ddp.yaml
-CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.04_LR1e-6.yaml
+CONFIG_FILE=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/qwen3/4B/DPO_AO_UltraFeedback/dpo_beta0.01_LR8e-6.yaml
 
 echo "JOBNAME" $SLURM_JOB_NAME
 echo "CONFIG" $CONFIG_FILE
