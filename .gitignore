@@ -27,3 +27,7 @@ qwen3/entropy/entropy_plot*
 *.csv
 *.out
 *.err
+
+# nested git clones (own repos)
+dpo_merging/
+mergekit/
