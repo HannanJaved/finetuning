@@ -5,6 +5,7 @@ trl/
 slurm-*
 .logs/
 .scripts/outdated/
+*/logs/
 .trl_venv/
 .tmp_configs/
 instruction-tuning-scripts/
