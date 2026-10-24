@@ -36,3 +36,9 @@ mergekit/
 # DPO datamix run artifacts
 OELLM/DPO-datamix-prelude/outputs/
 OELLM/DPO-datamix-prelude/logs/
+
+# watcher scripts and their runtime state
+watcher/
+qwen3/watch_account_duplicates.log
+qwen3/watch_account_duplicates.sh
+qwen3/watch_account_duplicates.state.json
