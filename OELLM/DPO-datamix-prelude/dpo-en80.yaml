@@ -1,0 +1,213 @@
+# DPO language-mix sweep for the Prelude instruct SFT checkpoint.
+#
+# One epoch over a mixture the size of the English file (246215 pairs).
+# data.datasets[].weight is a fraction of THAT file, not of the final mix.
+# Non-English weight is (other_fraction * 246215) / 1155946.
+#
+# Assumed full-file row counts (revision a57841a, the clone's HEAD):
+#   en   246215
+#   cs   117424
+#   de   116429
+#   el   102542
+#   es   127909
+#   fi   110234
+#   fr    15082
+#   it    88323
+#   pl   120833
+#   ro   117687
+#   sv   122945
+#   uk   116538
+#   other 1155946
+#
+# If a real load reports different lengths, recompute:
+#   weight_en = english_fraction
+#   weight_other = (1 - english_fraction) * len(en) / sum(len(lang) for lang in other)
+# and keep the same weight on every non-English language.
+#
+# Recipe follows the one-epoch DPO of this same SFT checkpoint
+# (beta 0.1, lr 5e-7, cosine, 3% warmup, global batch 128, seq 2048),
+# on DeepSpeed ZeRO-2 because that is what this post-training repo runs.
+# effective_batch_size 128 assumes 8 GPUs (2 nodes x 4).
+
+# This file: 80% English, 20% other languages
+#
+method: dpo
+backend: trl
+run_name: dpo-prelude-en80-x20
+offline: true
+prefetch_assets: false
+container: null
+
+model:
+  name_or_path: /gpfs/projects/ehpc533/users/hannan/checkpoints/oellm-9b-256k-theta64m-prelude-anneal300b-instruct-sft
+  attn_implementation: flash_attention_2
+  dtype: bfloat16
+  tokenizer_name_or_path: null
+  tokenizer_revision: null
+
+training:
+  num_train_epochs: 1
+  learning_rate: 5.0e-7
+  effective_batch_size: 128
+  per_device_train_batch_size: 1
+  warmup_steps: 0.03
+  lr_scheduler_type: cosine
+  lr_scheduler_kwargs: null
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  weight_decay: 0.0
+  adam_epsilon: 1.0e-8
+  gradient_checkpointing: true
+  gradient_checkpointing_kwargs:
+    use_reentrant: false
+  bf16: true
+  seed: 42
+  use_liger_kernel: false
+
+dpo:
+  beta: 0.1
+  loss_type: sigmoid
+  ref_model_name_or_path: null
+  max_seq_length: 2048
+  dataset_num_proc: 16
+
+checkpointing:
+  save_strategy: steps
+  save_steps: 250
+  save_total_limit: 2
+  inference_checkpoint_steps: 2000
+  inference_checkpoint_path: inference_checkpoints
+
+data:
+  chat_template: qwen3
+  num_proc: 16
+  seed: 42
+  datasets:
+    - name: dolci-dpo-en
+      path: parquet
+      data_dir: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated/en
+      split: train
+      weight: 0.8
+      transform: null
+    # Same weight on every non-English file. weight * rows sums to
+    # about 20% of the English file, so the mix is
+    # 80% English / 20% other languages,
+    # sampled proportional to each language's file size.
+    - name: dolci-dpo-cs
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/cs.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-de
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/de.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-el
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/el.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-es
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/es.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-fi
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/fi.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-fr
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/fr.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-it
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/it.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-pl
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/pl.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-ro
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/ro.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-sv
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/sv.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+    - name: dolci-dpo-uk
+      path: /gpfs/projects/ehpc533/users/hannan/data/Dolci-Instruct-DPO-translated-aligned/uk.parquet
+      split: train
+      weight: 0.0425997408183427
+      transform: null
+
+deepspeed:
+  bf16:
+    enabled: true
+  zero_optimization:
+    stage: 3
+    overlap_comm: false
+    contiguous_gradients: true
+    reduce_scatter: true
+    stage3_prefetch_bucket_size: 500000000
+    stage3_param_persistence_threshold: 1000000
+    stage3_max_live_parameters: 1000000000
+    stage3_max_reuse_distance: 1000000000
+    stage3_gather_16bit_weights_on_model_save: true
+  gradient_clipping: 1.0
+  train_micro_batch_size_per_gpu: "auto"
+  gradient_accumulation_steps: "auto"
+  train_batch_size: "auto"
+  optimizer:
+    type: AdamW
+    params:
+      lr: "auto"
+      betas: "auto"
+      eps: "auto"
+      weight_decay: "auto"
+
+accelerate:
+  mixed_precision: bf16
+  use_deepspeed: true
+  deepspeed_multinode_launcher: standard
+  same_network: true
+  rdzv_backend: static
+  dynamo_backend: "no"
+
+logging:
+  report_to:
+    - wandb
+    - tensorboard
+  wandb_project: oellm-dpo-datamix
+  logging_steps: 10
+  include_num_input_tokens_seen: non_padding
+
+# Documentation only. Submit the matching .sh file. scripts/submit.py renders
+# a generic launcher and does not activate the MN5 environment.
+slurm:
+  account: cns144
+  qos: acc_resa
+  partition: acc
+  num_nodes: 2
+  gpus_per_node: 4
+  cpus_per_task: 80
+  wall_time: "2-00:00:00"
+  job_name: dpo-en80
+  signal_time_seconds: 300
+  max_failures: 0
+
+debug:
+  enabled: false
+  override_existing: false
+
+paths:
+  output_base: /gpfs/projects/ehpc533/users/hannan/finetuning/OELLM/DPO-datamix-prelude/outputs
+  debug_base: /gpfs/projects/ehpc533/users/hannan/finetuning/OELLM/DPO-datamix-prelude/outputs/debug
