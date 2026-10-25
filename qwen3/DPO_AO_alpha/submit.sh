@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Alpha DPO follow-up. Each job is 2 nodes, 8 GPUs, grad accumulation 8
+# Alpha DPO follow-up. Each job is 1 node, 8 GPUs, grad accumulation 16
 # (global batch 128, same as the capella 4-GPU runs).
 #
 # Default submits the full set, including the optional runs:

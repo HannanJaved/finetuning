@@ -2,7 +2,7 @@
 #SBATCH --job-name=DPO-HalfDolci-LR2e-7_Beta0.01-Qwen3-8B-SFT-LR3e-5-AO
 #SBATCH --output=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO-AO/SFT-LR3e-5/%x_%j.out
 #SBATCH --error=/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/.logs/Qwen3/8B/DPO-AO/SFT-LR3e-5/%x_%j.err
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=16
@@ -22,7 +22,7 @@ source /data/horse/ws/hama901h-Post-training/cache.sh
 export PYTHONPATH="/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook/src:/data/horse/ws/hama901h-Post-training/hama901h-Posttraining/finetuning/alignment-handbook:/data/horse/ws/hama901h-BFTranslation/venv-post-training/lib/python3.11/site-packages"
 
 # Get master node hostname for distributed training
-export NCCL_SOCKET_IFNAME='ibp3s0.8002,ibp35s0.8002,ibp163s0.8002,ibp195s0.8002'
+export NCCL_SOCKET_IFNAME='ib0.0002,ib1.0002'
 export NCCL_IB_PKEY=0x2
 
 export NCCL_NSOCKS_PERTHREAD=4
