@@ -9,7 +9,7 @@
 #SBATCH --mem=0
 #SBATCH --time=1-00:00:00
 #SBATCH --partition=capella
-#SBATCH --exclude=c[19,21,70,82,95,105,134]
+#SBATCH --exclude=c[19,21,42,45,70,82,95,105,134]
 
 echo "JOB NAME" $SLURM_JOB_NAME
 
