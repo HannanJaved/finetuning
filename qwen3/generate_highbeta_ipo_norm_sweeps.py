@@ -33,7 +33,7 @@ SIZES = {
     "4B": {
         "model": CKPT / "Qwen3-4B-Base/SFT-sweep/Qwen3-4B-SFT-LR3e-5/Assistant-Only",
         "accel": "zero3.yaml",
-        "time": "12:00:00",
+        "time": "18:00:00",
     },
     "8B": {
         "model": CKPT / "Qwen3-8B-Base/SFT-sweep/Qwen3-8B-SFT-LR3e-5/Assistant-Only",
