@@ -1,0 +1,5 @@
+rlvr-gsm8k-dpo-qwen3-4b-sft-lr3e5-ao-lr4e7-beta0.01
+rlvr-gsm8k-dpo-qwen3-4b-sft-lr3e5-ao-lr2e6-beta0.01
+rlvr-gsm8k-dpo-qwen3-4b-sft-lr3e5-ao-lr1e6-beta0.08
+rlvr-gsm8k-dpo-qwen3-4b-sft-lr3e5-ao-lr2e6-beta0.08
+rlvr-gsm8k-dpo-qwen3-4b-sft-lr3e5-ao-lr8e6-beta0.01

@@ -1,0 +1,6 @@
+role	alias	path	z_dynamic	z_dynamic_rank
+best	dpo-qwen3-4b-sft-lr3e5-ao-lr4e7-beta0.01	/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-LR4e-7_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO	1.4735	1/18
+mid1	dpo-qwen3-4b-sft-lr3e5-ao-lr2e6-beta0.01	/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-LR2e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO	0.8050	5/18
+mid2	dpo-qwen3-4b-sft-lr3e5-ao-lr1e6-beta0.08	/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-LR1e-6_Beta0.08-Qwen3-4B-SFT-LR3e-5-AO	-0.0424	9/18
+mid3	dpo-qwen3-4b-sft-lr3e5-ao-lr2e6-beta0.08	/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-LR2e-6_Beta0.08-Qwen3-4B-SFT-LR3e-5-AO	-0.3844	14/18
+worst	dpo-qwen3-4b-sft-lr3e5-ao-lr8e6-beta0.01	/data/horse/ws/hama901h-BFTranslation/checkpoints/Qwen/Qwen3-4B-Base/SFT-sweep/DPO-LR8e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO	-1.5613	18/18

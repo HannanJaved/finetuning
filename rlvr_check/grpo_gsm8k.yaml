@@ -1,0 +1,36 @@
+# Shared GRPO settings for every starting point (TRL 0.29, venv-vllm). Do not edit per run.
+#
+# Batch: 4 GPUs x 8 per device x 8 accumulation = 256 completions = 32 prompts x 8 generations per
+# optimizer step. steps_per_generation defaults to gradient_accumulation_steps, so one generation round
+# per optimizer step (fully on-policy, num_iterations=1).
+# 250 steps x 32 prompts = 8,000 prompts ~ 1.07 epochs of GSM8K train (7,473).
+
+max_steps: 250
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 8
+num_generations: 8
+max_completion_length: 1024
+temperature: 1.0
+
+learning_rate: 1.0e-6
+lr_scheduler_type: linear
+warmup_ratio: 0.03
+beta: 0.05            # KL coefficient to the starting checkpoint (Tulu 3 RLVR used 0.05)
+
+use_vllm: true
+vllm_mode: colocate
+vllm_gpu_memory_utilization: 0.3
+vllm_max_model_length: 2048
+
+# fp32 master weights + bf16 compute, the same regime as the >=4B DPO runs (ZeRO-3, bf16 mixed precision)
+model_init_kwargs:
+  dtype: float32
+bf16: true
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+logging_steps: 1
+save_strategy: "no"
+report_to: none       # wandb is not installed in venv-vllm
+seed: 8
