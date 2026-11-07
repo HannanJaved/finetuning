@@ -1,0 +1,15 @@
+Resubmitted 2026-11-02 22:42 on both p_neurasearch and p_scads_nas.
+Jobs 4517208–4517229. The watcher cancels the other account's copy after one has been RUNNING for 2 minutes.
+The 4B NormDPO job that had been left running (4489150) hit the 12h limit at checkpoint-1800 and is included.
+
+IPO-LR1e-6_Beta0.01-Qwen3-8B-SFT-LR3e-5-AO
+IPO-LR4e-6_Beta0.01-Qwen3-8B-SFT-LR3e-5-AO
+NormDPO-LR1e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR1e-6_Beta0.02-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR1e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR2e-6_Beta0.01-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR2e-6_Beta0.02-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR2e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR2e-6_Beta0.04-Qwen3-8B-SFT-LR3e-5-AO
+NormDPO-LR4e-6_Beta0.02-Qwen3-4B-SFT-LR3e-5-AO
+NormDPO-LR4e-6_Beta0.04-Qwen3-4B-SFT-LR3e-5-AO
